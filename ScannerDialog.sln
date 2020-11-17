@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScannerDialog", "ScannerDialog\ScannerDialog.csproj", "{DAE10EBF-77DD-4E8B-82E6-1CB15CBCA037}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrylanLibary", "PrylanLibary\PrylanLibary.csproj", "{98EE3200-5845-4451-82B0-EDAB46BF51B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAE10EBF-77DD-4E8B-82E6-1CB15CBCA037}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAE10EBF-77DD-4E8B-82E6-1CB15CBCA037}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAE10EBF-77DD-4E8B-82E6-1CB15CBCA037}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAE10EBF-77DD-4E8B-82E6-1CB15CBCA037}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98EE3200-5845-4451-82B0-EDAB46BF51B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98EE3200-5845-4451-82B0-EDAB46BF51B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98EE3200-5845-4451-82B0-EDAB46BF51B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98EE3200-5845-4451-82B0-EDAB46BF51B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {07F00341-F2AE-481C-A2D1-39A279A2595E}
+	EndGlobalSection
+EndGlobal
