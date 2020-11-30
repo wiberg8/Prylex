@@ -107,7 +107,7 @@ namespace ScannerDialog
             {
                 ledigaArtiklar = dataAccess.HamtaLedigaArtiklar();
             }
-            ValjArtikelDialog dialog = new ValjArtikelDialog(ledigaArtiklar);
+            var dialog = new ValjArtikelDialog(ledigaArtiklar, true);
             dialog.ShowDialog();
             if(dialog.ValdArtikel != null)
             {

@@ -41,8 +41,6 @@ namespace ScannerDialog
             {
                 string inkop=string.Empty;
                 string persId = string.Empty;
-                if (artikel.AndvandInkop)
-                    inkop = artikel.Inkop;
                 if (artikel.Status == Status.UTE)
                     persId = artikel.PersId.ToString();
                 dgvArtiklar.Rows.Add(artikel.Id, artikel.Beskrivning, artikel.DatorNamn, artikel.StoldTag, artikel.SerieNr, artikel.Mac, artikel.Os, inkop, artikel.Ovrigt, persId);
@@ -62,9 +60,19 @@ namespace ScannerDialog
 
         private void cmdSok_Click(object sender, EventArgs e)
         {
-            using (DataAccess dataAccess = new DataAccess())
+            if (endastLediga)
             {
-                FyllDataGrid(dataAccess.HamtaSokArtiklar(txtSok.Text));
+                using (DataAccess dataAccess = new DataAccess())
+                {
+                    FyllDataGrid(dataAccess.HamtaSokArtiklarLediga(txtSok.Text));
+                }
+            }
+            else
+            {
+                using (DataAccess dataAccess = new DataAccess())
+                {
+                    FyllDataGrid(dataAccess.HamtaSokArtiklar(txtSok.Text));
+                }
             }
         }
     }

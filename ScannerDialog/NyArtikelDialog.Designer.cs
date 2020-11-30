@@ -51,7 +51,6 @@
             this.laOvrigt = new System.Windows.Forms.Label();
             this.cmdSpara = new System.Windows.Forms.Button();
             this.cmdAvbryt = new System.Windows.Forms.Button();
-            this.checkInkop = new System.Windows.Forms.CheckBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbSnabbVal.SuspendLayout();
             this.gbFalt.SuspendLayout();
@@ -120,7 +119,6 @@
             this.dtpInkop.Size = new System.Drawing.Size(106, 20);
             this.dtpInkop.TabIndex = 3;
             this.dtpInkop.Value = new System.DateTime(2020, 6, 23, 13, 10, 47, 0);
-            this.dtpInkop.Visible = false;
             this.dtpInkop.ValueChanged += new System.EventHandler(this.dtpInkop_ValueChanged);
             // 
             // laInkop
@@ -293,18 +291,6 @@
             this.cmdAvbryt.UseVisualStyleBackColor = true;
             this.cmdAvbryt.Click += new System.EventHandler(this.cmdAvbryt_Click);
             // 
-            // checkInkop
-            // 
-            this.checkInkop.AutoSize = true;
-            this.checkInkop.Location = new System.Drawing.Point(342, 177);
-            this.checkInkop.Name = "checkInkop";
-            this.checkInkop.Size = new System.Drawing.Size(126, 17);
-            this.checkInkop.TabIndex = 4;
-            this.checkInkop.Text = "Inköps Datum På/Av";
-            this.checkInkop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.checkInkop.UseVisualStyleBackColor = true;
-            this.checkInkop.CheckedChanged += new System.EventHandler(this.checkBuyDate_CheckedChanged);
-            // 
             // errorProvider
             // 
             this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
@@ -317,7 +303,6 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.cmdAvbryt;
             this.ClientSize = new System.Drawing.Size(572, 299);
-            this.Controls.Add(this.checkInkop);
             this.Controls.Add(this.cmdAvbryt);
             this.Controls.Add(this.cmdSpara);
             this.Controls.Add(this.gbFalt);
@@ -334,7 +319,6 @@
             this.gbFalt.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -360,7 +344,6 @@
         private System.Windows.Forms.Button cmdAvbryt;
         private System.Windows.Forms.TextBox txtMAC;
         private System.Windows.Forms.Label laMAC;
-        private System.Windows.Forms.CheckBox checkInkop;
         private System.Windows.Forms.Label laInkop;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Label label1;

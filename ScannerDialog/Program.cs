@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Management;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace ScannerDialog
         static void Main()
         {
             Installningar.FileName = "Installningar.json";
-
+            
             DBHandler.SetConnection(Installningar.Hamta().Databas);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

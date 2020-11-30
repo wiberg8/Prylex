@@ -20,11 +20,13 @@ namespace ScannerDialog
         public NyArtikelDialog()
         {
             InitializeComponent();
+            dtpInkop.Value = DateTime.Now;
         }
 
         public NyArtikelDialog(Artikel artikel)
         {
             InitializeComponent();
+            dtpInkop.Value = DateTime.Now;
         }
 
         private void cbInputChoose_CheckedChanged(object sender, EventArgs e)
@@ -92,8 +94,7 @@ namespace ScannerDialog
 
         private void checkBuyDate_CheckedChanged(object sender, EventArgs e)
         {
-            dtpInkop.Visible = checkInkop.Checked;
-            laInkop.Visible = checkInkop.Checked;
+    
         }
 
         private void NyArtikelDialog_Load(object sender, EventArgs e)
@@ -110,7 +111,6 @@ namespace ScannerDialog
             //}
         }
 
-        #region Metoder
         private bool IsAllaFaltTomma(Artikel artikel)
         {
             return string.IsNullOrWhiteSpace(artikel.DatorNamn) && string.IsNullOrWhiteSpace(artikel.StoldTag) && string.IsNullOrWhiteSpace(artikel.Mac) && string.IsNullOrWhiteSpace(artikel.SerieNr) && string.IsNullOrWhiteSpace(artikel.Ovrigt);
@@ -129,7 +129,6 @@ namespace ScannerDialog
             cbBeskrivningar.Text = artikel.Beskrivning;
             txtStoldtag.Text = artikel.StoldTag;
             txtDatornamn.Text = artikel.DatorNamn;
-            checkInkop.Checked = artikel.AndvandInkop;
             if (DateTime.TryParse(artikel.Inkop, out DateTime parsedInkop))
             {
                 dtpInkop.Value = parsedInkop;
@@ -150,21 +149,15 @@ namespace ScannerDialog
                 SerieNr = txtSerieNr.Text.Trim(),
                 Mac = txtMAC.Text.Trim(),
                 Os = cbOS.Text.Trim(),
-                AndvandInkop = checkInkop.Checked,
                 Ovrigt = txtOvrigt.Text.Trim()
             };
-
-            if (t.AndvandInkop)
-                t.Inkop = dtpInkop.Value.ToShortDateString();
-            else
-                t.Inkop = string.Empty;
 
             return t;
         }
 
         private Artikel FaltTillArtikel(int Id)
         {
-            Artikel t = new Artikel(Id)
+            Artikel artikel = new Artikel(Id)
             {
                 Beskrivning = cbBeskrivningar.Text,
                 StoldTag = txtStoldtag.Text.Trim(),
@@ -172,16 +165,11 @@ namespace ScannerDialog
                 SerieNr = txtSerieNr.Text.Trim(),
                 Mac = txtMAC.Text.Trim(),
                 Os = cbOS.Text.Trim(),
-                AndvandInkop = checkInkop.Checked,
+                Inkop = dtpInkop.Value.ToShortDateString(),
                 Ovrigt = txtOvrigt.Text.Trim()
             };
-            Console.WriteLine(dtpInkop.Value.ToShortDateString());
-            if (t.AndvandInkop)
-                t.Inkop = dtpInkop.Value.ToShortDateString();
-            else
-                t.Inkop = string.Empty;
 
-            return t;
+            return artikel;
         }
         private void LaddaSnabbval()
         {
@@ -197,8 +185,6 @@ namespace ScannerDialog
                     cbOS.SelectedIndex = 0;
             }
         }
-
-        #endregion
 
         private void cmdAvbryt_Click(object sender, EventArgs e)
         {

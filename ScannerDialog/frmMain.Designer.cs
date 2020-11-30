@@ -38,7 +38,6 @@
             this.tspArkiv = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tspArkivNyDatabasFil = new System.Windows.Forms.ToolStripMenuItem();
-            this.tspArkivStangDb = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tspArkivInstallningar = new System.Windows.Forms.ToolStripMenuItem();
             this.tspArkivAvsluta = new System.Windows.Forms.ToolStripMenuItem();
@@ -127,7 +126,6 @@
             this.tspArkiv.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator2,
             this.tspArkivNyDatabasFil,
-            this.tspArkivStangDb,
             this.toolStripSeparator1,
             this.tspArkivInstallningar,
             this.tspArkivAvsluta});
@@ -140,37 +138,31 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(146, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // tspArkivNyDatabasFil
             // 
             this.tspArkivNyDatabasFil.Name = "tspArkivNyDatabasFil";
-            this.tspArkivNyDatabasFil.Size = new System.Drawing.Size(149, 22);
+            this.tspArkivNyDatabasFil.Size = new System.Drawing.Size(180, 22);
             this.tspArkivNyDatabasFil.Text = "Skapa Ny (DB)";
             this.tspArkivNyDatabasFil.Click += new System.EventHandler(this.tspFileNewDB_Click);
-            // 
-            // tspArkivStangDb
-            // 
-            this.tspArkivStangDb.Name = "tspArkivStangDb";
-            this.tspArkivStangDb.Size = new System.Drawing.Size(149, 22);
-            this.tspArkivStangDb.Text = "Stäng (DB)";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // tspArkivInstallningar
             // 
             this.tspArkivInstallningar.Name = "tspArkivInstallningar";
-            this.tspArkivInstallningar.Size = new System.Drawing.Size(149, 22);
+            this.tspArkivInstallningar.Size = new System.Drawing.Size(180, 22);
             this.tspArkivInstallningar.Text = "Inställningar";
             this.tspArkivInstallningar.Click += new System.EventHandler(this.tspArkivInstallningar_Click);
             // 
             // tspArkivAvsluta
             // 
             this.tspArkivAvsluta.Name = "tspArkivAvsluta";
-            this.tspArkivAvsluta.Size = new System.Drawing.Size(149, 22);
+            this.tspArkivAvsluta.Size = new System.Drawing.Size(180, 22);
             this.tspArkivAvsluta.Text = "Avsluta";
             // 
             // tspPerson
@@ -187,7 +179,7 @@
             // tspPersonNy
             // 
             this.tspPersonNy.Name = "tspPersonNy";
-            this.tspPersonNy.Size = new System.Drawing.Size(89, 22);
+            this.tspPersonNy.Size = new System.Drawing.Size(180, 22);
             this.tspPersonNy.Text = "Ny";
             this.tspPersonNy.Click += new System.EventHandler(this.tspPeopleNew_Click);
             // 
@@ -284,7 +276,6 @@
         private System.Windows.Forms.ToolStripDropDownButton tspArkiv;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem tspArkivNyDatabasFil;
-        private System.Windows.Forms.ToolStripMenuItem tspArkivStangDb;
         private System.Windows.Forms.ToolStripMenuItem tspArkivInstallningar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tspArkivAvsluta;

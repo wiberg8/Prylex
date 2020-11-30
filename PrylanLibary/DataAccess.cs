@@ -54,6 +54,16 @@ namespace PrylanLibary
             FyllArtikelLista(hamtadeArtiklar, DBHandler.DBDT);
             return hamtadeArtiklar;
         }
+        public List<Artikel> HamtaSokArtiklarLediga(string sok)
+        {
+            List<Artikel> hamtadeArtiklar = new List<Artikel>();
+
+            DBHandler.AddParam("@Sok", $"{sok}%");
+            DBHandler.AddParam("@Status", Status.INNE);
+            DBHandler.ExecQuery("SELECT * FROM artiklar WHERE (Id LIKE @Sok OR Besk LIKE @Sok OR Stoldtag LIKE @Sok OR Datornamn LIKE @Sok OR SerieNr LIKE @Sok OR Mac LIKE @Sok OR Os LIKE @Sok OR Inkop LIKE @Sok OR Ovrigt LIKE @Sok) AND Status = @Status ORDER BY Id");
+            FyllArtikelLista(hamtadeArtiklar, DBHandler.DBDT);
+            return hamtadeArtiklar;
+        }
         public Artikel HamtaArtikelFranId(int Id)
         {
             DBHandler.AddParam("@Id", Id);
@@ -75,11 +85,6 @@ namespace PrylanLibary
                         Os = R["Os"].ToString(),
                         Inkop = R["Inkop"].ToString()
                     };
-                    int andvandInkop = int.Parse(R["AndvandInkop"].ToString());
-                    if (andvandInkop == 0)
-                        a.AndvandInkop = false;
-                    else
-                        a.AndvandInkop = true;
                     a.Ovrigt = R["Ovrigt"].ToString();
                     a.Status = (Status)int.Parse(R["Status"].ToString());
                     if (int.TryParse(R["PersId"].ToString(), out int parsedPersId))
@@ -190,7 +195,6 @@ namespace PrylanLibary
             DBHandler.AddParam("@Mac",          artikel.Mac);
             DBHandler.AddParam("@Os",           artikel.Os);
             DBHandler.AddParam("@Inkop",        artikel.Inkop);
-            DBHandler.AddParam("@AndvandInkop", artikel.AndvandInkop);
             DBHandler.AddParam("@Ovrigt",       artikel.Ovrigt);
             DBHandler.ExecQuery("INSERT INTO artiklar (Besk,Stoldtag,Datornamn,SerieNr,Mac,Os,Inkop,AndvandInkop,Ovrigt) VALUES(@Besk,@Stoldtag,@Datornamn,@SerieNr,@Mac,@Os,@Inkop,@AndvandInkop,@Ovrigt)");
             if (ArtikelChange != null)
@@ -205,7 +209,6 @@ namespace PrylanLibary
             DBHandler.AddParam("@Mac", artikel.Mac);
             DBHandler.AddParam("@Os", artikel.Os);
             DBHandler.AddParam("@Inkop", artikel.Inkop);
-            DBHandler.AddParam("@AndvandInkop", artikel.AndvandInkop);
             DBHandler.AddParam("@Ovrigt", artikel.Ovrigt);
             DBHandler.AddParam("@Id", artikel.Id);
             DBHandler.ExecQuery("UPDATE artiklar SET Besk=@Besk,Stoldtag=@Stoldtag,Datornamn=@Datornamn,SerieNr=@SerieNr,Mac=@Mac,Os=@Os,Inkop=@Inkop,AndvandInkop=@AndvandInkop,Ovrigt=@Ovrigt WHERE Id=@Id");
@@ -285,11 +288,6 @@ namespace PrylanLibary
                         Os = R["Os"].ToString(),
                         Inkop = R["Inkop"].ToString()
                     };
-                    int andvandInkop = int.Parse(R["AndvandInkop"].ToString());
-                    if (andvandInkop == 0)
-                        a.AndvandInkop = false;
-                    else
-                        a.AndvandInkop = true;
                     a.Ovrigt = R["Ovrigt"].ToString();
                     a.Status = (Status)int.Parse(R["Status"].ToString());
                     if (int.TryParse(R["PersId"].ToString(), out int parsedPersId))

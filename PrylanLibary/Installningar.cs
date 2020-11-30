@@ -11,16 +11,16 @@ namespace PrylanLibary
     public class Installningar
     {
         public static event EventHandler Change;
-        public static string FileName { get; set; }
+        public static string FileName { get; set; } 
 
-        public string Databas { get; set; }
-        public string DatabasBackup { get; set; }
-        public string ForetagsNamn { get; set; }
+        public string Databas { get; set; } = string.Empty;
+        public string DatabasBackup { get; set; } = string.Empty;
+        public string ForetagsNamn { get; set; } = string.Empty;
 
-        public List<string> Beskrivningar { get; set; }
-        public List<string> Os { get; set; }
-        public List<string> Tillhorigheter { get; set; }
-        public List<string> Handelser { get; set; }
+        public List<string> Beskrivningar { get; set; } = new List<string>();
+        public List<string> Os { get; set; } = new List<string>();
+        public List<string> Tillhorigheter { get; set; } = new List<string>();
+        public List<string> Handelser { get; set; } = new List<string>();
 
         public string NuvarandeLicens { get; set; }
         public DateTime SenasteDatum { get; set; }
@@ -43,8 +43,20 @@ namespace PrylanLibary
 
         public static Installningar Hamta()
         {
-            string lastInfo = File.ReadAllText(FileName);
-            Installningar installningar = JsonConvert.DeserializeObject<Installningar>(lastInfo);
+            Installningar installningar;
+            try
+            {
+                string lastInfo = File.ReadAllText(FileName);
+                installningar = JsonConvert.DeserializeObject<Installningar>(lastInfo);
+            }
+            catch
+            {
+                installningar = new Installningar();
+            }
+            if(installningar is null)
+            {
+                return new Installningar();
+            }
             return installningar;
         }
     }

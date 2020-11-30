@@ -26,7 +26,6 @@ namespace PrylanLibary.Models
         public string Mac { get; set; }
         public string Os { get; set; }
         public string Inkop { get; set; }
-        public bool AndvandInkop { get; set; }
         public string Ovrigt { get; set; }
         public Status Status { get; set; }
         public int PersId { get; set; }

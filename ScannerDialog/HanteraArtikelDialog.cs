@@ -110,10 +110,7 @@ namespace ScannerDialog
             laStoldtagDisplay.Text = artikel.StoldTag;
             laDatornamnDisplay.Text = artikel.DatorNamn;
             laMACDisplay.Text = artikel.Mac;
-            if (artikel.AndvandInkop)
-                laInkopDisplay.Text = artikel.Inkop;
-            else
-                laInkopDisplay.Text = string.Empty;
+            laInkopDisplay.Text = artikel.Inkop;
             laOSDisplay.Text = artikel.Os;
             laSerieNrDisplay.Text = artikel.SerieNr;
             laOvrigtDisplay.Text = artikel.Ovrigt;
