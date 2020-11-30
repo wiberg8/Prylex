@@ -39,18 +39,19 @@ namespace ScannerDialog
             dgvArtiklar.Rows.Clear();
             foreach (Artikel artikel in artiklar)
             {
-                string inkop=string.Empty;
                 string persId = string.Empty;
                 if (artikel.Status == Status.UTE)
                     persId = artikel.PersId.ToString();
-                dgvArtiklar.Rows.Add(artikel.Id, artikel.Beskrivning, artikel.DatorNamn, artikel.StoldTag, artikel.SerieNr, artikel.Mac, artikel.Os, inkop, artikel.Ovrigt, persId);
+                dgvArtiklar.Rows.Add(artikel.Id, artikel.Beskrivning, artikel.DatorNamn, artikel.StoldTag, artikel.SerieNr, artikel.Mac, artikel.Os, artikel.Inkop, artikel.Ovrigt, persId);
                 dgvArtiklar.Rows[dgvArtiklar.Rows.Count - 1].Tag = artikel;
             }
+            DataGridLibary.SetColorVariationToRows(dgvArtiklar, Config.firstGridColor, Config.secondGridColor);
         }
 
         private void ValjArtikelDialog_Load(object sender, EventArgs e)
         {
             FyllDataGrid(this.artiklar);
+            dgvArtiklar.ClearSelection();
         }
 
         private void dgvArtiklar_CellContentClick(object sender, DataGridViewCellEventArgs e)

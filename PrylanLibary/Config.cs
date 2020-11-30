@@ -17,5 +17,7 @@ namespace PrylanLibary
 
         public static readonly Color standardForeColor = SystemColors.ControlText;
         public static readonly Color highlightColor = SystemColors.MenuHighlight;
+        public static readonly Color firstGridColor = Color.White;
+        public static readonly Color secondGridColor = Color.FromArgb(242, 242, 242);
     }
 }
