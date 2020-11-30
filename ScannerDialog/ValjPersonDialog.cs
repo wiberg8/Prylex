@@ -26,6 +26,7 @@ namespace ScannerDialog
         private void ValjPersonDialog_Load(object sender, EventArgs e)
         {
             FyllDataGrid(personer);
+            dgvPersoner.ClearSelection();
         }
 
         private void FyllDataGrid(List<Person> lista)
@@ -36,15 +37,7 @@ namespace ScannerDialog
                 dgvPersoner.Rows.Add(person.Id, person.Efternamn, person.Fornamn, person.PersNr, person.Sign, person.Tillhorighet, person.Ovrigt);
                 dgvPersoner.Rows[dgvPersoner.Rows.Count - 1].Tag = person;
             }
-        }
-
-        private void dgvPersoner_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (dgvPersoner.SelectedRows.Count > 0)
-            {
-                this.ValdPerson = (Person)dgvPersoner.SelectedRows[0].Tag;
-                this.DialogResult = DialogResult.OK;
-            }
+            DataGridLibary.SetColorVariationToRows(dgvPersoner);
         }
 
         private void cmdSok_Click(object sender, EventArgs e)
@@ -52,6 +45,15 @@ namespace ScannerDialog
             using (DataAccess dataAccess = new DataAccess())
             {
                 FyllDataGrid(dataAccess.HamtaSokPersoner(txtSok.Text));
+            }
+        }
+
+        private void dgvPersoner_MouseDoubleClick_1(object sender, MouseEventArgs e)
+        {
+            if (dgvPersoner.SelectedRows.Count > 0)
+            {
+                this.ValdPerson = (Person)dgvPersoner.SelectedRows[0].Tag;
+                this.DialogResult = DialogResult.OK;
             }
         }
     }

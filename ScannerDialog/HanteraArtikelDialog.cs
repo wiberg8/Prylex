@@ -186,5 +186,31 @@ namespace ScannerDialog
                 cmdRegisterPerson.Visible = false;
             }
         }
+
+        private void cmdEdit_Click(object sender, EventArgs e)
+        {
+            var updateraArtikelDialog = new UpdateraArtikelDialog(this.artikelAttEditera);
+            updateraArtikelDialog.ShowDialog();
+            if (updateraArtikelDialog.Result != null)
+            {
+                using (DataAccess dataAccess = new DataAccess())
+                {
+                    dataAccess.UpdateraArtikel(updateraArtikelDialog.Result);
+                    Artikel artikelFromDb = dataAccess.HamtaArtikelFranId(updateraArtikelDialog.Result.Id);
+                    if (artikelFromDb != null)
+                    {
+                        this.artikelAttEditera = artikelFromDb;
+                        FyllFalt(this.artikelAttEditera);
+                    }
+                }
+            }
+        }
+
+     
+
+        private void laDisplay_DoubleClick(object sender, MouseEventArgs e)
+        {
+            Clipboard.SetText(((Label)sender).Text);
+        }
     }
 }

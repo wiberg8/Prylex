@@ -124,20 +124,21 @@ namespace ScannerDialog
             }
             txtSerieNr.Focus();
         }
-        private void FyllFalt(Artikel artikel)
-        {
-            cbBeskrivningar.Text = artikel.Beskrivning;
-            txtStoldtag.Text = artikel.StoldTag;
-            txtDatornamn.Text = artikel.DatorNamn;
-            if (DateTime.TryParse(artikel.Inkop, out DateTime parsedInkop))
-            {
-                dtpInkop.Value = parsedInkop;
-            }
-            cbOS.Text = artikel.Os;
-            txtSerieNr.Text = artikel.SerieNr;
-            txtOvrigt.Text = artikel.Ovrigt;
-            txtMAC.Text = artikel.Mac;
-        }
+
+        //private void FyllFalt(Artikel artikel)
+        //{
+        //    cbBeskrivningar.Text = artikel.Beskrivning;
+        //    txtStoldtag.Text = artikel.StoldTag;
+        //    txtDatornamn.Text = artikel.DatorNamn;
+        //    if (DateTime.TryParse(artikel.Inkop, out DateTime parsedInkop))
+        //    {
+        //        dtpInkop.Value = parsedInkop;
+        //    }
+        //    cbOS.Text = artikel.Os;
+        //    txtSerieNr.Text = artikel.SerieNr;
+        //    txtOvrigt.Text = artikel.Ovrigt;
+        //    txtMAC.Text = artikel.Mac;
+        //}
 
         private Artikel FaltTillArtikel()
         {
@@ -155,22 +156,23 @@ namespace ScannerDialog
             return t;
         }
 
-        private Artikel FaltTillArtikel(int Id)
-        {
-            Artikel artikel = new Artikel(Id)
-            {
-                Beskrivning = cbBeskrivningar.Text,
-                StoldTag = txtStoldtag.Text.Trim(),
-                DatorNamn = txtDatornamn.Text.Trim(),
-                SerieNr = txtSerieNr.Text.Trim(),
-                Mac = txtMAC.Text.Trim(),
-                Os = cbOS.Text.Trim(),
-                Inkop = dtpInkop.Value.ToShortDateString(),
-                Ovrigt = txtOvrigt.Text.Trim()
-            };
+        //private Artikel FaltTillArtikel(int Id)
+        //{
+        //    Artikel artikel = new Artikel(Id)
+        //    {
+        //        Beskrivning = cbBeskrivningar.Text,
+        //        StoldTag = txtStoldtag.Text.Trim(),
+        //        DatorNamn = txtDatornamn.Text.Trim(),
+        //        SerieNr = txtSerieNr.Text.Trim(),
+        //        Mac = txtMAC.Text.Trim(),
+        //        Os = cbOS.Text.Trim(),
+        //        Inkop = dtpInkop.Value.ToShortDateString(),
+        //        Ovrigt = txtOvrigt.Text.Trim()
+        //    };
 
-            return artikel;
-        }
+        //    return artikel;
+        //}
+
         private void LaddaSnabbval()
         {
             Installningar ins = Installningar.Hamta();

@@ -112,6 +112,12 @@
     <Compile Include="InputBox.Designer.cs">
       <DependentUpon>InputBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateraArtikelDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateraArtikelDialog.Designer.cs">
+      <DependentUpon>UpdateraArtikelDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="ValjArtikelDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     </Compile>
     <EmbeddedResource Include="InputBox.resx">
       <DependentUpon>InputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateraArtikelDialog.resx">
+      <DependentUpon>UpdateraArtikelDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ValjArtikelDialog.resx">
       <DependentUpon>ValjArtikelDialog.cs</DependentUpon>

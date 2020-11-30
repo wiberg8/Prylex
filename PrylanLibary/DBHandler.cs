@@ -30,10 +30,10 @@ namespace PrylanLibary
         #endregion
         
         #region Metoder
-        public static void SetConnection(string FilePath)
+        public static void SetConnection(string filePath)
         {
             DBConn = new SQLiteConnection();
-            DBConn.ConnectionString = "Data Source =" + FilePath + "; Version = 3; FailIfMissing=True";
+            DBConn.ConnectionString = "Data Source =" + filePath + "; Version = 3; FailIfMissing=True";
             if(ConnectionChanged != null)
                 ConnectionChanged.Invoke(new object(), new EventArgs());
         }

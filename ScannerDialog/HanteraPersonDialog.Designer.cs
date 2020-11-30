@@ -28,16 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gbFalt = new System.Windows.Forms.GroupBox();
-            this.laPersonId = new System.Windows.Forms.Label();
+            this.laPersonIdDisplay = new System.Windows.Forms.Label();
+            this.laOvrigtDisplay = new System.Windows.Forms.Label();
+            this.laTillhorighetDisplay = new System.Windows.Forms.Label();
+            this.laTelefonDisplay = new System.Windows.Forms.Label();
+            this.laEpostDisplay = new System.Windows.Forms.Label();
+            this.laSignDisplay = new System.Windows.Forms.Label();
+            this.laPersNrDisplay = new System.Windows.Forms.Label();
+            this.laEfternamnDisplay = new System.Windows.Forms.Label();
+            this.laFornamnDisplay = new System.Windows.Forms.Label();
             this.laTillhorighet = new System.Windows.Forms.Label();
-            this.laSign = new System.Windows.Forms.Label();
             this.laTelefon = new System.Windows.Forms.Label();
+            this.laPersonId = new System.Windows.Forms.Label();
             this.laEpost = new System.Windows.Forms.Label();
-            this.laEfternamn = new System.Windows.Forms.Label();
             this.laPersNr = new System.Windows.Forms.Label();
-            this.laOvrigt = new System.Windows.Forms.Label();
             this.laFornamn = new System.Windows.Forms.Label();
+            this.laSign = new System.Windows.Forms.Label();
+            this.laOvrigt = new System.Windows.Forms.Label();
+            this.laEfternamn = new System.Windows.Forms.Label();
             this.lbRegistreradeArtiklar = new System.Windows.Forms.ListBox();
             this.gbRegistreradeArtiklar = new System.Windows.Forms.GroupBox();
             this.cmdRegistreraArtikel = new System.Windows.Forms.Button();
@@ -48,15 +58,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.cmdNyHandelse = new System.Windows.Forms.Button();
-            this.laFornamnDisplay = new System.Windows.Forms.Label();
-            this.laEfternamnDisplay = new System.Windows.Forms.Label();
-            this.laPersNrDisplay = new System.Windows.Forms.Label();
-            this.laSignDisplay = new System.Windows.Forms.Label();
-            this.laEpostDisplay = new System.Windows.Forms.Label();
-            this.laTelefonDisplay = new System.Windows.Forms.Label();
-            this.laTillhorighetDisplay = new System.Windows.Forms.Label();
-            this.laOvrigtDisplay = new System.Windows.Forms.Label();
-            this.laPersonIdDisplay = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.gbFalt.SuspendLayout();
             this.gbRegistreradeArtiklar.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -89,13 +91,95 @@
             this.gbFalt.TabStop = false;
             this.gbFalt.Text = "Info";
             // 
-            // laPersonId
+            // laPersonIdDisplay
             // 
-            this.laPersonId.Location = new System.Drawing.Point(20, 28);
-            this.laPersonId.Name = "laPersonId";
-            this.laPersonId.Size = new System.Drawing.Size(82, 13);
-            this.laPersonId.TabIndex = 15;
-            this.laPersonId.Text = "Id:";
+            this.laPersonIdDisplay.Location = new System.Drawing.Point(102, 28);
+            this.laPersonIdDisplay.Name = "laPersonIdDisplay";
+            this.laPersonIdDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laPersonIdDisplay.TabIndex = 38;
+            this.laPersonIdDisplay.Text = "Display";
+            this.toolTip1.SetToolTip(this.laPersonIdDisplay, "Kopiera (Dubbelklicka)");
+            this.laPersonIdDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            // 
+            // laOvrigtDisplay
+            // 
+            this.laOvrigtDisplay.Location = new System.Drawing.Point(102, 188);
+            this.laOvrigtDisplay.Name = "laOvrigtDisplay";
+            this.laOvrigtDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laOvrigtDisplay.TabIndex = 37;
+            this.laOvrigtDisplay.Text = "Display";
+            this.toolTip1.SetToolTip(this.laOvrigtDisplay, "Kopiera (Dubbelklicka)");
+            this.laOvrigtDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            // 
+            // laTillhorighetDisplay
+            // 
+            this.laTillhorighetDisplay.Location = new System.Drawing.Point(102, 168);
+            this.laTillhorighetDisplay.Name = "laTillhorighetDisplay";
+            this.laTillhorighetDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laTillhorighetDisplay.TabIndex = 36;
+            this.laTillhorighetDisplay.Text = "Display";
+            this.toolTip1.SetToolTip(this.laTillhorighetDisplay, "Kopiera (Dubbelklicka)");
+            this.laTillhorighetDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            // 
+            // laTelefonDisplay
+            // 
+            this.laTelefonDisplay.Location = new System.Drawing.Point(102, 148);
+            this.laTelefonDisplay.Name = "laTelefonDisplay";
+            this.laTelefonDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laTelefonDisplay.TabIndex = 35;
+            this.laTelefonDisplay.Text = "Display";
+            this.toolTip1.SetToolTip(this.laTelefonDisplay, "Kopiera (Dubbelklicka)");
+            this.laTelefonDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            // 
+            // laEpostDisplay
+            // 
+            this.laEpostDisplay.Location = new System.Drawing.Point(102, 128);
+            this.laEpostDisplay.Name = "laEpostDisplay";
+            this.laEpostDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laEpostDisplay.TabIndex = 34;
+            this.laEpostDisplay.Text = "Display";
+            this.toolTip1.SetToolTip(this.laEpostDisplay, "Kopiera (Dubbelklicka)");
+            this.laEpostDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            // 
+            // laSignDisplay
+            // 
+            this.laSignDisplay.Location = new System.Drawing.Point(102, 108);
+            this.laSignDisplay.Name = "laSignDisplay";
+            this.laSignDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laSignDisplay.TabIndex = 33;
+            this.laSignDisplay.Text = "Display";
+            this.toolTip1.SetToolTip(this.laSignDisplay, "Kopiera (Dubbelklicka)");
+            this.laSignDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            // 
+            // laPersNrDisplay
+            // 
+            this.laPersNrDisplay.Location = new System.Drawing.Point(102, 88);
+            this.laPersNrDisplay.Name = "laPersNrDisplay";
+            this.laPersNrDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laPersNrDisplay.TabIndex = 32;
+            this.laPersNrDisplay.Text = "Display";
+            this.toolTip1.SetToolTip(this.laPersNrDisplay, "Kopiera (Dubbelklicka)");
+            this.laPersNrDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            // 
+            // laEfternamnDisplay
+            // 
+            this.laEfternamnDisplay.Location = new System.Drawing.Point(102, 68);
+            this.laEfternamnDisplay.Name = "laEfternamnDisplay";
+            this.laEfternamnDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laEfternamnDisplay.TabIndex = 31;
+            this.laEfternamnDisplay.Text = "Display";
+            this.toolTip1.SetToolTip(this.laEfternamnDisplay, "Kopiera (Dubbelklicka)");
+            this.laEfternamnDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            // 
+            // laFornamnDisplay
+            // 
+            this.laFornamnDisplay.Location = new System.Drawing.Point(102, 48);
+            this.laFornamnDisplay.Name = "laFornamnDisplay";
+            this.laFornamnDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laFornamnDisplay.TabIndex = 30;
+            this.laFornamnDisplay.Text = "Display";
+            this.toolTip1.SetToolTip(this.laFornamnDisplay, "Kopiera (Dubbelklicka)");
+            this.laFornamnDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
             // 
             // laTillhorighet
             // 
@@ -107,15 +191,6 @@
             this.laTillhorighet.Text = "Tillhörighet:";
             this.laTillhorighet.Click += new System.EventHandler(this.laTillhorighet_Click);
             // 
-            // laSign
-            // 
-            this.laSign.AutoSize = true;
-            this.laSign.Location = new System.Drawing.Point(20, 108);
-            this.laSign.Name = "laSign";
-            this.laSign.Size = new System.Drawing.Size(49, 13);
-            this.laSign.TabIndex = 10;
-            this.laSign.Text = "Signatur:";
-            // 
             // laTelefon
             // 
             this.laTelefon.AutoSize = true;
@@ -124,6 +199,14 @@
             this.laTelefon.Size = new System.Drawing.Size(46, 13);
             this.laTelefon.TabIndex = 3;
             this.laTelefon.Text = "Telefon:";
+            // 
+            // laPersonId
+            // 
+            this.laPersonId.Location = new System.Drawing.Point(20, 28);
+            this.laPersonId.Name = "laPersonId";
+            this.laPersonId.Size = new System.Drawing.Size(82, 13);
+            this.laPersonId.TabIndex = 15;
+            this.laPersonId.Text = "Id:";
             // 
             // laEpost
             // 
@@ -134,15 +217,6 @@
             this.laEpost.TabIndex = 4;
             this.laEpost.Text = "E-post:";
             // 
-            // laEfternamn
-            // 
-            this.laEfternamn.AutoSize = true;
-            this.laEfternamn.Location = new System.Drawing.Point(20, 68);
-            this.laEfternamn.Name = "laEfternamn";
-            this.laEfternamn.Size = new System.Drawing.Size(58, 13);
-            this.laEfternamn.TabIndex = 1;
-            this.laEfternamn.Text = "Efternamn:";
-            // 
             // laPersNr
             // 
             this.laPersNr.AutoSize = true;
@@ -151,6 +225,24 @@
             this.laPersNr.Size = new System.Drawing.Size(42, 13);
             this.laPersNr.TabIndex = 2;
             this.laPersNr.Text = "PersNr:";
+            // 
+            // laFornamn
+            // 
+            this.laFornamn.AutoSize = true;
+            this.laFornamn.Location = new System.Drawing.Point(20, 48);
+            this.laFornamn.Name = "laFornamn";
+            this.laFornamn.Size = new System.Drawing.Size(51, 13);
+            this.laFornamn.TabIndex = 0;
+            this.laFornamn.Text = "Förnamn:";
+            // 
+            // laSign
+            // 
+            this.laSign.AutoSize = true;
+            this.laSign.Location = new System.Drawing.Point(20, 108);
+            this.laSign.Name = "laSign";
+            this.laSign.Size = new System.Drawing.Size(49, 13);
+            this.laSign.TabIndex = 10;
+            this.laSign.Text = "Signatur:";
             // 
             // laOvrigt
             // 
@@ -161,14 +253,14 @@
             this.laOvrigt.TabIndex = 5;
             this.laOvrigt.Text = "Övrigt:";
             // 
-            // laFornamn
+            // laEfternamn
             // 
-            this.laFornamn.AutoSize = true;
-            this.laFornamn.Location = new System.Drawing.Point(20, 48);
-            this.laFornamn.Name = "laFornamn";
-            this.laFornamn.Size = new System.Drawing.Size(51, 13);
-            this.laFornamn.TabIndex = 0;
-            this.laFornamn.Text = "Förnamn:";
+            this.laEfternamn.AutoSize = true;
+            this.laEfternamn.Location = new System.Drawing.Point(20, 68);
+            this.laEfternamn.Name = "laEfternamn";
+            this.laEfternamn.Size = new System.Drawing.Size(58, 13);
+            this.laEfternamn.TabIndex = 1;
+            this.laEfternamn.Text = "Efternamn:";
             // 
             // lbRegistreradeArtiklar
             // 
@@ -270,78 +362,6 @@
             this.cmdNyHandelse.Text = "Ny ";
             this.cmdNyHandelse.UseVisualStyleBackColor = true;
             // 
-            // laFornamnDisplay
-            // 
-            this.laFornamnDisplay.Location = new System.Drawing.Point(102, 48);
-            this.laFornamnDisplay.Name = "laFornamnDisplay";
-            this.laFornamnDisplay.Size = new System.Drawing.Size(189, 13);
-            this.laFornamnDisplay.TabIndex = 30;
-            this.laFornamnDisplay.Text = "Display";
-            // 
-            // laEfternamnDisplay
-            // 
-            this.laEfternamnDisplay.Location = new System.Drawing.Point(102, 68);
-            this.laEfternamnDisplay.Name = "laEfternamnDisplay";
-            this.laEfternamnDisplay.Size = new System.Drawing.Size(189, 13);
-            this.laEfternamnDisplay.TabIndex = 31;
-            this.laEfternamnDisplay.Text = "Display";
-            // 
-            // laPersNrDisplay
-            // 
-            this.laPersNrDisplay.Location = new System.Drawing.Point(102, 88);
-            this.laPersNrDisplay.Name = "laPersNrDisplay";
-            this.laPersNrDisplay.Size = new System.Drawing.Size(189, 13);
-            this.laPersNrDisplay.TabIndex = 32;
-            this.laPersNrDisplay.Text = "Display";
-            // 
-            // laSignDisplay
-            // 
-            this.laSignDisplay.Location = new System.Drawing.Point(102, 108);
-            this.laSignDisplay.Name = "laSignDisplay";
-            this.laSignDisplay.Size = new System.Drawing.Size(189, 13);
-            this.laSignDisplay.TabIndex = 33;
-            this.laSignDisplay.Text = "Display";
-            // 
-            // laEpostDisplay
-            // 
-            this.laEpostDisplay.Location = new System.Drawing.Point(102, 128);
-            this.laEpostDisplay.Name = "laEpostDisplay";
-            this.laEpostDisplay.Size = new System.Drawing.Size(189, 13);
-            this.laEpostDisplay.TabIndex = 34;
-            this.laEpostDisplay.Text = "Display";
-            // 
-            // laTelefonDisplay
-            // 
-            this.laTelefonDisplay.Location = new System.Drawing.Point(102, 148);
-            this.laTelefonDisplay.Name = "laTelefonDisplay";
-            this.laTelefonDisplay.Size = new System.Drawing.Size(189, 13);
-            this.laTelefonDisplay.TabIndex = 35;
-            this.laTelefonDisplay.Text = "Display";
-            // 
-            // laTillhorighetDisplay
-            // 
-            this.laTillhorighetDisplay.Location = new System.Drawing.Point(102, 168);
-            this.laTillhorighetDisplay.Name = "laTillhorighetDisplay";
-            this.laTillhorighetDisplay.Size = new System.Drawing.Size(189, 13);
-            this.laTillhorighetDisplay.TabIndex = 36;
-            this.laTillhorighetDisplay.Text = "Display";
-            // 
-            // laOvrigtDisplay
-            // 
-            this.laOvrigtDisplay.Location = new System.Drawing.Point(102, 188);
-            this.laOvrigtDisplay.Name = "laOvrigtDisplay";
-            this.laOvrigtDisplay.Size = new System.Drawing.Size(189, 13);
-            this.laOvrigtDisplay.TabIndex = 37;
-            this.laOvrigtDisplay.Text = "Display";
-            // 
-            // laPersonIdDisplay
-            // 
-            this.laPersonIdDisplay.Location = new System.Drawing.Point(102, 28);
-            this.laPersonIdDisplay.Name = "laPersonIdDisplay";
-            this.laPersonIdDisplay.Size = new System.Drawing.Size(189, 13);
-            this.laPersonIdDisplay.TabIndex = 38;
-            this.laPersonIdDisplay.Text = "Display";
-            // 
             // HanteraPersonDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -396,5 +416,6 @@
         private System.Windows.Forms.Label laEfternamnDisplay;
         private System.Windows.Forms.Label laFornamnDisplay;
         private System.Windows.Forms.Label laPersonIdDisplay;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -10,6 +10,17 @@ namespace PrylanLibary
 {
     public class DataGridLibary
     {
+        public static void SetColorVariationToRows(DataGridView dataGridView)
+        {
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            {
+                if (i % 2 == 0)
+                    dataGridView.Rows[i].DefaultCellStyle.BackColor = Config.firstGridColor;
+                else
+                    dataGridView.Rows[i].DefaultCellStyle.BackColor = Config.secondGridColor;
+            }
+        }
+
         public static void SetColorVariationToRows(DataGridView dataGridView, Color first, Color second)
         {
             for (int i = 0; i < dataGridView.Rows.Count; i++)

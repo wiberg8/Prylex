@@ -25,15 +25,6 @@ namespace ScannerDialog
             this.endastLediga = endastLediga;
         }
 
-        private void dgvArtiklar_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if(dgvArtiklar.SelectedRows.Count > 0)
-            {
-                this.ValdArtikel = (Artikel)dgvArtiklar.SelectedRows[0].Tag;
-                this.DialogResult = DialogResult.OK;
-            }
-        }
-
         private void FyllDataGrid(List<Artikel> artiklar)
         {
             dgvArtiklar.Rows.Clear();
@@ -45,7 +36,7 @@ namespace ScannerDialog
                 dgvArtiklar.Rows.Add(artikel.Id, artikel.Beskrivning, artikel.DatorNamn, artikel.StoldTag, artikel.SerieNr, artikel.Mac, artikel.Os, artikel.Inkop, artikel.Ovrigt, persId);
                 dgvArtiklar.Rows[dgvArtiklar.Rows.Count - 1].Tag = artikel;
             }
-            DataGridLibary.SetColorVariationToRows(dgvArtiklar, Config.firstGridColor, Config.secondGridColor);
+            DataGridLibary.SetColorVariationToRows(dgvArtiklar);
         }
 
         private void ValjArtikelDialog_Load(object sender, EventArgs e)
@@ -74,6 +65,15 @@ namespace ScannerDialog
                 {
                     FyllDataGrid(dataAccess.HamtaSokArtiklar(txtSok.Text));
                 }
+            }
+        }
+
+        private void dgvArtiklar_MouseDoubleClick_1(object sender, MouseEventArgs e)
+        {
+            if (dgvArtiklar.SelectedRows.Count > 0)
+            {
+                this.ValdArtikel = (Artikel)dgvArtiklar.SelectedRows[0].Tag;
+                this.DialogResult = DialogResult.OK;
             }
         }
     }

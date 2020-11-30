@@ -118,6 +118,7 @@
             this.dgvArtiklar.ShowRowErrors = false;
             this.dgvArtiklar.Size = new System.Drawing.Size(918, 520);
             this.dgvArtiklar.TabIndex = 13;
+            this.dgvArtiklar.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvArtiklar_MouseDoubleClick_1);
             // 
             // clmId
             // 

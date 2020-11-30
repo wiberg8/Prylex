@@ -129,7 +129,6 @@
             this.laInkop.Size = new System.Drawing.Size(76, 13);
             this.laInkop.TabIndex = 3;
             this.laInkop.Text = "Inköps Datum:";
-            this.laInkop.Visible = false;
             // 
             // checkBeskrivningarFritext
             // 

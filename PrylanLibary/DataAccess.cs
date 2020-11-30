@@ -208,10 +208,9 @@ namespace PrylanLibary
             DBHandler.AddParam("@SerieNr", artikel.SerieNr);
             DBHandler.AddParam("@Mac", artikel.Mac);
             DBHandler.AddParam("@Os", artikel.Os);
-            DBHandler.AddParam("@Inkop", artikel.Inkop);
             DBHandler.AddParam("@Ovrigt", artikel.Ovrigt);
             DBHandler.AddParam("@Id", artikel.Id);
-            DBHandler.ExecQuery("UPDATE artiklar SET Besk=@Besk,Stoldtag=@Stoldtag,Datornamn=@Datornamn,SerieNr=@SerieNr,Mac=@Mac,Os=@Os,Inkop=@Inkop,AndvandInkop=@AndvandInkop,Ovrigt=@Ovrigt WHERE Id=@Id");
+            DBHandler.ExecQuery("UPDATE artiklar SET Besk=@Besk,Stoldtag=@Stoldtag,Datornamn=@Datornamn,SerieNr=@SerieNr,Mac=@Mac,Os=@Os,Ovrigt=@Ovrigt WHERE Id=@Id");
             if (ArtikelChange != null)
                 ArtikelChange.Invoke(artikel, new EventArgs());
         }

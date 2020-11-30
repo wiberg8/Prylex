@@ -18,7 +18,7 @@ namespace PrylanLibary.Models
             this.Id = Id;
         }
 
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public string Fornamn { get; set; }
         public string Efternamn { get; set; }
         public string PersNr { get; set; }

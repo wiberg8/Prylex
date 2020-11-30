@@ -13,9 +13,9 @@ namespace PrylanLibary
         public static event EventHandler Change;
         public static string FileName { get; set; } 
 
-        public string Databas { get; set; } = string.Empty;
-        public string DatabasBackup { get; set; } = string.Empty;
-        public string ForetagsNamn { get; set; } = string.Empty;
+        public string Databas { get; set; }
+        public string DatabasBackup { get; set; }
+        public string ForetagsNamn { get; set; }
 
         public List<string> Beskrivningar { get; set; } = new List<string>();
         public List<string> Os { get; set; } = new List<string>();

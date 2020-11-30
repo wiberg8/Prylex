@@ -129,5 +129,10 @@ namespace ScannerDialog
                 lbRegistreradeArtiklar.Items.Add(artikel);
             }
         }
+
+        private void laDisplay_DoubleClick(object sender, MouseEventArgs e)
+        {
+            Clipboard.SetText(((Label)sender).Text);
+        }
     }
 }

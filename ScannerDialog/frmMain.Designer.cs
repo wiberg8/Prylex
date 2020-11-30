@@ -138,31 +138,31 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(146, 6);
             // 
             // tspArkivNyDatabasFil
             // 
             this.tspArkivNyDatabasFil.Name = "tspArkivNyDatabasFil";
-            this.tspArkivNyDatabasFil.Size = new System.Drawing.Size(180, 22);
+            this.tspArkivNyDatabasFil.Size = new System.Drawing.Size(149, 22);
             this.tspArkivNyDatabasFil.Text = "Skapa Ny (DB)";
             this.tspArkivNyDatabasFil.Click += new System.EventHandler(this.tspFileNewDB_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
             // 
             // tspArkivInstallningar
             // 
             this.tspArkivInstallningar.Name = "tspArkivInstallningar";
-            this.tspArkivInstallningar.Size = new System.Drawing.Size(180, 22);
+            this.tspArkivInstallningar.Size = new System.Drawing.Size(149, 22);
             this.tspArkivInstallningar.Text = "Inställningar";
             this.tspArkivInstallningar.Click += new System.EventHandler(this.tspArkivInstallningar_Click);
             // 
             // tspArkivAvsluta
             // 
             this.tspArkivAvsluta.Name = "tspArkivAvsluta";
-            this.tspArkivAvsluta.Size = new System.Drawing.Size(180, 22);
+            this.tspArkivAvsluta.Size = new System.Drawing.Size(149, 22);
             this.tspArkivAvsluta.Text = "Avsluta";
             // 
             // tspPerson
@@ -179,7 +179,7 @@
             // tspPersonNy
             // 
             this.tspPersonNy.Name = "tspPersonNy";
-            this.tspPersonNy.Size = new System.Drawing.Size(180, 22);
+            this.tspPersonNy.Size = new System.Drawing.Size(89, 22);
             this.tspPersonNy.Text = "Ny";
             this.tspPersonNy.Click += new System.EventHandler(this.tspPeopleNew_Click);
             // 
@@ -256,7 +256,7 @@
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Prlyan";
+            this.Text = "hkn";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.gbSearch.ResumeLayout(false);
             this.gbSearch.PerformLayout();
