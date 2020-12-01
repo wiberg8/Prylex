@@ -101,21 +101,21 @@ namespace ScannerDialog
             DialogResult result = dialog.ShowDialog();
             
         }
-
+ 
         private void cmdSearch_Click(object sender, EventArgs e)
         {
             using (var dataAccess = new DataAccess())
             {
                 if (rbSearchSelectArticle.Checked)
                 {
-                    var artiklar = dataAccess.HamtaSokArtiklar(txtSok.Text);
+                    List<Artikel> artiklar = dataAccess.HamtaSokArtiklar(txtSok.Text);
                     dataAccess.Close();
                     VisaValjArtikelDialog(artiklar);
                 }
                     
                 if (rbSearchSelectPerson.Checked)
                 {
-                    var personer = dataAccess.HamtaSokPersoner(txtSok.Text);
+                    List<Person> personer = dataAccess.HamtaSokPersoner(txtSok.Text);
                     dataAccess.Close();
                     VisaValjPersonDialog(personer);
                 }

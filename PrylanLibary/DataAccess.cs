@@ -250,9 +250,9 @@ namespace PrylanLibary
         {
             DBHandler.AddParam("@Id", person.Id);
             DBHandler.ExecQuery("DELETE FROM personer WHERE Id=@Id");
-            DBHandler.AddParam("@PersonId", person.Id);
+            DBHandler.AddParam("@PersId", person.Id);
             DBHandler.AddParam("@Status", Status.INNE);
-            DBHandler.ExecQuery("UPDATE artiklar PersonId=NULL,Status=@Status WHERE PersonId=@PersonId");
+            DBHandler.ExecQuery("UPDATE artiklar SET PersId=NULL,Status=@Status WHERE PersId=@PersId");
         }
 
         private void FyllPersonLista(List<Person> lista, DataTable dbdt)
@@ -314,81 +314,5 @@ namespace PrylanLibary
                 }
             }
         }
-  
     }
 }
-
-//Sparas i fall det skulle vara mågot fel på dom FyllPersonLista samt FyllArtikelLista sättet att hantera "parsing" av fälten från databasen
-
-//2020-09-23 20:52
-//public static List<Artikel> HamtaArtiklar()
-//{
-//    List<Artikel> hamtadeArtiklar = new List<Artikel>();
-
-//    DBHandler.ExecQuery("SELECT * FROM artiklar ORDER BY Id");
-//    if (DBHandler.DBDT != null)
-//        foreach (DataRow R in DBHandler.DBDT.Rows)
-//        {
-//            try
-//            {
-//                Artikel art = new Artikel(int.Parse(R["Id"].ToString()));
-//                art.Beskrivning = R["Besk"].ToString();
-//                art.StoldTag = R["Stoldtag"].ToString();
-//                art.DatorNamn = R["Datornamn"].ToString();
-//                art.SerieNr = R["SerieNr"].ToString();
-//                art.Mac = R["Mac"].ToString();
-//                art.Os = R["Os"].ToString();
-//                art.Inkop = R["Inkop"].ToString();
-//                int andvandInkop = int.Parse(R["AndvandInkop"].ToString());
-//                if (andvandInkop == 0)
-//                    art.AndvandInkop = false;
-//                else
-//                    art.AndvandInkop = true;
-//                art.Ovrigt = R["Ovrigt"].ToString();
-//                art.Status = (Status)int.Parse(R["Status"].ToString());
-//                if (int.TryParse(R["PersId"].ToString(), out int parsedPersId))
-//                {
-//                    art.PersId = parsedPersId;
-//                }
-//                hamtadeArtiklar.Add(art);
-//            }
-//            catch (Exception ex)
-//            {
-//                Console.WriteLine(ex.ToString());
-//            }
-//        }
-//    return hamtadeArtiklar;
-//}
-
-////2020-09-23 21:06
-//public static List<Person> HamtaPersoner()
-//{
-//    var hamtadePersoner = new List<Person>();
-
-//    DBHandler.ExecQuery("SELECT * FROM personer ORDER BY Id");
-//    if (DBHandler.DBDT != null)
-//        foreach (DataRow R in DBHandler.DBDT.Rows)
-//        {
-//            try
-//            {
-//                Person p = new Person(int.Parse(R["Id"].ToString()))
-//                {
-//                    Fornamn = R["Fornamn"].ToString(),
-//                    Efternamn = R["Efternamn"].ToString(),
-//                    PersNr = R["PersNr"].ToString(),
-//                    Sign = R["Sign"].ToString(),
-//                    Tillhorighet = R["Tillhorighet"].ToString(),
-//                    Telefon = R["Telefon"].ToString(),
-//                    Ovrigt = R["Ovrigt"].ToString(),
-//                    Epost = R["Epost"].ToString()
-//                };
-//                hamtadePersoner.Add(p);
-//            }
-//            catch (Exception ex)
-//            {
-//                Console.WriteLine(ex.Message);
-//            }
-//        }
-//    return hamtadePersoner;
-//}
-

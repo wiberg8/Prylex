@@ -59,6 +59,8 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.cmdNyHandelse = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.cmdDelete = new System.Windows.Forms.Button();
+            this.cmdEdit = new System.Windows.Forms.Button();
             this.gbFalt.SuspendLayout();
             this.gbRegistreradeArtiklar.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -66,6 +68,8 @@
             // 
             // gbFalt
             // 
+            this.gbFalt.Controls.Add(this.cmdEdit);
+            this.gbFalt.Controls.Add(this.cmdDelete);
             this.gbFalt.Controls.Add(this.laPersonIdDisplay);
             this.gbFalt.Controls.Add(this.laOvrigtDisplay);
             this.gbFalt.Controls.Add(this.laTillhorighetDisplay);
@@ -86,7 +90,7 @@
             this.gbFalt.Controls.Add(this.laEfternamn);
             this.gbFalt.Location = new System.Drawing.Point(12, 12);
             this.gbFalt.Name = "gbFalt";
-            this.gbFalt.Size = new System.Drawing.Size(311, 236);
+            this.gbFalt.Size = new System.Drawing.Size(311, 253);
             this.gbFalt.TabIndex = 1;
             this.gbFalt.TabStop = false;
             this.gbFalt.Text = "Info";
@@ -100,6 +104,8 @@
             this.laPersonIdDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laPersonIdDisplay, "Kopiera (Dubbelklicka)");
             this.laPersonIdDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laPersonIdDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laPersonIdDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laOvrigtDisplay
             // 
@@ -110,6 +116,8 @@
             this.laOvrigtDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laOvrigtDisplay, "Kopiera (Dubbelklicka)");
             this.laOvrigtDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laOvrigtDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laOvrigtDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laTillhorighetDisplay
             // 
@@ -120,6 +128,8 @@
             this.laTillhorighetDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laTillhorighetDisplay, "Kopiera (Dubbelklicka)");
             this.laTillhorighetDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laTillhorighetDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laTillhorighetDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laTelefonDisplay
             // 
@@ -130,6 +140,8 @@
             this.laTelefonDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laTelefonDisplay, "Kopiera (Dubbelklicka)");
             this.laTelefonDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laTelefonDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laTelefonDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laEpostDisplay
             // 
@@ -140,6 +152,8 @@
             this.laEpostDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laEpostDisplay, "Kopiera (Dubbelklicka)");
             this.laEpostDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laEpostDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laEpostDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laSignDisplay
             // 
@@ -150,6 +164,8 @@
             this.laSignDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laSignDisplay, "Kopiera (Dubbelklicka)");
             this.laSignDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laSignDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laSignDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laPersNrDisplay
             // 
@@ -160,6 +176,8 @@
             this.laPersNrDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laPersNrDisplay, "Kopiera (Dubbelklicka)");
             this.laPersNrDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laPersNrDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laPersNrDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laEfternamnDisplay
             // 
@@ -170,6 +188,8 @@
             this.laEfternamnDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laEfternamnDisplay, "Kopiera (Dubbelklicka)");
             this.laEfternamnDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laEfternamnDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laEfternamnDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laFornamnDisplay
             // 
@@ -180,6 +200,8 @@
             this.laFornamnDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laFornamnDisplay, "Kopiera (Dubbelklicka)");
             this.laFornamnDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laFornamnDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laFornamnDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laTillhorighet
             // 
@@ -278,7 +300,7 @@
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdArtikelAvregistrera);
             this.gbRegistreradeArtiklar.Controls.Add(this.lbRegistreradeArtiklar);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdArtikelSok);
-            this.gbRegistreradeArtiklar.Location = new System.Drawing.Point(12, 257);
+            this.gbRegistreradeArtiklar.Location = new System.Drawing.Point(12, 271);
             this.gbRegistreradeArtiklar.Name = "gbRegistreradeArtiklar";
             this.gbRegistreradeArtiklar.Size = new System.Drawing.Size(364, 281);
             this.gbRegistreradeArtiklar.TabIndex = 17;
@@ -362,11 +384,30 @@
             this.cmdNyHandelse.Text = "Ny ";
             this.cmdNyHandelse.UseVisualStyleBackColor = true;
             // 
+            // cmdDelete
+            // 
+            this.cmdDelete.Location = new System.Drawing.Point(23, 213);
+            this.cmdDelete.Name = "cmdDelete";
+            this.cmdDelete.Size = new System.Drawing.Size(89, 23);
+            this.cmdDelete.TabIndex = 35;
+            this.cmdDelete.Text = "Radera";
+            this.cmdDelete.UseVisualStyleBackColor = true;
+            this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
+            // 
+            // cmdEdit
+            // 
+            this.cmdEdit.Location = new System.Drawing.Point(202, 213);
+            this.cmdEdit.Name = "cmdEdit";
+            this.cmdEdit.Size = new System.Drawing.Size(89, 23);
+            this.cmdEdit.TabIndex = 34;
+            this.cmdEdit.Text = "Ändra..";
+            this.cmdEdit.UseVisualStyleBackColor = true;
+            // 
             // HanteraPersonDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(883, 550);
+            this.ClientSize = new System.Drawing.Size(883, 564);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbRegistreradeArtiklar);
             this.Controls.Add(this.gbFalt);
@@ -417,5 +458,7 @@
         private System.Windows.Forms.Label laFornamnDisplay;
         private System.Windows.Forms.Label laPersonIdDisplay;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button cmdEdit;
+        private System.Windows.Forms.Button cmdDelete;
     }
 }

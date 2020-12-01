@@ -15,6 +15,7 @@ namespace ScannerDialog
 {
     public partial class HanteraArtikelDialog : Form
     {
+        private Label clickedLabel;
         private Artikel artikelAttEditera;
         private Person registreradPerson;
         public HanteraArtikelDialog(Artikel _artikelAttEditera)
@@ -215,7 +216,7 @@ namespace ScannerDialog
 
         private void cmdDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Är du säker", "Prylex", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Är du säker?", "Prylex", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 using (DataAccess dataAccess = new DataAccess())
                 {
@@ -223,6 +224,20 @@ namespace ScannerDialog
                 }
                 this.DialogResult = DialogResult.OK;
             }
+        }
+
+        private void mouseEnter(object sender, EventArgs e)
+        {
+            Label theLabel = (Label)sender;
+            if (theLabel != clickedLabel)
+                theLabel.ForeColor = Config.highlightColor;
+        }
+
+        private void mouseLeave(object sender, EventArgs e)
+        {
+            Label theLabel = (Label)sender;
+            if (theLabel != clickedLabel)
+                theLabel.ForeColor = Config.standardForeColor;
         }
     }
 }

@@ -142,18 +142,19 @@ namespace ScannerDialog
 
         private Artikel FaltTillArtikel()
         {
-            Artikel t = new Artikel
+            Artikel artikel = new Artikel
             {
                 Beskrivning = cbBeskrivningar.Text,
                 StoldTag = txtStoldtag.Text.Trim(),
                 DatorNamn = txtDatornamn.Text.Trim(),
                 SerieNr = txtSerieNr.Text.Trim(),
                 Mac = txtMAC.Text.Trim(),
+                Inkop = dtpInkop.Value.ToShortDateString(),
                 Os = cbOS.Text.Trim(),
                 Ovrigt = txtOvrigt.Text.Trim()
             };
 
-            return t;
+            return artikel;
         }
 
         //private Artikel FaltTillArtikel(int Id)
@@ -202,5 +203,7 @@ namespace ScannerDialog
         {
            
         }
+
+     
     }
 }

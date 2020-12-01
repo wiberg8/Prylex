@@ -37,6 +37,7 @@
             this.laMAC = new System.Windows.Forms.Label();
             this.laOvrigt = new System.Windows.Forms.Label();
             this.gbFalt = new System.Windows.Forms.GroupBox();
+            this.cmdDelete = new System.Windows.Forms.Button();
             this.cmdEdit = new System.Windows.Forms.Button();
             this.laInkopDisplay = new System.Windows.Forms.Label();
             this.laOSDisplay = new System.Windows.Forms.Label();
@@ -55,7 +56,6 @@
             this.laSerieNr = new System.Windows.Forms.Label();
             this.cmdAvbryt = new System.Windows.Forms.Button();
             this.toolTipHelp = new System.Windows.Forms.ToolTip(this.components);
-            this.cmdDelete = new System.Windows.Forms.Button();
             this.gbRegisterPerson.SuspendLayout();
             this.gbFalt.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +65,7 @@
             this.gbRegisterPerson.Controls.Add(this.txtRegistredPerson);
             this.gbRegisterPerson.Controls.Add(this.cmdRegisterPerson);
             this.gbRegisterPerson.Controls.Add(this.cmdUnregisterPerson);
-            this.gbRegisterPerson.Location = new System.Drawing.Point(12, 245);
+            this.gbRegisterPerson.Location = new System.Drawing.Point(12, 249);
             this.gbRegisterPerson.Name = "gbRegisterPerson";
             this.gbRegisterPerson.Size = new System.Drawing.Size(330, 79);
             this.gbRegisterPerson.TabIndex = 13;
@@ -152,14 +152,24 @@
             this.gbFalt.Controls.Add(this.laSerieNr);
             this.gbFalt.Location = new System.Drawing.Point(12, 8);
             this.gbFalt.Name = "gbFalt";
-            this.gbFalt.Size = new System.Drawing.Size(330, 231);
+            this.gbFalt.Size = new System.Drawing.Size(330, 235);
             this.gbFalt.TabIndex = 19;
             this.gbFalt.TabStop = false;
             this.gbFalt.Text = "Info";
             // 
+            // cmdDelete
+            // 
+            this.cmdDelete.Location = new System.Drawing.Point(13, 201);
+            this.cmdDelete.Name = "cmdDelete";
+            this.cmdDelete.Size = new System.Drawing.Size(89, 23);
+            this.cmdDelete.TabIndex = 33;
+            this.cmdDelete.Text = "Radera";
+            this.cmdDelete.UseVisualStyleBackColor = true;
+            this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
+            // 
             // cmdEdit
             // 
-            this.cmdEdit.Location = new System.Drawing.Point(233, 198);
+            this.cmdEdit.Location = new System.Drawing.Point(235, 201);
             this.cmdEdit.Name = "cmdEdit";
             this.cmdEdit.Size = new System.Drawing.Size(89, 23);
             this.cmdEdit.TabIndex = 15;
@@ -176,6 +186,8 @@
             this.laInkopDisplay.Text = "Display";
             this.toolTipHelp.SetToolTip(this.laInkopDisplay, "Kopiera (Dubbelklicka)");
             this.laInkopDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laInkopDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laInkopDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laOSDisplay
             // 
@@ -186,6 +198,8 @@
             this.laOSDisplay.Text = "Display";
             this.toolTipHelp.SetToolTip(this.laOSDisplay, "Kopiera (Dubbelklicka)");
             this.laOSDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laOSDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laOSDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laArtikelDisplay
             // 
@@ -196,6 +210,8 @@
             this.laArtikelDisplay.Text = "Display";
             this.toolTipHelp.SetToolTip(this.laArtikelDisplay, "Kopiera (Dubbelklicka)");
             this.laArtikelDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laArtikelDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laArtikelDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laBeskrivningDisplay
             // 
@@ -206,6 +222,8 @@
             this.laBeskrivningDisplay.Text = "Display";
             this.toolTipHelp.SetToolTip(this.laBeskrivningDisplay, "Kopiera (Dubbelklicka)");
             this.laBeskrivningDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laBeskrivningDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laBeskrivningDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laInkop
             // 
@@ -225,6 +243,8 @@
             this.laOvrigtDisplay.Text = "Display";
             this.toolTipHelp.SetToolTip(this.laOvrigtDisplay, "Kopiera (Dubbelklicka)");
             this.laOvrigtDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laOvrigtDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laOvrigtDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laDatornamnDisplay
             // 
@@ -235,6 +255,8 @@
             this.laDatornamnDisplay.Text = "Display";
             this.toolTipHelp.SetToolTip(this.laDatornamnDisplay, "Kopiera (Dubbelklicka)");
             this.laDatornamnDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laDatornamnDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laDatornamnDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laOS
             // 
@@ -254,6 +276,8 @@
             this.laStoldtagDisplay.Text = "Display";
             this.toolTipHelp.SetToolTip(this.laStoldtagDisplay, "Kopiera (Dubbelklicka)");
             this.laStoldtagDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laStoldtagDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laStoldtagDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laMACDisplay
             // 
@@ -264,6 +288,8 @@
             this.laMACDisplay.Text = "Display";
             this.toolTipHelp.SetToolTip(this.laMACDisplay, "Kopiera (Dubbelklicka)");
             this.laMACDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laMACDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laMACDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laBeskrivning
             // 
@@ -283,6 +309,8 @@
             this.laSerieNrDisplay.Text = "Display";
             this.toolTipHelp.SetToolTip(this.laSerieNrDisplay, "Kopiera (Dubbelklicka)");
             this.laSerieNrDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.laDisplay_DoubleClick);
+            this.laSerieNrDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
+            this.laSerieNrDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
             // laStoldtag
             // 
@@ -314,7 +342,7 @@
             // cmdAvbryt
             // 
             this.cmdAvbryt.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdAvbryt.Location = new System.Drawing.Point(578, 300);
+            this.cmdAvbryt.Location = new System.Drawing.Point(578, 305);
             this.cmdAvbryt.Name = "cmdAvbryt";
             this.cmdAvbryt.Size = new System.Drawing.Size(88, 23);
             this.cmdAvbryt.TabIndex = 22;
@@ -322,21 +350,11 @@
             this.cmdAvbryt.UseVisualStyleBackColor = true;
             this.cmdAvbryt.Click += new System.EventHandler(this.cmdAvbryt_Click);
             // 
-            // cmdDelete
-            // 
-            this.cmdDelete.Location = new System.Drawing.Point(13, 198);
-            this.cmdDelete.Name = "cmdDelete";
-            this.cmdDelete.Size = new System.Drawing.Size(89, 23);
-            this.cmdDelete.TabIndex = 33;
-            this.cmdDelete.Text = "Radera";
-            this.cmdDelete.UseVisualStyleBackColor = true;
-            this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
-            // 
             // HanteraArtikelDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(678, 335);
+            this.ClientSize = new System.Drawing.Size(678, 341);
             this.Controls.Add(this.cmdAvbryt);
             this.Controls.Add(this.gbFalt);
             this.Controls.Add(this.gbRegisterPerson);
