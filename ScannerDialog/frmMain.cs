@@ -6,8 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms
-    ;
+using System.Windows.Forms;
 using PrylanLibary;
 using PrylanLibary.Models;
 
@@ -98,14 +97,9 @@ namespace ScannerDialog
 
         private void tspArkivInstallningar_Click(object sender, EventArgs e)
         {
-            using (var dialog = new InstallningarDialog())
-            {
-                var result = dialog.ShowDialog();
-                if (result == DialogResult.OK)
-                {
-
-                }
-            }
+            var dialog = new InstallningarDialog();
+            DialogResult result = dialog.ShowDialog();
+            
         }
 
         private void cmdSearch_Click(object sender, EventArgs e)
