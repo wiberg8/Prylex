@@ -37,6 +37,7 @@
             this.laMAC = new System.Windows.Forms.Label();
             this.laOvrigt = new System.Windows.Forms.Label();
             this.gbFalt = new System.Windows.Forms.GroupBox();
+            this.cmdEdit = new System.Windows.Forms.Button();
             this.laInkopDisplay = new System.Windows.Forms.Label();
             this.laOSDisplay = new System.Windows.Forms.Label();
             this.laArtikelDisplay = new System.Windows.Forms.Label();
@@ -53,8 +54,8 @@
             this.laDatornamn = new System.Windows.Forms.Label();
             this.laSerieNr = new System.Windows.Forms.Label();
             this.cmdAvbryt = new System.Windows.Forms.Button();
-            this.cmdEdit = new System.Windows.Forms.Button();
             this.toolTipHelp = new System.Windows.Forms.ToolTip(this.components);
+            this.cmdDelete = new System.Windows.Forms.Button();
             this.gbRegisterPerson.SuspendLayout();
             this.gbFalt.SuspendLayout();
             this.SuspendLayout();
@@ -129,6 +130,7 @@
             // 
             // gbFalt
             // 
+            this.gbFalt.Controls.Add(this.cmdDelete);
             this.gbFalt.Controls.Add(this.cmdEdit);
             this.gbFalt.Controls.Add(this.laArtikelId);
             this.gbFalt.Controls.Add(this.laInkopDisplay);
@@ -154,6 +156,16 @@
             this.gbFalt.TabIndex = 19;
             this.gbFalt.TabStop = false;
             this.gbFalt.Text = "Info";
+            // 
+            // cmdEdit
+            // 
+            this.cmdEdit.Location = new System.Drawing.Point(233, 198);
+            this.cmdEdit.Name = "cmdEdit";
+            this.cmdEdit.Size = new System.Drawing.Size(89, 23);
+            this.cmdEdit.TabIndex = 15;
+            this.cmdEdit.Text = "Ändra..";
+            this.cmdEdit.UseVisualStyleBackColor = true;
+            this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click);
             // 
             // laInkopDisplay
             // 
@@ -310,15 +322,15 @@
             this.cmdAvbryt.UseVisualStyleBackColor = true;
             this.cmdAvbryt.Click += new System.EventHandler(this.cmdAvbryt_Click);
             // 
-            // cmdEdit
+            // cmdDelete
             // 
-            this.cmdEdit.Location = new System.Drawing.Point(233, 198);
-            this.cmdEdit.Name = "cmdEdit";
-            this.cmdEdit.Size = new System.Drawing.Size(89, 23);
-            this.cmdEdit.TabIndex = 15;
-            this.cmdEdit.Text = "Ändra..";
-            this.cmdEdit.UseVisualStyleBackColor = true;
-            this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click);
+            this.cmdDelete.Location = new System.Drawing.Point(13, 198);
+            this.cmdDelete.Name = "cmdDelete";
+            this.cmdDelete.Size = new System.Drawing.Size(89, 23);
+            this.cmdDelete.TabIndex = 33;
+            this.cmdDelete.Text = "Radera";
+            this.cmdDelete.UseVisualStyleBackColor = true;
+            this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
             // 
             // HanteraArtikelDialog
             // 
@@ -370,5 +382,6 @@
         private System.Windows.Forms.Label laArtikelDisplay;
         private System.Windows.Forms.Button cmdEdit;
         private System.Windows.Forms.ToolTip toolTipHelp;
+        private System.Windows.Forms.Button cmdDelete;
     }
 }

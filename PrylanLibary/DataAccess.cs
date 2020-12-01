@@ -196,7 +196,7 @@ namespace PrylanLibary
             DBHandler.AddParam("@Os",           artikel.Os);
             DBHandler.AddParam("@Inkop",        artikel.Inkop);
             DBHandler.AddParam("@Ovrigt",       artikel.Ovrigt);
-            DBHandler.ExecQuery("INSERT INTO artiklar (Besk,Stoldtag,Datornamn,SerieNr,Mac,Os,Inkop,AndvandInkop,Ovrigt) VALUES(@Besk,@Stoldtag,@Datornamn,@SerieNr,@Mac,@Os,@Inkop,@AndvandInkop,@Ovrigt)");
+            DBHandler.ExecQuery("INSERT INTO artiklar (Besk,Stoldtag,Datornamn,SerieNr,Mac,Os,Inkop,Ovrigt) VALUES(@Besk,@Stoldtag,@Datornamn,@SerieNr,@Mac,@Os,@Inkop,@Ovrigt)");
             if (ArtikelChange != null)
                 ArtikelChange.Invoke(artikel, new EventArgs());
         }
@@ -222,6 +222,11 @@ namespace PrylanLibary
 
             return DBHandler.RecordCount > 0;
         }
+        public void RaderaArtikel(Artikel artikel)
+        {
+            DBHandler.AddParam("@Id", artikel.Id);
+            DBHandler.ExecQuery("DELETE FROM artiklar WHERE Id=@Id");
+        }
 
         public void InfogaPerson(Person person)
         {
@@ -240,6 +245,14 @@ namespace PrylanLibary
             DBHandler.AddParam("@PersNr", persNr);
             DBHandler.ExecQuery("SELECT PersNr FROM personer WHERE PersNr=@PersNr AND PersNr <> '' ");
             return DBHandler.RecordCount > 0;
+        }
+        public void RaderaPerson(Person person)
+        {
+            DBHandler.AddParam("@Id", person.Id);
+            DBHandler.ExecQuery("DELETE FROM personer WHERE Id=@Id");
+            DBHandler.AddParam("@PersonId", person.Id);
+            DBHandler.AddParam("@Status", Status.INNE);
+            DBHandler.ExecQuery("UPDATE artiklar PersonId=NULL,Status=@Status WHERE PersonId=@PersonId");
         }
 
         private void FyllPersonLista(List<Person> lista, DataTable dbdt)

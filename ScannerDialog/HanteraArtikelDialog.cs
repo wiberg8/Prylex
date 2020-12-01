@@ -212,5 +212,17 @@ namespace ScannerDialog
         {
             Clipboard.SetText(((Label)sender).Text);
         }
+
+        private void cmdDelete_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Är du säker", "Prylex", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                using (DataAccess dataAccess = new DataAccess())
+                {
+                    dataAccess.RaderaArtikel(this.artikelAttEditera);
+                }
+                this.DialogResult = DialogResult.OK;
+            }
+        }
     }
 }
