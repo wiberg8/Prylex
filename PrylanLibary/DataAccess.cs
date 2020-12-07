@@ -158,7 +158,6 @@ namespace PrylanLibary
             DBHandler.AddParam("@Status", Status.UTE);
             DBHandler.ExecQuery("UPDATE artiklar SET PersId=@pId,Status=@Status WHERE Id=@aId");
         }
-
         public void UnregisterArtikelFromPerson(Artikel artikel)
         {
             DBHandler.AddParam("@Id", artikel.Id);
@@ -175,7 +174,6 @@ namespace PrylanLibary
             FyllArtikelLista(personArtiklar, DBHandler.DBDT);
             return personArtiklar;
         }
-
         public List<Artikel> HamtaSokRegistreradeArtiklar(Person person, string sok)
         {
             List<Artikel> personArtiklar = new List<Artikel>();
