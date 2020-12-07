@@ -27,6 +27,7 @@ namespace PrylanLibary
         }
 
         public static EventHandler ArtikelChange { get; set; }
+        public static EventHandler PersonChange { get; set; }
 
         public List<Artikel> HamtaArtiklar()
         {
@@ -239,6 +240,22 @@ namespace PrylanLibary
             DBHandler.AddParam("@Ovrigt", person.Ovrigt);
             DBHandler.AddParam("@Tillhorighet", person.Tillhorighet);
             DBHandler.ExecQuery("INSERT INTO personer (Fornamn,Efternamn,PersNr,Sign,Epost,Telefon,Ovrigt,Tillhorighet) VALUES (@Fornamn,@Efternamn,@PersNr,@Sign,@Epost,@Telefon,@Ovrigt,@Tillhorighet)");
+            if (PersonChange != null)
+                PersonChange.Invoke(person, new EventArgs());
+        }
+        public void UpdateraPerson(Person person)
+        {
+            DBHandler.AddParam("@Fornamn", person.Fornamn);
+            DBHandler.AddParam("@Efternamn", person.Efternamn);
+            DBHandler.AddParam("@Sign", person.Sign);
+            DBHandler.AddParam("@Epost", person.Epost);
+            DBHandler.AddParam("@Telefon", person.Telefon);
+            DBHandler.AddParam("@Ovrigt", person.Ovrigt);
+            DBHandler.AddParam("@Tillhorighet", person.Tillhorighet);
+            DBHandler.AddParam("@Id", person.Id);
+            DBHandler.ExecQuery("UPDATE personer SET Fornamn=@Fornamn,Efternamn=@Efternamn,Sign=@Sign,Epost=@Epost,Telefon=@Telefon,Ovrigt=@Ovrigt,Tillhorighet=@Tillhorighet WHERE Id=@Id");
+            if (PersonChange != null)
+                PersonChange.Invoke(person, new EventArgs());
         }
         public bool ExisterarPerson(string persNr)
         {
