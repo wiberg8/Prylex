@@ -43,6 +43,7 @@
             this.cmdForvalTabort = new System.Windows.Forms.Button();
             this.laNuvarandeDbDisplay = new System.Windows.Forms.Label();
             this.laNuvarandeDbBackupDisplay = new System.Windows.Forms.Label();
+            this.cmdForvalImport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // gbInstallningarDb
@@ -137,7 +138,7 @@
             // 
             // cmdForvalUpp
             // 
-            this.cmdForvalUpp.Location = new System.Drawing.Point(727, 64);
+            this.cmdForvalUpp.Location = new System.Drawing.Point(636, 259);
             this.cmdForvalUpp.Name = "cmdForvalUpp";
             this.cmdForvalUpp.Size = new System.Drawing.Size(85, 23);
             this.cmdForvalUpp.TabIndex = 18;
@@ -147,7 +148,7 @@
             // 
             // cmdForvalNer
             // 
-            this.cmdForvalNer.Location = new System.Drawing.Point(727, 94);
+            this.cmdForvalNer.Location = new System.Drawing.Point(636, 288);
             this.cmdForvalNer.Name = "cmdForvalNer";
             this.cmdForvalNer.Size = new System.Drawing.Size(85, 23);
             this.cmdForvalNer.TabIndex = 19;
@@ -157,7 +158,7 @@
             // 
             // cmdForvalLaggTill
             // 
-            this.cmdForvalLaggTill.Location = new System.Drawing.Point(728, 198);
+            this.cmdForvalLaggTill.Location = new System.Drawing.Point(507, 259);
             this.cmdForvalLaggTill.Name = "cmdForvalLaggTill";
             this.cmdForvalLaggTill.Size = new System.Drawing.Size(85, 23);
             this.cmdForvalLaggTill.TabIndex = 20;
@@ -167,7 +168,7 @@
             // 
             // cmdForvalTabort
             // 
-            this.cmdForvalTabort.Location = new System.Drawing.Point(727, 227);
+            this.cmdForvalTabort.Location = new System.Drawing.Point(508, 288);
             this.cmdForvalTabort.Name = "cmdForvalTabort";
             this.cmdForvalTabort.Size = new System.Drawing.Size(85, 23);
             this.cmdForvalTabort.TabIndex = 21;
@@ -196,11 +197,22 @@
             this.laNuvarandeDbBackupDisplay.MouseEnter += new System.EventHandler(this.mouseEnter);
             this.laNuvarandeDbBackupDisplay.MouseLeave += new System.EventHandler(this.mouseLeave);
             // 
+            // cmdForvalImport
+            // 
+            this.cmdForvalImport.Location = new System.Drawing.Point(507, 8);
+            this.cmdForvalImport.Name = "cmdForvalImport";
+            this.cmdForvalImport.Size = new System.Drawing.Size(214, 23);
+            this.cmdForvalImport.TabIndex = 24;
+            this.cmdForvalImport.Text = "Importera från DB";
+            this.cmdForvalImport.UseVisualStyleBackColor = true;
+            this.cmdForvalImport.Click += new System.EventHandler(this.cmdForvalImport_Click);
+            // 
             // InstallningarDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 353);
+            this.Controls.Add(this.cmdForvalImport);
             this.Controls.Add(this.cmdNuvarandeDbBackupAterstall);
             this.Controls.Add(this.cmdDatabasAterstall);
             this.Controls.Add(this.laNuvarandeDbBackupDisplay);
@@ -243,5 +255,6 @@
         private System.Windows.Forms.Button cmdDatabasAterstall;
         private System.Windows.Forms.Label laNuvarandeDbDisplay;
         private System.Windows.Forms.Label laNuvarandeDbBackupDisplay;
+        private System.Windows.Forms.Button cmdForvalImport;
     }
 }

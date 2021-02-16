@@ -271,5 +271,20 @@ namespace ScannerDialog
             if (theLabel != clickedLabel)
                 theLabel.ForeColor = Config.standardForeColor;
         }
+
+        private void cmdForvalImport_Click(object sender, EventArgs e)
+        {
+            var installningar = Installningar.Hamta();
+            using (DataAccess dataAccess = new DataAccess())
+            {
+                List<string> besk = dataAccess.HamtaUnikaBesk();
+                foreach(string v in besk)
+                {
+                    installningar.Beskrivningar.Add(v);
+                }
+                installningar.Spara();
+            }
+            LaddaForval();
+        }
     }
 }

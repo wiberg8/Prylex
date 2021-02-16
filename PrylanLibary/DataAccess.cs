@@ -29,6 +29,22 @@ namespace PrylanLibary
         public static EventHandler ArtikelChange { get; set; }
         public static EventHandler PersonChange { get; set; }
 
+        public List<string> HamtaUnikaBesk()
+        {
+            DBHandler.ExecQuery("SELECT DISTINCT Besk FROM artiklar");
+            List<string> besk = new List<string>();
+            if (DBHandler.DBDT is null)
+                return besk;
+            foreach (DataRow R in DBHandler.DBDT.Rows)
+            {
+                if (!string.IsNullOrWhiteSpace(R["Besk"].ToString()))
+                {
+                    besk.Add(R["Besk"].ToString());
+                }
+            }
+            return besk;
+        }
+
         public List<Artikel> HamtaArtiklar()
         {
             List<Artikel> hamtadeArtiklar = new List<Artikel>();
