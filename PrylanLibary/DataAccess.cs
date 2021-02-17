@@ -63,7 +63,6 @@ namespace PrylanLibary
             }
             return Os;
         }
-
         public List<string> GetUniqueTillhorighet()
         {
             List<Artikel> artiklar = new List<Artikel>();
@@ -81,7 +80,6 @@ namespace PrylanLibary
             }
             return tillhorighet;
         }
-
         //public List<string> GetUniqueHandelser()
         //{
         //    List<Artikel> artiklar = new List<Artikel>();
@@ -172,6 +170,79 @@ namespace PrylanLibary
             }
             return null;
         }
+        public void InfogaArtikel(Artikel artikel)
+        {
+            DBHandler.AddParam("@Besk", artikel.Beskrivning);
+            DBHandler.AddParam("@Stoldtag", artikel.StoldTag);
+            DBHandler.AddParam("@Datornamn", artikel.DatorNamn);
+            DBHandler.AddParam("@SerieNr", artikel.SerieNr);
+            DBHandler.AddParam("@Mac", artikel.Mac);
+            DBHandler.AddParam("@Os", artikel.Os);
+            DBHandler.AddParam("@Inkop", artikel.Inkop);
+            DBHandler.AddParam("@Ovrigt", artikel.Ovrigt);
+            DBHandler.ExecQuery("INSERT INTO artiklar (Besk,Stoldtag,Datornamn,SerieNr,Mac,Os,Inkop,Ovrigt) VALUES(@Besk,@Stoldtag,@Datornamn,@SerieNr,@Mac,@Os,@Inkop,@Ovrigt)");
+            if (ArtikelChange != null)
+                ArtikelChange.Invoke(artikel, new EventArgs());
+        }
+        public void UpdateraArtikel(Artikel artikel)
+        {
+            DBHandler.AddParam("@Besk", artikel.Beskrivning);
+            DBHandler.AddParam("@Stoldtag", artikel.StoldTag);
+            DBHandler.AddParam("@Datornamn", artikel.DatorNamn);
+            DBHandler.AddParam("@SerieNr", artikel.SerieNr);
+            DBHandler.AddParam("@Mac", artikel.Mac);
+            DBHandler.AddParam("@Os", artikel.Os);
+            DBHandler.AddParam("@Ovrigt", artikel.Ovrigt);
+            DBHandler.AddParam("@Id", artikel.Id);
+            DBHandler.ExecQuery("UPDATE artiklar SET Besk=@Besk,Stoldtag=@Stoldtag,Datornamn=@Datornamn,SerieNr=@SerieNr,Mac=@Mac,Os=@Os,Ovrigt=@Ovrigt WHERE Id=@Id");
+            if (ArtikelChange != null)
+                ArtikelChange.Invoke(artikel, new EventArgs());
+        }
+        public bool ExisterarArtikel(Artikel artikel)
+        {
+            DBHandler.AddParam("@SerieNr", artikel.SerieNr);
+            DBHandler.AddParam("@Id", artikel.Id);
+            DBHandler.ExecQuery("SELECT SerieNr FROM artiklar WHERE UPPER(SerieNr)=UPPER(@SerieNr) AND SerieNr <> '' AND NOT Id=@Id");
+
+            return DBHandler.RecordCount > 0;
+        }
+        public void RaderaArtikel(Artikel artikel)
+        {
+            DBHandler.AddParam("@Id", artikel.Id);
+            DBHandler.ExecQuery("DELETE FROM artiklar WHERE Id=@Id");
+        }
+        public void RegisterArtikelToPerson(Person person, Artikel artikel)
+        {
+            DBHandler.AddParam("@pId", person.Id);
+            DBHandler.AddParam("@aId", artikel.Id);
+            DBHandler.AddParam("@Status", Status.UTE);
+            DBHandler.ExecQuery("UPDATE artiklar SET PersId=@pId,Status=@Status WHERE Id=@aId");
+        }
+        public void UnregisterArtikelFromPerson(Artikel artikel)
+        {
+            DBHandler.AddParam("@Id", artikel.Id);
+            DBHandler.AddParam("@Status", Status.INNE);
+            DBHandler.ExecQuery("UPDATE artiklar SET PersId=null,Status=@Status WHERE Id=@Id");
+        }
+        public List<Artikel> HamtaRegistreradeArtiklar(Person person)
+        {
+            List<Artikel> personArtiklar = new List<Artikel>();
+            DBHandler.AddParam("@pId", person.Id);
+            DBHandler.AddParam("@Status", Status.UTE);
+            DBHandler.ExecQuery("SELECT * FROM artiklar WHERE PersId = @pId AND Status = @Status");
+            FyllArtikelLista(personArtiklar, DBHandler.DBDT);
+            return personArtiklar;
+        }
+        public List<Artikel> HamtaSokRegistreradeArtiklar(Person person, string sok)
+        {
+            List<Artikel> personArtiklar = new List<Artikel>();
+            DBHandler.AddParam("@pId", person.Id);
+            DBHandler.AddParam("@Status", Status.UTE);
+            DBHandler.AddParam("@Sok", $"{sok}%");
+            DBHandler.ExecQuery("SELECT * FROM artiklar WHERE (Id LIKE @Sok OR Besk LIKE @Sok OR Stoldtag LIKE @Sok OR Datornamn LIKE @Sok OR SerieNr LIKE @Sok OR Mac LIKE @Sok OR Os LIKE @Sok OR Inkop LIKE @Sok OR Ovrigt LIKE @Sok) AND PersId = @pId AND Status = @Status ORDER BY Id");
+            FyllArtikelLista(personArtiklar, DBHandler.DBDT);
+            return personArtiklar;
+        }
 
         public List<Person> HamtaPersoner()
         {
@@ -221,83 +292,6 @@ namespace PrylanLibary
             }
             return null;
         }
-
-        public void RegisterArtikelToPerson(Person person, Artikel artikel)
-        {
-            DBHandler.AddParam("@pId", person.Id);
-            DBHandler.AddParam("@aId", artikel.Id);
-            DBHandler.AddParam("@Status", Status.UTE);
-            DBHandler.ExecQuery("UPDATE artiklar SET PersId=@pId,Status=@Status WHERE Id=@aId");
-        }
-        public void UnregisterArtikelFromPerson(Artikel artikel)
-        {
-            DBHandler.AddParam("@Id", artikel.Id);
-            DBHandler.AddParam("@Status", Status.INNE);
-            DBHandler.ExecQuery("UPDATE artiklar SET PersId=null,Status=@Status WHERE Id=@Id");
-        }
-
-        public List<Artikel> HamtaRegistreradeArtiklar(Person person)
-        {
-            List<Artikel> personArtiklar = new List<Artikel>();
-            DBHandler.AddParam("@pId", person.Id);
-            DBHandler.AddParam("@Status", Status.UTE);
-            DBHandler.ExecQuery("SELECT * FROM artiklar WHERE PersId = @pId AND Status = @Status");
-            FyllArtikelLista(personArtiklar, DBHandler.DBDT);
-            return personArtiklar;
-        }
-        public List<Artikel> HamtaSokRegistreradeArtiklar(Person person, string sok)
-        {
-            List<Artikel> personArtiklar = new List<Artikel>();
-            DBHandler.AddParam("@pId", person.Id);
-            DBHandler.AddParam("@Status", Status.UTE);
-            DBHandler.AddParam("@Sok", $"{sok}%");
-            DBHandler.ExecQuery("SELECT * FROM artiklar WHERE (Id LIKE @Sok OR Besk LIKE @Sok OR Stoldtag LIKE @Sok OR Datornamn LIKE @Sok OR SerieNr LIKE @Sok OR Mac LIKE @Sok OR Os LIKE @Sok OR Inkop LIKE @Sok OR Ovrigt LIKE @Sok) AND PersId = @pId AND Status = @Status ORDER BY Id");
-            FyllArtikelLista(personArtiklar, DBHandler.DBDT);
-            return personArtiklar;
-        }
-
-        public void InfogaArtikel(Artikel artikel)
-        {
-            DBHandler.AddParam("@Besk",         artikel.Beskrivning);
-            DBHandler.AddParam("@Stoldtag",     artikel.StoldTag);
-            DBHandler.AddParam("@Datornamn",    artikel.DatorNamn);
-            DBHandler.AddParam("@SerieNr",      artikel.SerieNr);
-            DBHandler.AddParam("@Mac",          artikel.Mac);
-            DBHandler.AddParam("@Os",           artikel.Os);
-            DBHandler.AddParam("@Inkop",        artikel.Inkop);
-            DBHandler.AddParam("@Ovrigt",       artikel.Ovrigt);
-            DBHandler.ExecQuery("INSERT INTO artiklar (Besk,Stoldtag,Datornamn,SerieNr,Mac,Os,Inkop,Ovrigt) VALUES(@Besk,@Stoldtag,@Datornamn,@SerieNr,@Mac,@Os,@Inkop,@Ovrigt)");
-            if (ArtikelChange != null)
-                ArtikelChange.Invoke(artikel, new EventArgs());
-        }
-        public void UpdateraArtikel(Artikel artikel)
-        {
-            DBHandler.AddParam("@Besk", artikel.Beskrivning);
-            DBHandler.AddParam("@Stoldtag", artikel.StoldTag);
-            DBHandler.AddParam("@Datornamn", artikel.DatorNamn);
-            DBHandler.AddParam("@SerieNr", artikel.SerieNr);
-            DBHandler.AddParam("@Mac", artikel.Mac);
-            DBHandler.AddParam("@Os", artikel.Os);
-            DBHandler.AddParam("@Ovrigt", artikel.Ovrigt);
-            DBHandler.AddParam("@Id", artikel.Id);
-            DBHandler.ExecQuery("UPDATE artiklar SET Besk=@Besk,Stoldtag=@Stoldtag,Datornamn=@Datornamn,SerieNr=@SerieNr,Mac=@Mac,Os=@Os,Ovrigt=@Ovrigt WHERE Id=@Id");
-            if (ArtikelChange != null)
-                ArtikelChange.Invoke(artikel, new EventArgs());
-        }
-        public bool ExisterarArtikel(Artikel artikel)
-        {
-            DBHandler.AddParam("@SerieNr", artikel.SerieNr);
-            DBHandler.AddParam("@Id", artikel.Id);
-            DBHandler.ExecQuery("SELECT SerieNr FROM artiklar WHERE UPPER(SerieNr)=UPPER(@SerieNr) AND SerieNr <> '' AND NOT Id=@Id");
-
-            return DBHandler.RecordCount > 0;
-        }
-        public void RaderaArtikel(Artikel artikel)
-        {
-            DBHandler.AddParam("@Id", artikel.Id);
-            DBHandler.ExecQuery("DELETE FROM artiklar WHERE Id=@Id");
-        }
-
         public void InfogaPerson(Person person)
         {
             DBHandler.AddParam("@Fornamn", person.Fornamn);
