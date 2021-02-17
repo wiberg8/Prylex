@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gbFalt = new System.Windows.Forms.GroupBox();
+            this.cmdEdit = new System.Windows.Forms.Button();
+            this.cmdDelete = new System.Windows.Forms.Button();
             this.laPersonIdDisplay = new System.Windows.Forms.Label();
             this.laOvrigtDisplay = new System.Windows.Forms.Label();
             this.laTillhorighetDisplay = new System.Windows.Forms.Label();
@@ -59,8 +61,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.cmdNyHandelse = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.cmdDelete = new System.Windows.Forms.Button();
-            this.cmdEdit = new System.Windows.Forms.Button();
+            this.cmdSkrivUtEttiket = new System.Windows.Forms.Button();
             this.gbFalt.SuspendLayout();
             this.gbRegistreradeArtiklar.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -94,6 +95,25 @@
             this.gbFalt.TabIndex = 1;
             this.gbFalt.TabStop = false;
             this.gbFalt.Text = "Info";
+            // 
+            // cmdEdit
+            // 
+            this.cmdEdit.Location = new System.Drawing.Point(202, 213);
+            this.cmdEdit.Name = "cmdEdit";
+            this.cmdEdit.Size = new System.Drawing.Size(89, 23);
+            this.cmdEdit.TabIndex = 34;
+            this.cmdEdit.Text = "Ändra..";
+            this.cmdEdit.UseVisualStyleBackColor = true;
+            // 
+            // cmdDelete
+            // 
+            this.cmdDelete.Location = new System.Drawing.Point(23, 213);
+            this.cmdDelete.Name = "cmdDelete";
+            this.cmdDelete.Size = new System.Drawing.Size(89, 23);
+            this.cmdDelete.TabIndex = 35;
+            this.cmdDelete.Text = "Radera";
+            this.cmdDelete.UseVisualStyleBackColor = true;
+            this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
             // 
             // laPersonIdDisplay
             // 
@@ -384,30 +404,22 @@
             this.cmdNyHandelse.Text = "Ny ";
             this.cmdNyHandelse.UseVisualStyleBackColor = true;
             // 
-            // cmdDelete
+            // cmdSkrivUtEttiket
             // 
-            this.cmdDelete.Location = new System.Drawing.Point(23, 213);
-            this.cmdDelete.Name = "cmdDelete";
-            this.cmdDelete.Size = new System.Drawing.Size(89, 23);
-            this.cmdDelete.TabIndex = 35;
-            this.cmdDelete.Text = "Radera";
-            this.cmdDelete.UseVisualStyleBackColor = true;
-            this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
-            // 
-            // cmdEdit
-            // 
-            this.cmdEdit.Location = new System.Drawing.Point(202, 213);
-            this.cmdEdit.Name = "cmdEdit";
-            this.cmdEdit.Size = new System.Drawing.Size(89, 23);
-            this.cmdEdit.TabIndex = 34;
-            this.cmdEdit.Text = "Ändra..";
-            this.cmdEdit.UseVisualStyleBackColor = true;
+            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(397, 460);
+            this.cmdSkrivUtEttiket.Name = "cmdSkrivUtEttiket";
+            this.cmdSkrivUtEttiket.Size = new System.Drawing.Size(89, 23);
+            this.cmdSkrivUtEttiket.TabIndex = 19;
+            this.cmdSkrivUtEttiket.Text = "Ettiket";
+            this.cmdSkrivUtEttiket.UseVisualStyleBackColor = true;
+            this.cmdSkrivUtEttiket.Click += new System.EventHandler(this.cmdSkrivUtEttiket_Click);
             // 
             // HanteraPersonDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(883, 564);
+            this.Controls.Add(this.cmdSkrivUtEttiket);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbRegistreradeArtiklar);
             this.Controls.Add(this.gbFalt);
@@ -460,5 +472,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button cmdEdit;
         private System.Windows.Forms.Button cmdDelete;
+        private System.Windows.Forms.Button cmdSkrivUtEttiket;
     }
 }

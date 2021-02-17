@@ -28,6 +28,11 @@ namespace PrylanLibary.Models
         public string Ovrigt { get; set; }
         public string Tillhorighet { get; set; }
 
+        public string GetNamn()
+        {
+            return this.Fornamn + " " + this.Efternamn;
+        }
+
         public override string ToString()
         {
             return $"{Id} {Fornamn} {Efternamn} {PersNr}";

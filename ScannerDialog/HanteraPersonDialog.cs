@@ -162,5 +162,14 @@ namespace ScannerDialog
                 this.DialogResult = DialogResult.OK;
             }
         }
+
+        private void cmdSkrivUtEttiket_Click(object sender, EventArgs e)
+        {
+            if (lbRegistreradeArtiklar.SelectedItem != null)
+            {
+                Artikel selectedArtikel = (Artikel)lbRegistreradeArtiklar.SelectedItem;
+                Printing.PrintLabel(selectedArtikel.DatorNamn, nuvarandePerson.GetNamn(), selectedArtikel.SerieNr, nuvarandePerson.Tillhorighet);
+            }
+        }
     }
 }

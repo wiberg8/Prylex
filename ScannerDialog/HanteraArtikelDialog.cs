@@ -239,5 +239,13 @@ namespace ScannerDialog
             if (theLabel != clickedLabel)
                 theLabel.ForeColor = Config.standardForeColor;
         }
+
+        private void cmdSkrivUtEttiket_Click(object sender, EventArgs e)
+        {
+            if (artikelAttEditera.Status == Status.UTE)
+            {
+                Printing.PrintLabel(artikelAttEditera.DatorNamn, registreradPerson.GetNamn(), artikelAttEditera.SerieNr, registreradPerson.Tillhorighet);
+            }
+        }
     }
 }

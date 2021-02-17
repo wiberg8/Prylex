@@ -56,12 +56,14 @@
             this.laSerieNr = new System.Windows.Forms.Label();
             this.cmdAvbryt = new System.Windows.Forms.Button();
             this.toolTipHelp = new System.Windows.Forms.ToolTip(this.components);
+            this.cmdSkrivUtEttiket = new System.Windows.Forms.Button();
             this.gbRegisterPerson.SuspendLayout();
             this.gbFalt.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbRegisterPerson
             // 
+            this.gbRegisterPerson.Controls.Add(this.cmdSkrivUtEttiket);
             this.gbRegisterPerson.Controls.Add(this.txtRegistredPerson);
             this.gbRegisterPerson.Controls.Add(this.cmdRegisterPerson);
             this.gbRegisterPerson.Controls.Add(this.cmdUnregisterPerson);
@@ -350,6 +352,16 @@
             this.cmdAvbryt.UseVisualStyleBackColor = true;
             this.cmdAvbryt.Click += new System.EventHandler(this.cmdAvbryt_Click);
             // 
+            // cmdSkrivUtEttiket
+            // 
+            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(120, 46);
+            this.cmdSkrivUtEttiket.Name = "cmdSkrivUtEttiket";
+            this.cmdSkrivUtEttiket.Size = new System.Drawing.Size(89, 23);
+            this.cmdSkrivUtEttiket.TabIndex = 15;
+            this.cmdSkrivUtEttiket.Text = "Ettiket";
+            this.cmdSkrivUtEttiket.UseVisualStyleBackColor = true;
+            this.cmdSkrivUtEttiket.Click += new System.EventHandler(this.cmdSkrivUtEttiket_Click);
+            // 
             // HanteraArtikelDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -401,5 +413,6 @@
         private System.Windows.Forms.Button cmdEdit;
         private System.Windows.Forms.ToolTip toolTipHelp;
         private System.Windows.Forms.Button cmdDelete;
+        private System.Windows.Forms.Button cmdSkrivUtEttiket;
     }
 }

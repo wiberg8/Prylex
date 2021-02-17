@@ -29,21 +29,76 @@ namespace PrylanLibary
         public static EventHandler ArtikelChange { get; set; }
         public static EventHandler PersonChange { get; set; }
 
-        public List<string> HamtaUnikaBesk()
+        public List<string> GetUniqueBesk()
         {
+            List<Artikel> artiklar = new List<Artikel>();
+            List<string> beskrivningar = new List<string>();
             DBHandler.ExecQuery("SELECT DISTINCT Besk FROM artiklar");
-            List<string> besk = new List<string>();
-            if (DBHandler.DBDT is null)
-                return besk;
-            foreach (DataRow R in DBHandler.DBDT.Rows)
+            if(DBHandler.DBDT != null)
             {
-                if (!string.IsNullOrWhiteSpace(R["Besk"].ToString()))
+                foreach (DataRow R in DBHandler.DBDT.Rows)
                 {
-                    besk.Add(R["Besk"].ToString());
+                    if (!string.IsNullOrWhiteSpace(R["Besk"].ToString()))
+                    {
+                        beskrivningar.Add(R["Besk"].ToString());
+                    }
                 }
             }
-            return besk;
+            return beskrivningar;
         }
+        public List<string> GetUniqueOS()
+        {
+            List<Artikel> artiklar = new List<Artikel>();
+            List<string> Os = new List<string>();
+            DBHandler.ExecQuery("SELECT DISTINCT Os FROM artiklar");
+            if (DBHandler.DBDT != null)
+            {
+                foreach (DataRow R in DBHandler.DBDT.Rows)
+                {
+                    if (!string.IsNullOrWhiteSpace(R["Os"].ToString()))
+                    {
+                        Os.Add(R["Os"].ToString());
+                    }
+                }
+            }
+            return Os;
+        }
+
+        public List<string> GetUniqueTillhorighet()
+        {
+            List<Artikel> artiklar = new List<Artikel>();
+            List<string> tillhorighet = new List<string>();
+            DBHandler.ExecQuery("SELECT DISTINCT Tillhorighet FROM personer");
+            if (DBHandler.DBDT != null)
+            {
+                foreach (DataRow R in DBHandler.DBDT.Rows)
+                {
+                    if (!string.IsNullOrWhiteSpace(R["Tillhorighet"].ToString()))
+                    {
+                        tillhorighet.Add(R["Tillhorighet"].ToString());
+                    }
+                }
+            }
+            return tillhorighet;
+        }
+
+        //public List<string> GetUniqueHandelser()
+        //{
+        //    List<Artikel> artiklar = new List<Artikel>();
+        //    List<string> Os = new List<string>();
+        //    DBHandler.ExecQuery("SELECT DISTINCT Han FROM artiklar");
+        //    if (DBHandler.DBDT != null)
+        //    {
+        //        foreach (DataRow R in DBHandler.DBDT.Rows)
+        //        {
+        //            if (!string.IsNullOrWhiteSpace(R["Os"].ToString()))
+        //            {
+        //                Os.Add(R["Os"].ToString());
+        //            }
+        //        }
+        //    }
+        //    return Os;
+        //}
 
         public List<Artikel> HamtaArtiklar()
         {
