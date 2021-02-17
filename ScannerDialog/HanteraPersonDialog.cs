@@ -171,5 +171,10 @@ namespace ScannerDialog
                 Printing.PrintLabel(selectedArtikel.DatorNamn, nuvarandePerson.GetNamn(), selectedArtikel.SerieNr, nuvarandePerson.Tillhorighet);
             }
         }
+
+        private void cmdEdit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

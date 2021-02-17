@@ -118,6 +118,12 @@
     <Compile Include="UpdateraArtikelDialog.Designer.cs">
       <DependentUpon>UpdateraArtikelDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateraPersonDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateraPersonDialog.Designer.cs">
+      <DependentUpon>UpdateraPersonDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="ValjArtikelDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateraArtikelDialog.resx">
       <DependentUpon>UpdateraArtikelDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateraPersonDialog.resx">
+      <DependentUpon>UpdateraPersonDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ValjArtikelDialog.resx">
       <DependentUpon>ValjArtikelDialog.cs</DependentUpon>

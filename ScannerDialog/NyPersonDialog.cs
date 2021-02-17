@@ -118,8 +118,12 @@ namespace ScannerDialog
         }
         private bool IsFaltGiltiga()
         {
-            //Kollar om textfäleten "Förnamn", "Efternamn" har minst 2 tecken i sig som ej är blanksteg
-            if(txtFornamn.Text.RemoveWhiteSpaces().Length < 2 || txtEfternamn.Text.RemoveWhiteSpaces().Length < 2)
+            //Kollar om textfäleten "Förnamn", "Efternamn", "Tillhörighet" har minst 2 tecken i sig som ej är blanksteg
+            if(
+                txtFornamn.Text.RemoveWhiteSpaces().Length < 2 
+                || txtEfternamn.Text.RemoveWhiteSpaces().Length < 2
+                || cbTillhorighet.Text.RemoveWhiteSpaces().Length < 2
+                )
                 return false;
             return true;
         }
@@ -133,7 +137,11 @@ namespace ScannerDialog
                 errorEfternamn.SetError(txtEfternamn, "Minst 2 tecken");
             else
                 errorEfternamn.Clear();
-            
+            if (cbTillhorighet.Text.RemoveWhiteSpaces().Length < 2)
+                errorTillhorighet.SetError(cbTillhorighet, "Minst 2 tecken");
+            else
+                errorTillhorighet.Clear();
+
         }
 
         //private void FaltRensaValideringsFel()
