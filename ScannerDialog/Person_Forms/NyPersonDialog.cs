@@ -47,11 +47,7 @@ namespace ScannerDialog
 
         private void NyPersonDialog_Load(object sender, EventArgs e)
         {
-            Installningar ins = Installningar.Hamta();
-            cbTillhorighet.DataSource = ins.Tillhorigheter;
-            if (cbTillhorighet.Items.Count > 0)
-                cbTillhorighet.SelectedIndex = 0;
-
+            LaddaSnabbVal();
             VisaValideringsFel();
         }
 
@@ -84,7 +80,6 @@ namespace ScannerDialog
             VisaValideringsFel();
         }
 
-        #region Metoder
         private Person FaltToPerson()
         {
             string transformedPersNr = string.Empty;
@@ -144,11 +139,23 @@ namespace ScannerDialog
 
         }
 
+        private void LaddaSnabbVal()
+        {
+            Installningar ins = Installningar.Hamta();
+            cbTillhorighet.DataSource = ins.Tillhorigheter;
+            if (cbTillhorighet.Items.Count > 0)
+                cbTillhorighet.SelectedIndex = 0;
+        }
+
         //private void FaltRensaValideringsFel()
         //{
         //    errorFornamn.Clear();
         //    errorEfternamn.Clear();
         //}
-        #endregion
+
+        private void gbFalt_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

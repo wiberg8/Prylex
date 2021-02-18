@@ -174,7 +174,23 @@ namespace ScannerDialog
 
         private void cmdEdit_Click(object sender, EventArgs e)
         {
-
+            using (var updateraPerson = new UpdateraPersonDialog(this.nuvarandePerson))
+            {
+                updateraPerson.ShowDialog();
+                if (updateraPerson.Result != null)
+                {
+                    using (DataAccess dataAccess = new DataAccess())
+                    {
+                        dataAccess.UpdateraPerson(updateraPerson.Result);
+                        Person personFromDB = dataAccess.HamtaPersonFranId(updateraPerson.Result.Id);
+                        if (personFromDB != null)
+                        {
+                            this.nuvarandePerson = personFromDB;
+                            FyllFalt(this.nuvarandePerson);
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -269,7 +269,7 @@ namespace PrylanLibary
 
             if (DBHandler.DBDT.Rows.Count > 0)
             {
-                var R = DBHandler.DBDT.Rows[0];
+                DataRow R = DBHandler.DBDT.Rows[0];
                 try
                 {
                     Person p = new Person(int.Parse(R["Id"].ToString()))

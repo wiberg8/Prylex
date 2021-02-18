@@ -74,16 +74,16 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="HanteraArtikelDialog.cs">
+    <Compile Include="Artikel_Forms\HanteraArtikelDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HanteraArtikelDialog.Designer.cs">
+    <Compile Include="Artikel_Forms\HanteraArtikelDialog.Designer.cs">
       <DependentUpon>HanteraArtikelDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="HanteraPersonDialog.cs">
+    <Compile Include="Person_Forms\HanteraPersonDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HanteraPersonDialog.Designer.cs">
+    <Compile Include="Person_Forms\HanteraPersonDialog.Designer.cs">
       <DependentUpon>HanteraPersonDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="InstallningarDialog.cs">
@@ -92,16 +92,16 @@
     <Compile Include="InstallningarDialog.Designer.cs">
       <DependentUpon>InstallningarDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="NyArtikelDialog.cs">
+    <Compile Include="Artikel_Forms\NyArtikelDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NyArtikelDialog.Designer.cs">
+    <Compile Include="Artikel_Forms\NyArtikelDialog.Designer.cs">
       <DependentUpon>NyArtikelDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="NyPersonDialog.cs">
+    <Compile Include="Person_Forms\NyPersonDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NyPersonDialog.Designer.cs">
+    <Compile Include="Person_Forms\NyPersonDialog.Designer.cs">
       <DependentUpon>NyPersonDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -112,46 +112,46 @@
     <Compile Include="InputBox.Designer.cs">
       <DependentUpon>InputBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateraArtikelDialog.cs">
+    <Compile Include="Artikel_Forms\UpdateraArtikelDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateraArtikelDialog.Designer.cs">
+    <Compile Include="Artikel_Forms\UpdateraArtikelDialog.Designer.cs">
       <DependentUpon>UpdateraArtikelDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateraPersonDialog.cs">
+    <Compile Include="Person_Forms\UpdateraPersonDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateraPersonDialog.Designer.cs">
+    <Compile Include="Person_Forms\UpdateraPersonDialog.Designer.cs">
       <DependentUpon>UpdateraPersonDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="ValjArtikelDialog.cs">
+    <Compile Include="Artikel_Forms\ValjArtikelDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ValjArtikelDialog.Designer.cs">
+    <Compile Include="Artikel_Forms\ValjArtikelDialog.Designer.cs">
       <DependentUpon>ValjArtikelDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="ValjPersonDialog.cs">
+    <Compile Include="Person_Forms\ValjPersonDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ValjPersonDialog.Designer.cs">
+    <Compile Include="Person_Forms\ValjPersonDialog.Designer.cs">
       <DependentUpon>ValjPersonDialog.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HanteraArtikelDialog.resx">
+    <EmbeddedResource Include="Artikel_Forms\HanteraArtikelDialog.resx">
       <DependentUpon>HanteraArtikelDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HanteraPersonDialog.resx">
+    <EmbeddedResource Include="Person_Forms\HanteraPersonDialog.resx">
       <DependentUpon>HanteraPersonDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InstallningarDialog.resx">
       <DependentUpon>InstallningarDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NyArtikelDialog.resx">
+    <EmbeddedResource Include="Artikel_Forms\NyArtikelDialog.resx">
       <DependentUpon>NyArtikelDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NyPersonDialog.resx">
+    <EmbeddedResource Include="Person_Forms\NyPersonDialog.resx">
       <DependentUpon>NyPersonDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -166,16 +166,16 @@
     <EmbeddedResource Include="InputBox.resx">
       <DependentUpon>InputBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateraArtikelDialog.resx">
+    <EmbeddedResource Include="Artikel_Forms\UpdateraArtikelDialog.resx">
       <DependentUpon>UpdateraArtikelDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateraPersonDialog.resx">
+    <EmbeddedResource Include="Person_Forms\UpdateraPersonDialog.resx">
       <DependentUpon>UpdateraPersonDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ValjArtikelDialog.resx">
+    <EmbeddedResource Include="Artikel_Forms\ValjArtikelDialog.resx">
       <DependentUpon>ValjArtikelDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ValjPersonDialog.resx">
+    <EmbeddedResource Include="Person_Forms\ValjPersonDialog.resx">
       <DependentUpon>ValjPersonDialog.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -199,6 +199,7 @@
       <Name>PrylanLibary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

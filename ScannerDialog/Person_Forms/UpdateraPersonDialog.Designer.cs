@@ -1,6 +1,6 @@
 ﻿namespace ScannerDialog
 {
-    partial class NyPersonDialog
+    partial class UpdateraPersonDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -29,61 +29,72 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.errorFornamn = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorEfternamn = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorTillhorighet = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbFalt = new System.Windows.Forms.GroupBox();
             this.cmdAvbryt = new System.Windows.Forms.Button();
             this.txtSign = new System.Windows.Forms.TextBox();
             this.cmdSpara = new System.Windows.Forms.Button();
             this.laSign = new System.Windows.Forms.Label();
-            this.txtPersNr = new System.Windows.Forms.MaskedTextBox();
             this.txtTelefon = new System.Windows.Forms.TextBox();
             this.laTelefon = new System.Windows.Forms.Label();
             this.txtEpost = new System.Windows.Forms.TextBox();
             this.laEpost = new System.Windows.Forms.Label();
-            this.gbSnabbVal = new System.Windows.Forms.GroupBox();
             this.cbTillhorighet = new System.Windows.Forms.ComboBox();
             this.laTillhorighet = new System.Windows.Forms.Label();
             this.txtEfternamn = new System.Windows.Forms.TextBox();
             this.laEfternamn = new System.Windows.Forms.Label();
-            this.laPersNr = new System.Windows.Forms.Label();
             this.txtOvrigt = new System.Windows.Forms.TextBox();
             this.laOvrigt = new System.Windows.Forms.Label();
             this.txtFornamn = new System.Windows.Forms.TextBox();
             this.laFornamn = new System.Windows.Forms.Label();
-            this.errorFornamn = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorEfternamn = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorPersNr = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorTillhorighet = new System.Windows.Forms.ErrorProvider(this.components);
-            this.gbFalt.SuspendLayout();
-            this.gbSnabbVal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorFornamn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorEfternamn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorPersNr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorTillhorighet)).BeginInit();
+            this.gbFalt.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // errorFornamn
+            // 
+            this.errorFornamn.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorFornamn.ContainerControl = this;
+            this.errorFornamn.RightToLeft = true;
+            // 
+            // errorEfternamn
+            // 
+            this.errorEfternamn.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorEfternamn.ContainerControl = this;
+            this.errorEfternamn.RightToLeft = true;
+            // 
+            // errorTillhorighet
+            // 
+            this.errorTillhorighet.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorTillhorighet.ContainerControl = this;
+            this.errorTillhorighet.RightToLeft = true;
             // 
             // gbFalt
             // 
+            this.gbFalt.Controls.Add(this.cbTillhorighet);
+            this.gbFalt.Controls.Add(this.laTillhorighet);
             this.gbFalt.Controls.Add(this.cmdAvbryt);
             this.gbFalt.Controls.Add(this.txtSign);
             this.gbFalt.Controls.Add(this.cmdSpara);
             this.gbFalt.Controls.Add(this.laSign);
-            this.gbFalt.Controls.Add(this.txtPersNr);
             this.gbFalt.Controls.Add(this.txtTelefon);
             this.gbFalt.Controls.Add(this.laTelefon);
             this.gbFalt.Controls.Add(this.txtEpost);
             this.gbFalt.Controls.Add(this.laEpost);
-            this.gbFalt.Controls.Add(this.gbSnabbVal);
             this.gbFalt.Controls.Add(this.txtEfternamn);
             this.gbFalt.Controls.Add(this.laEfternamn);
-            this.gbFalt.Controls.Add(this.laPersNr);
             this.gbFalt.Controls.Add(this.txtOvrigt);
             this.gbFalt.Controls.Add(this.laOvrigt);
             this.gbFalt.Controls.Add(this.txtFornamn);
             this.gbFalt.Controls.Add(this.laFornamn);
-            this.gbFalt.Location = new System.Drawing.Point(12, 12);
+            this.gbFalt.Location = new System.Drawing.Point(8, 3);
             this.gbFalt.Name = "gbFalt";
             this.gbFalt.Size = new System.Drawing.Size(475, 239);
-            this.gbFalt.TabIndex = 0;
+            this.gbFalt.TabIndex = 1;
             this.gbFalt.TabStop = false;
             this.gbFalt.Text = "Info";
             // 
@@ -96,7 +107,6 @@
             this.cmdAvbryt.TabIndex = 8;
             this.cmdAvbryt.Text = "Avbryt";
             this.cmdAvbryt.UseVisualStyleBackColor = true;
-            this.cmdAvbryt.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
             // txtSign
             // 
@@ -127,15 +137,6 @@
             this.laSign.TabIndex = 10;
             this.laSign.Text = "Signatur:";
             // 
-            // txtPersNr
-            // 
-            this.txtPersNr.Culture = new System.Globalization.CultureInfo("");
-            this.txtPersNr.Location = new System.Drawing.Point(16, 121);
-            this.txtPersNr.Mask = "########-####";
-            this.txtPersNr.Name = "txtPersNr";
-            this.txtPersNr.Size = new System.Drawing.Size(90, 20);
-            this.txtPersNr.TabIndex = 2;
-            // 
             // txtTelefon
             // 
             this.txtTelefon.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -144,7 +145,6 @@
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(213, 20);
             this.txtTelefon.TabIndex = 6;
-            this.txtTelefon.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
             // 
             // laTelefon
             // 
@@ -154,7 +154,6 @@
             this.laTelefon.Size = new System.Drawing.Size(46, 13);
             this.laTelefon.TabIndex = 3;
             this.laTelefon.Text = "Telefon:";
-            this.laTelefon.Click += new System.EventHandler(this.laPhone_Click);
             // 
             // txtEpost
             // 
@@ -174,30 +173,19 @@
             this.laEpost.TabIndex = 4;
             this.laEpost.Text = "E-post:";
             // 
-            // gbSnabbVal
-            // 
-            this.gbSnabbVal.Controls.Add(this.cbTillhorighet);
-            this.gbSnabbVal.Controls.Add(this.laTillhorighet);
-            this.gbSnabbVal.Location = new System.Drawing.Point(233, 108);
-            this.gbSnabbVal.Name = "gbSnabbVal";
-            this.gbSnabbVal.Size = new System.Drawing.Size(224, 72);
-            this.gbSnabbVal.TabIndex = 8;
-            this.gbSnabbVal.TabStop = false;
-            this.gbSnabbVal.Text = "Snabb val ";
-            // 
             // cbTillhorighet
             // 
-            this.cbTillhorighet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTillhorighet.FormattingEnabled = true;
-            this.cbTillhorighet.Location = new System.Drawing.Point(15, 36);
+            this.cbTillhorighet.Location = new System.Drawing.Point(234, 121);
             this.cbTillhorighet.Name = "cbTillhorighet";
-            this.cbTillhorighet.Size = new System.Drawing.Size(202, 21);
+            this.cbTillhorighet.Size = new System.Drawing.Size(151, 21);
             this.cbTillhorighet.TabIndex = 8;
+            this.cbTillhorighet.TextChanged += new System.EventHandler(this.cbTillhorighet_TextChanged);
             // 
             // laTillhorighet
             // 
             this.laTillhorighet.AutoSize = true;
-            this.laTillhorighet.Location = new System.Drawing.Point(12, 20);
+            this.laTillhorighet.Location = new System.Drawing.Point(231, 105);
             this.laTillhorighet.Name = "laTillhorighet";
             this.laTillhorighet.Size = new System.Drawing.Size(61, 13);
             this.laTillhorighet.TabIndex = 0;
@@ -221,15 +209,6 @@
             this.laEfternamn.Size = new System.Drawing.Size(58, 13);
             this.laEfternamn.TabIndex = 1;
             this.laEfternamn.Text = "Efternamn:";
-            // 
-            // laPersNr
-            // 
-            this.laPersNr.AutoSize = true;
-            this.laPersNr.Location = new System.Drawing.Point(13, 105);
-            this.laPersNr.Name = "laPersNr";
-            this.laPersNr.Size = new System.Drawing.Size(42, 13);
-            this.laPersNr.TabIndex = 2;
-            this.laPersNr.Text = "PersNr:";
             // 
             // txtOvrigt
             // 
@@ -269,81 +248,46 @@
             this.laFornamn.TabIndex = 0;
             this.laFornamn.Text = "Förnamn:";
             // 
-            // errorFornamn
-            // 
-            this.errorFornamn.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorFornamn.ContainerControl = this;
-            this.errorFornamn.RightToLeft = true;
-            // 
-            // errorEfternamn
-            // 
-            this.errorEfternamn.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorEfternamn.ContainerControl = this;
-            this.errorEfternamn.RightToLeft = true;
-            // 
-            // errorPersNr
-            // 
-            this.errorPersNr.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorPersNr.ContainerControl = this;
-            this.errorPersNr.RightToLeft = true;
-            // 
-            // errorTillhorighet
-            // 
-            this.errorTillhorighet.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorTillhorighet.ContainerControl = this;
-            this.errorTillhorighet.RightToLeft = true;
-            // 
-            // NyPersonDialog
+            // UpdateraPersonDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.cmdAvbryt;
-            this.ClientSize = new System.Drawing.Size(498, 262);
+            this.ClientSize = new System.Drawing.Size(491, 244);
             this.Controls.Add(this.gbFalt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "NyPersonDialog";
-            this.ShowIcon = false;
+            this.Name = "UpdateraPersonDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Load += new System.EventHandler(this.NyPersonDialog_Load);
-            this.gbFalt.ResumeLayout(false);
-            this.gbFalt.PerformLayout();
-            this.gbSnabbVal.ResumeLayout(false);
-            this.gbSnabbVal.PerformLayout();
+            this.Load += new System.EventHandler(this.UpdateraPersonDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorFornamn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorEfternamn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorPersNr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorTillhorighet)).EndInit();
+            this.gbFalt.ResumeLayout(false);
+            this.gbFalt.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
+        private System.Windows.Forms.ErrorProvider errorFornamn;
+        private System.Windows.Forms.ErrorProvider errorEfternamn;
+        private System.Windows.Forms.ErrorProvider errorTillhorighet;
         private System.Windows.Forms.GroupBox gbFalt;
+        private System.Windows.Forms.Button cmdAvbryt;
+        private System.Windows.Forms.TextBox txtSign;
+        private System.Windows.Forms.Button cmdSpara;
+        private System.Windows.Forms.Label laSign;
+        private System.Windows.Forms.TextBox txtTelefon;
+        private System.Windows.Forms.Label laTelefon;
+        private System.Windows.Forms.TextBox txtEpost;
+        private System.Windows.Forms.Label laEpost;
+        private System.Windows.Forms.ComboBox cbTillhorighet;
+        private System.Windows.Forms.Label laTillhorighet;
         private System.Windows.Forms.TextBox txtEfternamn;
         private System.Windows.Forms.Label laEfternamn;
         private System.Windows.Forms.TextBox txtOvrigt;
         private System.Windows.Forms.Label laOvrigt;
-        private System.Windows.Forms.TextBox txtTelefon;
         private System.Windows.Forms.TextBox txtFornamn;
-        private System.Windows.Forms.Label laPersNr;
-        private System.Windows.Forms.Label laTelefon;
         private System.Windows.Forms.Label laFornamn;
-        private System.Windows.Forms.GroupBox gbSnabbVal;
-        private System.Windows.Forms.ComboBox cbTillhorighet;
-        private System.Windows.Forms.Label laTillhorighet;
-        private System.Windows.Forms.TextBox txtEpost;
-        private System.Windows.Forms.Label laEpost;
-        private System.Windows.Forms.Button cmdAvbryt;
-        private System.Windows.Forms.Button cmdSpara;
-        private System.Windows.Forms.MaskedTextBox txtPersNr;
-        private System.Windows.Forms.TextBox txtSign;
-        private System.Windows.Forms.Label laSign;
-        private System.Windows.Forms.ErrorProvider errorFornamn;
-        private System.Windows.Forms.ErrorProvider errorEfternamn;
-        private System.Windows.Forms.ErrorProvider errorPersNr;
-        private System.Windows.Forms.ErrorProvider errorTillhorighet;
     }
 }

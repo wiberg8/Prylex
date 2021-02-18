@@ -28,6 +28,23 @@ namespace PrylanLibary.Models
         public string Ovrigt { get; set; }
         public string Tillhorighet { get; set; }
 
+        public Person Copy()
+        {
+            Person person = new Person()
+            {
+                Id = this.Id,
+                Fornamn = this.Fornamn,
+                Efternamn = this.Efternamn,
+                PersNr = this.PersNr,
+                Sign = this.Sign,
+                Epost = this.Epost,
+                Telefon = this.Telefon,
+                Ovrigt = this.Ovrigt,
+                Tillhorighet = this.Tillhorighet
+            };
+            return person;
+        }
+
         public string GetNamn()
         {
             return this.Fornamn + " " + this.Efternamn;
