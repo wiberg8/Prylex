@@ -52,6 +52,7 @@
             this.cmdSpara = new System.Windows.Forms.Button();
             this.cmdAvbryt = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.checkOsFritext = new System.Windows.Forms.CheckBox();
             this.gbSnabbVal.SuspendLayout();
             this.gbFalt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -77,6 +78,7 @@
             // 
             // gbSnabbVal
             // 
+            this.gbSnabbVal.Controls.Add(this.checkOsFritext);
             this.gbSnabbVal.Controls.Add(this.cbOS);
             this.gbSnabbVal.Controls.Add(this.laOS);
             this.gbSnabbVal.Controls.Add(this.dtpInkop);
@@ -295,6 +297,19 @@
             this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider.ContainerControl = this;
             // 
+            // checkOsFritext
+            // 
+            this.checkOsFritext.AutoSize = true;
+            this.checkOsFritext.Location = new System.Drawing.Point(162, 60);
+            this.checkOsFritext.Name = "checkOsFritext";
+            this.checkOsFritext.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkOsFritext.Size = new System.Drawing.Size(54, 17);
+            this.checkOsFritext.TabIndex = 4;
+            this.checkOsFritext.Text = "Fritext";
+            this.checkOsFritext.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.checkOsFritext.UseVisualStyleBackColor = true;
+            this.checkOsFritext.CheckedChanged += new System.EventHandler(this.checkOsFritext_CheckedChanged);
+            // 
             // NyArtikelDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -346,5 +361,6 @@
         private System.Windows.Forms.Label laInkop;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkOsFritext;
     }
 }

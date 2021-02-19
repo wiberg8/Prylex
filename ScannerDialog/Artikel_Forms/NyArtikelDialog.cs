@@ -204,6 +204,12 @@ namespace ScannerDialog
            
         }
 
-     
+        private void checkOsFritext_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkOsFritext.Checked)
+                cbOS.DropDownStyle = ComboBoxStyle.DropDown;
+            else
+                cbOS.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
     }
 }

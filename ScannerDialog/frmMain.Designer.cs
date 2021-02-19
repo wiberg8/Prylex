@@ -46,6 +46,7 @@
             this.tspArtikel = new System.Windows.Forms.ToolStripDropDownButton();
             this.tspArtikelNy = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.cmdScanLabel = new System.Windows.Forms.Button();
             this.gbSearch.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -210,11 +211,22 @@
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // cmdScanLabel
+            // 
+            this.cmdScanLabel.Location = new System.Drawing.Point(367, 28);
+            this.cmdScanLabel.Name = "cmdScanLabel";
+            this.cmdScanLabel.Size = new System.Drawing.Size(337, 82);
+            this.cmdScanLabel.TabIndex = 11;
+            this.cmdScanLabel.Text = "Skanna ettiket";
+            this.cmdScanLabel.UseVisualStyleBackColor = true;
+            this.cmdScanLabel.Click += new System.EventHandler(this.cmdScanLabel_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(829, 494);
+            this.Controls.Add(this.cmdScanLabel);
             this.Controls.Add(this.gbSearch);
             this.Controls.Add(this.toolStrip1);
             this.MaximizeBox = false;
@@ -249,6 +261,7 @@
         private System.Windows.Forms.ToolStripMenuItem tspArtikelNy;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.Button cmdSokVisaAlla;
+        private System.Windows.Forms.Button cmdScanLabel;
     }
 }
 
