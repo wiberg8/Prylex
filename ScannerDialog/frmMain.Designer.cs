@@ -46,9 +46,6 @@
             this.tspArtikel = new System.Windows.Forms.ToolStripDropDownButton();
             this.tspArtikelNy = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.txtNuvarandeDb = new System.Windows.Forms.TextBox();
-            this.laNuvarandeDb = new System.Windows.Forms.Label();
-            this.cmdTesting = new System.Windows.Forms.Button();
             this.gbSearch.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -213,44 +210,11 @@
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // txtNuvarandeDb
-            // 
-            this.txtNuvarandeDb.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.txtNuvarandeDb.HideSelection = false;
-            this.txtNuvarandeDb.Location = new System.Drawing.Point(388, 53);
-            this.txtNuvarandeDb.Name = "txtNuvarandeDb";
-            this.txtNuvarandeDb.ReadOnly = true;
-            this.txtNuvarandeDb.Size = new System.Drawing.Size(285, 20);
-            this.txtNuvarandeDb.TabIndex = 12;
-            this.txtNuvarandeDb.TabStop = false;
-            // 
-            // laNuvarandeDb
-            // 
-            this.laNuvarandeDb.AutoSize = true;
-            this.laNuvarandeDb.Location = new System.Drawing.Point(385, 37);
-            this.laNuvarandeDb.Name = "laNuvarandeDb";
-            this.laNuvarandeDb.Size = new System.Drawing.Size(104, 13);
-            this.laNuvarandeDb.TabIndex = 13;
-            this.laNuvarandeDb.Text = "Nuvarande databas:";
-            // 
-            // cmdTesting
-            // 
-            this.cmdTesting.Location = new System.Drawing.Point(388, 78);
-            this.cmdTesting.Name = "cmdTesting";
-            this.cmdTesting.Size = new System.Drawing.Size(75, 23);
-            this.cmdTesting.TabIndex = 15;
-            this.cmdTesting.Text = "Testing";
-            this.cmdTesting.UseVisualStyleBackColor = true;
-            this.cmdTesting.Click += new System.EventHandler(this.cmdTesting_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(829, 494);
-            this.Controls.Add(this.cmdTesting);
-            this.Controls.Add(this.laNuvarandeDb);
-            this.Controls.Add(this.txtNuvarandeDb);
             this.Controls.Add(this.gbSearch);
             this.Controls.Add(this.toolStrip1);
             this.MaximizeBox = false;
@@ -284,9 +248,6 @@
         private System.Windows.Forms.ToolStripDropDownButton tspArtikel;
         private System.Windows.Forms.ToolStripMenuItem tspArtikelNy;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.TextBox txtNuvarandeDb;
-        private System.Windows.Forms.Label laNuvarandeDb;
-        private System.Windows.Forms.Button cmdTesting;
         private System.Windows.Forms.Button cmdSokVisaAlla;
     }
 }

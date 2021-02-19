@@ -169,6 +169,10 @@ namespace ScannerDialog
             {
                 Artikel selectedArtikel = (Artikel)lbRegistreradeArtiklar.SelectedItem;
                 Printing.PrintLabel(selectedArtikel.DatorNamn, nuvarandePerson.GetNamn(), selectedArtikel.SerieNr, nuvarandePerson.Tillhorighet);
+                if (!string.IsNullOrEmpty(Printing.exception))
+                {
+                    MessageBox.Show(Printing.exception);
+                }
             }
         }
 
