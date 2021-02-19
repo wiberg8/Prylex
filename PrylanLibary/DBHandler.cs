@@ -11,7 +11,6 @@ namespace PrylanLibary
 {
     public static class DBHandler
     {
-        #region Instans variablar
         //private
         private static SQLiteConnection DBConn;
 
@@ -27,9 +26,7 @@ namespace PrylanLibary
         public static int RecordCount;
         public static string Exception;
         public static EventHandler ConnectionChanged { get; set; }
-        #endregion
         
-        #region Metoder
         public static void SetConnection(string filePath)
         {
             DBConn = new SQLiteConnection();
@@ -95,9 +92,7 @@ namespace PrylanLibary
             SQLiteParameter NewParam = new SQLiteParameter(Name, Value);
             Params.Add(NewParam);
         }
-        #endregion
 
-        #region Database creation
         private static string artiklarQuery = "CREATE TABLE IF NOT EXISTS \"artiklar\" (\"Id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \"Besk\" TEXT, \"Stoldtag\", \"Datornamn\" TEXT, \"SerieNr\" TEXT, \"Mac\" TEXT, \"Os\" TEXT, \"Inkop\" TEXT, \"AndvandInkop\" INTEGER NOT NULL DEFAULT 0, \"Ovrigt\" TEXT, \"Status\" INTEGER NOT NULL DEFAULT 0, PersId INTEGER)";
         private static string personerQuery = "CREATE TABLE IF NOT EXISTS \"personer\" (\"Id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \"Fornamn\" TEXT, \"Efternamn\", \"PersNr\" TEXT, \"Sign\" TEXT, \"Epost\" TEXT, \"Telefon\" TEXT, \"Tillhorighet\" TEXT, \"Ovrigt\" TEXT)";
         public static bool CreateFile(string filNamn)
@@ -152,6 +147,5 @@ namespace PrylanLibary
         //        return null;
         //    }
         //}
-        #endregion
     }
 }
