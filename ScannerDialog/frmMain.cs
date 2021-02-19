@@ -31,7 +31,7 @@ namespace ScannerDialog
         private void Installningar_Change(object sender, EventArgs e)
         {
             var ins = (Installningar)sender;
-            UpdateraForhandstitt(ins.Databas);
+      
         }
 
         private void Artiklar_Change(object sender, EventArgs e)
@@ -42,12 +42,6 @@ namespace ScannerDialog
         private void tspScan_Click(object sender, EventArgs e)
         {
             
-        }
-
-        //Förhandstitt
-        private void UpdateraForhandstitt(string database)
-        {
-            txtNuvarandeDb.Text = database;
         }
 
         private void tspScan_Click_1(object sender, EventArgs e)
@@ -91,8 +85,6 @@ namespace ScannerDialog
         private void frmMain_Load(object sender, EventArgs e)
         {
             Installningar ins = Installningar.Hamta();
-            UpdateraForhandstitt(ins.Databas);
-
         }
 
         private void tspArkivInstallningar_Click(object sender, EventArgs e)
@@ -211,6 +203,25 @@ namespace ScannerDialog
                 }
             }
 
+        }
+
+        private void cmdScanLabel_Click(object sender, EventArgs e)
+        {
+            InputBox inputBox = new InputBox();
+            inputBox.ShowDialog();
+            if (!string.IsNullOrWhiteSpace(inputBox.Input))
+            {
+                Artikel artikel;
+                using (DataAccess dataAccess = new DataAccess())
+                {
+                    artikel = dataAccess.HamtaArtikelFranSerieNr(inputBox.Input);
+                }
+                if (artikel != null)
+                {
+                    var artikelDialog = new HanteraArtikelDialog(artikel);
+                    artikelDialog.ShowDialog();
+                }
+            }
         }
 
         //private void dgvArtiklar_MouseDoubleClick(object sender, MouseEventArgs e)

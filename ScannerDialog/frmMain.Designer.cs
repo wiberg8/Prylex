@@ -46,11 +46,13 @@
             this.tspArtikel = new System.Windows.Forms.ToolStripDropDownButton();
             this.tspArtikelNy = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.txtNuvarandeDb = new System.Windows.Forms.TextBox();
-            this.laNuvarandeDb = new System.Windows.Forms.Label();
-            this.cmdTesting = new System.Windows.Forms.Button();
+            this.cmdScanLabel = new System.Windows.Forms.Button();
+            this.tabPersoner = new System.Windows.Forms.TabControl();
+            this.tabArtiklar = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.gbSearch.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.tabPersoner.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbSearch
@@ -209,48 +211,57 @@
             this.tspArtikel});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(829, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(969, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // txtNuvarandeDb
+            // cmdScanLabel
             // 
-            this.txtNuvarandeDb.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.txtNuvarandeDb.HideSelection = false;
-            this.txtNuvarandeDb.Location = new System.Drawing.Point(388, 53);
-            this.txtNuvarandeDb.Name = "txtNuvarandeDb";
-            this.txtNuvarandeDb.ReadOnly = true;
-            this.txtNuvarandeDb.Size = new System.Drawing.Size(285, 20);
-            this.txtNuvarandeDb.TabIndex = 12;
-            this.txtNuvarandeDb.TabStop = false;
+            this.cmdScanLabel.Location = new System.Drawing.Point(367, 28);
+            this.cmdScanLabel.Name = "cmdScanLabel";
+            this.cmdScanLabel.Size = new System.Drawing.Size(337, 82);
+            this.cmdScanLabel.TabIndex = 11;
+            this.cmdScanLabel.Text = "Skanna ettiket";
+            this.cmdScanLabel.UseVisualStyleBackColor = true;
+            this.cmdScanLabel.Click += new System.EventHandler(this.cmdScanLabel_Click);
             // 
-            // laNuvarandeDb
+            // tabPersoner
             // 
-            this.laNuvarandeDb.AutoSize = true;
-            this.laNuvarandeDb.Location = new System.Drawing.Point(385, 37);
-            this.laNuvarandeDb.Name = "laNuvarandeDb";
-            this.laNuvarandeDb.Size = new System.Drawing.Size(104, 13);
-            this.laNuvarandeDb.TabIndex = 13;
-            this.laNuvarandeDb.Text = "Nuvarande databas:";
+            this.tabPersoner.Controls.Add(this.tabArtiklar);
+            this.tabPersoner.Controls.Add(this.tabPage2);
+            this.tabPersoner.Location = new System.Drawing.Point(12, 116);
+            this.tabPersoner.Name = "tabPersoner";
+            this.tabPersoner.SelectedIndex = 0;
+            this.tabPersoner.Size = new System.Drawing.Size(947, 421);
+            this.tabPersoner.TabIndex = 12;
             // 
-            // cmdTesting
+            // tabArtiklar
             // 
-            this.cmdTesting.Location = new System.Drawing.Point(388, 78);
-            this.cmdTesting.Name = "cmdTesting";
-            this.cmdTesting.Size = new System.Drawing.Size(75, 23);
-            this.cmdTesting.TabIndex = 15;
-            this.cmdTesting.Text = "Testing";
-            this.cmdTesting.UseVisualStyleBackColor = true;
-            this.cmdTesting.Click += new System.EventHandler(this.cmdTesting_Click);
+            this.tabArtiklar.Location = new System.Drawing.Point(4, 22);
+            this.tabArtiklar.Name = "tabArtiklar";
+            this.tabArtiklar.Padding = new System.Windows.Forms.Padding(3);
+            this.tabArtiklar.Size = new System.Drawing.Size(939, 395);
+            this.tabArtiklar.TabIndex = 0;
+            this.tabArtiklar.Text = "Artiklar";
+            this.tabArtiklar.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(939, 395);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Personer";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(829, 494);
-            this.Controls.Add(this.cmdTesting);
-            this.Controls.Add(this.laNuvarandeDb);
-            this.Controls.Add(this.txtNuvarandeDb);
+            this.ClientSize = new System.Drawing.Size(969, 543);
+            this.Controls.Add(this.tabPersoner);
+            this.Controls.Add(this.cmdScanLabel);
             this.Controls.Add(this.gbSearch);
             this.Controls.Add(this.toolStrip1);
             this.MaximizeBox = false;
@@ -262,6 +273,7 @@
             this.gbSearch.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.tabPersoner.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,10 +296,11 @@
         private System.Windows.Forms.ToolStripDropDownButton tspArtikel;
         private System.Windows.Forms.ToolStripMenuItem tspArtikelNy;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.TextBox txtNuvarandeDb;
-        private System.Windows.Forms.Label laNuvarandeDb;
-        private System.Windows.Forms.Button cmdTesting;
         private System.Windows.Forms.Button cmdSokVisaAlla;
+        private System.Windows.Forms.Button cmdScanLabel;
+        private System.Windows.Forms.TabControl tabPersoner;
+        private System.Windows.Forms.TabPage tabArtiklar;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
 

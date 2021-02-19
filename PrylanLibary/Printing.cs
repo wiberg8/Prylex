@@ -9,6 +9,7 @@ namespace PrylanLibary
 {
     public static class Printing
     {
+        public static string exception;
         public static void PrintLabel(string datorNamn, string namn, string serieNr, string tillhorighet)
         {
             try
@@ -20,9 +21,9 @@ namespace PrylanLibary
                 label.SetObjectText("dynTillhorighet", tillhorighet);
                 label.Print("DYMO LabelWriter 450");
             }
-            catch
+            catch(Exception ex)
             {
-
+                exception = ex.Message;
             }
         }
     }

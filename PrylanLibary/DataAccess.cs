@@ -170,6 +170,42 @@ namespace PrylanLibary
             }
             return null;
         }
+        public Artikel HamtaArtikelFranSerieNr(string serieNr)
+        {
+            DBHandler.AddParam("@SerieNr", serieNr);
+            DBHandler.ExecQuery("SELECT * FROM artiklar WHERE SerieNr=@SerieNr");
+            if (DBHandler.DBDT is null)
+                return null;
+            if (DBHandler.DBDT.Rows.Count > 0)
+            {
+                var R = DBHandler.DBDT.Rows[0];
+                try
+                {
+                    Artikel a = new Artikel(int.Parse(R["Id"].ToString()))
+                    {
+                        Beskrivning = R["Besk"].ToString(),
+                        StoldTag = R["Stoldtag"].ToString(),
+                        DatorNamn = R["Datornamn"].ToString(),
+                        SerieNr = R["SerieNr"].ToString(),
+                        Mac = R["Mac"].ToString(),
+                        Os = R["Os"].ToString(),
+                        Inkop = R["Inkop"].ToString()
+                    };
+                    a.Ovrigt = R["Ovrigt"].ToString();
+                    a.Status = (Status)int.Parse(R["Status"].ToString());
+                    if (int.TryParse(R["PersId"].ToString(), out int parsedPersId))
+                    {
+                        a.PersId = parsedPersId;
+                    }
+                    return a;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+            return null;
+        }
         public void InfogaArtikel(Artikel artikel)
         {
             DBHandler.AddParam("@Besk", artikel.Beskrivning);
@@ -244,6 +280,7 @@ namespace PrylanLibary
             return personArtiklar;
         }
 
+
         public List<Person> HamtaPersoner()
         {
             var hamtadePersoner = new List<Person>();
@@ -303,7 +340,7 @@ namespace PrylanLibary
             DBHandler.AddParam("@Ovrigt", person.Ovrigt);
             DBHandler.AddParam("@Tillhorighet", person.Tillhorighet);
             DBHandler.ExecQuery("INSERT INTO personer (Fornamn,Efternamn,PersNr,Sign,Epost,Telefon,Ovrigt,Tillhorighet) VALUES (@Fornamn,@Efternamn,@PersNr,@Sign,@Epost,@Telefon,@Ovrigt,@Tillhorighet)");
-            if (PersonChange != null)
+            if (PersonChange != null) 
                 PersonChange.Invoke(person, new EventArgs());
         }
         public void UpdateraPerson(Person person)
