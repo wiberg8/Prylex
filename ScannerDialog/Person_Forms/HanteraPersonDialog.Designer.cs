@@ -52,6 +52,7 @@
             this.laEfternamn = new System.Windows.Forms.Label();
             this.lbRegistreradeArtiklar = new System.Windows.Forms.ListBox();
             this.gbRegistreradeArtiklar = new System.Windows.Forms.GroupBox();
+            this.cmdRegistreraSkanna = new System.Windows.Forms.Button();
             this.cmdSkrivUtEttiket = new System.Windows.Forms.Button();
             this.cmdRegistreraArtikel = new System.Windows.Forms.Button();
             this.cmdShowAllRegistrerade = new System.Windows.Forms.Button();
@@ -62,7 +63,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.cmdNyHandelse = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.cmdRegistreraSkanna = new System.Windows.Forms.Button();
+            this.cmdExporteraDatornamn = new System.Windows.Forms.Button();
             this.gbFalt.SuspendLayout();
             this.gbRegistreradeArtiklar.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -331,6 +332,16 @@
             this.gbRegistreradeArtiklar.TabStop = false;
             this.gbRegistreradeArtiklar.Text = "Registrerade artiklar";
             // 
+            // cmdRegistreraSkanna
+            // 
+            this.cmdRegistreraSkanna.Location = new System.Drawing.Point(23, 246);
+            this.cmdRegistreraSkanna.Name = "cmdRegistreraSkanna";
+            this.cmdRegistreraSkanna.Size = new System.Drawing.Size(133, 23);
+            this.cmdRegistreraSkanna.TabIndex = 21;
+            this.cmdRegistreraSkanna.Text = "Registrera (Skanna)";
+            this.cmdRegistreraSkanna.UseVisualStyleBackColor = true;
+            this.cmdRegistreraSkanna.Click += new System.EventHandler(this.cmdRegistreraSkanna_Click);
+            // 
             // cmdSkrivUtEttiket
             // 
             this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(301, 273);
@@ -418,21 +429,22 @@
             this.cmdNyHandelse.Text = "Ny ";
             this.cmdNyHandelse.UseVisualStyleBackColor = true;
             // 
-            // cmdRegistreraSkanna
+            // cmdExporteraDatornamn
             // 
-            this.cmdRegistreraSkanna.Location = new System.Drawing.Point(23, 246);
-            this.cmdRegistreraSkanna.Name = "cmdRegistreraSkanna";
-            this.cmdRegistreraSkanna.Size = new System.Drawing.Size(133, 23);
-            this.cmdRegistreraSkanna.TabIndex = 21;
-            this.cmdRegistreraSkanna.Text = "Registrera (Skanna)";
-            this.cmdRegistreraSkanna.UseVisualStyleBackColor = true;
-            this.cmdRegistreraSkanna.Click += new System.EventHandler(this.cmdRegistreraSkanna_Click);
+            this.cmdExporteraDatornamn.Location = new System.Drawing.Point(546, 397);
+            this.cmdExporteraDatornamn.Name = "cmdExporteraDatornamn";
+            this.cmdExporteraDatornamn.Size = new System.Drawing.Size(133, 23);
+            this.cmdExporteraDatornamn.TabIndex = 22;
+            this.cmdExporteraDatornamn.Text = "Exportera (Datornamn)";
+            this.cmdExporteraDatornamn.UseVisualStyleBackColor = true;
+            this.cmdExporteraDatornamn.Click += new System.EventHandler(this.cmdExporteraDatornamn_Click);
             // 
             // HanteraPersonDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(776, 570);
+            this.Controls.Add(this.cmdExporteraDatornamn);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbRegistreradeArtiklar);
             this.Controls.Add(this.gbFalt);
@@ -487,5 +499,6 @@
         private System.Windows.Forms.Button cmdDelete;
         private System.Windows.Forms.Button cmdSkrivUtEttiket;
         private System.Windows.Forms.Button cmdRegistreraSkanna;
+        private System.Windows.Forms.Button cmdExporteraDatornamn;
     }
 }

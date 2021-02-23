@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using PrylanLibary;
 using PrylanLibary.Models;
+using PrylanLibary.Enums;
 
 namespace ScannerDialog
 {
@@ -228,6 +229,21 @@ namespace ScannerDialog
                 }
             }
             
+        }
+
+        private void cmdExporteraDatornamn_Click(object sender, EventArgs e)
+        {
+            var x = new List<string>();
+            foreach (Artikel a in lbRegistreradeArtiklar.Items)
+            {
+                x.Add(a.DatorNamn);
+            }
+            string t = string.Empty;
+            foreach (string g in x)
+            {
+                t += g + "\n";
+            }
+            Clipboard.SetText(t);
         }
     }
 }

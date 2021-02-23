@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScannerDialog", "ScannerDia
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrylanLibary", "PrylanLibary\PrylanLibary.csproj", "{98EE3200-5845-4451-82B0-EDAB46BF51B9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{68FF3DC8-FC9E-4DCF-A411-3601DE2BC30C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{ABFE3125-359D-46BD-A1A2-CAF6818B4D76}"
 EndProject
 Global

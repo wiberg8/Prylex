@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PrylanLibary;
 using PrylanLibary.Models;
+using PrylanLibary.Enums;
 
 namespace ScannerDialog
 {
@@ -91,8 +92,7 @@ namespace ScannerDialog
         private void tspArkivInstallningar_Click(object sender, EventArgs e)
         {
             var dialog = new InstallningarDialog();
-            DialogResult result = dialog.ShowDialog();
-            
+            dialog.ShowDialog();
         }
  
         private void cmdSearch_Click(object sender, EventArgs e)
@@ -102,14 +102,12 @@ namespace ScannerDialog
                 if (tabArtiklarPersoner.SelectedTab == tabArtiklar)
                 {
                     List<Artikel> artiklar = dataAccess.HamtaSokArtiklar(txtSok.Text);
-                    dataAccess.Close();
                     FyllDataGrid(artiklar);
                 }
                     
                 if (tabArtiklarPersoner.SelectedTab == tabPersoner)
                 {
                     List<Person> personer = dataAccess.HamtaSokPersoner(txtSok.Text);
-                    dataAccess.Close();
                     FyllDataGrid(personer);
                 }
             }

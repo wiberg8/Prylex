@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using PrylanLibary.Enums;
 using PrylanLibary.Models;
 
 namespace PrylanLibary
@@ -372,6 +373,31 @@ namespace PrylanLibary
             DBHandler.ExecQuery("UPDATE artiklar SET PersId=NULL,Status=@Status WHERE PersId=@PersId");
         }
 
+        public void InfogaHandelse(Handelse handelse)
+        {
+            DBHandler.AddParam("@ArtikelId", handelse.ArtikelId);
+            DBHandler.AddParam("@PersId", handelse.PersId);
+            DBHandler.AddParam("@Typ", handelse.Typ);
+            DBHandler.AddParam("@FriText", handelse.FriText);
+            DBHandler.ExecQuery("INSERT INTO handelser (ArtikelId,PersId,Typ,FriText) VALUES (@ArtikelId,@PersId,@Typ,@FriText)");
+        }
+        public List<Handelse> HamtaArtikelHandelser(Artikel artikel)
+        {
+            List<Handelse> hamtadeHandelser = new List<Handelse>();
+            DBHandler.AddParam("@ArtikelId", artikel.Id);
+            DBHandler.ExecQuery("SELECT * FROM handesler WHERE ArtikelId=@ArtikelId ORDER BY Id");
+            FyllHandelseLista(hamtadeHandelser, DBHandler.DBDT);
+            return hamtadeHandelser;
+        }
+        public List<Handelse> HamtaPersonHandelser(Person person)
+        {
+            List<Handelse> hamtadeHandelser = new List<Handelse>();
+            DBHandler.AddParam("@PersId", person.Id);
+            DBHandler.ExecQuery("SELECT * FROM handesler WHERE PersId=@PersId ORDER BY Id");
+            FyllHandelseLista(hamtadeHandelser, DBHandler.DBDT);
+            return hamtadeHandelser;
+        }
+
         private void FyllPersonLista(List<Person> lista, DataTable dbdt)
         {
             if (dbdt is null)
@@ -427,7 +453,31 @@ namespace PrylanLibary
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+        private void FyllHandelseLista(List<Handelse> lista, DataTable dbdt)
+        {
+            if (dbdt is null)
+                return;
+            foreach (DataRow R in dbdt.Rows)
+            {
+                try
+                {
+                    Handelse handelse = new Handelse()
+                    {
+                        Id = int.Parse(R["Id"].ToString()),
+                        ArtikelId = int.Parse(R["ArtikelId"].ToString()),
+                        PersId = int.Parse(R["PersId"].ToString()),
+                        Typ = (HandelseTyp)int.Parse(R["Typ"].ToString()),
+                        FriText = R["FriText"].ToString(),
+                    };
+                    lista.Add(handelse);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
             }
         }

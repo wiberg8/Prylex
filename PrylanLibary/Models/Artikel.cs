@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using PrylanLibary.Enums;
+
 namespace PrylanLibary.Models
 {
     public class Artikel

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using PrylanLibary;
 using PrylanLibary.Models;
+using PrylanLibary.Enums;
 
 namespace ScannerDialog
 {

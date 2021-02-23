@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using PrylanLibary;
+using PrylanLibary.Enums;
 using PrylanLibary.Models;
 
 namespace ScannerDialog
@@ -153,6 +154,11 @@ namespace ScannerDialog
                 {
                     dataAccess.RegisterArtikelToPerson(dialog.ValdPerson, artikelAttEditera);
                     artikelAttEditera = dataAccess.HamtaArtikelFranId(artikelAttEditera.Id);
+                    if (artikelAttEditera != null )
+                    {
+                        Handelse handelse = new Handelse() { ArtikelId = artikelAttEditera.Id, Typ = HandelseTyp.REGISTRERING, PersId = artikelAttEditera.PersId };
+                        dataAccess.InfogaHandelse(handelse);
+                    }
                 }
                 SetArtikelEditStatus();
             }
@@ -166,6 +172,11 @@ namespace ScannerDialog
                 {
                     dataAccess.UnregisterArtikelFromPerson(artikelAttEditera);
                     artikelAttEditera = dataAccess.HamtaArtikelFranId(artikelAttEditera.Id);
+                    if (artikelAttEditera != null)
+                    {
+                        Handelse handelse = new Handelse() { ArtikelId = artikelAttEditera.Id, Typ = HandelseTyp.AVREGISTRERING, PersId = artikelAttEditera.PersId };
+                        dataAccess.InfogaHandelse(handelse);
+                    }
                 }
                 FyllFalt(artikelAttEditera);
                 SetArtikelEditStatus();

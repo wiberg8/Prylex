@@ -1,4 +1,4 @@
-﻿namespace PrylanLibary
+﻿namespace PrylanLibary.Enums
 {
     public enum Status
     {
