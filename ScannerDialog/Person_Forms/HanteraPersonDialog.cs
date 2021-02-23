@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 using PrylanLibary;
 using PrylanLibary.Models;
@@ -238,12 +239,24 @@ namespace ScannerDialog
             {
                 x.Add(a.DatorNamn);
             }
-            string t = string.Empty;
-            foreach (string g in x)
+            if(x.Count > 0)
             {
-                t += g + "\n";
+                string t = string.Empty;
+                foreach (string g in x)
+                {
+                    t += g + "\n";
+                }
+                SaveFileDialog fileDialog = new SaveFileDialog();
+                fileDialog.Filter = "Text file(*.txt)|*.txt";
+                fileDialog.DefaultExt = "txt";
+                fileDialog.AddExtension = true;
+                DialogResult dialogResult = fileDialog.ShowDialog();
+                if(dialogResult == DialogResult.OK && fileDialog.CheckPathExists && !fileDialog.CheckFileExists)
+                {
+                    File.WriteAllText(fileDialog.FileName, t);
+                }
             }
-            Clipboard.SetText(t);
+            
         }
     }
 }
