@@ -196,5 +196,38 @@ namespace ScannerDialog
                 }
             }
         }
+
+        private void cmdRegistreraSkanna_Click(object sender, EventArgs e)
+        {
+            InputBox inputBox = new InputBox() { PromptText = "Skanna Ettiket (SerieNr)" };
+            inputBox.ShowDialog();
+            if (!string.IsNullOrWhiteSpace(inputBox.Input))
+            {
+                Artikel artikel;
+                using (DataAccess dataAccess = new DataAccess())
+                {
+                    artikel = dataAccess.HamtaArtikelFranSerieNr(inputBox.Input);
+                }
+                if (artikel is null)
+                {
+                    MessageBox.Show("Inga träffar");
+                }
+                else if (artikel.Status == Status.UTE)
+                {
+                    MessageBox.Show("Artikeln är redan utlämnad");
+                }
+                else
+                {
+                    List<Artikel> registreradeArtiklar;
+                    using (DataAccess dataAccess = new DataAccess())
+                    {
+                        dataAccess.RegisterArtikelToPerson(nuvarandePerson, artikel);
+                        registreradeArtiklar = dataAccess.HamtaRegistreradeArtiklar(nuvarandePerson);
+                    }
+                    FyllRegistreradeArtiklar(registreradeArtiklar);
+                }
+            }
+            
+        }
     }
 }

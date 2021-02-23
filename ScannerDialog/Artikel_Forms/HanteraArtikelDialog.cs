@@ -242,6 +242,8 @@ namespace ScannerDialog
 
         private void cmdSkrivUtEttiket_Click(object sender, EventArgs e)
         {
+            if (artikelAttEditera is null || registreradPerson is null)
+                return;
             if (artikelAttEditera.Status == Status.UTE)
             {
                 Printing.PrintLabel(artikelAttEditera.DatorNamn, registreradPerson.GetNamn(), artikelAttEditera.SerieNr, registreradPerson.Tillhorighet);

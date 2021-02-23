@@ -52,6 +52,7 @@
             this.laEfternamn = new System.Windows.Forms.Label();
             this.lbRegistreradeArtiklar = new System.Windows.Forms.ListBox();
             this.gbRegistreradeArtiklar = new System.Windows.Forms.GroupBox();
+            this.cmdSkrivUtEttiket = new System.Windows.Forms.Button();
             this.cmdRegistreraArtikel = new System.Windows.Forms.Button();
             this.cmdShowAllRegistrerade = new System.Windows.Forms.Button();
             this.txtArtikelSok = new System.Windows.Forms.TextBox();
@@ -61,7 +62,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.cmdNyHandelse = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.cmdSkrivUtEttiket = new System.Windows.Forms.Button();
+            this.cmdRegistreraSkanna = new System.Windows.Forms.Button();
             this.gbFalt.SuspendLayout();
             this.gbRegistreradeArtiklar.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -315,6 +316,7 @@
             // 
             // gbRegistreradeArtiklar
             // 
+            this.gbRegistreradeArtiklar.Controls.Add(this.cmdRegistreraSkanna);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdSkrivUtEttiket);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdRegistreraArtikel);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdShowAllRegistrerade);
@@ -322,18 +324,28 @@
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdArtikelAvregistrera);
             this.gbRegistreradeArtiklar.Controls.Add(this.lbRegistreradeArtiklar);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdArtikelSok);
-            this.gbRegistreradeArtiklar.Location = new System.Drawing.Point(12, 271);
+            this.gbRegistreradeArtiklar.Location = new System.Drawing.Point(329, 12);
             this.gbRegistreradeArtiklar.Name = "gbRegistreradeArtiklar";
-            this.gbRegistreradeArtiklar.Size = new System.Drawing.Size(440, 281);
+            this.gbRegistreradeArtiklar.Size = new System.Drawing.Size(437, 302);
             this.gbRegistreradeArtiklar.TabIndex = 17;
             this.gbRegistreradeArtiklar.TabStop = false;
             this.gbRegistreradeArtiklar.Text = "Registrerade artiklar";
             // 
+            // cmdSkrivUtEttiket
+            // 
+            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(301, 273);
+            this.cmdSkrivUtEttiket.Name = "cmdSkrivUtEttiket";
+            this.cmdSkrivUtEttiket.Size = new System.Drawing.Size(117, 23);
+            this.cmdSkrivUtEttiket.TabIndex = 19;
+            this.cmdSkrivUtEttiket.Text = "Ettiket";
+            this.cmdSkrivUtEttiket.UseVisualStyleBackColor = true;
+            this.cmdSkrivUtEttiket.Click += new System.EventHandler(this.cmdSkrivUtEttiket_Click);
+            // 
             // cmdRegistreraArtikel
             // 
-            this.cmdRegistreraArtikel.Location = new System.Drawing.Point(23, 246);
+            this.cmdRegistreraArtikel.Location = new System.Drawing.Point(162, 246);
             this.cmdRegistreraArtikel.Name = "cmdRegistreraArtikel";
-            this.cmdRegistreraArtikel.Size = new System.Drawing.Size(94, 23);
+            this.cmdRegistreraArtikel.Size = new System.Drawing.Size(133, 23);
             this.cmdRegistreraArtikel.TabIndex = 20;
             this.cmdRegistreraArtikel.Text = "Registrera";
             this.cmdRegistreraArtikel.UseVisualStyleBackColor = true;
@@ -341,7 +353,7 @@
             // 
             // cmdShowAllRegistrerade
             // 
-            this.cmdShowAllRegistrerade.Location = new System.Drawing.Point(233, 246);
+            this.cmdShowAllRegistrerade.Location = new System.Drawing.Point(328, 26);
             this.cmdShowAllRegistrerade.Name = "cmdShowAllRegistrerade";
             this.cmdShowAllRegistrerade.Size = new System.Drawing.Size(90, 23);
             this.cmdShowAllRegistrerade.TabIndex = 19;
@@ -355,14 +367,14 @@
             this.txtArtikelSok.HideSelection = false;
             this.txtArtikelSok.Location = new System.Drawing.Point(23, 28);
             this.txtArtikelSok.Name = "txtArtikelSok";
-            this.txtArtikelSok.Size = new System.Drawing.Size(285, 20);
+            this.txtArtikelSok.Size = new System.Drawing.Size(210, 20);
             this.txtArtikelSok.TabIndex = 17;
             // 
             // cmdArtikelAvregistrera
             // 
-            this.cmdArtikelAvregistrera.Location = new System.Drawing.Point(123, 246);
+            this.cmdArtikelAvregistrera.Location = new System.Drawing.Point(301, 246);
             this.cmdArtikelAvregistrera.Name = "cmdArtikelAvregistrera";
-            this.cmdArtikelAvregistrera.Size = new System.Drawing.Size(104, 23);
+            this.cmdArtikelAvregistrera.Size = new System.Drawing.Size(117, 23);
             this.cmdArtikelAvregistrera.TabIndex = 17;
             this.cmdArtikelAvregistrera.Text = "Avregistrera";
             this.cmdArtikelAvregistrera.UseVisualStyleBackColor = true;
@@ -370,9 +382,9 @@
             // 
             // cmdArtikelSok
             // 
-            this.cmdArtikelSok.Location = new System.Drawing.Point(314, 26);
+            this.cmdArtikelSok.Location = new System.Drawing.Point(239, 26);
             this.cmdArtikelSok.Name = "cmdArtikelSok";
-            this.cmdArtikelSok.Size = new System.Drawing.Size(104, 23);
+            this.cmdArtikelSok.Size = new System.Drawing.Size(83, 23);
             this.cmdArtikelSok.TabIndex = 18;
             this.cmdArtikelSok.Text = "Sök";
             this.cmdArtikelSok.UseVisualStyleBackColor = true;
@@ -382,7 +394,7 @@
             // 
             this.groupBox1.Controls.Add(this.listBox1);
             this.groupBox1.Controls.Add(this.cmdNyHandelse);
-            this.groupBox1.Location = new System.Drawing.Point(329, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 329);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(376, 236);
             this.groupBox1.TabIndex = 18;
@@ -406,21 +418,21 @@
             this.cmdNyHandelse.Text = "Ny ";
             this.cmdNyHandelse.UseVisualStyleBackColor = true;
             // 
-            // cmdSkrivUtEttiket
+            // cmdRegistreraSkanna
             // 
-            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(329, 246);
-            this.cmdSkrivUtEttiket.Name = "cmdSkrivUtEttiket";
-            this.cmdSkrivUtEttiket.Size = new System.Drawing.Size(89, 23);
-            this.cmdSkrivUtEttiket.TabIndex = 19;
-            this.cmdSkrivUtEttiket.Text = "Ettiket";
-            this.cmdSkrivUtEttiket.UseVisualStyleBackColor = true;
-            this.cmdSkrivUtEttiket.Click += new System.EventHandler(this.cmdSkrivUtEttiket_Click);
+            this.cmdRegistreraSkanna.Location = new System.Drawing.Point(23, 246);
+            this.cmdRegistreraSkanna.Name = "cmdRegistreraSkanna";
+            this.cmdRegistreraSkanna.Size = new System.Drawing.Size(133, 23);
+            this.cmdRegistreraSkanna.TabIndex = 21;
+            this.cmdRegistreraSkanna.Text = "Registrera (Skanna)";
+            this.cmdRegistreraSkanna.UseVisualStyleBackColor = true;
+            this.cmdRegistreraSkanna.Click += new System.EventHandler(this.cmdRegistreraSkanna_Click);
             // 
             // HanteraPersonDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(883, 564);
+            this.ClientSize = new System.Drawing.Size(776, 570);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbRegistreradeArtiklar);
             this.Controls.Add(this.gbFalt);
@@ -474,5 +486,6 @@
         private System.Windows.Forms.Button cmdEdit;
         private System.Windows.Forms.Button cmdDelete;
         private System.Windows.Forms.Button cmdSkrivUtEttiket;
+        private System.Windows.Forms.Button cmdRegistreraSkanna;
     }
 }

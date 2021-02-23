@@ -147,7 +147,7 @@ namespace ScannerDialog
                 Beskrivning = cbBeskrivningar.Text,
                 StoldTag = txtStoldtag.Text.Trim(),
                 DatorNamn = txtDatornamn.Text.Trim(),
-                SerieNr = txtSerieNr.Text.Trim(),
+                SerieNr = txtSerieNr.Text.Trim().ToUpper(),
                 Mac = txtMAC.Text.Trim(),
                 Inkop = dtpInkop.Value.ToShortDateString(),
                 Os = cbOS.Text.Trim(),
