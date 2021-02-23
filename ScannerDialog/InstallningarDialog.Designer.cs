@@ -44,13 +44,16 @@
             this.laNuvarandeDbDisplay = new System.Windows.Forms.Label();
             this.laNuvarandeDbBackupDisplay = new System.Windows.Forms.Label();
             this.cmdImportForval = new System.Windows.Forms.Button();
+            this.cbBackupOnStart = new System.Windows.Forms.CheckBox();
+            this.gbInstallningarDb.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbInstallningarDb
             // 
+            this.gbInstallningarDb.Controls.Add(this.cbBackupOnStart);
             this.gbInstallningarDb.Location = new System.Drawing.Point(12, 21);
             this.gbInstallningarDb.Name = "gbInstallningarDb";
-            this.gbInstallningarDb.Size = new System.Drawing.Size(465, 109);
+            this.gbInstallningarDb.Size = new System.Drawing.Size(465, 124);
             this.gbInstallningarDb.TabIndex = 16;
             this.gbInstallningarDb.TabStop = false;
             this.gbInstallningarDb.Text = "DB";
@@ -207,6 +210,17 @@
             this.cmdImportForval.UseVisualStyleBackColor = true;
             this.cmdImportForval.Click += new System.EventHandler(this.cmdImportForval_Click);
             // 
+            // cbBackupOnStart
+            // 
+            this.cbBackupOnStart.AutoSize = true;
+            this.cbBackupOnStart.Location = new System.Drawing.Point(10, 91);
+            this.cbBackupOnStart.Name = "cbBackupOnStart";
+            this.cbBackupOnStart.Size = new System.Drawing.Size(113, 17);
+            this.cbBackupOnStart.TabIndex = 0;
+            this.cbBackupOnStart.Text = "Backup på upstart";
+            this.cbBackupOnStart.UseVisualStyleBackColor = true;
+            this.cbBackupOnStart.CheckedChanged += new System.EventHandler(this.cbBackupOnStart_CheckedChanged);
+            // 
             // InstallningarDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,6 +247,8 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.InstallningarDialog_Load);
+            this.gbInstallningarDb.ResumeLayout(false);
+            this.gbInstallningarDb.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,5 +272,6 @@
         private System.Windows.Forms.Label laNuvarandeDbDisplay;
         private System.Windows.Forms.Label laNuvarandeDbBackupDisplay;
         private System.Windows.Forms.Button cmdImportForval;
+        private System.Windows.Forms.CheckBox cbBackupOnStart;
     }
 }

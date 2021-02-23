@@ -26,19 +26,20 @@ namespace ScannerDialog
         private void Installningar_Change(object sender, EventArgs e)
         {
             var ins = (Installningar)sender;
-            FyllDatabasVy(ins.Databas, ins.DatabasBackup);
+            FyllDatabasVy(ins.Databas, ins.DatabasBackup, ins.BackupOnStart);
         }
 
-        private void FyllDatabasVy(string database, string databaseBackup)
+        private void FyllDatabasVy(string database, string databaseBackup, bool backupOnStart)
         {
             laNuvarandeDbDisplay.Text = database;
             laNuvarandeDbBackupDisplay.Text = databaseBackup;
+            cbBackupOnStart.Checked = backupOnStart;
         }
 
         private void InstallningarDialog_Load(object sender, EventArgs e)
         {
             var ins = Installningar.Hamta();
-            FyllDatabasVy(ins.Databas, ins.DatabasBackup);
+            FyllDatabasVy(ins.Databas, ins.DatabasBackup, ins.BackupOnStart);
         }
 
         private void cmdForvalUpp_Click(object sender, EventArgs e)
@@ -301,6 +302,13 @@ namespace ScannerDialog
                 installningar.Spara();
             }
             LaddaForval();
+        }
+
+        private void cbBackupOnStart_CheckedChanged(object sender, EventArgs e)
+        {
+            var ins = Installningar.Hamta();
+            ins.BackupOnStart = cbBackupOnStart.Checked;
+            ins.Spara();
         }
     }
 }

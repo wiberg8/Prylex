@@ -107,7 +107,7 @@ namespace PrylanLibary
                         connection.Open();
                         using (SQLiteCommand cmd = new SQLiteCommand(connection))
                         {
-                            cmd.CommandText = File.ReadAllText("tables.sql");
+                            cmd.CommandText = File.ReadAllText("tables.sql3");
                             cmd.ExecuteNonQuery();
                         }
                     }

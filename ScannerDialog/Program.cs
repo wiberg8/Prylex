@@ -29,7 +29,7 @@ namespace ScannerDialog
         public static void BackupDatabase()
         {
             var ins = Installningar.Hamta();
-            if (File.Exists(ins.Databas) && Directory.Exists(ins.DatabasBackup))
+            if (ins.BackupOnStart && File.Exists(ins.Databas) && Directory.Exists(ins.DatabasBackup))
             {
                 IO.Backup(ins.DatabasBackup, ins.Databas);
             }

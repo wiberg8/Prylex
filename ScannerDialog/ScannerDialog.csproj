@@ -202,9 +202,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="tables.sql">
+    <None Include="tables.sql3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
