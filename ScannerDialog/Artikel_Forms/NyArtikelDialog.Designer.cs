@@ -32,6 +32,7 @@
             this.cbBeskrivningar = new System.Windows.Forms.ComboBox();
             this.laBeskrivningar = new System.Windows.Forms.Label();
             this.gbSnabbVal = new System.Windows.Forms.GroupBox();
+            this.checkOsFritext = new System.Windows.Forms.CheckBox();
             this.cbOS = new System.Windows.Forms.ComboBox();
             this.laOS = new System.Windows.Forms.Label();
             this.dtpInkop = new System.Windows.Forms.DateTimePicker();
@@ -52,7 +53,6 @@
             this.cmdSpara = new System.Windows.Forms.Button();
             this.cmdAvbryt = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.checkOsFritext = new System.Windows.Forms.CheckBox();
             this.gbSnabbVal.SuspendLayout();
             this.gbFalt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -66,6 +66,7 @@
             this.cbBeskrivningar.Name = "cbBeskrivningar";
             this.cbBeskrivningar.Size = new System.Drawing.Size(207, 21);
             this.cbBeskrivningar.TabIndex = 0;
+            this.cbBeskrivningar.TabStop = false;
             // 
             // laBeskrivningar
             // 
@@ -94,6 +95,20 @@
             this.gbSnabbVal.Text = "Info - Snabb val ";
             this.gbSnabbVal.Enter += new System.EventHandler(this.gbStaticFields_Enter);
             // 
+            // checkOsFritext
+            // 
+            this.checkOsFritext.AutoSize = true;
+            this.checkOsFritext.Location = new System.Drawing.Point(162, 60);
+            this.checkOsFritext.Name = "checkOsFritext";
+            this.checkOsFritext.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkOsFritext.Size = new System.Drawing.Size(54, 17);
+            this.checkOsFritext.TabIndex = 4;
+            this.checkOsFritext.TabStop = false;
+            this.checkOsFritext.Text = "Fritext";
+            this.checkOsFritext.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.checkOsFritext.UseVisualStyleBackColor = true;
+            this.checkOsFritext.CheckedChanged += new System.EventHandler(this.checkOsFritext_CheckedChanged);
+            // 
             // cbOS
             // 
             this.cbOS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -102,6 +117,7 @@
             this.cbOS.Name = "cbOS";
             this.cbOS.Size = new System.Drawing.Size(207, 21);
             this.cbOS.TabIndex = 2;
+            this.cbOS.TabStop = false;
             // 
             // laOS
             // 
@@ -120,6 +136,7 @@
             this.dtpInkop.Name = "dtpInkop";
             this.dtpInkop.Size = new System.Drawing.Size(106, 20);
             this.dtpInkop.TabIndex = 3;
+            this.dtpInkop.TabStop = false;
             this.dtpInkop.Value = new System.DateTime(2020, 6, 23, 13, 10, 47, 0);
             this.dtpInkop.ValueChanged += new System.EventHandler(this.dtpInkop_ValueChanged);
             // 
@@ -140,6 +157,7 @@
             this.checkBeskrivningarFritext.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBeskrivningarFritext.Size = new System.Drawing.Size(54, 17);
             this.checkBeskrivningarFritext.TabIndex = 1;
+            this.checkBeskrivningarFritext.TabStop = false;
             this.checkBeskrivningarFritext.Text = "Fritext";
             this.checkBeskrivningarFritext.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.checkBeskrivningarFritext.UseVisualStyleBackColor = true;
@@ -184,6 +202,7 @@
             // 
             // txtSerieNr
             // 
+            this.txtSerieNr.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSerieNr.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSerieNr.HideSelection = false;
             this.txtSerieNr.Location = new System.Drawing.Point(15, 37);
@@ -296,19 +315,6 @@
             // 
             this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider.ContainerControl = this;
-            // 
-            // checkOsFritext
-            // 
-            this.checkOsFritext.AutoSize = true;
-            this.checkOsFritext.Location = new System.Drawing.Point(162, 60);
-            this.checkOsFritext.Name = "checkOsFritext";
-            this.checkOsFritext.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkOsFritext.Size = new System.Drawing.Size(54, 17);
-            this.checkOsFritext.TabIndex = 4;
-            this.checkOsFritext.Text = "Fritext";
-            this.checkOsFritext.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.checkOsFritext.UseVisualStyleBackColor = true;
-            this.checkOsFritext.CheckedChanged += new System.EventHandler(this.checkOsFritext_CheckedChanged);
             // 
             // NyArtikelDialog
             // 

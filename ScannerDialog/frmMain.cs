@@ -51,16 +51,17 @@ namespace ScannerDialog
 
         private void tspArticlesNew_Click(object sender, EventArgs e)
         {
-            using(NyArtikelDialog artikelDialog = new NyArtikelDialog())
-            {
-                var result = artikelDialog.ShowDialog();
-   
-            }
+            NyArtikelDialog artikelDialog = new NyArtikelDialog();
+            dgvArtiklar.Rows.Clear();
+            dgvPersoner.Rows.Clear();
+            artikelDialog.ShowDialog();
         }
 
         private void tspPeopleNew_Click(object sender, EventArgs e)
         {
             var newPersonDialog = new NyPersonDialog();
+            dgvArtiklar.Rows.Clear();
+            dgvPersoner.Rows.Clear();
             newPersonDialog.ShowDialog();
         }
 
@@ -84,7 +85,7 @@ namespace ScannerDialog
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            Installningar ins = Installningar.Hamta();
+
         }
 
         private void tspArkivInstallningar_Click(object sender, EventArgs e)
@@ -98,80 +99,19 @@ namespace ScannerDialog
         {
             using (var dataAccess = new DataAccess())
             {
-                if (rbSearchSelectArticle.Checked)
+                if (tabArtiklarPersoner.SelectedTab == tabArtiklar)
                 {
                     List<Artikel> artiklar = dataAccess.HamtaSokArtiklar(txtSok.Text);
                     dataAccess.Close();
-                    VisaValjArtikelDialog(artiklar);
+                    FyllDataGrid(artiklar);
                 }
                     
-                if (rbSearchSelectPerson.Checked)
+                if (tabArtiklarPersoner.SelectedTab == tabPersoner)
                 {
                     List<Person> personer = dataAccess.HamtaSokPersoner(txtSok.Text);
                     dataAccess.Close();
-                    VisaValjPersonDialog(personer);
+                    FyllDataGrid(personer);
                 }
-            }
-        }
-
-        private void VisaValjArtikelDialog(List<Artikel> artiklar)
-        {
-            using (var valjDialog = new ValjArtikelDialog(artiklar))
-            {
-                valjDialog.ShowDialog();
-
-                if (valjDialog.ValdArtikel != null)
-                {
-                    var artikelDialog = new HanteraArtikelDialog(valjDialog.ValdArtikel);
-                    artikelDialog.ShowDialog();
-                }
-            }
-        }
-
-        private void VisaValjPersonDialog(List<Person> personer)
-        {
-            using (var valjDialog = new ValjPersonDialog(personer))
-            {
-                valjDialog.ShowDialog();
-
-                if (valjDialog.ValdPerson != null)
-                {
-                    var artikelDialog = new HanteraPersonDialog(valjDialog.ValdPerson);
-                    artikelDialog.ShowDialog();
-                }
-            }
-        }
-
-        private void cmdVisaAllaArtiklar_Click(object sender, EventArgs e)
-        {
-            using (var dataAccess = new DataAccess())
-            {
-                VisaValjArtikelDialog(dataAccess.HamtaArtiklar());
-            }
-        }
-
-        private void cmdSokVisaAlla_Click(object sender, EventArgs e)
-        {
-            List<Artikel> artikelList = new List<Artikel>();
-            List<Person> personList = new List<Person>();
-            using (var dataAccess = new DataAccess())
-            {
-                if (rbSearchSelectArticle.Checked)
-                {
-                    artikelList = dataAccess.HamtaArtiklar();
-                }
-                else if (rbSearchSelectPerson.Checked)
-                {
-                    personList = dataAccess.HamtaPersoner();
-                }
-            }
-            if (rbSearchSelectArticle.Checked)
-            {
-                VisaValjArtikelDialog(artikelList);
-            }
-            else if (rbSearchSelectPerson.Checked)
-            {
-                VisaValjPersonDialog(personList);
             }
         }
 
@@ -196,10 +136,10 @@ namespace ScannerDialog
             {
                 using (var dataAccess = new DataAccess())
                 {
-                    if (rbSearchSelectArticle.Checked)
-                        VisaValjArtikelDialog(dataAccess.HamtaSokArtiklar(txtSok.Text));
-                    if (rbSearchSelectPerson.Checked)
-                        VisaValjPersonDialog(dataAccess.HamtaSokPersoner(txtSok.Text));
+                    if (tabArtiklarPersoner.SelectedTab == tabArtiklar)
+                        FyllDataGrid(dataAccess.HamtaSokArtiklar(txtSok.Text));
+                    if (tabArtiklarPersoner.SelectedTab == tabPersoner)
+                        FyllDataGrid(dataAccess.HamtaSokArtiklar(txtSok.Text));
                 }
             }
 
@@ -216,12 +156,107 @@ namespace ScannerDialog
                 {
                     artikel = dataAccess.HamtaArtikelFranSerieNr(inputBox.Input);
                 }
-                if (artikel != null)
+                if(artikel is null)
+                {
+                    MessageBox.Show("Inga träffar");
+                }
+                else
                 {
                     var artikelDialog = new HanteraArtikelDialog(artikel);
                     artikelDialog.ShowDialog();
                 }
             }
+        }
+
+        private void tabPersoner_TabIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tabArtiklarPersoner_TabIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tabArtiklarPersoner_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dgvArtiklar.Rows.Clear();
+            dgvPersoner.Rows.Clear();
+        }
+
+        private void RefreshDataGrids()
+        {
+            using (DataAccess dataAccess = new DataAccess())
+            {
+                if (tabArtiklarPersoner.SelectedTab == tabArtiklar)
+                {
+                    FyllDataGrid(dataAccess.HamtaArtiklar());
+                }
+                if (tabArtiklarPersoner.SelectedTab == tabPersoner)
+                {
+                    FyllDataGrid(dataAccess.HamtaPersoner());
+                }
+            }
+        }
+
+        private void FyllDataGrid(List<Artikel> artiklar)
+        {
+            dgvArtiklar.Rows.Clear();
+            foreach (Artikel artikel in artiklar)
+            {
+                string persId = string.Empty;
+                if (artikel.Status == Status.UTE)
+                    persId = artikel.PersId.ToString();
+                dgvArtiklar.Rows.Add(artikel.Id, artikel.Beskrivning, artikel.DatorNamn, artikel.StoldTag, artikel.SerieNr, artikel.Mac, artikel.Os, artikel.Inkop, artikel.Ovrigt, persId);
+                dgvArtiklar.Rows[dgvArtiklar.Rows.Count - 1].Tag = artikel;
+            }
+            dgvArtiklar.ClearSelection();
+            DataGridLibary.SetColorVariationToRows(dgvArtiklar);
+        }
+
+        private void FyllDataGrid(List<Person> lista)
+        {
+            dgvPersoner.Rows.Clear();
+            foreach (var person in lista)
+            {
+                dgvPersoner.Rows.Add(person.Id, person.Efternamn, person.Fornamn, person.PersNr, person.Sign, person.Tillhorighet, person.Ovrigt);
+                dgvPersoner.Rows[dgvPersoner.Rows.Count - 1].Tag = person;
+            }
+            dgvPersoner.ClearSelection();
+            DataGridLibary.SetColorVariationToRows(dgvPersoner);
+        }
+
+        private void dgvArtiklar_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (dgvArtiklar.SelectedRows.Count > 0)
+            {
+                Artikel a = (Artikel)dgvArtiklar.SelectedRows[0].Tag;
+                dgvArtiklar.Rows.Clear();
+                var hanteraArtikelDialog = new HanteraArtikelDialog(a);
+                hanteraArtikelDialog.ShowDialog();
+                var dataAccess = new DataAccess();
+                FyllDataGrid(dataAccess.HamtaArtiklar());
+                dataAccess.Close();
+            }
+        }
+
+        private void dgvPersoner_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (dgvPersoner.SelectedRows.Count > 0)
+            {
+                Person p = (Person)dgvPersoner.SelectedRows[0].Tag;
+                dgvPersoner.Rows.Clear();
+                var hanteraPersonDialog = new HanteraPersonDialog(p);
+                hanteraPersonDialog.ShowDialog();
+                var dataAccess = new DataAccess();
+                FyllDataGrid(dataAccess.HamtaPersoner());
+                dataAccess.Close();
+            }
+        }
+
+        private void cmdSokAlla_Click(object sender, EventArgs e)
+        {
+            RefreshDataGrids();
         }
 
         //private void dgvArtiklar_MouseDoubleClick(object sender, MouseEventArgs e)

@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataGridLibary.cs" />
+    <Compile Include="IO.cs" />
     <Compile Include="Models\Artikel.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="DataAccess.cs" />

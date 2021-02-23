@@ -1,0 +1,34 @@
+CREATE TABLE "artiklar" (
+	"Id"	INTEGER NOT NULL,
+	"Besk"	TEXT,
+	"Stoldtag"	Text,
+	"Datornamn"	TEXT,
+	"SerieNr"	TEXT,
+	"Mac"	TEXT,
+	"Os"	TEXT,
+	"Inkop"	TEXT,
+	"Ovrigt"	TEXT,
+	"Status"	INTEGER NOT NULL DEFAULT 0,
+	"PersId"	INTEGER,
+	PRIMARY KEY("Id" AUTOINCREMENT)
+);
+CREATE TABLE "handelser" (
+	"Id"	INTEGER NOT NULL,
+	"ArtikelId"	INTEGER,
+	"PersId"	INTEGER,
+	"Typ"	INTEGER NOT NULL,
+	"FriText"	TEXT,
+	PRIMARY KEY("Id" AUTOINCREMENT)
+);
+CREATE TABLE "personer" (
+	"Id"	INTEGER NOT NULL,
+	"Fornamn"	TEXT,
+	"Efternamn"	TEXT,
+	"PersNr"	TEXT,
+	"Sign"	TEXT,
+	"Epost"	TEXT,
+	"Telefon"	TEXT,
+	"Tillhorighet"	TEXT,
+	"Ovrigt"	TEXT,
+	PRIMARY KEY("Id" AUTOINCREMENT)
+);

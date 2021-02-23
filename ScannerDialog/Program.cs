@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.IO;
 using System.Linq;
 using System.Management;
@@ -18,11 +19,20 @@ namespace ScannerDialog
         static void Main()
         {
             Installningar.FileName = "Installningar.json";
-            
+            BackupDatabase();
             DBHandler.SetConnection(Installningar.Hamta().Databas);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMain());
+        }
+
+        public static void BackupDatabase()
+        {
+            var ins = Installningar.Hamta();
+            if (File.Exists(ins.Databas) && Directory.Exists(ins.DatabasBackup))
+            {
+                IO.Backup(ins.DatabasBackup, ins.Databas);
+            }
         }
 
         public static void PreLoadSettings()
