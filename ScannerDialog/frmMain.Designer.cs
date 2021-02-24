@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbSearch = new System.Windows.Forms.GroupBox();
+            this.cmdSokAlla = new System.Windows.Forms.Button();
             this.cmdScanLabel = new System.Windows.Forms.Button();
             this.cmdSok = new System.Windows.Forms.Button();
             this.txtSok = new System.Windows.Forms.TextBox();
@@ -68,7 +69,7 @@
             this.clmSign = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmTillhorighet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmOvrigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmdSokAlla = new System.Windows.Forms.Button();
+            this.laDatabaseWarning = new System.Windows.Forms.Label();
             this.gbSearch.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabArtiklarPersoner.SuspendLayout();
@@ -91,6 +92,16 @@
             this.gbSearch.TabStop = false;
             this.gbSearch.Text = "Sök";
             this.gbSearch.Enter += new System.EventHandler(this.gbSearch_Enter);
+            // 
+            // cmdSokAlla
+            // 
+            this.cmdSokAlla.Location = new System.Drawing.Point(113, 51);
+            this.cmdSokAlla.Name = "cmdSokAlla";
+            this.cmdSokAlla.Size = new System.Drawing.Size(113, 22);
+            this.cmdSokAlla.TabIndex = 12;
+            this.cmdSokAlla.Text = "Sök (Alla)";
+            this.cmdSokAlla.UseVisualStyleBackColor = true;
+            this.cmdSokAlla.Click += new System.EventHandler(this.cmdSokAlla_Click);
             // 
             // cmdScanLabel
             // 
@@ -140,31 +151,31 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(146, 6);
             // 
             // tspArkivNyDatabasFil
             // 
             this.tspArkivNyDatabasFil.Name = "tspArkivNyDatabasFil";
-            this.tspArkivNyDatabasFil.Size = new System.Drawing.Size(180, 22);
+            this.tspArkivNyDatabasFil.Size = new System.Drawing.Size(149, 22);
             this.tspArkivNyDatabasFil.Text = "Skapa Ny (DB)";
             this.tspArkivNyDatabasFil.Click += new System.EventHandler(this.tspFileNewDB_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
             // 
             // tspArkivInstallningar
             // 
             this.tspArkivInstallningar.Name = "tspArkivInstallningar";
-            this.tspArkivInstallningar.Size = new System.Drawing.Size(180, 22);
+            this.tspArkivInstallningar.Size = new System.Drawing.Size(149, 22);
             this.tspArkivInstallningar.Text = "Inställningar";
             this.tspArkivInstallningar.Click += new System.EventHandler(this.tspArkivInstallningar_Click);
             // 
             // tspArkivAvsluta
             // 
             this.tspArkivAvsluta.Name = "tspArkivAvsluta";
-            this.tspArkivAvsluta.Size = new System.Drawing.Size(180, 22);
+            this.tspArkivAvsluta.Size = new System.Drawing.Size(149, 22);
             this.tspArkivAvsluta.Text = "Avsluta";
             // 
             // tspPerson
@@ -181,7 +192,7 @@
             // tspPersonNy
             // 
             this.tspPersonNy.Name = "tspPersonNy";
-            this.tspPersonNy.Size = new System.Drawing.Size(180, 22);
+            this.tspPersonNy.Size = new System.Drawing.Size(89, 22);
             this.tspPersonNy.Text = "Ny";
             this.tspPersonNy.Click += new System.EventHandler(this.tspPeopleNew_Click);
             // 
@@ -199,7 +210,7 @@
             // tspArtikelNy
             // 
             this.tspArtikelNy.Name = "tspArtikelNy";
-            this.tspArtikelNy.Size = new System.Drawing.Size(180, 22);
+            this.tspArtikelNy.Size = new System.Drawing.Size(89, 22);
             this.tspArtikelNy.Text = "Ny";
             this.tspArtikelNy.Click += new System.EventHandler(this.tspArticlesNew_Click);
             // 
@@ -248,14 +259,14 @@
             this.dgvArtiklar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvArtiklar.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvArtiklar.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArtiklar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArtiklar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvArtiklar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArtiklar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -366,14 +377,14 @@
             this.dgvPersoner.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPersoner.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvPersoner.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPersoner.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPersoner.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPersoner.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersoner.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -441,21 +452,23 @@
             this.clmOvrigt.Name = "clmOvrigt";
             this.clmOvrigt.ReadOnly = true;
             // 
-            // cmdSokAlla
+            // laDatabaseWarning
             // 
-            this.cmdSokAlla.Location = new System.Drawing.Point(113, 51);
-            this.cmdSokAlla.Name = "cmdSokAlla";
-            this.cmdSokAlla.Size = new System.Drawing.Size(113, 22);
-            this.cmdSokAlla.TabIndex = 12;
-            this.cmdSokAlla.Text = "Sök (Alla)";
-            this.cmdSokAlla.UseVisualStyleBackColor = true;
-            this.cmdSokAlla.Click += new System.EventHandler(this.cmdSokAlla_Click);
+            this.laDatabaseWarning.AutoSize = true;
+            this.laDatabaseWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.laDatabaseWarning.ForeColor = System.Drawing.Color.Red;
+            this.laDatabaseWarning.Location = new System.Drawing.Point(589, 25);
+            this.laDatabaseWarning.Name = "laDatabaseWarning";
+            this.laDatabaseWarning.Size = new System.Drawing.Size(342, 20);
+            this.laDatabaseWarning.TabIndex = 13;
+            this.laDatabaseWarning.Text = "Gå till inställningar och välj sökväg till databas fil";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(942, 655);
+            this.Controls.Add(this.laDatabaseWarning);
             this.Controls.Add(this.tabArtiklarPersoner);
             this.Controls.Add(this.gbSearch);
             this.Controls.Add(this.toolStrip1);
@@ -517,6 +530,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPersonId;
         private System.Windows.Forms.Button cmdSokAlla;
+        private System.Windows.Forms.Label laDatabaseWarning;
     }
 }
 
