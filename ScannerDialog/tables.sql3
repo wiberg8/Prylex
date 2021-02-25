@@ -18,6 +18,7 @@ CREATE TABLE "handelser" (
 	"PersId"	INTEGER,
 	"Typ"	INTEGER NOT NULL,
 	"FriText"	TEXT,
+	"Datum" TEXT,
 	PRIMARY KEY("Id" AUTOINCREMENT)
 );
 CREATE TABLE "personer" (
