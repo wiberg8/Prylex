@@ -32,7 +32,7 @@ namespace ScannerDialog
         private void Installningar_Change(object sender, EventArgs e)
         {
             var ins = (Installningar)sender;
-      
+            laDatabaseWarning.Visible = !System.IO.File.Exists(ins.Databas);
         }
 
         private void Artiklar_Change(object sender, EventArgs e)
@@ -86,7 +86,8 @@ namespace ScannerDialog
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-
+            var ins = Installningar.Hamta();
+            laDatabaseWarning.Visible = !System.IO.File.Exists(ins.Databas);
         }
 
         private void tspArkivInstallningar_Click(object sender, EventArgs e)
