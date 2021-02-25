@@ -14,10 +14,24 @@ namespace PrylanLibary.Models
         public int PersId { get; set; }
         public HandelseTyp Typ { get; set; }
         public string FriText { get; set; }
+        public DateTime Datum { get; set; } = DateTime.Now;
 
         public override string ToString()
         {
-            return $"{FriText} {ArtikelId} {PersId}";
+            string x;
+            switch (Typ)
+            {
+                case HandelseTyp.AVREGISTRERING:
+                    x = $"{"AvRegistrering"} {Datum}";
+                    break;
+                case HandelseTyp.REGISTRERING:
+                    x = $"{"Registrering"} {Datum}";
+                    break;
+                default:
+                    x = $"{FriText} {ArtikelId} {PersId} {Datum}";
+                    break;   
+            }
+            return x;
         }
     }
 }

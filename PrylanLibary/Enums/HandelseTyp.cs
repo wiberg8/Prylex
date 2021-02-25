@@ -4,6 +4,6 @@
     {
         REGISTRERING,
         AVREGISTRERING,
-        FRITEXT
+        FRITEXTs
     }
 }

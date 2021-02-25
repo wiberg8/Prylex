@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gbRegisterPerson = new System.Windows.Forms.GroupBox();
+            this.cmdSkrivUtEttiket = new System.Windows.Forms.Button();
             this.txtRegistredPerson = new System.Windows.Forms.TextBox();
             this.cmdRegisterPerson = new System.Windows.Forms.Button();
             this.cmdUnregisterPerson = new System.Windows.Forms.Button();
@@ -56,9 +57,16 @@
             this.laSerieNr = new System.Windows.Forms.Label();
             this.cmdAvbryt = new System.Windows.Forms.Button();
             this.toolTipHelp = new System.Windows.Forms.ToolTip(this.components);
-            this.cmdSkrivUtEttiket = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbHandelser = new System.Windows.Forms.ListBox();
+            this.cmdNyHandelse = new System.Windows.Forms.Button();
+            this.laHandelseArtikelId = new System.Windows.Forms.Label();
+            this.laHandelseArtikelIdDisplay = new System.Windows.Forms.Label();
+            this.laHandelsePersIdDisplay = new System.Windows.Forms.Label();
+            this.laHandelsePersId = new System.Windows.Forms.Label();
             this.gbRegisterPerson.SuspendLayout();
             this.gbFalt.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbRegisterPerson
@@ -73,6 +81,16 @@
             this.gbRegisterPerson.TabIndex = 13;
             this.gbRegisterPerson.TabStop = false;
             this.gbRegisterPerson.Text = "Registrera / Avregistrera person";
+            // 
+            // cmdSkrivUtEttiket
+            // 
+            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(120, 46);
+            this.cmdSkrivUtEttiket.Name = "cmdSkrivUtEttiket";
+            this.cmdSkrivUtEttiket.Size = new System.Drawing.Size(89, 23);
+            this.cmdSkrivUtEttiket.TabIndex = 15;
+            this.cmdSkrivUtEttiket.Text = "Ettiket";
+            this.cmdSkrivUtEttiket.UseVisualStyleBackColor = true;
+            this.cmdSkrivUtEttiket.Click += new System.EventHandler(this.cmdSkrivUtEttiket_Click);
             // 
             // txtRegistredPerson
             // 
@@ -352,21 +370,79 @@
             this.cmdAvbryt.UseVisualStyleBackColor = true;
             this.cmdAvbryt.Click += new System.EventHandler(this.cmdAvbryt_Click);
             // 
-            // cmdSkrivUtEttiket
+            // groupBox1
             // 
-            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(120, 46);
-            this.cmdSkrivUtEttiket.Name = "cmdSkrivUtEttiket";
-            this.cmdSkrivUtEttiket.Size = new System.Drawing.Size(89, 23);
-            this.cmdSkrivUtEttiket.TabIndex = 15;
-            this.cmdSkrivUtEttiket.Text = "Ettiket";
-            this.cmdSkrivUtEttiket.UseVisualStyleBackColor = true;
-            this.cmdSkrivUtEttiket.Click += new System.EventHandler(this.cmdSkrivUtEttiket_Click);
+            this.groupBox1.Controls.Add(this.laHandelseArtikelId);
+            this.groupBox1.Controls.Add(this.lbHandelser);
+            this.groupBox1.Controls.Add(this.laHandelseArtikelIdDisplay);
+            this.groupBox1.Controls.Add(this.laHandelsePersIdDisplay);
+            this.groupBox1.Controls.Add(this.cmdNyHandelse);
+            this.groupBox1.Controls.Add(this.laHandelsePersId);
+            this.groupBox1.Location = new System.Drawing.Point(348, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(305, 268);
+            this.groupBox1.TabIndex = 23;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Händelser";
+            // 
+            // lbHandelser
+            // 
+            this.lbHandelser.FormattingEnabled = true;
+            this.lbHandelser.Location = new System.Drawing.Point(18, 60);
+            this.lbHandelser.Name = "lbHandelser";
+            this.lbHandelser.Size = new System.Drawing.Size(281, 160);
+            this.lbHandelser.TabIndex = 15;
+            this.lbHandelser.SelectedIndexChanged += new System.EventHandler(this.lbHandelser_SelectedIndexChanged);
+            // 
+            // cmdNyHandelse
+            // 
+            this.cmdNyHandelse.Location = new System.Drawing.Point(219, 226);
+            this.cmdNyHandelse.Name = "cmdNyHandelse";
+            this.cmdNyHandelse.Size = new System.Drawing.Size(80, 23);
+            this.cmdNyHandelse.TabIndex = 16;
+            this.cmdNyHandelse.Text = "Ny ";
+            this.cmdNyHandelse.UseVisualStyleBackColor = true;
+            this.cmdNyHandelse.Click += new System.EventHandler(this.cmdNyHandelse_Click_1);
+            // 
+            // laHandelseArtikelId
+            // 
+            this.laHandelseArtikelId.Location = new System.Drawing.Point(16, 18);
+            this.laHandelseArtikelId.Name = "laHandelseArtikelId";
+            this.laHandelseArtikelId.Size = new System.Drawing.Size(65, 13);
+            this.laHandelseArtikelId.TabIndex = 35;
+            this.laHandelseArtikelId.Text = "Artikel Id:";
+            // 
+            // laHandelseArtikelIdDisplay
+            // 
+            this.laHandelseArtikelIdDisplay.Location = new System.Drawing.Point(97, 18);
+            this.laHandelseArtikelIdDisplay.Name = "laHandelseArtikelIdDisplay";
+            this.laHandelseArtikelIdDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laHandelseArtikelIdDisplay.TabIndex = 37;
+            this.toolTipHelp.SetToolTip(this.laHandelseArtikelIdDisplay, "Kopiera (Dubbelklicka)");
+            // 
+            // laHandelsePersIdDisplay
+            // 
+            this.laHandelsePersIdDisplay.Location = new System.Drawing.Point(97, 38);
+            this.laHandelsePersIdDisplay.Name = "laHandelsePersIdDisplay";
+            this.laHandelsePersIdDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laHandelsePersIdDisplay.TabIndex = 36;
+            this.toolTipHelp.SetToolTip(this.laHandelsePersIdDisplay, "Kopiera (Dubbelklicka)");
+            // 
+            // laHandelsePersId
+            // 
+            this.laHandelsePersId.AutoSize = true;
+            this.laHandelsePersId.Location = new System.Drawing.Point(16, 38);
+            this.laHandelsePersId.Name = "laHandelsePersId";
+            this.laHandelsePersId.Size = new System.Drawing.Size(43, 13);
+            this.laHandelsePersId.TabIndex = 34;
+            this.laHandelsePersId.Text = "Pers Id:";
             // 
             // HanteraArtikelDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(678, 341);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cmdAvbryt);
             this.Controls.Add(this.gbFalt);
             this.Controls.Add(this.gbRegisterPerson);
@@ -381,6 +457,8 @@
             this.gbRegisterPerson.PerformLayout();
             this.gbFalt.ResumeLayout(false);
             this.gbFalt.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -414,5 +492,12 @@
         private System.Windows.Forms.ToolTip toolTipHelp;
         private System.Windows.Forms.Button cmdDelete;
         private System.Windows.Forms.Button cmdSkrivUtEttiket;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ListBox lbHandelser;
+        private System.Windows.Forms.Button cmdNyHandelse;
+        private System.Windows.Forms.Label laHandelseArtikelId;
+        private System.Windows.Forms.Label laHandelseArtikelIdDisplay;
+        private System.Windows.Forms.Label laHandelsePersIdDisplay;
+        private System.Windows.Forms.Label laHandelsePersId;
     }
 }

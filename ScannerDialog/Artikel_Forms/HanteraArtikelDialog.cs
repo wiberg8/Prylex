@@ -28,6 +28,7 @@ namespace ScannerDialog
 
         private void ManageArticle_Load(object sender, EventArgs e)
         {
+            List<Handelse> handelser;
             using (DataAccess dataAccess = new DataAccess())
             {
                 registreradPerson = dataAccess.HamtaPersonFranId(artikelAttEditera.PersId);
@@ -35,7 +36,9 @@ namespace ScannerDialog
                 {
                     txtRegistredPerson.Text = registreradPerson.ToString();
                 }
+                handelser = dataAccess.HamtaHandelserArtikel(artikelAttEditera);
             }
+            lbHandelser.DataSource = handelser;
             cmdRegisterPerson.Visible = artikelAttEditera.Status == Status.INNE;
             cmdUnregisterPerson.Visible = artikelAttEditera.Status == Status.UTE;
         }
@@ -156,7 +159,7 @@ namespace ScannerDialog
                     artikelAttEditera = dataAccess.HamtaArtikelFranId(artikelAttEditera.Id);
                     if (artikelAttEditera != null )
                     {
-                        Handelse handelse = new Handelse() { ArtikelId = artikelAttEditera.Id, Typ = HandelseTyp.REGISTRERING, PersId = artikelAttEditera.PersId };
+                        Handelse handelse = new Handelse() { ArtikelId = artikelAttEditera.Id, Typ = HandelseTyp.REGISTRERING, PersId = artikelAttEditera.PersId};
                         dataAccess.InfogaHandelse(handelse);
                     }
                 }
@@ -258,6 +261,20 @@ namespace ScannerDialog
             if (artikelAttEditera.Status == Status.UTE)
             {
                 Printing.PrintLabel(artikelAttEditera.DatorNamn, registreradPerson.GetNamn(), artikelAttEditera.SerieNr, registreradPerson.Tillhorighet);
+            }
+        }
+
+        private void cmdNyHandelse_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbHandelser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbHandelser.SelectedItem != null)
+            {
+                Handelse handelse = (Handelse)lbHandelser.SelectedItem;
+                laHandelsePersIdDisplay.Text = handelse.PersId.ToString();
             }
         }
     }

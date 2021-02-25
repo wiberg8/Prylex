@@ -379,17 +379,18 @@ namespace PrylanLibary
             DBHandler.AddParam("@PersId", handelse.PersId);
             DBHandler.AddParam("@Typ", handelse.Typ);
             DBHandler.AddParam("@FriText", handelse.FriText);
-            DBHandler.ExecQuery("INSERT INTO handelser (ArtikelId,PersId,Typ,FriText) VALUES (@ArtikelId,@PersId,@Typ,@FriText)");
+            DBHandler.AddParam("@Datum", handelse.Datum);
+            DBHandler.ExecQuery("INSERT INTO handelser (ArtikelId,PersId,Typ,FriText,Datum) VALUES (@ArtikelId,@PersId,@Typ,@FriText,@Datum)");
         }
-        public List<Handelse> HamtaArtikelHandelser(Artikel artikel)
+        public List<Handelse> HamtaHandelserArtikel(Artikel artikel)
         {
             List<Handelse> hamtadeHandelser = new List<Handelse>();
             DBHandler.AddParam("@ArtikelId", artikel.Id);
-            DBHandler.ExecQuery("SELECT * FROM handesler WHERE ArtikelId=@ArtikelId ORDER BY Id");
+            DBHandler.ExecQuery("SELECT * FROM handelser WHERE ArtikelId=@ArtikelId ORDER BY Id");
             FyllHandelseLista(hamtadeHandelser, DBHandler.DBDT);
             return hamtadeHandelser;
         }
-        public List<Handelse> HamtaPersonHandelser(Person person)
+        public List<Handelse> HamtaHandelserPerson(Person person)
         {
             List<Handelse> hamtadeHandelser = new List<Handelse>();
             DBHandler.AddParam("@PersId", person.Id);
