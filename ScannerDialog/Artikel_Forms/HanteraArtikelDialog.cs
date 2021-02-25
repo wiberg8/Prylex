@@ -30,7 +30,6 @@ namespace ScannerDialog
         private void ManageArticle_Load(object sender, EventArgs e)
         {
             txtHandelsePerson.Text = noPersonBound;
-            List<Handelse> handelser;
             using (DataAccess dataAccess = new DataAccess())
             {
                 registreradPerson = dataAccess.HamtaPersonFranId(artikelAttEditera.PersId);
@@ -38,9 +37,8 @@ namespace ScannerDialog
                 {
                     txtRegistredPerson.Text = registreradPerson.ToString();
                 }
-                handelser = dataAccess.HamtaHandelserArtikel(artikelAttEditera);
-            }   
-            lbHandelser.DataSource = handelser;
+                FyllHandelser(dataAccess.HamtaHandelserArtikel(artikelAttEditera));
+            }
             cmdRegisterPerson.Visible = artikelAttEditera.Status == Status.INNE;
             cmdUnregisterPerson.Visible = artikelAttEditera.Status == Status.UTE;
         }
@@ -163,11 +161,20 @@ namespace ScannerDialog
                     {
                         Handelse handelse = new Handelse() { ArtikelId = artikelAttEditera.Id, PersId = artikelAttEditera.PersId, Typ = HandelseTyp.REGISTRERING};
                         dataAccess.InfogaHandelse(handelse);
-                        lbHandelser.DataSource =  dataAccess.HamtaHandelserArtikel(artikelAttEditera);
+                        FyllHandelser(dataAccess.HamtaHandelserArtikel(artikelAttEditera));
                     }
                 }
                 SetArtikelEditStatus();
             }   
+        }
+
+        private void FyllHandelser(List<Handelse> handelser)
+        {
+            lbHandelser.Items.Clear();
+            foreach (Handelse handelse in handelser)
+            {
+                lbHandelser.Items.Add(handelse);
+            }
         }
 
         private void cmdUnregisterPerson_Click(object sender, EventArgs e)
@@ -183,7 +190,7 @@ namespace ScannerDialog
                     {
                         Handelse handelse = new Handelse() { ArtikelId = artikelAttEditera.Id, PersId = unregisterPersId, Typ = HandelseTyp.AVREGISTRERING };
                         dataAccess.InfogaHandelse(handelse);
-                        lbHandelser.DataSource = dataAccess.HamtaHandelserArtikel(artikelAttEditera);
+                        FyllHandelser(dataAccess.HamtaHandelserArtikel(artikelAttEditera));
                     }
                 }
                 FyllFalt(artikelAttEditera);

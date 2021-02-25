@@ -94,7 +94,7 @@
             this.cmdAvbryt.Location = new System.Drawing.Point(371, 200);
             this.cmdAvbryt.Name = "cmdAvbryt";
             this.cmdAvbryt.Size = new System.Drawing.Size(87, 23);
-            this.cmdAvbryt.TabIndex = 8;
+            this.cmdAvbryt.TabIndex = 9;
             this.cmdAvbryt.Text = "Avbryt";
             this.cmdAvbryt.UseVisualStyleBackColor = true;
             this.cmdAvbryt.Click += new System.EventHandler(this.cmdCancel_Click);
@@ -114,7 +114,7 @@
             this.cmdSpara.Location = new System.Drawing.Point(234, 200);
             this.cmdSpara.Name = "cmdSpara";
             this.cmdSpara.Size = new System.Drawing.Size(87, 23);
-            this.cmdSpara.TabIndex = 9;
+            this.cmdSpara.TabIndex = 8;
             this.cmdSpara.Text = "Spara";
             this.cmdSpara.UseVisualStyleBackColor = true;
             this.cmdSpara.Click += new System.EventHandler(this.cmdSpara_Click);
@@ -194,6 +194,7 @@
             this.cbTillhorighet.Name = "cbTillhorighet";
             this.cbTillhorighet.Size = new System.Drawing.Size(202, 21);
             this.cbTillhorighet.TabIndex = 8;
+            this.cbTillhorighet.TabStop = false;
             // 
             // laTillhorighet
             // 

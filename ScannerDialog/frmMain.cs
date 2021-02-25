@@ -28,7 +28,8 @@ namespace ScannerDialog
 
         private void Database_Connection_Changed(object sender, EventArgs e)
         {
-            
+            dgvArtiklar.Rows.Clear();
+            dgvPersoner.Rows.Clear();
         }
 
         private void Installningar_Change(object sender, EventArgs e)
@@ -97,6 +98,7 @@ namespace ScannerDialog
         {
             var dialog = new InstallningarDialog();
             dialog.ShowDialog();
+            RefreshDataGrids();
         }
  
         private void cmdSearch_Click(object sender, EventArgs e)
@@ -237,7 +239,7 @@ namespace ScannerDialog
                 dgvArtiklar.Rows.Clear();
                 var hanteraArtikelDialog = new HanteraArtikelDialog(a);
                 hanteraArtikelDialog.ShowDialog();
-                var dataAccess = new DataAccess();
+                DataAccess dataAccess = new DataAccess();
                 FyllDataGrid(dataAccess.HamtaArtiklar());
                 dataAccess.Close();
             }
@@ -260,6 +262,11 @@ namespace ScannerDialog
         private void cmdSokAlla_Click(object sender, EventArgs e)
         {
             RefreshDataGrids();
+        }
+
+        private void tspArkivAvsluta_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         //private void dgvArtiklar_MouseDoubleClick(object sender, MouseEventArgs e)

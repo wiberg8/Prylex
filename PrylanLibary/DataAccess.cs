@@ -393,7 +393,7 @@ namespace PrylanLibary
         {
             List<Handelse> hamtadeHandelser = new List<Handelse>();
             DBHandler.AddParam("@PersId", person.Id);
-            DBHandler.ExecQuery("SELECT * FROM handesler WHERE PersId=@PersId ORDER BY Id DESC");
+            DBHandler.ExecQuery("SELECT * FROM handelser WHERE PersId=@PersId ORDER BY Id DESC");
             FyllHandelseLista(hamtadeHandelser, DBHandler.DBDT);
             return hamtadeHandelser;
         }

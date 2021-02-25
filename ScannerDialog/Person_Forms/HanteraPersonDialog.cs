@@ -19,6 +19,7 @@ namespace ScannerDialog
     {
         private Person nuvarandePerson;
         private Label clickedLabel;
+        private string noPersonBound = "Ingen artikel knyten till händelsen";
 
         public HanteraPersonDialog(Person personAttEditera)
         {
@@ -47,6 +48,11 @@ namespace ScannerDialog
         private void HanteraPersonDialogcs_Load(object sender, EventArgs e)
         {
             FyllFalt(nuvarandePerson);
+            using (DataAccess dataAccess = new DataAccess())
+            {
+                FyllHandelser(dataAccess.HamtaHandelserPerson(nuvarandePerson));
+            }
+            
             UpdateRegistreradeArtiklar();
         }
 
@@ -79,8 +85,15 @@ namespace ScannerDialog
                     using (DataAccess dataAccess = new DataAccess())
                     {
                         dataAccess.UnregisterArtikelFromPerson(selectedArtikel);
+                        Artikel a = dataAccess.HamtaArtikelFranId(selectedArtikel.Id);
+                        if (a.Status == Status.INNE) 
+                        {
+                            Handelse h = new Handelse() { PersId = nuvarandePerson.Id, ArtikelId = a.Id, Typ = HandelseTyp.AVREGISTRERING};
+                            dataAccess.InfogaHandelse(h);
+                        }
+                        FyllHandelser(dataAccess.HamtaHandelserPerson(nuvarandePerson));
+                        FyllRegistreradeArtiklar(dataAccess.HamtaRegistreradeArtiklar(nuvarandePerson));
                     }
-                    UpdateRegistreradeArtiklar();
             }
         }
 
@@ -115,13 +128,17 @@ namespace ScannerDialog
             dialog.ShowDialog();
             if(dialog.ValdArtikel != null)
             {
-                List<Artikel> updateradeArtiklar;
                 using (DataAccess dataAccess = new DataAccess())
                 {
                     dataAccess.RegisterArtikelToPerson(nuvarandePerson, dialog.ValdArtikel);
-                    updateradeArtiklar = dataAccess.HamtaRegistreradeArtiklar(nuvarandePerson);
+                    Artikel a = dataAccess.HamtaArtikelFranId(dialog.ValdArtikel.Id);
+                    if(a.Status == Status.UTE)
+                    {
+                        Handelse h = new Handelse() { PersId = nuvarandePerson.Id, ArtikelId = a.Id, Typ = HandelseTyp.REGISTRERING};
+                        dataAccess.InfogaHandelse(h);
+                    }
+                    FyllRegistreradeArtiklar(dataAccess.HamtaRegistreradeArtiklar(nuvarandePerson));
                 }
-                FyllRegistreradeArtiklar(updateradeArtiklar);
             }
         }
 
@@ -257,6 +274,36 @@ namespace ScannerDialog
                 }
             }
             
+        }
+
+        private void lbHandelser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbHandelser.SelectedItem != null)
+            {
+                Handelse handelse = (Handelse)lbHandelser.SelectedItem;
+                Artikel artikelFromId;
+                using (DataAccess dataAccess = new DataAccess())
+                {
+                    artikelFromId = dataAccess.HamtaArtikelFranId(handelse.ArtikelId);
+                }
+                if (artikelFromId is null)
+                {
+                    txtHandelseArtikel.Text = noPersonBound;
+                }
+                else
+                {
+                    txtHandelseArtikel.Text = artikelFromId.ToString();
+                }
+            }
+        }
+
+        private void FyllHandelser(List<Handelse> handelser)
+        {
+            lbHandelser.Items.Clear();
+            foreach (Handelse handelse in handelser)
+            {
+                lbHandelser.Items.Add(handelse);
+            }
         }
     }
 }
