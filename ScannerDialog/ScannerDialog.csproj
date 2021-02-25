@@ -80,6 +80,12 @@
     <Compile Include="Artikel_Forms\HanteraArtikelDialog.Designer.cs">
       <DependentUpon>HanteraArtikelDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="InputBoxHandelse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputBoxHandelse.Designer.cs">
+      <DependentUpon>InputBoxHandelse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Person_Forms\HanteraPersonDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Artikel_Forms\HanteraArtikelDialog.resx">
       <DependentUpon>HanteraArtikelDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputBoxHandelse.resx">
+      <DependentUpon>InputBoxHandelse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Person_Forms\HanteraPersonDialog.resx">
       <DependentUpon>HanteraPersonDialog.cs</DependentUpon>

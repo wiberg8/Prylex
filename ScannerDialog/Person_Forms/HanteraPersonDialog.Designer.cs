@@ -317,6 +317,7 @@
             // 
             // gbRegistreradeArtiklar
             // 
+            this.gbRegistreradeArtiklar.Controls.Add(this.cmdExporteraDatornamn);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdRegistreraSkanna);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdSkrivUtEttiket);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdRegistreraArtikel);
@@ -431,7 +432,7 @@
             // 
             // cmdExporteraDatornamn
             // 
-            this.cmdExporteraDatornamn.Location = new System.Drawing.Point(546, 397);
+            this.cmdExporteraDatornamn.Location = new System.Drawing.Point(162, 273);
             this.cmdExporteraDatornamn.Name = "cmdExporteraDatornamn";
             this.cmdExporteraDatornamn.Size = new System.Drawing.Size(133, 23);
             this.cmdExporteraDatornamn.TabIndex = 22;
@@ -444,7 +445,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(776, 570);
-            this.Controls.Add(this.cmdExporteraDatornamn);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbRegistreradeArtiklar);
             this.Controls.Add(this.gbFalt);

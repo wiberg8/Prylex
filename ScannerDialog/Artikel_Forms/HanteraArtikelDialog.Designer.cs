@@ -60,10 +60,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbHandelser = new System.Windows.Forms.ListBox();
             this.cmdNyHandelse = new System.Windows.Forms.Button();
-            this.laHandelseArtikelId = new System.Windows.Forms.Label();
-            this.laHandelseArtikelIdDisplay = new System.Windows.Forms.Label();
-            this.laHandelsePersIdDisplay = new System.Windows.Forms.Label();
             this.laHandelsePersId = new System.Windows.Forms.Label();
+            this.txtHandelsePerson = new System.Windows.Forms.TextBox();
             this.gbRegisterPerson.SuspendLayout();
             this.gbFalt.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -362,7 +360,7 @@
             // cmdAvbryt
             // 
             this.cmdAvbryt.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdAvbryt.Location = new System.Drawing.Point(578, 305);
+            this.cmdAvbryt.Location = new System.Drawing.Point(594, 306);
             this.cmdAvbryt.Name = "cmdAvbryt";
             this.cmdAvbryt.Size = new System.Drawing.Size(88, 23);
             this.cmdAvbryt.TabIndex = 22;
@@ -372,15 +370,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.laHandelseArtikelId);
+            this.groupBox1.Controls.Add(this.txtHandelsePerson);
             this.groupBox1.Controls.Add(this.lbHandelser);
-            this.groupBox1.Controls.Add(this.laHandelseArtikelIdDisplay);
-            this.groupBox1.Controls.Add(this.laHandelsePersIdDisplay);
             this.groupBox1.Controls.Add(this.cmdNyHandelse);
             this.groupBox1.Controls.Add(this.laHandelsePersId);
             this.groupBox1.Location = new System.Drawing.Point(348, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(305, 268);
+            this.groupBox1.Size = new System.Drawing.Size(334, 243);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Händelser";
@@ -388,15 +384,15 @@
             // lbHandelser
             // 
             this.lbHandelser.FormattingEnabled = true;
-            this.lbHandelser.Location = new System.Drawing.Point(18, 60);
+            this.lbHandelser.Location = new System.Drawing.Point(18, 31);
             this.lbHandelser.Name = "lbHandelser";
-            this.lbHandelser.Size = new System.Drawing.Size(281, 160);
+            this.lbHandelser.Size = new System.Drawing.Size(300, 160);
             this.lbHandelser.TabIndex = 15;
             this.lbHandelser.SelectedIndexChanged += new System.EventHandler(this.lbHandelser_SelectedIndexChanged);
             // 
             // cmdNyHandelse
             // 
-            this.cmdNyHandelse.Location = new System.Drawing.Point(219, 226);
+            this.cmdNyHandelse.Location = new System.Drawing.Point(230, 209);
             this.cmdNyHandelse.Name = "cmdNyHandelse";
             this.cmdNyHandelse.Size = new System.Drawing.Size(80, 23);
             this.cmdNyHandelse.TabIndex = 16;
@@ -404,44 +400,30 @@
             this.cmdNyHandelse.UseVisualStyleBackColor = true;
             this.cmdNyHandelse.Click += new System.EventHandler(this.cmdNyHandelse_Click_1);
             // 
-            // laHandelseArtikelId
-            // 
-            this.laHandelseArtikelId.Location = new System.Drawing.Point(16, 18);
-            this.laHandelseArtikelId.Name = "laHandelseArtikelId";
-            this.laHandelseArtikelId.Size = new System.Drawing.Size(65, 13);
-            this.laHandelseArtikelId.TabIndex = 35;
-            this.laHandelseArtikelId.Text = "Artikel Id:";
-            // 
-            // laHandelseArtikelIdDisplay
-            // 
-            this.laHandelseArtikelIdDisplay.Location = new System.Drawing.Point(97, 18);
-            this.laHandelseArtikelIdDisplay.Name = "laHandelseArtikelIdDisplay";
-            this.laHandelseArtikelIdDisplay.Size = new System.Drawing.Size(189, 13);
-            this.laHandelseArtikelIdDisplay.TabIndex = 37;
-            this.toolTipHelp.SetToolTip(this.laHandelseArtikelIdDisplay, "Kopiera (Dubbelklicka)");
-            // 
-            // laHandelsePersIdDisplay
-            // 
-            this.laHandelsePersIdDisplay.Location = new System.Drawing.Point(97, 38);
-            this.laHandelsePersIdDisplay.Name = "laHandelsePersIdDisplay";
-            this.laHandelsePersIdDisplay.Size = new System.Drawing.Size(189, 13);
-            this.laHandelsePersIdDisplay.TabIndex = 36;
-            this.toolTipHelp.SetToolTip(this.laHandelsePersIdDisplay, "Kopiera (Dubbelklicka)");
-            // 
             // laHandelsePersId
             // 
             this.laHandelsePersId.AutoSize = true;
-            this.laHandelsePersId.Location = new System.Drawing.Point(16, 38);
+            this.laHandelsePersId.Location = new System.Drawing.Point(15, 194);
             this.laHandelsePersId.Name = "laHandelsePersId";
             this.laHandelsePersId.Size = new System.Drawing.Size(43, 13);
             this.laHandelsePersId.TabIndex = 34;
-            this.laHandelsePersId.Text = "Pers Id:";
+            this.laHandelsePersId.Text = "Person:";
+            // 
+            // txtHandelsePerson
+            // 
+            this.txtHandelsePerson.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtHandelsePerson.HideSelection = false;
+            this.txtHandelsePerson.Location = new System.Drawing.Point(18, 211);
+            this.txtHandelsePerson.Name = "txtHandelsePerson";
+            this.txtHandelsePerson.ReadOnly = true;
+            this.txtHandelsePerson.Size = new System.Drawing.Size(183, 20);
+            this.txtHandelsePerson.TabIndex = 16;
             // 
             // HanteraArtikelDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(678, 341);
+            this.ClientSize = new System.Drawing.Size(693, 341);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cmdAvbryt);
             this.Controls.Add(this.gbFalt);
@@ -495,9 +477,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox lbHandelser;
         private System.Windows.Forms.Button cmdNyHandelse;
-        private System.Windows.Forms.Label laHandelseArtikelId;
-        private System.Windows.Forms.Label laHandelseArtikelIdDisplay;
-        private System.Windows.Forms.Label laHandelsePersIdDisplay;
         private System.Windows.Forms.Label laHandelsePersId;
+        private System.Windows.Forms.TextBox txtHandelsePerson;
     }
 }

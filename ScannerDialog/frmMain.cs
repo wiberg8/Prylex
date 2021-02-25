@@ -11,6 +11,8 @@ using PrylanLibary;
 using PrylanLibary.Models;
 using PrylanLibary.Enums;
 
+
+//Refresh datagrid måste göras om till dataaccess med FyllArtiklar, FyllPersoner funktioner
 namespace ScannerDialog
 {
     public partial class frmMain : Form
@@ -88,6 +90,7 @@ namespace ScannerDialog
         {
             var ins = Installningar.Hamta();
             laDatabaseWarning.Visible = !System.IO.File.Exists(ins.Databas);
+            RefreshDataGrids();
         }
 
         private void tspArkivInstallningar_Click(object sender, EventArgs e)
@@ -181,6 +184,7 @@ namespace ScannerDialog
         {
             dgvArtiklar.Rows.Clear();
             dgvPersoner.Rows.Clear();
+            RefreshDataGrids();
         }
 
         private void RefreshDataGrids()

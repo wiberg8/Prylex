@@ -28,7 +28,7 @@ namespace PrylanLibary.Models
                     x = $"{"Registrering"} {Datum}";
                     break;
                 default:
-                    x = $"{FriText} {ArtikelId} {PersId} {Datum}";
+                    x = $"{FriText} {Datum}";
                     break;   
             }
             return x;

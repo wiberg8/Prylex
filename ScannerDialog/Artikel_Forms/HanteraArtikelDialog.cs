@@ -19,6 +19,7 @@ namespace ScannerDialog
         private Label clickedLabel;
         private Artikel artikelAttEditera;
         private Person registreradPerson;
+        private string noPersonBound = "Ingen person knyten till händelsen";
         public HanteraArtikelDialog(Artikel _artikelAttEditera)
         {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace ScannerDialog
 
         private void ManageArticle_Load(object sender, EventArgs e)
         {
+            txtHandelsePerson.Text = noPersonBound;
             List<Handelse> handelser;
             using (DataAccess dataAccess = new DataAccess())
             {
@@ -37,7 +39,7 @@ namespace ScannerDialog
                     txtRegistredPerson.Text = registreradPerson.ToString();
                 }
                 handelser = dataAccess.HamtaHandelserArtikel(artikelAttEditera);
-            }
+            }   
             lbHandelser.DataSource = handelser;
             cmdRegisterPerson.Visible = artikelAttEditera.Status == Status.INNE;
             cmdUnregisterPerson.Visible = artikelAttEditera.Status == Status.UTE;
@@ -159,12 +161,13 @@ namespace ScannerDialog
                     artikelAttEditera = dataAccess.HamtaArtikelFranId(artikelAttEditera.Id);
                     if (artikelAttEditera != null )
                     {
-                        Handelse handelse = new Handelse() { ArtikelId = artikelAttEditera.Id, Typ = HandelseTyp.REGISTRERING, PersId = artikelAttEditera.PersId};
+                        Handelse handelse = new Handelse() { ArtikelId = artikelAttEditera.Id, PersId = artikelAttEditera.PersId, Typ = HandelseTyp.REGISTRERING};
                         dataAccess.InfogaHandelse(handelse);
+                        lbHandelser.DataSource =  dataAccess.HamtaHandelserArtikel(artikelAttEditera);
                     }
                 }
                 SetArtikelEditStatus();
-            }
+            }   
         }
 
         private void cmdUnregisterPerson_Click(object sender, EventArgs e)
@@ -173,12 +176,14 @@ namespace ScannerDialog
             {
                 using (DataAccess dataAccess = new DataAccess())
                 {
+                    int unregisterPersId = artikelAttEditera.PersId; 
                     dataAccess.UnregisterArtikelFromPerson(artikelAttEditera);
                     artikelAttEditera = dataAccess.HamtaArtikelFranId(artikelAttEditera.Id);
-                    if (artikelAttEditera != null)
+                    if (artikelAttEditera != null && artikelAttEditera.Status == Status.INNE)
                     {
-                        Handelse handelse = new Handelse() { ArtikelId = artikelAttEditera.Id, Typ = HandelseTyp.AVREGISTRERING, PersId = artikelAttEditera.PersId };
+                        Handelse handelse = new Handelse() { ArtikelId = artikelAttEditera.Id, PersId = unregisterPersId, Typ = HandelseTyp.AVREGISTRERING };
                         dataAccess.InfogaHandelse(handelse);
+                        lbHandelser.DataSource = dataAccess.HamtaHandelserArtikel(artikelAttEditera);
                     }
                 }
                 FyllFalt(artikelAttEditera);
@@ -274,7 +279,19 @@ namespace ScannerDialog
             if (lbHandelser.SelectedItem != null)
             {
                 Handelse handelse = (Handelse)lbHandelser.SelectedItem;
-                laHandelsePersIdDisplay.Text = handelse.PersId.ToString();
+                Person personFromId;
+                using (DataAccess dataAccess = new DataAccess())
+                {
+                    personFromId = dataAccess.HamtaPersonFranId(handelse.PersId);
+                }
+                if (personFromId is null)
+                {
+                    txtHandelsePerson.Text = noPersonBound;
+                }
+                else
+                {
+                    txtHandelsePerson.Text = personFromId.ToString();
+                }
             }
         }
     }

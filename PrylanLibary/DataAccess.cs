@@ -281,7 +281,6 @@ namespace PrylanLibary
             return personArtiklar;
         }
 
-
         public List<Person> HamtaPersoner()
         {
             var hamtadePersoner = new List<Person>();
