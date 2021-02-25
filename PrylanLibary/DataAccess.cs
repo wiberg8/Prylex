@@ -385,7 +385,7 @@ namespace PrylanLibary
         {
             List<Handelse> hamtadeHandelser = new List<Handelse>();
             DBHandler.AddParam("@ArtikelId", artikel.Id);
-            DBHandler.ExecQuery("SELECT * FROM handelser WHERE ArtikelId=@ArtikelId ORDER BY Id");
+            DBHandler.ExecQuery("SELECT * FROM handelser WHERE ArtikelId=@ArtikelId ORDER BY Datum DESC");
             FyllHandelseLista(hamtadeHandelser, DBHandler.DBDT);
             return hamtadeHandelser;
         }
@@ -393,7 +393,7 @@ namespace PrylanLibary
         {
             List<Handelse> hamtadeHandelser = new List<Handelse>();
             DBHandler.AddParam("@PersId", person.Id);
-            DBHandler.ExecQuery("SELECT * FROM handesler WHERE PersId=@PersId ORDER BY Id");
+            DBHandler.ExecQuery("SELECT * FROM handesler WHERE PersId=@PersId ORDER BY Id DESC");
             FyllHandelseLista(hamtadeHandelser, DBHandler.DBDT);
             return hamtadeHandelser;
         }
@@ -472,6 +472,7 @@ namespace PrylanLibary
                         PersId = int.Parse(R["PersId"].ToString()),
                         Typ = (HandelseTyp)int.Parse(R["Typ"].ToString()),
                         FriText = R["FriText"].ToString(),
+                        Datum = DateTime.Parse(R["Datum"].ToString())
                     };
                     lista.Add(handelse);
                 }

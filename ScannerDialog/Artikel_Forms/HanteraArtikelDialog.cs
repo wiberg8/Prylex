@@ -271,7 +271,21 @@ namespace ScannerDialog
 
         private void cmdNyHandelse_Click_1(object sender, EventArgs e)
         {
-
+            var x = new InputBoxHandelse();
+            if (x.ShowDialog() == DialogResult.OK)
+            {
+                Handelse handelse = new Handelse() { ArtikelId = artikelAttEditera.Id, FriText = x.Input, Typ = HandelseTyp.FRITEXT };
+                if(artikelAttEditera.Status == Status.UTE)
+                {
+                    handelse.PersId = artikelAttEditera.PersId;
+                }
+                
+                using (DataAccess dataAccess = new DataAccess())
+                {
+                    dataAccess.InfogaHandelse(handelse);
+                    lbHandelser.DataSource = dataAccess.HamtaHandelserArtikel(artikelAttEditera);
+                }
+            }
         }
 
         private void lbHandelser_SelectedIndexChanged(object sender, EventArgs e)

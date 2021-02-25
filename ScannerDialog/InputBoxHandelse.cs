@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PrylanLibary;
 
 namespace ScannerDialog
 {
     public partial class InputBoxHandelse : Form
     {
         public string Input { get; private set; }
-        public string PromptText { get { return lbPrompt.Text; } set { lbPrompt.Text = value; } }
         public InputBoxHandelse()
         {
             InitializeComponent();
@@ -26,13 +26,15 @@ namespace ScannerDialog
 
         private void Ok()
         {
-            this.Input = txtScannedResult.Text.Trim();
+            if (string.IsNullOrWhiteSpace(comboBox1.Text))
+                return;
+            this.Input = comboBox1.Text.Trim();
             this.DialogResult = DialogResult.OK;
         }
 
         private void InputScanner_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter && !string.IsNullOrWhiteSpace(txtScannedResult.Text))
+            if(e.KeyCode == Keys.Enter)
             {
                 Ok();
             }
@@ -41,6 +43,16 @@ namespace ScannerDialog
         private void cmdOk_Click_1(object sender, EventArgs e)
         {
             Ok();
+        }
+
+        private void InputBoxHandelse_Load(object sender, EventArgs e)
+        {
+            var ins = Installningar.Hamta();
+            comboBox1.DataSource = ins.Handelser;
+            if(comboBox1.Items.Count > 0)
+            {
+                comboBox1.SelectedIndex = 0;
+            }
         }
     }
 }

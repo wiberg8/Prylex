@@ -58,10 +58,10 @@
             this.cmdAvbryt = new System.Windows.Forms.Button();
             this.toolTipHelp = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtHandelsePerson = new System.Windows.Forms.TextBox();
             this.lbHandelser = new System.Windows.Forms.ListBox();
             this.cmdNyHandelse = new System.Windows.Forms.Button();
             this.laHandelsePersId = new System.Windows.Forms.Label();
-            this.txtHandelsePerson = new System.Windows.Forms.TextBox();
             this.gbRegisterPerson.SuspendLayout();
             this.gbFalt.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -381,6 +381,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Händelser";
             // 
+            // txtHandelsePerson
+            // 
+            this.txtHandelsePerson.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtHandelsePerson.HideSelection = false;
+            this.txtHandelsePerson.Location = new System.Drawing.Point(18, 211);
+            this.txtHandelsePerson.Name = "txtHandelsePerson";
+            this.txtHandelsePerson.ReadOnly = true;
+            this.txtHandelsePerson.Size = new System.Drawing.Size(183, 20);
+            this.txtHandelsePerson.TabIndex = 16;
+            // 
             // lbHandelser
             // 
             this.lbHandelser.FormattingEnabled = true;
@@ -392,9 +402,9 @@
             // 
             // cmdNyHandelse
             // 
-            this.cmdNyHandelse.Location = new System.Drawing.Point(230, 209);
+            this.cmdNyHandelse.Location = new System.Drawing.Point(216, 209);
             this.cmdNyHandelse.Name = "cmdNyHandelse";
-            this.cmdNyHandelse.Size = new System.Drawing.Size(80, 23);
+            this.cmdNyHandelse.Size = new System.Drawing.Size(94, 23);
             this.cmdNyHandelse.TabIndex = 16;
             this.cmdNyHandelse.Text = "Ny ";
             this.cmdNyHandelse.UseVisualStyleBackColor = true;
@@ -408,16 +418,6 @@
             this.laHandelsePersId.Size = new System.Drawing.Size(43, 13);
             this.laHandelsePersId.TabIndex = 34;
             this.laHandelsePersId.Text = "Person:";
-            // 
-            // txtHandelsePerson
-            // 
-            this.txtHandelsePerson.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtHandelsePerson.HideSelection = false;
-            this.txtHandelsePerson.Location = new System.Drawing.Point(18, 211);
-            this.txtHandelsePerson.Name = "txtHandelsePerson";
-            this.txtHandelsePerson.ReadOnly = true;
-            this.txtHandelsePerson.Size = new System.Drawing.Size(183, 20);
-            this.txtHandelsePerson.TabIndex = 16;
             // 
             // HanteraArtikelDialog
             // 
