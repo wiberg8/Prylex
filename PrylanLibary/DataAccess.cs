@@ -81,23 +81,23 @@ namespace PrylanLibary
             }
             return tillhorighet;
         }
-        //public List<string> GetUniqueHandelser()
-        //{
-        //    List<Artikel> artiklar = new List<Artikel>();
-        //    List<string> Os = new List<string>();
-        //    DBHandler.ExecQuery("SELECT DISTINCT Han FROM artiklar");
-        //    if (DBHandler.DBDT != null)
-        //    {
-        //        foreach (DataRow R in DBHandler.DBDT.Rows)
-        //        {
-        //            if (!string.IsNullOrWhiteSpace(R["Os"].ToString()))
-        //            {
-        //                Os.Add(R["Os"].ToString());
-        //            }
-        //        }
-        //    }
-        //    return Os;
-        //}
+        public List<string> GetUniqueHandelser()
+        {
+            List<Artikel> artiklar = new List<Artikel>();
+            List<string> handelser = new List<string>();
+            DBHandler.ExecQuery("SELECT DISTINCT FriText FROM handelser");
+            if (DBHandler.DBDT != null)
+            {
+                foreach (DataRow R in DBHandler.DBDT.Rows)
+                {
+                    if (!string.IsNullOrWhiteSpace(R["FriText"].ToString()))
+                    {
+                        handelser.Add(R["FriText"].ToString());
+                    }
+                }
+            }
+            return handelser;
+        }
 
         public List<Artikel> HamtaArtiklar()
         {

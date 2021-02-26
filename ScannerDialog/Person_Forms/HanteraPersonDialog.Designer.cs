@@ -65,6 +65,7 @@
             this.txtHandelseArtikel = new System.Windows.Forms.TextBox();
             this.lbHandelser = new System.Windows.Forms.ListBox();
             this.laHandelseArtikel = new System.Windows.Forms.Label();
+            this.cbPrintOnScan = new System.Windows.Forms.CheckBox();
             this.gbFalt.SuspendLayout();
             this.gbRegistreradeArtiklar.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -318,6 +319,7 @@
             // 
             // gbRegistreradeArtiklar
             // 
+            this.gbRegistreradeArtiklar.Controls.Add(this.cbPrintOnScan);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdExporteraDatornamn);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdRegistreraSkanna);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdSkrivUtEttiket);
@@ -453,6 +455,16 @@
             this.laHandelseArtikel.TabIndex = 34;
             this.laHandelseArtikel.Text = "Artikel:";
             // 
+            // cbPrintOnScan
+            // 
+            this.cbPrintOnScan.AutoSize = true;
+            this.cbPrintOnScan.Location = new System.Drawing.Point(23, 277);
+            this.cbPrintOnScan.Name = "cbPrintOnScan";
+            this.cbPrintOnScan.Size = new System.Drawing.Size(133, 17);
+            this.cbPrintOnScan.TabIndex = 25;
+            this.cbPrintOnScan.Text = "Skriv ut vid registrering";
+            this.cbPrintOnScan.UseVisualStyleBackColor = true;
+            // 
             // HanteraPersonDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -515,5 +527,6 @@
         private System.Windows.Forms.TextBox txtHandelseArtikel;
         private System.Windows.Forms.ListBox lbHandelser;
         private System.Windows.Forms.Label laHandelseArtikel;
+        private System.Windows.Forms.CheckBox cbPrintOnScan;
     }
 }
