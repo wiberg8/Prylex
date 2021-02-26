@@ -138,8 +138,53 @@ namespace ScannerDialog
                         dataAccess.InfogaHandelse(h);
                     }
                     FyllRegistreradeArtiklar(dataAccess.HamtaRegistreradeArtiklar(nuvarandePerson));
+                    FyllHandelser(dataAccess.HamtaHandelserPerson(nuvarandePerson));
                 }
             }
+        }
+
+        private void cmdRegistreraSkanna_Click(object sender, EventArgs e)
+        {
+            InputBox inputBox = new InputBox() { PromptText = "Skanna Ettiket (SerieNr)" };
+            inputBox.ShowDialog();
+            string scannedInput = inputBox.Input.ToUpper();
+            if (!string.IsNullOrWhiteSpace(scannedInput))
+            {
+                Artikel artikel;
+                using (DataAccess dataAccess = new DataAccess())
+                {
+                    artikel = dataAccess.HamtaArtikelFranSerieNr(scannedInput);
+                }
+                if (artikel is null)
+                {
+                    MessageBox.Show("Inga träffar");
+                }
+                else if (artikel.Status == Status.UTE)
+                {
+                    MessageBox.Show("Artikeln är redan utlämnad");
+                }
+                else
+                {
+                    Artikel a;
+                    using (DataAccess dataAccess = new DataAccess())
+                    {
+                        dataAccess.RegisterArtikelToPerson(nuvarandePerson, artikel);
+                        a = dataAccess.HamtaArtikelFranId(artikel.Id);
+                        if (a != null && a.Status == Status.UTE)
+                        {
+                            Handelse h = new Handelse() { PersId = nuvarandePerson.Id, ArtikelId = a.Id, Typ = HandelseTyp.REGISTRERING };
+                            dataAccess.InfogaHandelse(h);
+                        }
+                        FyllRegistreradeArtiklar(dataAccess.HamtaRegistreradeArtiklar(nuvarandePerson));
+                        FyllHandelser(dataAccess.HamtaHandelserPerson(nuvarandePerson));
+                    }
+                    if (a != null && cbPrintOnScan.Checked)
+                    {
+                        Printing.PrintLabel(a.DatorNamn,nuvarandePerson.GetNamn(), a.SerieNr, nuvarandePerson.Tillhorighet);
+                    }
+                }
+            }
+
         }
 
         private void FyllRegistreradeArtiklar(List<Artikel> artiklar)
@@ -216,38 +261,7 @@ namespace ScannerDialog
             }
         }
 
-        private void cmdRegistreraSkanna_Click(object sender, EventArgs e)
-        {
-            InputBox inputBox = new InputBox() { PromptText = "Skanna Ettiket (SerieNr)" };
-            inputBox.ShowDialog();
-            if (!string.IsNullOrWhiteSpace(inputBox.Input))
-            {
-                Artikel artikel;
-                using (DataAccess dataAccess = new DataAccess())
-                {
-                    artikel = dataAccess.HamtaArtikelFranSerieNr(inputBox.Input);
-                }
-                if (artikel is null)
-                {
-                    MessageBox.Show("Inga träffar");
-                }
-                else if (artikel.Status == Status.UTE)
-                {
-                    MessageBox.Show("Artikeln är redan utlämnad");
-                }
-                else
-                {
-                    List<Artikel> registreradeArtiklar;
-                    using (DataAccess dataAccess = new DataAccess())
-                    {
-                        dataAccess.RegisterArtikelToPerson(nuvarandePerson, artikel);
-                        registreradeArtiklar = dataAccess.HamtaRegistreradeArtiklar(nuvarandePerson);
-                    }
-                    FyllRegistreradeArtiklar(registreradeArtiklar);
-                }
-            }
-            
-        }
+       
 
         private void cmdExporteraDatornamn_Click(object sender, EventArgs e)
         {

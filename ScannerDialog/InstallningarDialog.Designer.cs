@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gbInstallningarDb = new System.Windows.Forms.GroupBox();
+            this.cbBackupOnStart = new System.Windows.Forms.CheckBox();
             this.cmdNuvarandeDbBackupAterstall = new System.Windows.Forms.Button();
             this.cmdDatabasAterstall = new System.Windows.Forms.Button();
             this.cmdNuvarandeDbBackupUtforska = new System.Windows.Forms.Button();
@@ -44,8 +45,11 @@
             this.laNuvarandeDbDisplay = new System.Windows.Forms.Label();
             this.laNuvarandeDbBackupDisplay = new System.Windows.Forms.Label();
             this.cmdImportForval = new System.Windows.Forms.Button();
-            this.cbBackupOnStart = new System.Windows.Forms.CheckBox();
+            this.cmdImportSettings = new System.Windows.Forms.Button();
+            this.cmdExportSettings = new System.Windows.Forms.Button();
+            this.gbImportExport = new System.Windows.Forms.GroupBox();
             this.gbInstallningarDb.SuspendLayout();
+            this.gbImportExport.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbInstallningarDb
@@ -57,6 +61,17 @@
             this.gbInstallningarDb.TabIndex = 16;
             this.gbInstallningarDb.TabStop = false;
             this.gbInstallningarDb.Text = "DB";
+            // 
+            // cbBackupOnStart
+            // 
+            this.cbBackupOnStart.AutoSize = true;
+            this.cbBackupOnStart.Location = new System.Drawing.Point(10, 91);
+            this.cbBackupOnStart.Name = "cbBackupOnStart";
+            this.cbBackupOnStart.Size = new System.Drawing.Size(113, 17);
+            this.cbBackupOnStart.TabIndex = 0;
+            this.cbBackupOnStart.Text = "Backup på upstart";
+            this.cbBackupOnStart.UseVisualStyleBackColor = true;
+            this.cbBackupOnStart.CheckedChanged += new System.EventHandler(this.cbBackupOnStart_CheckedChanged);
             // 
             // cmdNuvarandeDbBackupAterstall
             // 
@@ -210,22 +225,43 @@
             this.cmdImportForval.UseVisualStyleBackColor = true;
             this.cmdImportForval.Click += new System.EventHandler(this.cmdImportForval_Click);
             // 
-            // cbBackupOnStart
+            // cmdImportSettings
             // 
-            this.cbBackupOnStart.AutoSize = true;
-            this.cbBackupOnStart.Location = new System.Drawing.Point(10, 91);
-            this.cbBackupOnStart.Name = "cbBackupOnStart";
-            this.cbBackupOnStart.Size = new System.Drawing.Size(113, 17);
-            this.cbBackupOnStart.TabIndex = 0;
-            this.cbBackupOnStart.Text = "Backup på upstart";
-            this.cbBackupOnStart.UseVisualStyleBackColor = true;
-            this.cbBackupOnStart.CheckedChanged += new System.EventHandler(this.cbBackupOnStart_CheckedChanged);
+            this.cmdImportSettings.Location = new System.Drawing.Point(23, 58);
+            this.cmdImportSettings.Name = "cmdImportSettings";
+            this.cmdImportSettings.Size = new System.Drawing.Size(149, 23);
+            this.cmdImportSettings.TabIndex = 26;
+            this.cmdImportSettings.Text = "Importera";
+            this.cmdImportSettings.UseVisualStyleBackColor = true;
+            this.cmdImportSettings.Click += new System.EventHandler(this.cmdImportSettings_Click);
+            // 
+            // cmdExportSettings
+            // 
+            this.cmdExportSettings.Location = new System.Drawing.Point(23, 29);
+            this.cmdExportSettings.Name = "cmdExportSettings";
+            this.cmdExportSettings.Size = new System.Drawing.Size(149, 23);
+            this.cmdExportSettings.TabIndex = 25;
+            this.cmdExportSettings.Text = "Exportera";
+            this.cmdExportSettings.UseVisualStyleBackColor = true;
+            this.cmdExportSettings.Click += new System.EventHandler(this.cmdExportSettings_Click);
+            // 
+            // gbImportExport
+            // 
+            this.gbImportExport.Controls.Add(this.cmdExportSettings);
+            this.gbImportExport.Controls.Add(this.cmdImportSettings);
+            this.gbImportExport.Location = new System.Drawing.Point(12, 174);
+            this.gbImportExport.Name = "gbImportExport";
+            this.gbImportExport.Size = new System.Drawing.Size(200, 100);
+            this.gbImportExport.TabIndex = 27;
+            this.gbImportExport.TabStop = false;
+            this.gbImportExport.Text = "Importa / Exportera inställningar";
             // 
             // InstallningarDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 353);
+            this.ClientSize = new System.Drawing.Size(832, 286);
+            this.Controls.Add(this.gbImportExport);
             this.Controls.Add(this.cmdImportForval);
             this.Controls.Add(this.cmdNuvarandeDbBackupAterstall);
             this.Controls.Add(this.cmdDatabasAterstall);
@@ -249,6 +285,7 @@
             this.Load += new System.EventHandler(this.InstallningarDialog_Load);
             this.gbInstallningarDb.ResumeLayout(false);
             this.gbInstallningarDb.PerformLayout();
+            this.gbImportExport.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,5 +310,8 @@
         private System.Windows.Forms.Label laNuvarandeDbBackupDisplay;
         private System.Windows.Forms.Button cmdImportForval;
         private System.Windows.Forms.CheckBox cbBackupOnStart;
+        private System.Windows.Forms.Button cmdImportSettings;
+        private System.Windows.Forms.Button cmdExportSettings;
+        private System.Windows.Forms.GroupBox gbImportExport;
     }
 }

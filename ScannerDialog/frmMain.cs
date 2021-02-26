@@ -153,12 +153,13 @@ namespace ScannerDialog
         {
             InputBox inputBox = new InputBox();
             inputBox.ShowDialog();
-            if (!string.IsNullOrWhiteSpace(inputBox.Input))
+            string scannedInput = inputBox.Input.ToUpper();
+            if (!string.IsNullOrWhiteSpace(scannedInput))
             {
                 Artikel artikel;
                 using (DataAccess dataAccess = new DataAccess())
                 {
-                    artikel = dataAccess.HamtaArtikelFranSerieNr(inputBox.Input);
+                    artikel = dataAccess.HamtaArtikelFranSerieNr(scannedInput);
                 }
                 if(artikel is null)
                 {

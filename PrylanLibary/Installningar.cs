@@ -42,6 +42,12 @@ namespace PrylanLibary
                 Change.Invoke(this, new EventArgs());
         }
 
+        public void Spara(string fName)
+        {
+            string installningarEncoded = JsonConvert.SerializeObject(this, Formatting.Indented);
+            File.WriteAllText(fName, installningarEncoded);
+        }
+
         public static Installningar Hamta()
         {
             Installningar installningar;
@@ -60,5 +66,26 @@ namespace PrylanLibary
             }
             return installningar;
         }
+
+        public static Installningar Hamta(string fName)
+        {
+            Installningar installningar;
+            try
+            {
+                string fileData = File.ReadAllText(fName);
+                installningar = JsonConvert.DeserializeObject<Installningar>(fileData);
+            }
+            catch
+            {
+                installningar = new Installningar();
+            }
+            if (installningar is null)
+            {
+                return new Installningar();
+            }
+            return installningar;
+        }
+
+
     }
 }

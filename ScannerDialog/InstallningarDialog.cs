@@ -299,6 +299,13 @@ namespace ScannerDialog
                         installningar.Tillhorigheter.Add(v);
                     }
                 }
+                foreach (string v in dataAccess.GetUniqueHandelser())
+                {
+                    if (!installningar.Handelser.Contains(v))
+                    {
+                        installningar.Handelser.Add(v);
+                    }
+                }
                 installningar.Spara();
             }
             LaddaForval();
@@ -309,6 +316,40 @@ namespace ScannerDialog
             var ins = Installningar.Hamta();
             ins.BackupOnStart = cbBackupOnStart.Checked;
             ins.Spara();
+        }
+
+        private void cmdExportSettings_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.Filter = "Json (*.txt)|*.json";
+            fileDialog.DefaultExt = "txt";
+            fileDialog.AddExtension = true;
+            DialogResult dialogResult = fileDialog.ShowDialog();
+            if (dialogResult == DialogResult.OK && fileDialog.CheckPathExists && !fileDialog.CheckFileExists)
+            {
+                var ins = Installningar.Hamta();
+                ins.Spara(fileDialog.FileName);
+            }
+        }
+
+        private void cmdImportSettings_Click(object sender, EventArgs e)
+        {
+            var fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "json files (*.json)|*.json";
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (fileDialog.CheckFileExists)
+                {
+                    var ins = Installningar.Hamta(fileDialog.FileName);
+                    ins.Spara();
+                    DBHandler.SetConnection(ins.Databas);
+                }
+                else
+                {
+                    MessageBox.Show("Något är fel med den utpekade filen");
+                }
+            }
         }
     }
 }
