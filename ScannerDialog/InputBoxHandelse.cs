@@ -13,7 +13,7 @@ namespace ScannerDialog
 {
     public partial class InputBoxHandelse : Form
     {
-        public string Input { get; private set; }
+        public string Input { get; private set; } = string.Empty;
         public InputBoxHandelse()
         {
             InitializeComponent();
