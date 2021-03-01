@@ -12,7 +12,7 @@ namespace ScannerDialog
 {
     public partial class InputBox : Form
     {
-        public string Input { get; private set; }
+        public string Input { get; private set; } = string.Empty;
         public string PromptText { get { return lbPrompt.Text; } set { lbPrompt.Text = value; } }
         public InputBox()
         {

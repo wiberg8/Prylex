@@ -95,7 +95,7 @@
             // 
             // cmdSokAlla
             // 
-            this.cmdSokAlla.Location = new System.Drawing.Point(113, 51);
+            this.cmdSokAlla.Location = new System.Drawing.Point(8, 50);
             this.cmdSokAlla.Name = "cmdSokAlla";
             this.cmdSokAlla.Size = new System.Drawing.Size(113, 22);
             this.cmdSokAlla.TabIndex = 12;
@@ -105,7 +105,7 @@
             // 
             // cmdScanLabel
             // 
-            this.cmdScanLabel.Location = new System.Drawing.Point(8, 51);
+            this.cmdScanLabel.Location = new System.Drawing.Point(234, 50);
             this.cmdScanLabel.Name = "cmdScanLabel";
             this.cmdScanLabel.Size = new System.Drawing.Size(99, 22);
             this.cmdScanLabel.TabIndex = 11;
@@ -115,7 +115,7 @@
             // 
             // cmdSok
             // 
-            this.cmdSok.Location = new System.Drawing.Point(232, 50);
+            this.cmdSok.Location = new System.Drawing.Point(127, 49);
             this.cmdSok.Name = "cmdSok";
             this.cmdSok.Size = new System.Drawing.Size(101, 23);
             this.cmdSok.TabIndex = 9;
@@ -151,31 +151,31 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(146, 6);
             // 
             // tspArkivNyDatabasFil
             // 
             this.tspArkivNyDatabasFil.Name = "tspArkivNyDatabasFil";
-            this.tspArkivNyDatabasFil.Size = new System.Drawing.Size(180, 22);
+            this.tspArkivNyDatabasFil.Size = new System.Drawing.Size(149, 22);
             this.tspArkivNyDatabasFil.Text = "Skapa Ny (DB)";
             this.tspArkivNyDatabasFil.Click += new System.EventHandler(this.tspFileNewDB_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
             // 
             // tspArkivInstallningar
             // 
             this.tspArkivInstallningar.Name = "tspArkivInstallningar";
-            this.tspArkivInstallningar.Size = new System.Drawing.Size(180, 22);
+            this.tspArkivInstallningar.Size = new System.Drawing.Size(149, 22);
             this.tspArkivInstallningar.Text = "Inställningar";
             this.tspArkivInstallningar.Click += new System.EventHandler(this.tspArkivInstallningar_Click);
             // 
             // tspArkivAvsluta
             // 
             this.tspArkivAvsluta.Name = "tspArkivAvsluta";
-            this.tspArkivAvsluta.Size = new System.Drawing.Size(180, 22);
+            this.tspArkivAvsluta.Size = new System.Drawing.Size(149, 22);
             this.tspArkivAvsluta.Text = "Avsluta";
             this.tspArkivAvsluta.Click += new System.EventHandler(this.tspArkivAvsluta_Click);
             // 

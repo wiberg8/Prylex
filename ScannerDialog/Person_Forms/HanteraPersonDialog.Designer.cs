@@ -52,6 +52,7 @@
             this.laEfternamn = new System.Windows.Forms.Label();
             this.lbRegistreradeArtiklar = new System.Windows.Forms.ListBox();
             this.gbRegistreradeArtiklar = new System.Windows.Forms.GroupBox();
+            this.cbPrintOnScan = new System.Windows.Forms.CheckBox();
             this.cmdExporteraDatornamn = new System.Windows.Forms.Button();
             this.cmdRegistreraSkanna = new System.Windows.Forms.Button();
             this.cmdSkrivUtEttiket = new System.Windows.Forms.Button();
@@ -65,7 +66,6 @@
             this.txtHandelseArtikel = new System.Windows.Forms.TextBox();
             this.lbHandelser = new System.Windows.Forms.ListBox();
             this.laHandelseArtikel = new System.Windows.Forms.Label();
-            this.cbPrintOnScan = new System.Windows.Forms.CheckBox();
             this.gbFalt.SuspendLayout();
             this.gbRegistreradeArtiklar.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -314,7 +314,7 @@
             this.lbRegistreradeArtiklar.FormattingEnabled = true;
             this.lbRegistreradeArtiklar.Location = new System.Drawing.Point(23, 54);
             this.lbRegistreradeArtiklar.Name = "lbRegistreradeArtiklar";
-            this.lbRegistreradeArtiklar.Size = new System.Drawing.Size(395, 186);
+            this.lbRegistreradeArtiklar.Size = new System.Drawing.Size(408, 186);
             this.lbRegistreradeArtiklar.TabIndex = 3;
             // 
             // gbRegistreradeArtiklar
@@ -322,8 +322,8 @@
             this.gbRegistreradeArtiklar.Controls.Add(this.cbPrintOnScan);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdExporteraDatornamn);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdRegistreraSkanna);
-            this.gbRegistreradeArtiklar.Controls.Add(this.cmdSkrivUtEttiket);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdRegistreraArtikel);
+            this.gbRegistreradeArtiklar.Controls.Add(this.cmdSkrivUtEttiket);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdShowAllRegistrerade);
             this.gbRegistreradeArtiklar.Controls.Add(this.txtArtikelSok);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdArtikelAvregistrera);
@@ -331,14 +331,24 @@
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdArtikelSok);
             this.gbRegistreradeArtiklar.Location = new System.Drawing.Point(329, 12);
             this.gbRegistreradeArtiklar.Name = "gbRegistreradeArtiklar";
-            this.gbRegistreradeArtiklar.Size = new System.Drawing.Size(437, 302);
+            this.gbRegistreradeArtiklar.Size = new System.Drawing.Size(447, 304);
             this.gbRegistreradeArtiklar.TabIndex = 17;
             this.gbRegistreradeArtiklar.TabStop = false;
             this.gbRegistreradeArtiklar.Text = "Registrerade artiklar";
             // 
+            // cbPrintOnScan
+            // 
+            this.cbPrintOnScan.AutoSize = true;
+            this.cbPrintOnScan.Location = new System.Drawing.Point(162, 276);
+            this.cbPrintOnScan.Name = "cbPrintOnScan";
+            this.cbPrintOnScan.Size = new System.Drawing.Size(133, 17);
+            this.cbPrintOnScan.TabIndex = 25;
+            this.cbPrintOnScan.Text = "Skriv ut vid registrering";
+            this.cbPrintOnScan.UseVisualStyleBackColor = true;
+            // 
             // cmdExporteraDatornamn
             // 
-            this.cmdExporteraDatornamn.Location = new System.Drawing.Point(162, 273);
+            this.cmdExporteraDatornamn.Location = new System.Drawing.Point(298, 272);
             this.cmdExporteraDatornamn.Name = "cmdExporteraDatornamn";
             this.cmdExporteraDatornamn.Size = new System.Drawing.Size(133, 23);
             this.cmdExporteraDatornamn.TabIndex = 22;
@@ -348,7 +358,7 @@
             // 
             // cmdRegistreraSkanna
             // 
-            this.cmdRegistreraSkanna.Location = new System.Drawing.Point(23, 246);
+            this.cmdRegistreraSkanna.Location = new System.Drawing.Point(23, 272);
             this.cmdRegistreraSkanna.Name = "cmdRegistreraSkanna";
             this.cmdRegistreraSkanna.Size = new System.Drawing.Size(133, 23);
             this.cmdRegistreraSkanna.TabIndex = 21;
@@ -358,9 +368,9 @@
             // 
             // cmdSkrivUtEttiket
             // 
-            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(301, 273);
+            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(298, 246);
             this.cmdSkrivUtEttiket.Name = "cmdSkrivUtEttiket";
-            this.cmdSkrivUtEttiket.Size = new System.Drawing.Size(117, 23);
+            this.cmdSkrivUtEttiket.Size = new System.Drawing.Size(133, 23);
             this.cmdSkrivUtEttiket.TabIndex = 19;
             this.cmdSkrivUtEttiket.Text = "Ettiket";
             this.cmdSkrivUtEttiket.UseVisualStyleBackColor = true;
@@ -368,7 +378,7 @@
             // 
             // cmdRegistreraArtikel
             // 
-            this.cmdRegistreraArtikel.Location = new System.Drawing.Point(162, 246);
+            this.cmdRegistreraArtikel.Location = new System.Drawing.Point(23, 246);
             this.cmdRegistreraArtikel.Name = "cmdRegistreraArtikel";
             this.cmdRegistreraArtikel.Size = new System.Drawing.Size(133, 23);
             this.cmdRegistreraArtikel.TabIndex = 20;
@@ -378,7 +388,7 @@
             // 
             // cmdShowAllRegistrerade
             // 
-            this.cmdShowAllRegistrerade.Location = new System.Drawing.Point(328, 26);
+            this.cmdShowAllRegistrerade.Location = new System.Drawing.Point(341, 26);
             this.cmdShowAllRegistrerade.Name = "cmdShowAllRegistrerade";
             this.cmdShowAllRegistrerade.Size = new System.Drawing.Size(90, 23);
             this.cmdShowAllRegistrerade.TabIndex = 19;
@@ -397,9 +407,9 @@
             // 
             // cmdArtikelAvregistrera
             // 
-            this.cmdArtikelAvregistrera.Location = new System.Drawing.Point(301, 246);
+            this.cmdArtikelAvregistrera.Location = new System.Drawing.Point(162, 246);
             this.cmdArtikelAvregistrera.Name = "cmdArtikelAvregistrera";
-            this.cmdArtikelAvregistrera.Size = new System.Drawing.Size(117, 23);
+            this.cmdArtikelAvregistrera.Size = new System.Drawing.Size(133, 23);
             this.cmdArtikelAvregistrera.TabIndex = 17;
             this.cmdArtikelAvregistrera.Text = "Avregistrera";
             this.cmdArtikelAvregistrera.UseVisualStyleBackColor = true;
@@ -409,7 +419,7 @@
             // 
             this.cmdArtikelSok.Location = new System.Drawing.Point(239, 26);
             this.cmdArtikelSok.Name = "cmdArtikelSok";
-            this.cmdArtikelSok.Size = new System.Drawing.Size(83, 23);
+            this.cmdArtikelSok.Size = new System.Drawing.Size(96, 23);
             this.cmdArtikelSok.TabIndex = 18;
             this.cmdArtikelSok.Text = "Sök";
             this.cmdArtikelSok.UseVisualStyleBackColor = true;
@@ -455,21 +465,11 @@
             this.laHandelseArtikel.TabIndex = 34;
             this.laHandelseArtikel.Text = "Artikel:";
             // 
-            // cbPrintOnScan
-            // 
-            this.cbPrintOnScan.AutoSize = true;
-            this.cbPrintOnScan.Location = new System.Drawing.Point(23, 277);
-            this.cbPrintOnScan.Name = "cbPrintOnScan";
-            this.cbPrintOnScan.Size = new System.Drawing.Size(133, 17);
-            this.cbPrintOnScan.TabIndex = 25;
-            this.cbPrintOnScan.Text = "Skriv ut vid registrering";
-            this.cbPrintOnScan.UseVisualStyleBackColor = true;
-            // 
             // HanteraPersonDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 527);
+            this.ClientSize = new System.Drawing.Size(788, 527);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbRegistreradeArtiklar);
             this.Controls.Add(this.gbFalt);

@@ -128,10 +128,11 @@ namespace ScannerDialog
             dialog.ShowDialog();
             if(dialog.ValdArtikel != null)
             {
+                Artikel a;
                 using (DataAccess dataAccess = new DataAccess())
                 {
                     dataAccess.RegisterArtikelToPerson(nuvarandePerson, dialog.ValdArtikel);
-                    Artikel a = dataAccess.HamtaArtikelFranId(dialog.ValdArtikel.Id);
+                    a = dataAccess.HamtaArtikelFranId(dialog.ValdArtikel.Id);
                     if(a.Status == Status.UTE)
                     {
                         Handelse h = new Handelse() { PersId = nuvarandePerson.Id, ArtikelId = a.Id, Typ = HandelseTyp.REGISTRERING};
@@ -139,6 +140,10 @@ namespace ScannerDialog
                     }
                     FyllRegistreradeArtiklar(dataAccess.HamtaRegistreradeArtiklar(nuvarandePerson));
                     FyllHandelser(dataAccess.HamtaHandelserPerson(nuvarandePerson));
+                }
+                if (a != null && cbPrintOnScan.Checked)
+                {
+                    Printing.PrintLabel(a.DatorNamn, nuvarandePerson.GetNamn(), a.SerieNr, nuvarandePerson.Tillhorighet);
                 }
             }
         }
@@ -148,6 +153,7 @@ namespace ScannerDialog
             InputBox inputBox = new InputBox() { PromptText = "Skanna Ettiket (SerieNr)" };
             inputBox.ShowDialog();
             string scannedInput = inputBox.Input.ToUpper();
+
             if (!string.IsNullOrWhiteSpace(scannedInput))
             {
                 Artikel artikel;

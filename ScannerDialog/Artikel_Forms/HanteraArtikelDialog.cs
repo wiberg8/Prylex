@@ -290,7 +290,7 @@ namespace ScannerDialog
                 using (DataAccess dataAccess = new DataAccess())
                 {
                     dataAccess.InfogaHandelse(handelse);
-                    lbHandelser.DataSource = dataAccess.HamtaHandelserArtikel(artikelAttEditera);
+                    FyllHandelser(dataAccess.HamtaHandelserArtikel(artikelAttEditera));
                 }
             }
         }
