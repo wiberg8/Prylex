@@ -171,6 +171,7 @@ namespace ScannerDialog
                 }
                 else
                 {
+                    //Skapa en funktion för själva knytningen
                     Artikel a;
                     using (DataAccess dataAccess = new DataAccess())
                     {
