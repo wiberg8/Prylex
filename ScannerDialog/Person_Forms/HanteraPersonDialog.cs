@@ -265,18 +265,16 @@ namespace ScannerDialog
 
         private void cmdExporteraDatornamn_Click(object sender, EventArgs e)
         {
-            var x = new List<string>();
+            List<string> datorNamnLista = new List<string>();
             foreach (Artikel a in lbRegistreradeArtiklar.Items)
             {
-                x.Add(a.DatorNamn);
+                datorNamnLista.Add(a.DatorNamn);
             }
-            if(x.Count > 0)
+            if(datorNamnLista.Count > 0)
             {
-                string t = string.Empty;
-                foreach (string g in x)
-                {
-                    t += g + "\n";
-                }
+                string temp = string.Empty;
+                datorNamnLista.ForEach((string datorNamn) => temp += datorNamn + "\n");
+
                 SaveFileDialog fileDialog = new SaveFileDialog();
                 fileDialog.Filter = "Text file(*.txt)|*.txt";
                 fileDialog.DefaultExt = "txt";
@@ -284,7 +282,7 @@ namespace ScannerDialog
                 DialogResult dialogResult = fileDialog.ShowDialog();
                 if(dialogResult == DialogResult.OK && fileDialog.CheckPathExists && !fileDialog.CheckFileExists)
                 {
-                    File.WriteAllText(fileDialog.FileName, t);
+                    File.WriteAllText(fileDialog.FileName, temp);
                 }
             }
             
