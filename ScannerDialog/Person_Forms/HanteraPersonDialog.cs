@@ -128,23 +128,7 @@ namespace ScannerDialog
             dialog.ShowDialog();
             if(dialog.ValdArtikel != null)
             {
-                Artikel a;
-                using (DataAccess dataAccess = new DataAccess())
-                {
-                    dataAccess.RegisterArtikelToPerson(nuvarandePerson, dialog.ValdArtikel);
-                    a = dataAccess.HamtaArtikelFranId(dialog.ValdArtikel.Id);
-                    if(a.Status == Status.UTE)
-                    {
-                        Handelse h = new Handelse() { PersId = nuvarandePerson.Id, ArtikelId = a.Id, Typ = HandelseTyp.REGISTRERING};
-                        dataAccess.InfogaHandelse(h);
-                    }
-                    FyllRegistreradeArtiklar(dataAccess.HamtaRegistreradeArtiklar(nuvarandePerson));
-                    FyllHandelser(dataAccess.HamtaHandelserPerson(nuvarandePerson));
-                }
-                if (a != null && cbPrintOnScan.Checked)
-                {
-                    Printing.PrintLabel(a.DatorNamn, nuvarandePerson.GetNamn(), a.SerieNr, nuvarandePerson.Tillhorighet);
-                }
+                KnytArtikel(dialog.ValdArtikel);
             }
         }
 
@@ -171,28 +155,33 @@ namespace ScannerDialog
                 }
                 else
                 {
-                    //Skapa en funktion för själva knytningen
-                    Artikel a;
-                    using (DataAccess dataAccess = new DataAccess())
-                    {
-                        dataAccess.RegisterArtikelToPerson(nuvarandePerson, artikel);
-                        a = dataAccess.HamtaArtikelFranId(artikel.Id);
-                        if (a != null && a.Status == Status.UTE)
-                        {
-                            Handelse h = new Handelse() { PersId = nuvarandePerson.Id, ArtikelId = a.Id, Typ = HandelseTyp.REGISTRERING };
-                            dataAccess.InfogaHandelse(h);
-                        }
-                        FyllRegistreradeArtiklar(dataAccess.HamtaRegistreradeArtiklar(nuvarandePerson));
-                        FyllHandelser(dataAccess.HamtaHandelserPerson(nuvarandePerson));
-                    }
-                    if (a != null && cbPrintOnScan.Checked)
-                    {
-                        Printing.PrintLabel(a.DatorNamn,nuvarandePerson.GetNamn(), a.SerieNr, nuvarandePerson.Tillhorighet);
-                    }
+                    KnytArtikel(artikel);
                 }
             }
 
         }
+
+        private void KnytArtikel(Artikel artikel)
+        {
+            Artikel a;
+            using (DataAccess dataAccess = new DataAccess())
+            {
+                dataAccess.RegisterArtikelToPerson(nuvarandePerson, artikel);
+                a = dataAccess.HamtaArtikelFranId(artikel.Id);
+                if (a != null && a.Status == Status.UTE)
+                {
+                    Handelse h = new Handelse() { PersId = nuvarandePerson.Id, ArtikelId = a.Id, Typ = HandelseTyp.REGISTRERING };
+                    dataAccess.InfogaHandelse(h);
+                }
+                FyllRegistreradeArtiklar(dataAccess.HamtaRegistreradeArtiklar(nuvarandePerson));
+                FyllHandelser(dataAccess.HamtaHandelserPerson(nuvarandePerson));
+            }
+            if (a != null && cbPrintOnScan.Checked)
+            {
+                Printing.PrintLabel(a.DatorNamn, nuvarandePerson.GetNamn(), a.SerieNr, nuvarandePerson.Tillhorighet);
+            }
+        }
+
 
         private void FyllRegistreradeArtiklar(List<Artikel> artiklar)
         {
@@ -244,6 +233,10 @@ namespace ScannerDialog
                 {
                     MessageBox.Show(Printing.exception);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Du måste välja en registrerad artikel");
             }
         }
 
