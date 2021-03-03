@@ -285,7 +285,25 @@ namespace ScannerDialog
 
         private void cmdRegistreraArtikel_Click_1(object sender, EventArgs e)
         {
-
+            if (lbPersoner.SelectedItem is null)
+            {
+                MessageBox.Show("Du måste välja en person");
+            }
+            else
+            {
+                Person selectedPerson = (lbPersoner.SelectedItem as AdvancedPerson).Person;
+                List<Artikel> ledigaArtiklar;
+                using (DataAccess dataAccess = new DataAccess())
+                {
+                    ledigaArtiklar = dataAccess.HamtaLedigaArtiklar();
+                }
+                var dialog = new ValjArtikelDialog(ledigaArtiklar, true);
+                dialog.ShowDialog();
+                if (dialog.ValdArtikel != null)
+                {
+                    KnytArtikelToperson(dialog.ValdArtikel, selectedPerson);
+                }
+            }
         }
     }
 }

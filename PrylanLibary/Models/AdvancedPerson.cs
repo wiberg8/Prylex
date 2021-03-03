@@ -13,6 +13,10 @@ namespace PrylanLibary.Models
 
         public override string ToString()
         {
+            if (this.RegistreradeArtiklar.Count > 0)
+            {
+                return this.Person.ToString() + " *";
+            }
             return this.Person.ToString(); 
         }
     }

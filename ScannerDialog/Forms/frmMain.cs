@@ -273,7 +273,10 @@ namespace ScannerDialog
         private void tspSnabbReg_Click(object sender, EventArgs e)
         {
             SnabbRegistering snabbRegistering = new SnabbRegistering();
+            dgvArtiklar.Rows.Clear();
+            dgvPersoner.Rows.Clear();
             snabbRegistering.ShowDialog();
+            RefreshDataGrids();
         }
 
         private void cmdSnabbReg_Click(object sender, EventArgs e)
