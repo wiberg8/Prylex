@@ -270,6 +270,18 @@ namespace ScannerDialog
             Application.Exit();
         }
 
+        private void tspSnabbReg_Click(object sender, EventArgs e)
+        {
+            SnabbRegistering snabbRegistering = new SnabbRegistering();
+            snabbRegistering.ShowDialog();
+        }
+
+        private void cmdSnabbReg_Click(object sender, EventArgs e)
+        {
+            SnabbRegistering snabbRegistering = new SnabbRegistering();
+            snabbRegistering.ShowDialog();
+        }
+
         //private void dgvArtiklar_MouseDoubleClick(object sender, MouseEventArgs e)
         //{
         //    if (dgvArtiklar.SelectedRows.Count > 0)

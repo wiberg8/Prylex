@@ -68,10 +68,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmMain.cs">
+    <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
+    <Compile Include="Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Artikel_Forms\HanteraArtikelDialog.cs">
@@ -80,10 +80,16 @@
     <Compile Include="Artikel_Forms\HanteraArtikelDialog.Designer.cs">
       <DependentUpon>HanteraArtikelDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="InputBoxHandelse.cs">
+    <Compile Include="Forms\SnabbRegistering.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InputBoxHandelse.Designer.cs">
+    <Compile Include="Forms\SnabbRegistering.Designer.cs">
+      <DependentUpon>SnabbRegistering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InputBoxHandelse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InputBoxHandelse.Designer.cs">
       <DependentUpon>InputBoxHandelse.cs</DependentUpon>
     </Compile>
     <Compile Include="Person_Forms\HanteraPersonDialog.cs">
@@ -92,10 +98,10 @@
     <Compile Include="Person_Forms\HanteraPersonDialog.Designer.cs">
       <DependentUpon>HanteraPersonDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="InstallningarDialog.cs">
+    <Compile Include="Forms\InstallningarDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InstallningarDialog.Designer.cs">
+    <Compile Include="Forms\InstallningarDialog.Designer.cs">
       <DependentUpon>InstallningarDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Artikel_Forms\NyArtikelDialog.cs">
@@ -112,10 +118,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="InputBox.cs">
+    <Compile Include="Forms\InputBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InputBox.Designer.cs">
+    <Compile Include="Forms\InputBox.Designer.cs">
       <DependentUpon>InputBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Artikel_Forms\UpdateraArtikelDialog.cs">
@@ -142,19 +148,22 @@
     <Compile Include="Person_Forms\ValjPersonDialog.Designer.cs">
       <DependentUpon>ValjPersonDialog.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmMain.resx">
+    <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Artikel_Forms\HanteraArtikelDialog.resx">
       <DependentUpon>HanteraArtikelDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InputBoxHandelse.resx">
+    <EmbeddedResource Include="Forms\SnabbRegistering.resx">
+      <DependentUpon>SnabbRegistering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InputBoxHandelse.resx">
       <DependentUpon>InputBoxHandelse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Person_Forms\HanteraPersonDialog.resx">
       <DependentUpon>HanteraPersonDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InstallningarDialog.resx">
+    <EmbeddedResource Include="Forms\InstallningarDialog.resx">
       <DependentUpon>InstallningarDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Artikel_Forms\NyArtikelDialog.resx">
@@ -172,7 +181,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="InputBox.resx">
+    <EmbeddedResource Include="Forms\InputBox.resx">
       <DependentUpon>InputBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Artikel_Forms\UpdateraArtikelDialog.resx">

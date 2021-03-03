@@ -69,7 +69,7 @@
             this.cmdOk.UseVisualStyleBackColor = true;
             this.cmdOk.Click += new System.EventHandler(this.cmdOk_Click_1);
             // 
-            // InputScanner
+            // InputBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -84,7 +84,7 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "InputScanner";
+            this.Name = "InputBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = " ";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputScanner_KeyDown);

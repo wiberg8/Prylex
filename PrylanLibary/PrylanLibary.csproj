@@ -83,6 +83,7 @@
     <Compile Include="Licensering.cs" />
     <Compile Include="Models\Handelse.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\AdvancedPerson.cs" />
     <Compile Include="Printing.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

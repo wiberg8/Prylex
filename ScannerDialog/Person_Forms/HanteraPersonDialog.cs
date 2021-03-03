@@ -317,5 +317,10 @@ namespace ScannerDialog
                 lbHandelser.Items.Add(handelse);
             }
         }
+
+        private void cbPrintOnScan_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

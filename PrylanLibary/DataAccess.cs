@@ -297,6 +297,15 @@ namespace PrylanLibary
             FyllPersonLista(hamtadePersoner, DBHandler.DBDT);
             return hamtadePersoner;
         }
+        public List<Person> HamtaPersonerFranTillhorighet(string tillhorighet)
+        {
+            var hamtadePersoner = new List<Person>();
+
+            DBHandler.AddParam("@Tillhorighet", tillhorighet);
+            DBHandler.ExecQuery("SELECT * FROM personer WHERE Tillhorighet = @Tillhorighet ORDER BY Id");
+            FyllPersonLista(hamtadePersoner, DBHandler.DBDT);
+            return hamtadePersoner;
+        }
         public Person HamtaPersonFranId(int Id)
         {
             DBHandler.AddParam("@Id", Id);

@@ -55,8 +55,8 @@
             this.cbPrintOnScan = new System.Windows.Forms.CheckBox();
             this.cmdExporteraDatornamn = new System.Windows.Forms.Button();
             this.cmdRegistreraSkanna = new System.Windows.Forms.Button();
-            this.cmdSkrivUtEttiket = new System.Windows.Forms.Button();
             this.cmdRegistreraArtikel = new System.Windows.Forms.Button();
+            this.cmdSkrivUtEttiket = new System.Windows.Forms.Button();
             this.cmdShowAllRegistrerade = new System.Windows.Forms.Button();
             this.txtArtikelSok = new System.Windows.Forms.TextBox();
             this.cmdArtikelAvregistrera = new System.Windows.Forms.Button();
@@ -345,6 +345,7 @@
             this.cbPrintOnScan.TabIndex = 25;
             this.cbPrintOnScan.Text = "Skriv ut vid registrering";
             this.cbPrintOnScan.UseVisualStyleBackColor = true;
+            this.cbPrintOnScan.CheckedChanged += new System.EventHandler(this.cbPrintOnScan_CheckedChanged);
             // 
             // cmdExporteraDatornamn
             // 
@@ -366,16 +367,6 @@
             this.cmdRegistreraSkanna.UseVisualStyleBackColor = true;
             this.cmdRegistreraSkanna.Click += new System.EventHandler(this.cmdRegistreraSkanna_Click);
             // 
-            // cmdSkrivUtEttiket
-            // 
-            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(298, 246);
-            this.cmdSkrivUtEttiket.Name = "cmdSkrivUtEttiket";
-            this.cmdSkrivUtEttiket.Size = new System.Drawing.Size(133, 23);
-            this.cmdSkrivUtEttiket.TabIndex = 19;
-            this.cmdSkrivUtEttiket.Text = "Ettiket";
-            this.cmdSkrivUtEttiket.UseVisualStyleBackColor = true;
-            this.cmdSkrivUtEttiket.Click += new System.EventHandler(this.cmdSkrivUtEttiket_Click);
-            // 
             // cmdRegistreraArtikel
             // 
             this.cmdRegistreraArtikel.Location = new System.Drawing.Point(23, 246);
@@ -385,6 +376,16 @@
             this.cmdRegistreraArtikel.Text = "Registrera";
             this.cmdRegistreraArtikel.UseVisualStyleBackColor = true;
             this.cmdRegistreraArtikel.Click += new System.EventHandler(this.cmdRegistreraArtikel_Click);
+            // 
+            // cmdSkrivUtEttiket
+            // 
+            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(298, 246);
+            this.cmdSkrivUtEttiket.Name = "cmdSkrivUtEttiket";
+            this.cmdSkrivUtEttiket.Size = new System.Drawing.Size(133, 23);
+            this.cmdSkrivUtEttiket.TabIndex = 19;
+            this.cmdSkrivUtEttiket.Text = "Ettiket";
+            this.cmdSkrivUtEttiket.UseVisualStyleBackColor = true;
+            this.cmdSkrivUtEttiket.Click += new System.EventHandler(this.cmdSkrivUtEttiket_Click);
             // 
             // cmdShowAllRegistrerade
             // 
