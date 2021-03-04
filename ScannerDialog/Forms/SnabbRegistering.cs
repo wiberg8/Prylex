@@ -148,16 +148,17 @@ namespace ScannerDialog
 
         private void FyllPersoner(List<AdvancedPerson> personer)
         {
+            personer.Sort();
             lbPersoner.Items.Clear();
             foreach (AdvancedPerson p in personer)
             {
                 lbPersoner.Items.Add(p);
-                Console.WriteLine(p);
             }
            
         }
         private void FyllPersoner(List<AdvancedPerson> personer, Person previousPerson)
         {
+            personer.Sort();
             lbPersoner.Items.Clear();
             foreach (AdvancedPerson p in personer)
             {

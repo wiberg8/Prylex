@@ -14,6 +14,9 @@ namespace PrylanLibary
         public const string VIKey = "isdf345tHtHjHnYU";
         public const string Alphabet = "1QAZ2WSX3EDC4RFV5TGB6YHN7UJM8K9OLP";
 
+        public const bool PremiumEnabled = true;
+        public const string PremiumNeeded = "Man måste ha premium för denna funktion";
+
         public static readonly Color standardForeColor = SystemColors.ControlText;
         public static readonly Color highlightColor = SystemColors.MenuHighlight;
         public static readonly Color firstGridColor = Color.White;

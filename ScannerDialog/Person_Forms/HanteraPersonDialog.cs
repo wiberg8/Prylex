@@ -213,13 +213,25 @@ namespace ScannerDialog
 
         private void cmdDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Är du säker?", "Prylex", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            List<Artikel> registreradeArtiklar;
+            using (DataAccess dataAccess = new DataAccess())
             {
-                using (DataAccess dataAccess = new DataAccess())
+                registreradeArtiklar = dataAccess.HamtaRegistreradeArtiklar(nuvarandePerson);
+            }
+            if(registreradeArtiklar.Count < 1)
+            {
+                if (MessageBox.Show("Är du säker?", "Prylex", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    dataAccess.RaderaPerson(this.nuvarandePerson);
+                    using (DataAccess dataAccess = new DataAccess())
+                    {
+                        dataAccess.RaderaPerson(this.nuvarandePerson);
+                    }
+                    this.DialogResult = DialogResult.OK;
                 }
-                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Personen har artiklar fortfarande registrerade på sig");
             }
         }
 

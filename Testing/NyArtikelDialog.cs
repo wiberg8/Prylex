@@ -6,10 +6,12 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
+using PrylanLibary;
 using PrylanLibary.Models;
 
 namespace Testing
@@ -177,7 +179,29 @@ namespace Testing
 
         private void cmdAvbryt_Click(object sender, EventArgs e)
         {
-
+            var fileData = System.IO.File.ReadAllLines(@"C:\Users\jespe\Desktop\Placering_klass_Export_sparatExcel.csv").ToList();
+            fileData.RemoveAt(0);
+            List<Person> pList = new List<Person>();
+            foreach (string line in fileData)
+            {
+                Console.WriteLine(line);
+                var lineSplit = line.Split(';');
+                Person p = new Person();
+                p.Fornamn = lineSplit[5];
+                p.Efternamn = lineSplit[4];
+                p.PersNr = lineSplit[0];
+                p.Tillhorighet = "Elev17A";
+                pList.Add(p);
+                Console.WriteLine(p);
+            }
+            using (DataAccess dataAccess = new DataAccess())
+            {
+                foreach (Person p in pList)
+                {
+                    dataAccess.InfogaPerson(p);
+                }
+            }
+            return;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -190,6 +214,14 @@ namespace Testing
            
         }
 
-     
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtSerieNr_TextChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(Regex.IsMatch(txtSerieNr.Text, @"^[0-9]{8}[-][0-9]{4}$").ToString());
+        }
     }
 }

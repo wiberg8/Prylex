@@ -59,6 +59,7 @@ namespace ScannerDialog
             dgvArtiklar.Rows.Clear();
             dgvPersoner.Rows.Clear();
             artikelDialog.ShowDialog();
+            RefreshDataGrids();
         }
 
         private void tspPeopleNew_Click(object sender, EventArgs e)
@@ -67,6 +68,7 @@ namespace ScannerDialog
             dgvArtiklar.Rows.Clear();
             dgvPersoner.Rows.Clear();
             newPersonDialog.ShowDialog();
+            RefreshDataGrids();
         }
 
         private void cmdTesting_Click(object sender, EventArgs e)
@@ -272,11 +274,18 @@ namespace ScannerDialog
 
         private void tspSnabbReg_Click(object sender, EventArgs e)
         {
-            SnabbRegistering snabbRegistering = new SnabbRegistering();
-            dgvArtiklar.Rows.Clear();
-            dgvPersoner.Rows.Clear();
-            snabbRegistering.ShowDialog();
-            RefreshDataGrids();
+            if (Config.PremiumEnabled)
+            {
+                SnabbRegistering snabbRegistering = new SnabbRegistering();
+                dgvArtiklar.Rows.Clear();
+                dgvPersoner.Rows.Clear();
+                snabbRegistering.ShowDialog();
+                RefreshDataGrids();
+            }
+            else
+            {
+                MessageBox.Show(Config.PremiumNeeded);
+            }
         }
 
         private void cmdSnabbReg_Click(object sender, EventArgs e)

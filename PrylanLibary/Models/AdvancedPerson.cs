@@ -6,18 +6,32 @@ using System.Threading.Tasks;
 
 namespace PrylanLibary.Models
 {
-    public class AdvancedPerson
+    public class AdvancedPerson : IComparable
     {
         public Person Person { get; set; }
         public List<Artikel> RegistreradeArtiklar { get; set; }
 
+        public int CompareTo(object person)
+        {
+            AdvancedPerson x = person as AdvancedPerson;
+            if(this.RegistreradeArtiklar.Count > x.RegistreradeArtiklar.Count)
+            {
+                return 1;
+            }
+            else if (this.RegistreradeArtiklar.Count < x.RegistreradeArtiklar.Count)
+            {
+                return -1;
+            }
+            else
+            {
+                return 0;
+            }
+            
+        }
+
         public override string ToString()
         {
-            if (this.RegistreradeArtiklar.Count > 0)
-            {
-                return this.Person.ToString() + " *";
-            }
-            return this.Person.ToString(); 
+            return this.Person.ToString() + " " + $"[{this.RegistreradeArtiklar.Count}]"; 
         }
     }
 }
