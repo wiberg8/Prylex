@@ -40,6 +40,11 @@ namespace ScannerDialog
         {
             var ins = Installningar.Hamta();
             FyllDatabasVy(ins.Databas, ins.DatabasBackup, ins.BackupOnStart);
+            foreach (string v in Printing.GetPrinters())
+            {
+                cbPrinter.Items.Add(v);
+            }
+            cbPrinter.Text = ins.Skrivare;
         }
 
         private void cmdForvalUpp_Click(object sender, EventArgs e)
@@ -350,6 +355,13 @@ namespace ScannerDialog
                     MessageBox.Show("Något är fel med den utpekade filen");
                 }
             }
+        }
+
+        private void cbPrinter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var ins = Installningar.Hamta();
+            ins.Skrivare = cbPrinter.Text;
+            ins.Spara();
         }
     }
 }

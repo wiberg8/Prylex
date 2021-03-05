@@ -48,6 +48,8 @@
             this.cmdImportSettings = new System.Windows.Forms.Button();
             this.cmdExportSettings = new System.Windows.Forms.Button();
             this.gbImportExport = new System.Windows.Forms.GroupBox();
+            this.cbPrinter = new System.Windows.Forms.ComboBox();
+            this.laPrinter = new System.Windows.Forms.Label();
             this.gbInstallningarDb.SuspendLayout();
             this.gbImportExport.SuspendLayout();
             this.SuspendLayout();
@@ -256,11 +258,32 @@
             this.gbImportExport.TabStop = false;
             this.gbImportExport.Text = "Importa / Exportera inställningar";
             // 
+            // cbPrinter
+            // 
+            this.cbPrinter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPrinter.FormattingEnabled = true;
+            this.cbPrinter.Location = new System.Drawing.Point(228, 174);
+            this.cbPrinter.Name = "cbPrinter";
+            this.cbPrinter.Size = new System.Drawing.Size(214, 21);
+            this.cbPrinter.TabIndex = 28;
+            this.cbPrinter.SelectedIndexChanged += new System.EventHandler(this.cbPrinter_SelectedIndexChanged);
+            // 
+            // laPrinter
+            // 
+            this.laPrinter.AutoSize = true;
+            this.laPrinter.Location = new System.Drawing.Point(225, 158);
+            this.laPrinter.Name = "laPrinter";
+            this.laPrinter.Size = new System.Drawing.Size(64, 13);
+            this.laPrinter.TabIndex = 29;
+            this.laPrinter.Text = "Välj skrivare";
+            // 
             // InstallningarDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 286);
+            this.Controls.Add(this.laPrinter);
+            this.Controls.Add(this.cbPrinter);
             this.Controls.Add(this.gbImportExport);
             this.Controls.Add(this.cmdImportForval);
             this.Controls.Add(this.cmdNuvarandeDbBackupAterstall);
@@ -313,5 +336,7 @@
         private System.Windows.Forms.Button cmdImportSettings;
         private System.Windows.Forms.Button cmdExportSettings;
         private System.Windows.Forms.GroupBox gbImportExport;
+        private System.Windows.Forms.ComboBox cbPrinter;
+        private System.Windows.Forms.Label laPrinter;
     }
 }

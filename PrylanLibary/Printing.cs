@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace PrylanLibary
                 label.SetObjectText("dynSerieNr", artikel.SerieNr);
                 label.SetObjectText("dynNamn", person.GetNamn());
                 label.SetObjectText("dynTillhorighet", person.Tillhorighet);
-                label.Print("DYMO LabelWriter 450");
+                label.Print(Installningar.Hamta().Skrivare);
             }
             catch (Exception ex)
             {
@@ -36,12 +37,21 @@ namespace PrylanLibary
                 label.SetObjectText("dynNamn", namn);
                 label.SetObjectText("dynSerieNr", serieNr);
                 label.SetObjectText("dynTillhorighet", tillhorighet);
-                label.Print("DYMO LabelWriter 450");
+                label.Print(Installningar.Hamta().Skrivare);
             }
             catch(Exception ex)
             {
                 exception = ex.Message;
             }
+        }
+        public static List<string> GetPrinters()
+        {
+            List<string> printers = new List<string>();
+            foreach (string printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
+            {
+                printers.Add(printer);
+            }
+            return printers;
         }
     }
 }

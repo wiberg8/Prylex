@@ -16,6 +16,7 @@ namespace PrylanLibary
         public string Databas { get; set; }
         public string DatabasBackup { get; set; }
         public string ForetagsNamn { get; set; }
+        public string Skrivare { get; set; }
         public bool BackupOnStart { get; set; }
 
         public List<string> Beskrivningar { get; set; } = new List<string>();

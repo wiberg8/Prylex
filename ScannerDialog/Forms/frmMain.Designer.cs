@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbSearch = new System.Windows.Forms.GroupBox();
             this.cmdSokAlla = new System.Windows.Forms.Button();
             this.cmdScanLabel = new System.Windows.Forms.Button();
@@ -152,31 +152,31 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(146, 6);
             // 
             // tspArkivNyDatabasFil
             // 
             this.tspArkivNyDatabasFil.Name = "tspArkivNyDatabasFil";
-            this.tspArkivNyDatabasFil.Size = new System.Drawing.Size(180, 22);
+            this.tspArkivNyDatabasFil.Size = new System.Drawing.Size(149, 22);
             this.tspArkivNyDatabasFil.Text = "Skapa Ny (DB)";
             this.tspArkivNyDatabasFil.Click += new System.EventHandler(this.tspFileNewDB_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
             // 
             // tspArkivInstallningar
             // 
             this.tspArkivInstallningar.Name = "tspArkivInstallningar";
-            this.tspArkivInstallningar.Size = new System.Drawing.Size(180, 22);
+            this.tspArkivInstallningar.Size = new System.Drawing.Size(149, 22);
             this.tspArkivInstallningar.Text = "Inställningar";
             this.tspArkivInstallningar.Click += new System.EventHandler(this.tspArkivInstallningar_Click);
             // 
             // tspArkivAvsluta
             // 
             this.tspArkivAvsluta.Name = "tspArkivAvsluta";
-            this.tspArkivAvsluta.Size = new System.Drawing.Size(180, 22);
+            this.tspArkivAvsluta.Size = new System.Drawing.Size(149, 22);
             this.tspArkivAvsluta.Text = "Avsluta";
             this.tspArkivAvsluta.Click += new System.EventHandler(this.tspArkivAvsluta_Click);
             // 
@@ -236,8 +236,8 @@
             this.tspSnabbReg.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tspSnabbReg.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tspSnabbReg.Name = "tspSnabbReg";
-            this.tspSnabbReg.Size = new System.Drawing.Size(105, 22);
-            this.tspSnabbReg.Text = "Registering snabb";
+            this.tspSnabbReg.Size = new System.Drawing.Size(101, 22);
+            this.tspSnabbReg.Text = "Mass registrering";
             this.tspSnabbReg.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.tspSnabbReg.Click += new System.EventHandler(this.tspSnabbReg_Click);
             // 
@@ -274,14 +274,14 @@
             this.dgvArtiklar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvArtiklar.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvArtiklar.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArtiklar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArtiklar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvArtiklar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArtiklar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -392,14 +392,14 @@
             this.dgvPersoner.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPersoner.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvPersoner.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPersoner.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPersoner.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPersoner.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersoner.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
