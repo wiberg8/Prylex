@@ -15,7 +15,6 @@ namespace ScannerDialog.Forms
 {
     public partial class ImportDialog : Form
     {
-        private List<ImportPerson> importer = new List<ImportPerson>();
         private string selectedImportFil;
         private string SelectedImportFil 
         { 
@@ -32,7 +31,6 @@ namespace ScannerDialog.Forms
         private void cmdImportFilUtforska_Click(object sender, EventArgs e)
         {
             lbPersoner.Items.Clear();
-            lbPersonerErrosSuccess.Items.Clear();
             var fileDialog = new OpenFileDialog();
             fileDialog.Filter = "Csv filer (*.csv)|*.csv";
 
@@ -49,6 +47,26 @@ namespace ScannerDialog.Forms
             }
         }
 
+
+
+        private void ClearInlastPersoner()
+        {
+            lbPersoner.Items.Clear();
+            laTillhorighet.Visible = false;
+            cbTillhorighet.Visible = false;
+            cmdVerkstallImport.Visible = false;
+        }
+
+        private void AddInlastPerson(object itm)
+        {
+            lbPersoner.Items.Add(itm);
+            bool itemExists = lbPersoner.Items.Count > 0;
+
+            laTillhorighet.Visible = itemExists;
+            cbTillhorighet.Visible = itemExists;
+            cmdVerkstallImport.Visible = itemExists;
+        }
+
         private void cmdLasFranFil_Click(object sender, EventArgs e)
         {
             if (!File.Exists(SelectedImportFil))
@@ -61,7 +79,7 @@ namespace ScannerDialog.Forms
                 return;
             }
 
-            lbPersoner.Items.Clear();
+            ClearInlastPersoner();
             List<string> fileData = File.ReadAllLines(SelectedImportFil).ToList();
             if(fileData.Count > 0)
             {
@@ -79,8 +97,7 @@ namespace ScannerDialog.Forms
                         PersNr = "20"+lineSplit[2],
                         Tillhorighet = cbTillhorighet.Text
                     };
-
-                    lbPersoner.Items.Add(p);
+                    AddInlastPerson(p);
                 }
             }
            
@@ -90,44 +107,57 @@ namespace ScannerDialog.Forms
         {
             if(lbPersoner.Items.Count > 0)
             {
-                lbPersonerErrosSuccess.Items.Clear();
+                List<ImportPerson> importer = new List<ImportPerson>();
                 using (DataAccess dataAccess = new DataAccess())
                 {
                     foreach (Person p in lbPersoner.Items)
                     {
                         ImportPerson importPerson = new ImportPerson();
                         importPerson.Person = p;
-                        if (p.ValidPersNr() && p.ValidTillhorighet() && !dataAccess.ExisterarPerson(p.PersNr))
+                        importPerson.AlreadyExist = dataAccess.ExisterarPerson(importPerson.Person.PersNr);
+                        if (!importPerson.AlreadyExist)
                         {
-                            dataAccess.InfogaPerson(p);
-                            importPerson.Exist = true;
-                            importPerson.Success = true;
-                            importer.Add(importPerson);
+                            if (importPerson.Person.ValidPersNr() && importPerson.Person.ValidTillhorighet())
+                            {
+                                dataAccess.InfogaPerson(importPerson.Person);
+                                importPerson.Success = true;
+                            }
+                            if (!p.ValidPersNr())
+                            {
+                                importPerson.ErrorMessage = "Felaktig format på persnr";
+                            }
+                            if (!p.ValidTillhorighet())
+                            {
+                                importPerson.ErrorMessage = "Tillhörighet måste vara minst 2 tecken";
+                            }
                         }
-                        else
+                        if (importPerson.AlreadyExist)
                         {
-                            importPerson.Success = false;
-                            importer.Add(importPerson);
+                            importPerson.ErrorMessage = "Persnr existrerar redan i systemet";
                         }
-                    }
-                    int lyckade = importer.Where((ImportPerson p) => p.Success).Count();
-                    int misslyckade = importer.Where((ImportPerson p) => !p.Success).Count();
-                    if(lyckade == misslyckade)
-                    {
-                        rbLyckade.Checked = true;
-                    }
-                    else if(lyckade > misslyckade)
-                    {
-                        rbLyckade.Checked = true;
-                    }
-                    else if(lyckade < misslyckade)
-                    {
-                        rbMisslyckade.Checked = true;
+                        importer.Add(importPerson);
                     }
                 }
-                ErrorsUpdate();
+                ImportResultDialog resultDialog = new ImportResultDialog(importer);
+                resultDialog.ShowDialog();
+                ClearInlastPersoner();
+
             }
         }
+        //int lyckade = importer.Where((ImportPerson p) => p.Success).Count();
+        //int misslyckade = importer.Where((ImportPerson p) => !p.Success).Count();
+        //if (lyckade == misslyckade)
+        //{
+        //    rbLyckade.Checked = true;
+        //}
+        //else if (lyckade > misslyckade)
+        //{
+        //    rbLyckade.Checked = true;
+        //}
+        //else if (lyckade < misslyckade)
+        //{
+        //    rbMisslyckade.Checked = true;
+        //}
 
         private void laTillhorighet_Click(object sender, EventArgs e)
         {
@@ -141,7 +171,7 @@ namespace ScannerDialog.Forms
 
         private void lbPersoner_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void LaddaSnabbVal()
@@ -155,41 +185,6 @@ namespace ScannerDialog.Forms
         private void ImportDialog_Load(object sender, EventArgs e)
         {
             LaddaSnabbVal();
-            SelectedImportFil = @"E:\PlaceriUTF8.csv";
-        }
-
-        private void ErrorsUpdate()
-        {
-            lbPersonerErrosSuccess.Items.Clear();
-            List<ImportPerson> imports;
-            if (rbLyckade.Checked)
-            {
-                imports = importer.Where((ImportPerson p) => p.Success).ToList();
-               
-            }
-            else
-            {
-                imports = importer.Where((ImportPerson p) => !p.Success).ToList();
-            }
-            foreach (ImportPerson importPerson in imports)
-            {
-                lbPersonerErrosSuccess.Items.Add(importPerson);
-            }
-        }
-
-        private void rbLyckade_CheckedChanged(object sender, EventArgs e)
-        {
-            ErrorsUpdate();
-        }
-
-        private void rbMisslyckade_CheckedChanged(object sender, EventArgs e)
-        {
-            ErrorsUpdate();
-        }
-
-        private void rbExists_CheckedChanged(object sender, EventArgs e)
-        {
-            ErrorsUpdate();
         }
     }
 }

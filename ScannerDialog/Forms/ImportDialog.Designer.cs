@@ -35,28 +35,25 @@ namespace ScannerDialog.Forms
             this.lbPersoner = new System.Windows.Forms.ListBox();
             this.cmdLasFranFil = new System.Windows.Forms.Button();
             this.cmdVerkstallImport = new System.Windows.Forms.Button();
-            this.lbPersonerErrosSuccess = new System.Windows.Forms.ListBox();
             this.cbTillhorighet = new System.Windows.Forms.ComboBox();
             this.laTillhorighet = new System.Windows.Forms.Label();
-            this.laPersoner = new System.Windows.Forms.Label();
-            this.rbLyckade = new System.Windows.Forms.RadioButton();
-            this.rbMisslyckade = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // txtImportFil
             // 
-            this.txtImportFil.Location = new System.Drawing.Point(29, 34);
+            this.txtImportFil.Location = new System.Drawing.Point(28, 51);
             this.txtImportFil.Name = "txtImportFil";
             this.txtImportFil.ReadOnly = true;
-            this.txtImportFil.Size = new System.Drawing.Size(565, 20);
+            this.txtImportFil.Size = new System.Drawing.Size(398, 20);
             this.txtImportFil.TabIndex = 0;
+            this.txtImportFil.TabStop = false;
             this.txtImportFil.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cmdImportFilUtforska
             // 
-            this.cmdImportFilUtforska.Location = new System.Drawing.Point(600, 32);
+            this.cmdImportFilUtforska.Location = new System.Drawing.Point(432, 51);
             this.cmdImportFilUtforska.Name = "cmdImportFilUtforska";
-            this.cmdImportFilUtforska.Size = new System.Drawing.Size(75, 23);
+            this.cmdImportFilUtforska.Size = new System.Drawing.Size(95, 23);
             this.cmdImportFilUtforska.TabIndex = 1;
             this.cmdImportFilUtforska.Text = "Utforska";
             this.cmdImportFilUtforska.UseVisualStyleBackColor = true;
@@ -65,24 +62,24 @@ namespace ScannerDialog.Forms
             // laImportFil
             // 
             this.laImportFil.AutoSize = true;
-            this.laImportFil.Location = new System.Drawing.Point(29, 15);
+            this.laImportFil.Location = new System.Drawing.Point(28, 32);
             this.laImportFil.Name = "laImportFil";
-            this.laImportFil.Size = new System.Drawing.Size(46, 13);
+            this.laImportFil.Size = new System.Drawing.Size(185, 13);
             this.laImportFil.TabIndex = 2;
-            this.laImportFil.Text = "Import fil";
+            this.laImportFil.Text = "Import fil: Förnamn; Efternamn; PersNr";
             // 
             // lbPersoner
             // 
             this.lbPersoner.FormattingEnabled = true;
-            this.lbPersoner.Location = new System.Drawing.Point(29, 132);
+            this.lbPersoner.Location = new System.Drawing.Point(31, 122);
             this.lbPersoner.Name = "lbPersoner";
-            this.lbPersoner.Size = new System.Drawing.Size(406, 277);
+            this.lbPersoner.Size = new System.Drawing.Size(493, 277);
             this.lbPersoner.TabIndex = 3;
             this.lbPersoner.SelectedIndexChanged += new System.EventHandler(this.lbPersoner_SelectedIndexChanged);
             // 
             // cmdLasFranFil
             // 
-            this.cmdLasFranFil.Location = new System.Drawing.Point(29, 77);
+            this.cmdLasFranFil.Location = new System.Drawing.Point(31, 93);
             this.cmdLasFranFil.Name = "cmdLasFranFil";
             this.cmdLasFranFil.Size = new System.Drawing.Size(139, 23);
             this.cmdLasFranFil.TabIndex = 4;
@@ -92,87 +89,45 @@ namespace ScannerDialog.Forms
             // 
             // cmdVerkstallImport
             // 
-            this.cmdVerkstallImport.Location = new System.Drawing.Point(382, 77);
+            this.cmdVerkstallImport.Location = new System.Drawing.Point(385, 93);
             this.cmdVerkstallImport.Name = "cmdVerkstallImport";
             this.cmdVerkstallImport.Size = new System.Drawing.Size(139, 23);
             this.cmdVerkstallImport.TabIndex = 5;
             this.cmdVerkstallImport.Text = "Verkställ import";
             this.cmdVerkstallImport.UseVisualStyleBackColor = true;
+            this.cmdVerkstallImport.Visible = false;
             this.cmdVerkstallImport.Click += new System.EventHandler(this.cmdVerkstallImport_Click);
-            // 
-            // lbPersonerErrosSuccess
-            // 
-            this.lbPersonerErrosSuccess.FormattingEnabled = true;
-            this.lbPersonerErrosSuccess.Location = new System.Drawing.Point(441, 132);
-            this.lbPersonerErrosSuccess.Name = "lbPersonerErrosSuccess";
-            this.lbPersonerErrosSuccess.Size = new System.Drawing.Size(406, 277);
-            this.lbPersonerErrosSuccess.TabIndex = 7;
             // 
             // cbTillhorighet
             // 
             this.cbTillhorighet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTillhorighet.FormattingEnabled = true;
-            this.cbTillhorighet.Location = new System.Drawing.Point(174, 78);
+            this.cbTillhorighet.Location = new System.Drawing.Point(177, 95);
             this.cbTillhorighet.Name = "cbTillhorighet";
             this.cbTillhorighet.Size = new System.Drawing.Size(202, 21);
             this.cbTillhorighet.TabIndex = 11;
             this.cbTillhorighet.TabStop = false;
+            this.cbTillhorighet.Visible = false;
             this.cbTillhorighet.SelectedIndexChanged += new System.EventHandler(this.cbTillhorighet_SelectedIndexChanged);
             // 
             // laTillhorighet
             // 
             this.laTillhorighet.AutoSize = true;
-            this.laTillhorighet.Location = new System.Drawing.Point(171, 62);
+            this.laTillhorighet.Location = new System.Drawing.Point(174, 79);
             this.laTillhorighet.Name = "laTillhorighet";
             this.laTillhorighet.Size = new System.Drawing.Size(61, 13);
             this.laTillhorighet.TabIndex = 10;
             this.laTillhorighet.Text = "Tillhörighet:";
+            this.laTillhorighet.Visible = false;
             this.laTillhorighet.Click += new System.EventHandler(this.laTillhorighet_Click);
-            // 
-            // laPersoner
-            // 
-            this.laPersoner.AutoSize = true;
-            this.laPersoner.Location = new System.Drawing.Point(26, 116);
-            this.laPersoner.Name = "laPersoner";
-            this.laPersoner.Size = new System.Drawing.Size(82, 13);
-            this.laPersoner.TabIndex = 12;
-            this.laPersoner.Text = "Inlästa personer";
-            // 
-            // rbLyckade
-            // 
-            this.rbLyckade.AutoSize = true;
-            this.rbLyckade.Checked = true;
-            this.rbLyckade.Location = new System.Drawing.Point(441, 112);
-            this.rbLyckade.Name = "rbLyckade";
-            this.rbLyckade.Size = new System.Drawing.Size(85, 17);
-            this.rbLyckade.TabIndex = 13;
-            this.rbLyckade.TabStop = true;
-            this.rbLyckade.Text = "Visa lyckade";
-            this.rbLyckade.UseVisualStyleBackColor = true;
-            this.rbLyckade.CheckedChanged += new System.EventHandler(this.rbLyckade_CheckedChanged);
-            // 
-            // rbMisslyckade
-            // 
-            this.rbMisslyckade.AutoSize = true;
-            this.rbMisslyckade.Location = new System.Drawing.Point(532, 112);
-            this.rbMisslyckade.Name = "rbMisslyckade";
-            this.rbMisslyckade.Size = new System.Drawing.Size(105, 17);
-            this.rbMisslyckade.TabIndex = 14;
-            this.rbMisslyckade.Text = "Visa misslyckade";
-            this.rbMisslyckade.UseVisualStyleBackColor = true;
-            this.rbMisslyckade.CheckedChanged += new System.EventHandler(this.rbMisslyckade_CheckedChanged);
             // 
             // ImportDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(866, 441);
-            this.Controls.Add(this.rbMisslyckade);
-            this.Controls.Add(this.rbLyckade);
-            this.Controls.Add(this.laPersoner);
+            this.ClientSize = new System.Drawing.Size(553, 425);
             this.Controls.Add(this.cbTillhorighet);
             this.Controls.Add(this.laTillhorighet);
-            this.Controls.Add(this.lbPersonerErrosSuccess);
             this.Controls.Add(this.cmdVerkstallImport);
             this.Controls.Add(this.cmdLasFranFil);
             this.Controls.Add(this.lbPersoner);
@@ -197,11 +152,7 @@ namespace ScannerDialog.Forms
         private System.Windows.Forms.ListBox lbPersoner;
         private System.Windows.Forms.Button cmdLasFranFil;
         private System.Windows.Forms.Button cmdVerkstallImport;
-        private System.Windows.Forms.ListBox lbPersonerErrosSuccess;
         private System.Windows.Forms.ComboBox cbTillhorighet;
         private System.Windows.Forms.Label laTillhorighet;
-        private System.Windows.Forms.Label laPersoner;
-        private System.Windows.Forms.RadioButton rbLyckade;
-        private System.Windows.Forms.RadioButton rbMisslyckade;
     }
 }

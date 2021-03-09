@@ -9,8 +9,8 @@ namespace PrylanLibary.Models
     public class ImportPerson
     {
         public Person Person { get; set; }
-        public List<string> Errors { get; set; }
-        public bool Exist { get; set; }
+        public string ErrorMessage{ get; set; }
+        public bool AlreadyExist { get; set; }
         public bool Success { get; set; }
 
         public override string ToString()

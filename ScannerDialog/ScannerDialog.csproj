@@ -80,6 +80,12 @@
     <Compile Include="Artikel_Forms\HanteraArtikelDialog.Designer.cs">
       <DependentUpon>HanteraArtikelDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ImportResultDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ImportResultDialog.Designer.cs">
+      <DependentUpon>ImportResultDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ImportDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Artikel_Forms\HanteraArtikelDialog.resx">
       <DependentUpon>HanteraArtikelDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ImportResultDialog.resx">
+      <DependentUpon>ImportResultDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ImportDialog.resx">
       <DependentUpon>ImportDialog.cs</DependentUpon>
