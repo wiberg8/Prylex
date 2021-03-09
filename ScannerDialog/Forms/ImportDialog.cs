@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using PrylanLibary.Models;
+using PrylanLibary.Validators;
 using PrylanLibary;
 
 namespace ScannerDialog.Forms
@@ -94,7 +95,7 @@ namespace ScannerDialog.Forms
                     {
                         Fornamn = lineSplit[0],
                         Efternamn = lineSplit[1],
-                        PersNr = "20"+lineSplit[2],
+                        PersNr = lineSplit[2],
                         Tillhorighet = cbTillhorighet.Text
                     };
                     AddInlastPerson(p);
@@ -103,37 +104,64 @@ namespace ScannerDialog.Forms
            
         }
 
+        //private void cmdVerkstallImport_Click(object sender, EventArgs e)
+        //{
+        //    if(lbPersoner.Items.Count > 0)
+        //    {
+        //        List<ImportPerson> importer = new List<ImportPerson>();
+        //        using (DataAccess dataAccess = new DataAccess())
+        //        {
+        //            foreach (Person p in lbPersoner.Items)
+        //            {
+        //                ImportPerson importPerson = new ImportPerson();
+        //                importPerson.Person = p;
+        //                importPerson.AlreadyExist = dataAccess.ExisterarPerson(importPerson.Person.PersNr);
+        //                if (!importPerson.AlreadyExist)
+        //                {
+        //                    if (importPerson.Person.ValidPersNr() && importPerson.Person.ValidTillhorighet())
+        //                    {
+        //                        dataAccess.InfogaPerson(importPerson.Person);
+        //                        importPerson.Success = true;
+        //                    }
+        //                    if (!p.ValidPersNr())
+        //                    {
+        //                        importPerson.ErrorMessage = "Felaktig format på persnr";
+        //                    }
+        //                    if (!p.ValidTillhorighet())
+        //                    {
+        //                        importPerson.ErrorMessage = "Tillhörighet måste vara minst 2 tecken";
+        //                    }
+        //                }
+        //                if (importPerson.AlreadyExist)
+        //                {
+        //                    importPerson.ErrorMessage = "Persnr existrerar redan i systemet";
+        //                }
+        //                importer.Add(importPerson);
+        //            }
+        //        }
+        //        ImportResultDialog resultDialog = new ImportResultDialog(importer);
+        //        resultDialog.ShowDialog();
+        //        ClearInlastPersoner();
+
+        //    }
+        //}
         private void cmdVerkstallImport_Click(object sender, EventArgs e)
         {
-            if(lbPersoner.Items.Count > 0)
+            if (lbPersoner.Items.Count > 0)
             {
                 List<ImportPerson> importer = new List<ImportPerson>();
+                PersonValidator validator = new PersonValidator();
                 using (DataAccess dataAccess = new DataAccess())
                 {
                     foreach (Person p in lbPersoner.Items)
                     {
-                        ImportPerson importPerson = new ImportPerson();
-                        importPerson.Person = p;
+                        ImportPerson importPerson = new ImportPerson() { Person = p};
+                        importPerson.Errors = validator.Validate(p);
                         importPerson.AlreadyExist = dataAccess.ExisterarPerson(importPerson.Person.PersNr);
-                        if (!importPerson.AlreadyExist)
+                        importPerson.Success = importPerson.Errors.IsValid && !importPerson.AlreadyExist;
+                        if (importPerson.Success)
                         {
-                            if (importPerson.Person.ValidPersNr() && importPerson.Person.ValidTillhorighet())
-                            {
-                                dataAccess.InfogaPerson(importPerson.Person);
-                                importPerson.Success = true;
-                            }
-                            if (!p.ValidPersNr())
-                            {
-                                importPerson.ErrorMessage = "Felaktig format på persnr";
-                            }
-                            if (!p.ValidTillhorighet())
-                            {
-                                importPerson.ErrorMessage = "Tillhörighet måste vara minst 2 tecken";
-                            }
-                        }
-                        if (importPerson.AlreadyExist)
-                        {
-                            importPerson.ErrorMessage = "Persnr existrerar redan i systemet";
+                            dataAccess.InfogaPerson(importPerson.Person);
                         }
                         importer.Add(importPerson);
                     }

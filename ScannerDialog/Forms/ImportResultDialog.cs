@@ -71,7 +71,11 @@ namespace ScannerDialog.Forms
             if (lbPersonerErrosSuccess.SelectedItem != null)
             {
                 ImportPerson importPerson = lbPersonerErrosSuccess.SelectedItem as ImportPerson;
-                txtMessage.Text = importPerson.ErrorMessage; 
+                lbPersonErrors.Items.Clear();
+                foreach (var error in importPerson.Errors.Errors)
+                {
+                    lbPersonErrors.Items.Add(error);
+                }
             }
         }
     }

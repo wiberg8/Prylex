@@ -33,7 +33,7 @@ namespace ScannerDialog.Forms
             this.rbLyckade = new System.Windows.Forms.RadioButton();
             this.rbMisslyckade = new System.Windows.Forms.RadioButton();
             this.rbExists = new System.Windows.Forms.RadioButton();
-            this.txtMessage = new System.Windows.Forms.TextBox();
+            this.lbPersonErrors = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // lbPersonerErrosSuccess
@@ -80,22 +80,20 @@ namespace ScannerDialog.Forms
             this.rbExists.UseVisualStyleBackColor = true;
             this.rbExists.CheckedChanged += new System.EventHandler(this.rbExists_CheckedChanged_1);
             // 
-            // txtMessage
+            // lbPersonErrors
             // 
-            this.txtMessage.Location = new System.Drawing.Point(25, 329);
-            this.txtMessage.Name = "txtMessage";
-            this.txtMessage.ReadOnly = true;
-            this.txtMessage.Size = new System.Drawing.Size(398, 20);
-            this.txtMessage.TabIndex = 16;
-            this.txtMessage.TabStop = false;
-            this.txtMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lbPersonErrors.FormattingEnabled = true;
+            this.lbPersonErrors.Location = new System.Drawing.Point(437, 46);
+            this.lbPersonErrors.Name = "lbPersonErrors";
+            this.lbPersonErrors.Size = new System.Drawing.Size(406, 277);
+            this.lbPersonErrors.TabIndex = 17;
             // 
             // ImportResultDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 369);
-            this.Controls.Add(this.txtMessage);
+            this.ClientSize = new System.Drawing.Size(863, 336);
+            this.Controls.Add(this.lbPersonErrors);
             this.Controls.Add(this.rbExists);
             this.Controls.Add(this.rbMisslyckade);
             this.Controls.Add(this.rbLyckade);
@@ -115,6 +113,6 @@ namespace ScannerDialog.Forms
         private System.Windows.Forms.RadioButton rbLyckade;
         private System.Windows.Forms.RadioButton rbMisslyckade;
         private System.Windows.Forms.RadioButton rbExists;
-        private System.Windows.Forms.TextBox txtMessage;
+        private System.Windows.Forms.ListBox lbPersonErrors;
     }
 }

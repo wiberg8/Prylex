@@ -331,6 +331,7 @@ namespace ScannerDialog.Forms
         {
             ImportDialog importDialog = new ImportDialog();
             importDialog.ShowDialog();
+            RefreshDataGrids();
         }
 
         //private void dgvArtiklar_MouseDoubleClick(object sender, MouseEventArgs e)
