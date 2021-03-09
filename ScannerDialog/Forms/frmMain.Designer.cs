@@ -1,4 +1,4 @@
-﻿namespace ScannerDialog
+﻿namespace ScannerDialog.Forms
 {
     partial class frmMain
     {
@@ -47,7 +47,8 @@
             this.tspArtikel = new System.Windows.Forms.ToolStripDropDownButton();
             this.tspArtikelNy = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tspSnabbReg = new System.Windows.Forms.ToolStripButton();
+            this.tspMassRegistrering = new System.Windows.Forms.ToolStripButton();
+            this.tspImportPersoner = new System.Windows.Forms.ToolStripButton();
             this.tabArtiklarPersoner = new System.Windows.Forms.TabControl();
             this.tabArtiklar = new System.Windows.Forms.TabPage();
             this.dgvArtiklar = new System.Windows.Forms.DataGridView();
@@ -71,7 +72,6 @@
             this.clmTillhorighet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmOvrigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.laDatabaseWarning = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.gbSearch.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabArtiklarPersoner.SuspendLayout();
@@ -223,24 +223,37 @@
             this.tspArkiv,
             this.tspPerson,
             this.tspArtikel,
-            this.tspSnabbReg});
+            this.tspMassRegistrering,
+            this.tspImportPersoner});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(942, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // tspSnabbReg
+            // tspMassRegistrering
             // 
-            this.tspSnabbReg.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tspSnabbReg.Image = ((System.Drawing.Image)(resources.GetObject("tspSnabbReg.Image")));
-            this.tspSnabbReg.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tspSnabbReg.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tspSnabbReg.Name = "tspSnabbReg";
-            this.tspSnabbReg.Size = new System.Drawing.Size(101, 22);
-            this.tspSnabbReg.Text = "Mass registrering";
-            this.tspSnabbReg.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.tspSnabbReg.Click += new System.EventHandler(this.tspSnabbReg_Click);
+            this.tspMassRegistrering.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tspMassRegistrering.Image = ((System.Drawing.Image)(resources.GetObject("tspMassRegistrering.Image")));
+            this.tspMassRegistrering.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tspMassRegistrering.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tspMassRegistrering.Name = "tspMassRegistrering";
+            this.tspMassRegistrering.Size = new System.Drawing.Size(101, 22);
+            this.tspMassRegistrering.Text = "Mass registrering";
+            this.tspMassRegistrering.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tspMassRegistrering.Click += new System.EventHandler(this.tspSnabbReg_Click);
+            // 
+            // tspImportPersoner
+            // 
+            this.tspImportPersoner.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tspImportPersoner.Image = ((System.Drawing.Image)(resources.GetObject("tspImportPersoner.Image")));
+            this.tspImportPersoner.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tspImportPersoner.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tspImportPersoner.Name = "tspImportPersoner";
+            this.tspImportPersoner.Size = new System.Drawing.Size(120, 22);
+            this.tspImportPersoner.Text = "Importera (Personer)";
+            this.tspImportPersoner.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tspImportPersoner.Click += new System.EventHandler(this.tspImportPersoner_Click);
             // 
             // tabArtiklarPersoner
             // 
@@ -479,22 +492,11 @@
             this.laDatabaseWarning.TabIndex = 13;
             this.laDatabaseWarning.Text = "Gå till inställningar och välj sökväg till databas fil";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(399, 77);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(942, 655);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.laDatabaseWarning);
             this.Controls.Add(this.tabArtiklarPersoner);
             this.Controls.Add(this.gbSearch);
@@ -559,8 +561,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPersonId;
         private System.Windows.Forms.Button cmdSokAlla;
         private System.Windows.Forms.Label laDatabaseWarning;
-        private System.Windows.Forms.ToolStripButton tspSnabbReg;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripButton tspMassRegistrering;
+        private System.Windows.Forms.ToolStripButton tspImportPersoner;
     }
 }
 

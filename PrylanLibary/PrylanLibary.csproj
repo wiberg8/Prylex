@@ -82,6 +82,7 @@
     <Compile Include="Installningar.cs" />
     <Compile Include="Licensering.cs" />
     <Compile Include="Models\Handelse.cs" />
+    <Compile Include="Models\ImportPerson.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\AdvancedPerson.cs" />
     <Compile Include="Printing.cs" />

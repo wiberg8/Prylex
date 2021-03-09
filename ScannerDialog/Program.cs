@@ -8,6 +8,7 @@ using System.Management;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PrylanLibary;
+using ScannerDialog.Forms;
 
 namespace ScannerDialog
 {

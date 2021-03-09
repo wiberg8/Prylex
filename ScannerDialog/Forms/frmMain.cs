@@ -14,7 +14,7 @@ using System.IO;
 
 
 //Refresh datagrid måste göras om till dataaccess med FyllArtiklar, FyllPersoner funktioner
-namespace ScannerDialog
+namespace ScannerDialog.Forms
 {
     public partial class frmMain : Form
     {
@@ -325,6 +325,12 @@ namespace ScannerDialog
                 }
             }
             
+        }
+
+        private void tspImportPersoner_Click(object sender, EventArgs e)
+        {
+            ImportDialog importDialog = new ImportDialog();
+            importDialog.ShowDialog();
         }
 
         //private void dgvArtiklar_MouseDoubleClick(object sender, MouseEventArgs e)
