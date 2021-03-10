@@ -74,77 +74,37 @@ namespace ScannerDialog.Forms
             {
                 return;
             }
-            if (IO.GetEncoding(SelectedImportFil) != Encoding.UTF8)
+            Encoding encoding = IO.GetEncoding(SelectedImportFil);
+            if (encoding == Encoding.UTF8 || encoding == Encoding.ASCII)
             {
-                MessageBox.Show("Filen måste ha UTF8 enkodning");
-                return;
-            }
-
-            ClearInlastPersoner();
-            List<string> fileData = File.ReadAllLines(SelectedImportFil).ToList();
-            if(fileData.Count > 0)
-            {
-                fileData.RemoveAt(0);
-            }
-            foreach (string line in fileData)
-            {
-                string[] lineSplit = line.Split(';');
-                if (lineSplit.Length >= 2)
+                ClearInlastPersoner();
+                List<string> fileData = File.ReadAllLines(SelectedImportFil).ToList();
+                if (fileData.Count > 0)
                 {
-                    Person p = new Person()
+                    fileData.RemoveAt(0);
+                }
+                foreach (string line in fileData)
+                {
+                    string[] lineSplit = line.Split(';');
+                    if (lineSplit.Length >= 2)
                     {
-                        Fornamn = lineSplit[0],
-                        Efternamn = lineSplit[1],
-                        PersNr = lineSplit[2],
-                        Tillhorighet = cbTillhorighet.Text
-                    };
-                    AddInlastPerson(p);
+                        Person p = new Person()
+                        {
+                            Fornamn = lineSplit[0],
+                            Efternamn = lineSplit[1],
+                            PersNr = lineSplit[2],
+                            Tillhorighet = cbTillhorighet.Text
+                        };
+                        AddInlastPerson(p);
+                    }
                 }
             }
-           
+            else
+            {
+                MessageBox.Show("Filen måste ha UTF8 eller ASCII enkodning");
+            }
         }
 
-        //private void cmdVerkstallImport_Click(object sender, EventArgs e)
-        //{
-        //    if(lbPersoner.Items.Count > 0)
-        //    {
-        //        List<ImportPerson> importer = new List<ImportPerson>();
-        //        using (DataAccess dataAccess = new DataAccess())
-        //        {
-        //            foreach (Person p in lbPersoner.Items)
-        //            {
-        //                ImportPerson importPerson = new ImportPerson();
-        //                importPerson.Person = p;
-        //                importPerson.AlreadyExist = dataAccess.ExisterarPerson(importPerson.Person.PersNr);
-        //                if (!importPerson.AlreadyExist)
-        //                {
-        //                    if (importPerson.Person.ValidPersNr() && importPerson.Person.ValidTillhorighet())
-        //                    {
-        //                        dataAccess.InfogaPerson(importPerson.Person);
-        //                        importPerson.Success = true;
-        //                    }
-        //                    if (!p.ValidPersNr())
-        //                    {
-        //                        importPerson.ErrorMessage = "Felaktig format på persnr";
-        //                    }
-        //                    if (!p.ValidTillhorighet())
-        //                    {
-        //                        importPerson.ErrorMessage = "Tillhörighet måste vara minst 2 tecken";
-        //                    }
-        //                }
-        //                if (importPerson.AlreadyExist)
-        //                {
-        //                    importPerson.ErrorMessage = "Persnr existrerar redan i systemet";
-        //                }
-        //                importer.Add(importPerson);
-        //            }
-        //        }
-        //        ImportResultDialog resultDialog = new ImportResultDialog(importer);
-        //        resultDialog.ShowDialog();
-        //        ClearInlastPersoner();
-
-        //    }
-        //}
         private void cmdVerkstallImport_Click(object sender, EventArgs e)
         {
             if (lbPersoner.Items.Count > 0)
@@ -163,7 +123,6 @@ namespace ScannerDialog.Forms
                         {
                             dataAccess.InfogaPerson(importPerson.Person);
                             importPerson.Person.Id = DBHandler.GetLastInsertId();
-                            Console.WriteLine(importPerson + " " + importPerson.Person.Id);
                         }
                         importer.Add(importPerson);
                     }

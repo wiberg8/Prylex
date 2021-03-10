@@ -505,7 +505,7 @@
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Prylex";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.gbSearch.ResumeLayout(false);
             this.gbSearch.PerformLayout();

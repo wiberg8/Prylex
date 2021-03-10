@@ -29,6 +29,11 @@ namespace PrylanLibary.Validators
             RuleFor(p => p.PersNr)
                 .Matches(PERSNR_REGEX)
                 .WithMessage("PersNr: Felaktigt format ########-####");
+            RuleFor(p => p.Tillhorighet)
+                .Must(NotNullOrWhiteSpace)
+                .WithMessage("Tillhörighet: Är tomt")
+                .Length(2, 25)
+                .WithMessage("Tillhörighet: Måste vara minst 2 och max 25 tecken");
         }
 
         protected bool NotNullOrWhiteSpace(string str)

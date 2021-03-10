@@ -475,11 +475,13 @@
             this.Controls.Add(this.gbRegistreradeArtiklar);
             this.Controls.Add(this.gbFalt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MinimizeBox = false;
             this.Name = "HanteraPersonDialog";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.HanteraPersonDialogcs_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HanteraPersonDialog_KeyDown);
             this.gbFalt.ResumeLayout(false);
             this.gbFalt.PerformLayout();
             this.gbRegistreradeArtiklar.ResumeLayout(false);

@@ -33,6 +33,8 @@
             this.errorEfternamn = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorTillhorighet = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbFalt = new System.Windows.Forms.GroupBox();
+            this.cbTillhorighet = new System.Windows.Forms.ComboBox();
+            this.laTillhorighet = new System.Windows.Forms.Label();
             this.cmdAvbryt = new System.Windows.Forms.Button();
             this.txtSign = new System.Windows.Forms.TextBox();
             this.cmdSpara = new System.Windows.Forms.Button();
@@ -41,8 +43,6 @@
             this.laTelefon = new System.Windows.Forms.Label();
             this.txtEpost = new System.Windows.Forms.TextBox();
             this.laEpost = new System.Windows.Forms.Label();
-            this.cbTillhorighet = new System.Windows.Forms.ComboBox();
-            this.laTillhorighet = new System.Windows.Forms.Label();
             this.txtEfternamn = new System.Windows.Forms.TextBox();
             this.laEfternamn = new System.Windows.Forms.Label();
             this.txtOvrigt = new System.Windows.Forms.TextBox();
@@ -97,6 +97,24 @@
             this.gbFalt.TabIndex = 1;
             this.gbFalt.TabStop = false;
             this.gbFalt.Text = "Info";
+            // 
+            // cbTillhorighet
+            // 
+            this.cbTillhorighet.FormattingEnabled = true;
+            this.cbTillhorighet.Location = new System.Drawing.Point(234, 121);
+            this.cbTillhorighet.Name = "cbTillhorighet";
+            this.cbTillhorighet.Size = new System.Drawing.Size(151, 21);
+            this.cbTillhorighet.TabIndex = 8;
+            this.cbTillhorighet.TextChanged += new System.EventHandler(this.cbTillhorighet_TextChanged);
+            // 
+            // laTillhorighet
+            // 
+            this.laTillhorighet.AutoSize = true;
+            this.laTillhorighet.Location = new System.Drawing.Point(231, 105);
+            this.laTillhorighet.Name = "laTillhorighet";
+            this.laTillhorighet.Size = new System.Drawing.Size(61, 13);
+            this.laTillhorighet.TabIndex = 0;
+            this.laTillhorighet.Text = "Tillhörighet:";
             // 
             // cmdAvbryt
             // 
@@ -173,24 +191,6 @@
             this.laEpost.TabIndex = 4;
             this.laEpost.Text = "E-post:";
             // 
-            // cbTillhorighet
-            // 
-            this.cbTillhorighet.FormattingEnabled = true;
-            this.cbTillhorighet.Location = new System.Drawing.Point(234, 121);
-            this.cbTillhorighet.Name = "cbTillhorighet";
-            this.cbTillhorighet.Size = new System.Drawing.Size(151, 21);
-            this.cbTillhorighet.TabIndex = 8;
-            this.cbTillhorighet.TextChanged += new System.EventHandler(this.cbTillhorighet_TextChanged);
-            // 
-            // laTillhorighet
-            // 
-            this.laTillhorighet.AutoSize = true;
-            this.laTillhorighet.Location = new System.Drawing.Point(231, 105);
-            this.laTillhorighet.Name = "laTillhorighet";
-            this.laTillhorighet.Size = new System.Drawing.Size(61, 13);
-            this.laTillhorighet.TabIndex = 0;
-            this.laTillhorighet.Text = "Tillhörighet:";
-            // 
             // txtEfternamn
             // 
             this.txtEfternamn.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -255,10 +255,12 @@
             this.ClientSize = new System.Drawing.Size(491, 244);
             this.Controls.Add(this.gbFalt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "UpdateraPersonDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.UpdateraPersonDialog_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UpdateraPersonDialog_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.errorFornamn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorEfternamn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorTillhorighet)).EndInit();

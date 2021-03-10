@@ -115,5 +115,13 @@ namespace ScannerDialog
         {
             VisaValideringsFel();
         }
+
+        private void UpdateraPersonDialog_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
+        }
     }
 }

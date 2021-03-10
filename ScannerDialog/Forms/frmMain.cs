@@ -295,38 +295,6 @@ namespace ScannerDialog.Forms
             snabbRegistering.ShowDialog();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            List<string> fileData = File.ReadAllLines(@"D:\PlaceriUTF8.csv").ToList();
-            List<Person> personList = new List<Person>();
-            fileData.RemoveAt(0);
-            foreach (string line in fileData)
-            {
-                string[] lineSplit = line.Split(';');
-                if (lineSplit.Length >= 5)
-                {
-                    Person p = new Person()
-                    {
-                        PersNr = "20" + lineSplit[0],
-                        Efternamn = lineSplit[4],
-                        Fornamn = lineSplit[5]
-                    };
-                    personList.Add(p);
-                }
-            }
-            using (DataAccess dataAccess = new DataAccess())
-            {
-                foreach (Person person in personList)
-                {
-                    if (!dataAccess.ExisterarPerson(person.PersNr))
-                    {
-                        dataAccess.InfogaPerson(person);
-                    }
-                }
-            }
-            
-        }
-
         private void tspImportPersoner_Click(object sender, EventArgs e)
         {
             ImportDialog importDialog = new ImportDialog();
