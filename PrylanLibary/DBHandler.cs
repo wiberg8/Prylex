@@ -65,8 +65,15 @@ namespace PrylanLibary
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public static int GetLastInsertId()
+        {
+            return (int)DBConn.LastInsertRowId;
+        }
+
         public static void ExecQuery(string Query)
         {
+            long x = DBConn.LastInsertRowId;
             RecordCount = 0;
             Exception = string.Empty;
 

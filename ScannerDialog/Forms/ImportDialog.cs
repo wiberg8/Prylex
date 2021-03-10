@@ -162,6 +162,8 @@ namespace ScannerDialog.Forms
                         if (importPerson.Success)
                         {
                             dataAccess.InfogaPerson(importPerson.Person);
+                            importPerson.Person.Id = DBHandler.GetLastInsertId();
+                            Console.WriteLine(importPerson + " " + importPerson.Person.Id);
                         }
                         importer.Add(importPerson);
                     }
