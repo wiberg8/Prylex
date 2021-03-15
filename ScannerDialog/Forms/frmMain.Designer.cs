@@ -32,7 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbSearch = new System.Windows.Forms.GroupBox();
-            this.cmdSokAlla = new System.Windows.Forms.Button();
             this.cmdScanLabel = new System.Windows.Forms.Button();
             this.cmdSok = new System.Windows.Forms.Button();
             this.txtSok = new System.Windows.Forms.TextBox();
@@ -83,7 +82,6 @@
             // 
             // gbSearch
             // 
-            this.gbSearch.Controls.Add(this.cmdSokAlla);
             this.gbSearch.Controls.Add(this.cmdScanLabel);
             this.gbSearch.Controls.Add(this.cmdSok);
             this.gbSearch.Controls.Add(this.txtSok);
@@ -94,16 +92,6 @@
             this.gbSearch.TabStop = false;
             this.gbSearch.Text = "Sök";
             this.gbSearch.Enter += new System.EventHandler(this.gbSearch_Enter);
-            // 
-            // cmdSokAlla
-            // 
-            this.cmdSokAlla.Location = new System.Drawing.Point(8, 50);
-            this.cmdSokAlla.Name = "cmdSokAlla";
-            this.cmdSokAlla.Size = new System.Drawing.Size(113, 22);
-            this.cmdSokAlla.TabIndex = 12;
-            this.cmdSokAlla.Text = "Sök (Alla)";
-            this.cmdSokAlla.UseVisualStyleBackColor = true;
-            this.cmdSokAlla.Click += new System.EventHandler(this.cmdSokAlla_Click);
             // 
             // cmdScanLabel
             // 
@@ -117,7 +105,7 @@
             // 
             // cmdSok
             // 
-            this.cmdSok.Location = new System.Drawing.Point(127, 49);
+            this.cmdSok.Location = new System.Drawing.Point(8, 49);
             this.cmdSok.Name = "cmdSok";
             this.cmdSok.Size = new System.Drawing.Size(101, 23);
             this.cmdSok.TabIndex = 9;
@@ -559,7 +547,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmInkop;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPersonId;
-        private System.Windows.Forms.Button cmdSokAlla;
         private System.Windows.Forms.Label laDatabaseWarning;
         private System.Windows.Forms.ToolStripButton tspMassRegistrering;
         private System.Windows.Forms.ToolStripButton tspImportPersoner;

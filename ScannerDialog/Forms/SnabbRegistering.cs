@@ -17,7 +17,7 @@ namespace ScannerDialog
 {
     public partial class SnabbRegistering : Form
     {
-        private string valjTillhorighet = "Välj tillhorighet";
+        private const string valjTillhorighet = "Välj tillhörighet";
 
         public SnabbRegistering()
         {
@@ -304,6 +304,21 @@ namespace ScannerDialog
                 {
                     KnytArtikelToperson(dialog.ValdArtikel, selectedPerson);
                 }
+            }
+        }
+
+        private void cmdSok_Click(object sender, EventArgs e)
+        {
+            lbPersoner.Items.Clear();
+            using (DataAccess dataAccess = new DataAccess())
+            {
+                List<AdvancedPerson> advancedPersoner = new List<AdvancedPerson>();
+                foreach (Person p in dataAccess.HamtaSokPersoner(txtSok.Text).Where((Person p) => p.Tillhorighet == cbTillhorighet.Text))
+                {
+                    AdvancedPerson advancedPerson = new AdvancedPerson() { Person = p, RegistreradeArtiklar = dataAccess.HamtaRegistreradeArtiklar(p) };
+                    advancedPersoner.Add(advancedPerson);
+                }
+                FyllPersoner(advancedPersoner);
             }
         }
     }

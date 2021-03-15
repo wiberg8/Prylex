@@ -37,6 +37,8 @@
             this.cbPrintOnScan = new System.Windows.Forms.CheckBox();
             this.cmdRegistreraSkanna = new System.Windows.Forms.Button();
             this.cmdRegistreraArtikel = new System.Windows.Forms.Button();
+            this.cmdSok = new System.Windows.Forms.Button();
+            this.txtSok = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lbRegistreradeArtiklar
@@ -106,11 +108,30 @@
             this.cmdRegistreraArtikel.UseVisualStyleBackColor = true;
             this.cmdRegistreraArtikel.Click += new System.EventHandler(this.cmdRegistreraArtikel_Click_1);
             // 
+            // cmdSok
+            // 
+            this.cmdSok.Location = new System.Drawing.Point(430, 354);
+            this.cmdSok.Name = "cmdSok";
+            this.cmdSok.Size = new System.Drawing.Size(101, 23);
+            this.cmdSok.TabIndex = 30;
+            this.cmdSok.Text = "Sök";
+            this.cmdSok.UseVisualStyleBackColor = true;
+            this.cmdSok.Click += new System.EventHandler(this.cmdSok_Click);
+            // 
+            // txtSok
+            // 
+            this.txtSok.Location = new System.Drawing.Point(430, 328);
+            this.txtSok.Name = "txtSok";
+            this.txtSok.Size = new System.Drawing.Size(326, 20);
+            this.txtSok.TabIndex = 29;
+            // 
             // SnabbRegistering
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(788, 405);
+            this.Controls.Add(this.cmdSok);
+            this.Controls.Add(this.txtSok);
             this.Controls.Add(this.cbPrintOnScan);
             this.Controls.Add(this.cmdRegistreraSkanna);
             this.Controls.Add(this.cmdRegistreraArtikel);
@@ -138,5 +159,7 @@
         private System.Windows.Forms.CheckBox cbPrintOnScan;
         private System.Windows.Forms.Button cmdRegistreraSkanna;
         private System.Windows.Forms.Button cmdRegistreraArtikel;
+        private System.Windows.Forms.Button cmdSok;
+        private System.Windows.Forms.TextBox txtSok;
     }
 }

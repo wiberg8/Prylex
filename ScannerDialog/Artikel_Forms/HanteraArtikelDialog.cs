@@ -358,6 +358,8 @@ namespace ScannerDialog
             InputBox inputBox = new InputBox() { PromptText = "Skanna (PersNr)" };
             inputBox.ShowDialog();
             string scannedPersNr = inputBox.Input;
+            if (inputBox.DialogResult != DialogResult.OK)
+                return;
 
             if (!PersonValidator.IsPersNrValid(scannedPersNr))
             {
@@ -380,9 +382,9 @@ namespace ScannerDialog
             {
                 personFromInput = dataAccess.HamtaPersonFranPersNr(scannedPersNr);
             }
-            if(personFromInput == null)
+            if(personFromInput is null)
             {
-                var result = MessageBox.Show("Ingen träff, Vill du skapa en person med detta person nr?", string.Empty, MessageBoxButtons.YesNo);
+                var result = MessageBox.Show("Ingen träff, Vill du skapa en person med detta pers nr?", string.Empty, MessageBoxButtons.YesNo);
                 if(result == DialogResult.Yes)
                 {
                     var dialog = new NyPersonSimpelDialog(scannedPersNr);

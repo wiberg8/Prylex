@@ -29,6 +29,11 @@ namespace ScannerDialog.Forms
             InitializeComponent();
         }
 
+        private void ImportDialog_Load(object sender, EventArgs e)
+        {
+            LaddaSnabbVal();
+        }
+
         private void cmdImportFilUtforska_Click(object sender, EventArgs e)
         {
             lbPersoner.Items.Clear();
@@ -75,33 +80,32 @@ namespace ScannerDialog.Forms
                 return;
             }
             Encoding encoding = IO.GetEncoding(SelectedImportFil);
-            if (encoding == Encoding.UTF8 || encoding == Encoding.ASCII)
-            {
-                ClearInlastPersoner();
-                List<string> fileData = File.ReadAllLines(SelectedImportFil).ToList();
-                if (fileData.Count > 0)
-                {
-                    fileData.RemoveAt(0);
-                }
-                foreach (string line in fileData)
-                {
-                    string[] lineSplit = line.Split(';');
-                    if (lineSplit.Length >= 2)
-                    {
-                        Person p = new Person()
-                        {
-                            Fornamn = lineSplit[0],
-                            Efternamn = lineSplit[1],
-                            PersNr = lineSplit[2],
-                            Tillhorighet = cbTillhorighet.Text
-                        };
-                        AddInlastPerson(p);
-                    }
-                }
-            }
-            else
+            if(!(encoding == Encoding.UTF8 || encoding == Encoding.ASCII))
             {
                 MessageBox.Show("Filen måste ha UTF8 eller ASCII enkodning");
+                return;
+            }
+                
+            ClearInlastPersoner();
+            List<string> fileData = File.ReadAllLines(SelectedImportFil).ToList();
+            if (fileData.Count > 0)
+            {
+                fileData.RemoveAt(0);
+            }
+            foreach (string line in fileData)
+            {
+                string[] lineSplit = line.Split(';');
+                if (lineSplit.Length >= 3)
+                {
+                    Person p = new Person()
+                    {
+                        Fornamn = lineSplit[0],
+                        Efternamn = lineSplit[1],
+                        PersNr = lineSplit[2],
+                        Tillhorighet = cbTillhorighet.Text
+                    };
+                    AddInlastPerson(p);
+                }
             }
         }
 
@@ -169,11 +173,6 @@ namespace ScannerDialog.Forms
             cbTillhorighet.DataSource = ins.Tillhorigheter;
             if (cbTillhorighet.Items.Count > 0)
                 cbTillhorighet.SelectedIndex = 0;
-        }
-
-        private void ImportDialog_Load(object sender, EventArgs e)
-        {
-            LaddaSnabbVal();
         }
 
         private void ImportDialog_KeyDown(object sender, KeyEventArgs e)
