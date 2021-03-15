@@ -204,6 +204,7 @@
             this.Name = "UpdateraArtikelDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.UpdateraArtikelDialog_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UpdateraArtikelDialog_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.gbFalt.ResumeLayout(false);
             this.gbFalt.PerformLayout();

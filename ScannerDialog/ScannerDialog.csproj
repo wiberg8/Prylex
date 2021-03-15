@@ -125,6 +125,12 @@
     <Compile Include="Artikel_Forms\NyArtikelDialog.Designer.cs">
       <DependentUpon>NyArtikelDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Person_Forms\NyPersonSimpelDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Person_Forms\NyPersonSimpelDialog.Designer.cs">
+      <DependentUpon>NyPersonSimpelDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Person_Forms\NyPersonDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Artikel_Forms\NyArtikelDialog.resx">
       <DependentUpon>NyArtikelDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Person_Forms\NyPersonSimpelDialog.resx">
+      <DependentUpon>NyPersonSimpelDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Person_Forms\NyPersonDialog.resx">
       <DependentUpon>NyPersonDialog.cs</DependentUpon>

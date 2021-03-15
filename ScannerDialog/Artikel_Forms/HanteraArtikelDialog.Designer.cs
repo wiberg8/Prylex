@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gbRegisterPerson = new System.Windows.Forms.GroupBox();
+            this.cmdRegistreraScanna = new System.Windows.Forms.Button();
             this.cmdSkrivUtEttiket = new System.Windows.Forms.Button();
             this.txtRegistredPerson = new System.Windows.Forms.TextBox();
             this.cmdRegisterPerson = new System.Windows.Forms.Button();
@@ -69,22 +70,33 @@
             // 
             // gbRegisterPerson
             // 
+            this.gbRegisterPerson.Controls.Add(this.cmdRegistreraScanna);
             this.gbRegisterPerson.Controls.Add(this.cmdSkrivUtEttiket);
             this.gbRegisterPerson.Controls.Add(this.txtRegistredPerson);
             this.gbRegisterPerson.Controls.Add(this.cmdRegisterPerson);
             this.gbRegisterPerson.Controls.Add(this.cmdUnregisterPerson);
             this.gbRegisterPerson.Location = new System.Drawing.Point(12, 249);
             this.gbRegisterPerson.Name = "gbRegisterPerson";
-            this.gbRegisterPerson.Size = new System.Drawing.Size(330, 79);
+            this.gbRegisterPerson.Size = new System.Drawing.Size(330, 98);
             this.gbRegisterPerson.TabIndex = 13;
             this.gbRegisterPerson.TabStop = false;
             this.gbRegisterPerson.Text = "Registrera / Avregistrera person";
             // 
+            // cmdRegistreraScanna
+            // 
+            this.cmdRegistreraScanna.Location = new System.Drawing.Point(13, 69);
+            this.cmdRegistreraScanna.Name = "cmdRegistreraScanna";
+            this.cmdRegistreraScanna.Size = new System.Drawing.Size(150, 23);
+            this.cmdRegistreraScanna.TabIndex = 16;
+            this.cmdRegistreraScanna.Text = "Registrera (Scanna)";
+            this.cmdRegistreraScanna.UseVisualStyleBackColor = true;
+            this.cmdRegistreraScanna.Click += new System.EventHandler(this.cmdRegistreraScanna_Click);
+            // 
             // cmdSkrivUtEttiket
             // 
-            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(120, 46);
+            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(169, 71);
             this.cmdSkrivUtEttiket.Name = "cmdSkrivUtEttiket";
-            this.cmdSkrivUtEttiket.Size = new System.Drawing.Size(89, 23);
+            this.cmdSkrivUtEttiket.Size = new System.Drawing.Size(153, 23);
             this.cmdSkrivUtEttiket.TabIndex = 15;
             this.cmdSkrivUtEttiket.Text = "Ettiket";
             this.cmdSkrivUtEttiket.UseVisualStyleBackColor = true;
@@ -104,7 +116,7 @@
             // 
             this.cmdRegisterPerson.Location = new System.Drawing.Point(13, 45);
             this.cmdRegisterPerson.Name = "cmdRegisterPerson";
-            this.cmdRegisterPerson.Size = new System.Drawing.Size(89, 23);
+            this.cmdRegisterPerson.Size = new System.Drawing.Size(150, 23);
             this.cmdRegisterPerson.TabIndex = 14;
             this.cmdRegisterPerson.Text = "Registrera...";
             this.cmdRegisterPerson.UseVisualStyleBackColor = true;
@@ -112,9 +124,9 @@
             // 
             // cmdUnregisterPerson
             // 
-            this.cmdUnregisterPerson.Location = new System.Drawing.Point(233, 46);
+            this.cmdUnregisterPerson.Location = new System.Drawing.Point(169, 46);
             this.cmdUnregisterPerson.Name = "cmdUnregisterPerson";
-            this.cmdUnregisterPerson.Size = new System.Drawing.Size(89, 23);
+            this.cmdUnregisterPerson.Size = new System.Drawing.Size(153, 23);
             this.cmdUnregisterPerson.TabIndex = 13;
             this.cmdUnregisterPerson.Text = "Avregistrera...";
             this.cmdUnregisterPerson.UseVisualStyleBackColor = true;
@@ -360,7 +372,7 @@
             // cmdAvbryt
             // 
             this.cmdAvbryt.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdAvbryt.Location = new System.Drawing.Point(594, 306);
+            this.cmdAvbryt.Location = new System.Drawing.Point(593, 324);
             this.cmdAvbryt.Name = "cmdAvbryt";
             this.cmdAvbryt.Size = new System.Drawing.Size(88, 23);
             this.cmdAvbryt.TabIndex = 22;
@@ -423,7 +435,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 341);
+            this.ClientSize = new System.Drawing.Size(693, 357);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cmdAvbryt);
             this.Controls.Add(this.gbFalt);
@@ -481,5 +493,6 @@
         private System.Windows.Forms.Button cmdNyHandelse;
         private System.Windows.Forms.Label laHandelsePersId;
         private System.Windows.Forms.TextBox txtHandelsePerson;
+        private System.Windows.Forms.Button cmdRegistreraScanna;
     }
 }

@@ -338,6 +338,39 @@ namespace PrylanLibary
             }
             return null;
         }
+        public Person HamtaPersonFranPersNr(string persNr)
+        {
+            DBHandler.AddParam("@PersNr", persNr);
+            DBHandler.ExecQuery("SELECT * FROM personer WHERE PersNr=@PersNr");
+            if (DBHandler.DBDT is null)
+                return null;
+
+            if (DBHandler.DBDT.Rows.Count > 0)
+            {
+                DataRow R = DBHandler.DBDT.Rows[0];
+                try
+                {
+                    Person p = new Person(int.Parse(R["Id"].ToString()))
+                    {
+                        Fornamn = R["Fornamn"].ToString(),
+                        Efternamn = R["Efternamn"].ToString(),
+                        PersNr = R["PersNr"].ToString(),
+                        Sign = R["Sign"].ToString(),
+                        Tillhorighet = R["Tillhorighet"].ToString(),
+                        Telefon = R["Telefon"].ToString(),
+                        Ovrigt = R["Ovrigt"].ToString(),
+                        Epost = R["Epost"].ToString()
+                    };
+                    return p;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return null;
+        }
+
         public void InfogaPerson(Person person)
         {
             DBHandler.AddParam("@Fornamn", person.Fornamn);

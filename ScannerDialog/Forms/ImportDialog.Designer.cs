@@ -135,10 +135,12 @@ namespace ScannerDialog.Forms
             this.Controls.Add(this.cmdImportFilUtforska);
             this.Controls.Add(this.txtImportFil);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "ImportDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.ImportDialog_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ImportDialog_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -11,6 +11,8 @@ using PrylanLibary;
 using PrylanLibary.Models;
 using PrylanLibary.Enums;
 using System.IO;
+using PrylanLibary.Validators;
+using System.Text.RegularExpressions;
 
 
 //Refresh datagrid måste göras om till dataaccess med FyllArtiklar, FyllPersoner funktioner
@@ -18,7 +20,7 @@ namespace ScannerDialog.Forms
 {
     public partial class frmMain : Form
     {
-      
+
         public frmMain()
         {
             InitializeComponent();
@@ -157,22 +159,25 @@ namespace ScannerDialog.Forms
             InputBox inputBox = new InputBox();
             inputBox.ShowDialog();
             string scannedInput = inputBox.Input.ToUpper();
-            if (!string.IsNullOrWhiteSpace(scannedInput))
+            if (string.IsNullOrWhiteSpace(scannedInput))
             {
-                Artikel artikel;
-                using (DataAccess dataAccess = new DataAccess())
-                {
-                    artikel = dataAccess.HamtaArtikelFranSerieNr(scannedInput);
-                }
-                if(artikel is null)
-                {
-                    MessageBox.Show("Inga träffar");
-                }
-                else
-                {
-                    var artikelDialog = new HanteraArtikelDialog(artikel);
-                    artikelDialog.ShowDialog();
-                }
+                return;
+            }
+
+            Artikel artikel;
+            using (DataAccess dataAccess = new DataAccess())
+            {
+                artikel = dataAccess.HamtaArtikelFranSerieNr(scannedInput);
+            }
+            if (artikel is null)
+            {
+                MessageBox.Show("Inga träffar");
+            }
+            else
+            {
+                var artikelDialog = new HanteraArtikelDialog(artikel);
+                artikelDialog.ShowDialog();
+                RefreshDataGrids();
             }
         }
 

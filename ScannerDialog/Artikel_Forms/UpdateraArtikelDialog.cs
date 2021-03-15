@@ -82,5 +82,13 @@ namespace ScannerDialog
                     cbOS.SelectedIndex = 0;
             }
         }
+
+        private void UpdateraArtikelDialog_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace ScannerDialog
 {
-    partial class NyPersonDialog
+    partial class NyPersonSimpelDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -29,61 +29,67 @@
         private void InitializeComponent()
         {
             this.gbFalt = new System.Windows.Forms.GroupBox();
+            this.cbTillhorighet = new System.Windows.Forms.ComboBox();
+            this.laTillhorighet = new System.Windows.Forms.Label();
             this.cmdAvbryt = new System.Windows.Forms.Button();
             this.txtSign = new System.Windows.Forms.TextBox();
             this.cmdSpara = new System.Windows.Forms.Button();
             this.laSign = new System.Windows.Forms.Label();
             this.txtPersNr = new System.Windows.Forms.MaskedTextBox();
-            this.txtTelefon = new System.Windows.Forms.TextBox();
-            this.laTelefon = new System.Windows.Forms.Label();
-            this.txtEpost = new System.Windows.Forms.TextBox();
-            this.laEpost = new System.Windows.Forms.Label();
-            this.gbSnabbVal = new System.Windows.Forms.GroupBox();
-            this.cbTillhorighet = new System.Windows.Forms.ComboBox();
-            this.laTillhorighet = new System.Windows.Forms.Label();
             this.txtEfternamn = new System.Windows.Forms.TextBox();
             this.laEfternamn = new System.Windows.Forms.Label();
             this.laPersNr = new System.Windows.Forms.Label();
-            this.txtOvrigt = new System.Windows.Forms.TextBox();
-            this.laOvrigt = new System.Windows.Forms.Label();
             this.txtFornamn = new System.Windows.Forms.TextBox();
             this.laFornamn = new System.Windows.Forms.Label();
             this.lbErrors = new System.Windows.Forms.ListBox();
             this.gbFalt.SuspendLayout();
-            this.gbSnabbVal.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbFalt
             // 
+            this.gbFalt.Controls.Add(this.cbTillhorighet);
+            this.gbFalt.Controls.Add(this.laTillhorighet);
             this.gbFalt.Controls.Add(this.cmdAvbryt);
             this.gbFalt.Controls.Add(this.txtSign);
             this.gbFalt.Controls.Add(this.cmdSpara);
             this.gbFalt.Controls.Add(this.laSign);
             this.gbFalt.Controls.Add(this.txtPersNr);
-            this.gbFalt.Controls.Add(this.txtTelefon);
-            this.gbFalt.Controls.Add(this.laTelefon);
-            this.gbFalt.Controls.Add(this.txtEpost);
-            this.gbFalt.Controls.Add(this.laEpost);
-            this.gbFalt.Controls.Add(this.gbSnabbVal);
             this.gbFalt.Controls.Add(this.txtEfternamn);
             this.gbFalt.Controls.Add(this.laEfternamn);
             this.gbFalt.Controls.Add(this.laPersNr);
-            this.gbFalt.Controls.Add(this.txtOvrigt);
-            this.gbFalt.Controls.Add(this.laOvrigt);
             this.gbFalt.Controls.Add(this.txtFornamn);
             this.gbFalt.Controls.Add(this.laFornamn);
-            this.gbFalt.Location = new System.Drawing.Point(12, 12);
+            this.gbFalt.Location = new System.Drawing.Point(12, 16);
             this.gbFalt.Name = "gbFalt";
-            this.gbFalt.Size = new System.Drawing.Size(475, 240);
+            this.gbFalt.Size = new System.Drawing.Size(240, 240);
             this.gbFalt.TabIndex = 0;
             this.gbFalt.TabStop = false;
             this.gbFalt.Text = "Info";
             this.gbFalt.Enter += new System.EventHandler(this.gbFalt_Enter);
             // 
+            // cbTillhorighet
+            // 
+            this.cbTillhorighet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTillhorighet.FormattingEnabled = true;
+            this.cbTillhorighet.Location = new System.Drawing.Point(16, 165);
+            this.cbTillhorighet.Name = "cbTillhorighet";
+            this.cbTillhorighet.Size = new System.Drawing.Size(211, 21);
+            this.cbTillhorighet.TabIndex = 8;
+            this.cbTillhorighet.TabStop = false;
+            // 
+            // laTillhorighet
+            // 
+            this.laTillhorighet.AutoSize = true;
+            this.laTillhorighet.Location = new System.Drawing.Point(13, 149);
+            this.laTillhorighet.Name = "laTillhorighet";
+            this.laTillhorighet.Size = new System.Drawing.Size(61, 13);
+            this.laTillhorighet.TabIndex = 0;
+            this.laTillhorighet.Text = "Tillhörighet:";
+            // 
             // cmdAvbryt
             // 
             this.cmdAvbryt.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdAvbryt.Location = new System.Drawing.Point(363, 199);
+            this.cmdAvbryt.Location = new System.Drawing.Point(140, 200);
             this.cmdAvbryt.Name = "cmdAvbryt";
             this.cmdAvbryt.Size = new System.Drawing.Size(87, 23);
             this.cmdAvbryt.TabIndex = 9;
@@ -103,7 +109,7 @@
             // 
             // cmdSpara
             // 
-            this.cmdSpara.Location = new System.Drawing.Point(234, 199);
+            this.cmdSpara.Location = new System.Drawing.Point(15, 200);
             this.cmdSpara.Name = "cmdSpara";
             this.cmdSpara.Size = new System.Drawing.Size(87, 23);
             this.cmdSpara.TabIndex = 8;
@@ -123,79 +129,14 @@
             // txtPersNr
             // 
             this.txtPersNr.Culture = new System.Globalization.CultureInfo("");
+            this.txtPersNr.Enabled = false;
             this.txtPersNr.Location = new System.Drawing.Point(16, 121);
             this.txtPersNr.Mask = "######-####";
             this.txtPersNr.Name = "txtPersNr";
+            this.txtPersNr.ReadOnly = true;
             this.txtPersNr.Size = new System.Drawing.Size(90, 20);
             this.txtPersNr.TabIndex = 2;
-            // 
-            // txtTelefon
-            // 
-            this.txtTelefon.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTelefon.HideSelection = false;
-            this.txtTelefon.Location = new System.Drawing.Point(15, 201);
-            this.txtTelefon.Name = "txtTelefon";
-            this.txtTelefon.Size = new System.Drawing.Size(213, 20);
-            this.txtTelefon.TabIndex = 6;
-            this.txtTelefon.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
-            // 
-            // laTelefon
-            // 
-            this.laTelefon.AutoSize = true;
-            this.laTelefon.Location = new System.Drawing.Point(12, 185);
-            this.laTelefon.Name = "laTelefon";
-            this.laTelefon.Size = new System.Drawing.Size(46, 13);
-            this.laTelefon.TabIndex = 3;
-            this.laTelefon.Text = "Telefon:";
-            this.laTelefon.Click += new System.EventHandler(this.laPhone_Click);
-            // 
-            // txtEpost
-            // 
-            this.txtEpost.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtEpost.HideSelection = false;
-            this.txtEpost.Location = new System.Drawing.Point(16, 161);
-            this.txtEpost.Name = "txtEpost";
-            this.txtEpost.Size = new System.Drawing.Size(212, 20);
-            this.txtEpost.TabIndex = 4;
-            // 
-            // laEpost
-            // 
-            this.laEpost.AutoSize = true;
-            this.laEpost.Location = new System.Drawing.Point(13, 144);
-            this.laEpost.Name = "laEpost";
-            this.laEpost.Size = new System.Drawing.Size(40, 13);
-            this.laEpost.TabIndex = 4;
-            this.laEpost.Text = "E-post:";
-            // 
-            // gbSnabbVal
-            // 
-            this.gbSnabbVal.Controls.Add(this.cbTillhorighet);
-            this.gbSnabbVal.Controls.Add(this.laTillhorighet);
-            this.gbSnabbVal.Location = new System.Drawing.Point(233, 108);
-            this.gbSnabbVal.Name = "gbSnabbVal";
-            this.gbSnabbVal.Size = new System.Drawing.Size(224, 72);
-            this.gbSnabbVal.TabIndex = 8;
-            this.gbSnabbVal.TabStop = false;
-            this.gbSnabbVal.Text = "Snabb val ";
-            // 
-            // cbTillhorighet
-            // 
-            this.cbTillhorighet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTillhorighet.FormattingEnabled = true;
-            this.cbTillhorighet.Location = new System.Drawing.Point(15, 36);
-            this.cbTillhorighet.Name = "cbTillhorighet";
-            this.cbTillhorighet.Size = new System.Drawing.Size(202, 21);
-            this.cbTillhorighet.TabIndex = 8;
-            this.cbTillhorighet.TabStop = false;
-            // 
-            // laTillhorighet
-            // 
-            this.laTillhorighet.AutoSize = true;
-            this.laTillhorighet.Location = new System.Drawing.Point(12, 20);
-            this.laTillhorighet.Name = "laTillhorighet";
-            this.laTillhorighet.Size = new System.Drawing.Size(61, 13);
-            this.laTillhorighet.TabIndex = 0;
-            this.laTillhorighet.Text = "Tillhörighet:";
+            this.txtPersNr.TabStop = false;
             // 
             // txtEfternamn
             // 
@@ -225,25 +166,6 @@
             this.laPersNr.TabIndex = 2;
             this.laPersNr.Text = "PersNr:";
             // 
-            // txtOvrigt
-            // 
-            this.txtOvrigt.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtOvrigt.HideSelection = false;
-            this.txtOvrigt.Location = new System.Drawing.Point(233, 37);
-            this.txtOvrigt.Multiline = true;
-            this.txtOvrigt.Name = "txtOvrigt";
-            this.txtOvrigt.Size = new System.Drawing.Size(224, 62);
-            this.txtOvrigt.TabIndex = 7;
-            // 
-            // laOvrigt
-            // 
-            this.laOvrigt.AutoSize = true;
-            this.laOvrigt.Location = new System.Drawing.Point(230, 21);
-            this.laOvrigt.Name = "laOvrigt";
-            this.laOvrigt.Size = new System.Drawing.Size(38, 13);
-            this.laOvrigt.TabIndex = 5;
-            this.laOvrigt.Text = "Övrigt:";
-            // 
             // txtFornamn
             // 
             this.txtFornamn.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -266,30 +188,28 @@
             // lbErrors
             // 
             this.lbErrors.FormattingEnabled = true;
-            this.lbErrors.Location = new System.Drawing.Point(493, 49);
+            this.lbErrors.Location = new System.Drawing.Point(257, 18);
             this.lbErrors.Name = "lbErrors";
-            this.lbErrors.Size = new System.Drawing.Size(212, 186);
+            this.lbErrors.Size = new System.Drawing.Size(212, 238);
             this.lbErrors.TabIndex = 16;
             // 
-            // NyPersonDialog
+            // NyPersonSimpelDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdAvbryt;
-            this.ClientSize = new System.Drawing.Size(715, 264);
+            this.ClientSize = new System.Drawing.Size(481, 264);
             this.Controls.Add(this.lbErrors);
             this.Controls.Add(this.gbFalt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "NyPersonDialog";
+            this.Name = "NyPersonSimpelDialog";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.NyPersonDialog_Load);
             this.gbFalt.ResumeLayout(false);
             this.gbFalt.PerformLayout();
-            this.gbSnabbVal.ResumeLayout(false);
-            this.gbSnabbVal.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -299,23 +219,16 @@
         private System.Windows.Forms.GroupBox gbFalt;
         private System.Windows.Forms.TextBox txtEfternamn;
         private System.Windows.Forms.Label laEfternamn;
-        private System.Windows.Forms.TextBox txtOvrigt;
-        private System.Windows.Forms.Label laOvrigt;
-        private System.Windows.Forms.TextBox txtTelefon;
         private System.Windows.Forms.TextBox txtFornamn;
         private System.Windows.Forms.Label laPersNr;
-        private System.Windows.Forms.Label laTelefon;
         private System.Windows.Forms.Label laFornamn;
-        private System.Windows.Forms.GroupBox gbSnabbVal;
         private System.Windows.Forms.ComboBox cbTillhorighet;
         private System.Windows.Forms.Label laTillhorighet;
-        private System.Windows.Forms.TextBox txtEpost;
-        private System.Windows.Forms.Label laEpost;
         private System.Windows.Forms.Button cmdAvbryt;
         private System.Windows.Forms.Button cmdSpara;
         private System.Windows.Forms.MaskedTextBox txtPersNr;
+        private System.Windows.Forms.ListBox lbErrors;
         private System.Windows.Forms.TextBox txtSign;
         private System.Windows.Forms.Label laSign;
-        private System.Windows.Forms.ListBox lbErrors;
     }
 }

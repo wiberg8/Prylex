@@ -140,6 +140,7 @@
             this.lbForval.Name = "lbForval";
             this.lbForval.Size = new System.Drawing.Size(214, 186);
             this.lbForval.TabIndex = 0;
+            this.lbForval.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lbForval_KeyDown);
             // 
             // cbForvalValj
             // 
@@ -302,10 +303,12 @@
             this.Controls.Add(this.lbForval);
             this.Controls.Add(this.gbInstallningarDb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.Name = "InstallningarDialog";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.InstallningarDialog_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InstallningarDialog_KeyDown);
             this.gbInstallningarDb.ResumeLayout(false);
             this.gbInstallningarDb.PerformLayout();
             this.gbImportExport.ResumeLayout(false);

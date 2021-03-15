@@ -5,12 +5,14 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using PrylanLibary;
 using PrylanLibary.Enums;
 using PrylanLibary.Models;
+using PrylanLibary.Validators;
 
 namespace ScannerDialog
 {
@@ -40,7 +42,9 @@ namespace ScannerDialog
                 FyllHandelser(dataAccess.HamtaHandelserArtikel(artikelAttEditera));
             }
             cmdRegisterPerson.Visible = artikelAttEditera.Status == Status.INNE;
+            cmdRegistreraScanna.Visible = artikelAttEditera.Status == Status.INNE;
             cmdUnregisterPerson.Visible = artikelAttEditera.Status == Status.UTE;
+            cmdSkrivUtEttiket.Visible = artikelAttEditera.Status == Status.UTE;
         }
 
         private void gbFields_Enter(object sender, EventArgs e)
@@ -168,6 +172,23 @@ namespace ScannerDialog
             }   
         }
 
+        private void RegistreraPerson(Person person)
+        {
+            txtRegistredPerson.Text = person.ToString();
+            using (DataAccess dataAccess = new DataAccess())
+            {
+                dataAccess.RegisterArtikelToPerson(person, artikelAttEditera);
+                artikelAttEditera = dataAccess.HamtaArtikelFranId(artikelAttEditera.Id);
+                if (artikelAttEditera != null)
+                {
+                    Handelse handelse = new Handelse() { ArtikelId = artikelAttEditera.Id, PersId = artikelAttEditera.PersId, Typ = HandelseTyp.REGISTRERING };
+                    dataAccess.InfogaHandelse(handelse);
+                    FyllHandelser(dataAccess.HamtaHandelserArtikel(artikelAttEditera));
+                }
+            }
+            SetArtikelEditStatus();
+        }
+
         private void FyllHandelser(List<Handelse> handelser)
         {
             lbHandelser.Items.Clear();
@@ -206,11 +227,15 @@ namespace ScannerDialog
                 registreradPerson = null;
                 cmdUnregisterPerson.Visible = false;
                 cmdRegisterPerson.Visible = true;
+                cmdRegistreraScanna.Visible = true;
+                cmdSkrivUtEttiket.Visible = false;
             }
             else
             {
                 cmdUnregisterPerson.Visible = true;
                 cmdRegisterPerson.Visible = false;
+                cmdRegistreraScanna.Visible = false;
+                cmdSkrivUtEttiket.Visible = true;
             }
         }
 
@@ -242,6 +267,11 @@ namespace ScannerDialog
 
         private void cmdDelete_Click(object sender, EventArgs e)
         {
+            if(artikelAttEditera.Status == Status.UTE)
+            {
+                MessageBox.Show("Du måste avregistrera artikeln från personen");
+                return;
+            }
             if (MessageBox.Show("Är du säker?", "Prylex", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 using (DataAccess dataAccess = new DataAccess())
@@ -297,22 +327,21 @@ namespace ScannerDialog
 
         private void lbHandelser_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lbHandelser.SelectedItem != null)
+            if (lbHandelser.SelectedItem is null)
+                return;
+            Handelse handelse = (Handelse)lbHandelser.SelectedItem;
+            Person personFromId;
+            using (DataAccess dataAccess = new DataAccess())
             {
-                Handelse handelse = (Handelse)lbHandelser.SelectedItem;
-                Person personFromId;
-                using (DataAccess dataAccess = new DataAccess())
-                {
-                    personFromId = dataAccess.HamtaPersonFranId(handelse.PersId);
-                }
-                if (personFromId is null)
-                {
-                    txtHandelsePerson.Text = noPersonBound;
-                }
-                else
-                {
-                    txtHandelsePerson.Text = personFromId.ToString();
-                }
+                personFromId = dataAccess.HamtaPersonFranId(handelse.PersId);
+            }
+            if (personFromId is null)
+            {
+                txtHandelsePerson.Text = noPersonBound;
+            }
+            else
+            {
+                txtHandelsePerson.Text = personFromId.ToString();
             }
         }
 
@@ -321,6 +350,73 @@ namespace ScannerDialog
             if (e.KeyCode == Keys.Escape)
             {
                 this.DialogResult = DialogResult.Cancel;
+            }
+        }
+
+        private void cmdRegistreraScanna_Click(object sender, EventArgs e)
+        {
+            InputBox inputBox = new InputBox() { PromptText = "Skanna (PersNr)" };
+            inputBox.ShowDialog();
+            string scannedPersNr = inputBox.Input;
+
+            if (!PersonValidator.IsPersNrValid(scannedPersNr))
+            {
+                if (scannedPersNr.Length == 12 || Regex.IsMatch(scannedPersNr, "^[0-9]{8}[-][0-9]{4}$"))
+                {
+                    scannedPersNr = scannedPersNr.Remove(0, 2);
+                }
+                if (scannedPersNr.Length == 10)
+                {
+                    scannedPersNr = scannedPersNr.Insert(6, "-");
+                }
+                if (!PersonValidator.IsPersNrValid(scannedPersNr))
+                {
+                    MessageBox.Show("Persnr har felaktig format");
+                    return;
+                }
+            }
+            Person personFromInput;
+            using (DataAccess dataAccess = new DataAccess())
+            {
+                personFromInput = dataAccess.HamtaPersonFranPersNr(scannedPersNr);
+            }
+            if(personFromInput == null)
+            {
+                var result = MessageBox.Show("Ingen träff, Vill du skapa en person med detta person nr?", string.Empty, MessageBoxButtons.YesNo);
+                if(result == DialogResult.Yes)
+                {
+                    var dialog = new NyPersonSimpelDialog(scannedPersNr);
+                    dialog.ShowDialog();
+                    if (dialog.Person != null)
+                    {
+                        bool existerarPerson;
+                        using (DataAccess dataAccess = new DataAccess())
+                        {
+                            existerarPerson = dataAccess.ExisterarPerson(dialog.Person.PersNr);
+                        }
+                        if (existerarPerson)
+                        {
+                            MessageBox.Show("PersNr existerar redan");
+                        }
+                        else
+                        {
+                            Person personFromPersNr;
+                            using (DataAccess dataAccess = new DataAccess())
+                            {
+                                dataAccess.InfogaPerson(dialog.Person);
+                                personFromPersNr = dataAccess.HamtaPersonFranPersNr(dialog.Person.PersNr);
+                            }
+                            if(personFromPersNr != null)
+                            {
+                                RegistreraPerson(personFromPersNr);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                RegistreraPerson(personFromInput);
             }
         }
     }

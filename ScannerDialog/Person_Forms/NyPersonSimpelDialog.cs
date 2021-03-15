@@ -14,11 +14,13 @@ using PrylanLibary.Validators;
 
 namespace ScannerDialog
 {
-    public partial class NyPersonDialog : Form
+    public partial class NyPersonSimpelDialog : Form
     {
-        public NyPersonDialog()
+        public Person Person { get; set; }
+        public NyPersonSimpelDialog(string persNr)
         {
             InitializeComponent();
+            txtPersNr.Text = persNr;
         }
 
         private void TextBox_Leave(object sender, EventArgs e)
@@ -49,7 +51,6 @@ namespace ScannerDialog
         private void NyPersonDialog_Load(object sender, EventArgs e)
         {
             LaddaSnabbVal();
-     
         }
 
         private void cmdSpara_Click(object sender, EventArgs e)
@@ -60,18 +61,8 @@ namespace ScannerDialog
             FyllErrors(errors);
             if (errors.IsValid)
             {
-                using (var dataAccess = new DataAccess())
-                {
-                    if (dataAccess.ExisterarPerson(person.PersNr))
-                    {
-                        MessageBox.Show("PersNr existerar redan");
-                    }
-                    else
-                    {
-                        dataAccess.InfogaPerson(person);
-                        FaltRensa();
-                    }
-                }
+                this.Person = person;
+                this.DialogResult = DialogResult.OK;
             }
         }
 
@@ -106,9 +97,6 @@ namespace ScannerDialog
                 Efternamn = txtEfternamn.Text.Trim(),
                 PersNr = transformedPersNr,
                 Sign = txtSign.Text.Trim(),
-                Epost = txtEpost.Text.Trim(),
-                Telefon = txtTelefon.Text.Trim(),
-                Ovrigt = txtOvrigt.Text,
                 Tillhorighet = cbTillhorighet.Text
             };
             return person;
@@ -120,9 +108,6 @@ namespace ScannerDialog
             txtEfternamn.Clear();
             txtPersNr.Clear();
             txtSign.Clear();
-            txtEpost.Clear();
-            txtTelefon.Clear();
-            txtOvrigt.Clear();
         }
         private bool IsFaltGiltiga()
         {

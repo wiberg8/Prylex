@@ -363,5 +363,18 @@ namespace ScannerDialog
             ins.Skrivare = cbPrinter.Text;
             ins.Spara();
         }
+
+        private void lbForval_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void InstallningarDialog_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
+        }
     }
 }

@@ -175,5 +175,13 @@ namespace ScannerDialog.Forms
         {
             LaddaSnabbVal();
         }
+
+        private void ImportDialog_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
+        }
     }
 }
