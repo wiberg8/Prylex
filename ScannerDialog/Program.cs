@@ -22,17 +22,22 @@ namespace ScannerDialog
         {
             if (PriorProcess() is null)
             {
-                Installningar.FileName = "Installningar.json";
-                BackupDatabase();
-                DBHandler.SetConnection(Installningar.Hamta().Databas);
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new frmMain());
+                ApplicationStart();
             }
             else
             {
                 MessageBox.Show("Applikationen kör redan");
             }
+        }
+
+        private static void ApplicationStart()
+        {
+            Installningar.FileName = Config.InstallningarFileName;
+            BackupDatabase();
+            DataAccess.CurrentFile = Installningar.Hamta().Databas;
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new frmMain());
         }
 
         private static Process PriorProcess()
@@ -46,6 +51,11 @@ namespace ScannerDialog
                     return p;
             }
             return null;
+        }
+
+        private static void ReadLocalesToMemory()
+        {
+
         }
 
         public static void BackupDatabase()

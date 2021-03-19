@@ -155,5 +155,16 @@ namespace ScannerDialog
         {
 
         }
+
+        private void txtPersNr_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void txtPersNr_TextChanged(object sender, EventArgs e)
+        {
+            cmdSpara.Enabled = PersonValidator.IsPersNrValid(txtPersNr.Text);
+
+        }
     }
 }

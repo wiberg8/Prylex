@@ -103,6 +103,7 @@
             // 
             // cmdSpara
             // 
+            this.cmdSpara.Enabled = false;
             this.cmdSpara.Location = new System.Drawing.Point(234, 199);
             this.cmdSpara.Name = "cmdSpara";
             this.cmdSpara.Size = new System.Drawing.Size(87, 23);
@@ -128,6 +129,8 @@
             this.txtPersNr.Name = "txtPersNr";
             this.txtPersNr.Size = new System.Drawing.Size(90, 20);
             this.txtPersNr.TabIndex = 2;
+            this.txtPersNr.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtPersNr_MaskInputRejected);
+            this.txtPersNr.TextChanged += new System.EventHandler(this.txtPersNr_TextChanged);
             // 
             // txtTelefon
             // 
@@ -266,9 +269,9 @@
             // lbErrors
             // 
             this.lbErrors.FormattingEnabled = true;
-            this.lbErrors.Location = new System.Drawing.Point(493, 49);
+            this.lbErrors.Location = new System.Drawing.Point(491, 17);
             this.lbErrors.Name = "lbErrors";
-            this.lbErrors.Size = new System.Drawing.Size(212, 186);
+            this.lbErrors.Size = new System.Drawing.Size(212, 238);
             this.lbErrors.TabIndex = 16;
             // 
             // NyPersonDialog

@@ -303,6 +303,10 @@ namespace ScannerDialog
             if (artikelAttEditera.Status == Status.UTE)
             {
                 Printing.PrintLabel(artikelAttEditera.DatorNamn, registreradPerson.GetNamn(), artikelAttEditera.SerieNr, registreradPerson.Tillhorighet);
+                if (!string.IsNullOrWhiteSpace(Printing.exception))
+                {
+                    MessageBox.Show(Printing.exception);
+                }
             }
         }
 

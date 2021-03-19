@@ -9,7 +9,7 @@ using System.IO;
 
 namespace PrylanLibary
 {
-    public static class DBHandler
+    static class DBHandler
     {
         //private
         private static SQLiteConnection DBConn;
@@ -25,14 +25,13 @@ namespace PrylanLibary
         public static DataTable DBDT;
         public static int RecordCount;
         public static string Exception;
-        public static EventHandler ConnectionChanged { get; set; }
         
         public static void SetConnection(string filePath)
         {
             DBConn = new SQLiteConnection();
             DBConn.ConnectionString = "Data Source =" + filePath + "; Version = 3; FailIfMissing=True";
-            if (ConnectionChanged != null)
-                ConnectionChanged.Invoke(new object(), new EventArgs());
+            if (DataAccess.ConnectionChanged != null)
+                DataAccess.ConnectionChanged.Invoke(DBConn.ConnectionString, new EventArgs());
         }
         public static bool Error()
         {

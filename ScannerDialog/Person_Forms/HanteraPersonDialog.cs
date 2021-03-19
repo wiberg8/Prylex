@@ -287,10 +287,12 @@ namespace ScannerDialog
                 string temp = string.Empty;
                 datorNamnLista.ForEach((string datorNamn) => temp += datorNamn + "\n");
 
-                SaveFileDialog fileDialog = new SaveFileDialog();
-                fileDialog.Filter = "Text file(*.txt)|*.txt";
-                fileDialog.DefaultExt = "txt";
-                fileDialog.AddExtension = true;
+                SaveFileDialog fileDialog = new SaveFileDialog
+                {
+                    Filter = "Text file(*.txt)|*.txt",
+                    DefaultExt = "txt",
+                    AddExtension = true
+                };
                 DialogResult dialogResult = fileDialog.ShowDialog();
                 if(dialogResult == DialogResult.OK && fileDialog.CheckPathExists && !fileDialog.CheckFileExists)
                 {

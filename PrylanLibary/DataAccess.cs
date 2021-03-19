@@ -12,16 +12,23 @@ namespace PrylanLibary
 {
     public class DataAccess :  System.IDisposable
     {
+        private static string currentFile;
+        public static string CurrentFile { get { return currentFile; } set { DBHandler.SetConnection(value); currentFile = value; } }
+        public static EventHandler ConnectionChanged { get; set; }
+
         public DataAccess()
         {
             DBHandler.TryOpen();
         }
-
         void IDisposable.Dispose()
         {
             DBHandler.Close();
         }
 
+        public static void CreateFile(string fileName)
+        {
+            DBHandler.CreateFile(fileName);
+        }
         public void Close()
         {
             DBHandler.Close();

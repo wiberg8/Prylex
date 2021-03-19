@@ -216,7 +216,7 @@ namespace ScannerDialog
                     var ins = Installningar.Hamta();
                     ins.Databas = fileDialog.FileName;
                     ins.Spara();
-                    DBHandler.SetConnection(ins.Databas);
+                    DataAccess.CurrentFile = Installningar.Hamta().Databas;
                 }
                 else
                 {
@@ -230,7 +230,7 @@ namespace ScannerDialog
             var ins = Installningar.Hamta();
             ins.Databas = string.Empty;
             ins.Spara();
-            DBHandler.SetConnection(ins.Databas);
+            DataAccess.CurrentFile = Installningar.Hamta().Databas;
         }
 
         private void cmdNuvarandeDbBackupUtforska_Click(object sender, EventArgs e)
@@ -348,7 +348,7 @@ namespace ScannerDialog
                 {
                     var ins = Installningar.Hamta(fileDialog.FileName);
                     ins.Spara();
-                    DBHandler.SetConnection(ins.Databas);
+                    DataAccess.CurrentFile = ins.Databas;
                 }
                 else
                 {

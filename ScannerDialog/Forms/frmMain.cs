@@ -26,7 +26,7 @@ namespace ScannerDialog.Forms
             InitializeComponent();
             Installningar.Change += Installningar_Change;
             DataAccess.ArtikelChange += Artiklar_Change;
-            DBHandler.ConnectionChanged += Database_Connection_Changed;
+            DataAccess.ConnectionChanged += Database_Connection_Changed;
         }
 
         private void Database_Connection_Changed(object sender, EventArgs e)
@@ -88,7 +88,7 @@ namespace ScannerDialog.Forms
             DialogResult dialogResult = fileDialog.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
-                DBHandler.CreateFile(fileDialog.FileName);
+                DataAccess.CreateFile(fileDialog.FileName);
             }
         }
 
