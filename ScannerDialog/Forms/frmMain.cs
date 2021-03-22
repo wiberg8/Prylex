@@ -179,6 +179,7 @@ namespace ScannerDialog.Forms
                 artikelDialog.ShowDialog();
                 RefreshDataGrids();
             }
+            Console.WriteLine(DataAccess.LastInsertRowId);
         }
 
         private void tabPersoner_TabIndexChanged(object sender, EventArgs e)

@@ -25,6 +25,7 @@ namespace PrylanLibary
             DBHandler.Close();
         }
 
+        public static int LastInsertRowId { get { return DBHandler.GetLastInsertId(); } }
         public static void CreateFile(string fileName)
         {
             DBHandler.CreateFile(fileName);
@@ -446,6 +447,42 @@ namespace PrylanLibary
             FyllHandelseLista(hamtadeHandelser, DBHandler.DBDT);
             return hamtadeHandelser;
         }
+
+        //public Artikel ParseSingleArtikelRowInDataTable(DataTable dbdt)
+        //{
+        //    if (dbdt is null)
+        //        return null;
+        //    if (dbdt.Rows.Count > 0)
+        //    {
+        //        DataRow R = dbdt.Rows[0];
+        //        try
+        //        {
+
+        //            Artikel a = new Artikel(int.Parse(R["Id"].ToString()))
+        //            {
+        //                Beskrivning = R["Besk"].ToString(),
+        //                StoldTag = R["Stoldtag"].ToString(),
+        //                DatorNamn = R["Datornamn"].ToString(),
+        //                SerieNr = R["SerieNr"].ToString(),
+        //                Mac = R["Mac"].ToString(),
+        //                Os = R["Os"].ToString(),
+        //                Inkop = R["Inkop"].ToString()
+        //            };
+        //            a.Ovrigt = R["Ovrigt"].ToString();
+        //            a.Status = (Status)int.Parse(R["Status"].ToString());
+        //            if (int.TryParse(R["PersId"].ToString(), out int parsedPersId))
+        //            {
+        //                a.PersId = parsedPersId;
+        //            }
+        //            return a;
+        //        }
+        //        catch
+        //        {
+        //            return null;
+        //        }
+        //    }
+
+        //}
 
         private void FyllPersonLista(List<Person> lista, DataTable dbdt)
         {

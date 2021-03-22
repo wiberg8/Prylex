@@ -325,10 +325,12 @@ namespace ScannerDialog
 
         private void cmdExportSettings_Click(object sender, EventArgs e)
         {
-            SaveFileDialog fileDialog = new SaveFileDialog();
-            fileDialog.Filter = "Json (*.txt)|*.json";
-            fileDialog.DefaultExt = "txt";
-            fileDialog.AddExtension = true;
+            SaveFileDialog fileDialog = new SaveFileDialog
+            {
+                Filter = "Json (*.txt)|*.json",
+                DefaultExt = "txt",
+                AddExtension = true
+            };
             DialogResult dialogResult = fileDialog.ShowDialog();
             if (dialogResult == DialogResult.OK && fileDialog.CheckPathExists && !fileDialog.CheckFileExists)
             {

@@ -25,6 +25,7 @@ namespace ScannerDialog.Forms
 
         private void ErrorsUpdate()
         {
+            lbPersonErrors.Items.Clear();
             lbPersonerErrosSuccess.Items.Clear();
             List<ImportPerson> tImporter;
             if (rbLyckade.Checked)

@@ -88,10 +88,6 @@ namespace ScannerDialog.Forms
                 
             ClearInlastPersoner();
             List<string> fileData = File.ReadAllLines(SelectedImportFil).ToList();
-            if (fileData.Count > 0)
-            {
-                fileData.RemoveAt(0);
-            }
             foreach (string line in fileData)
             {
                 string[] lineSplit = line.Split(';');
@@ -126,15 +122,14 @@ namespace ScannerDialog.Forms
                         if (importPerson.Success)
                         {
                             dataAccess.InfogaPerson(importPerson.Person);
-                            importPerson.Person.Id = DBHandler.GetLastInsertId();
+                            importPerson.Person.Id = DataAccess.LastInsertRowId;
                         }
                         importer.Add(importPerson);
                     }
                 }
+                ClearInlastPersoner();
                 ImportResultDialog resultDialog = new ImportResultDialog(importer);
                 resultDialog.ShowDialog();
-                ClearInlastPersoner();
-
             }
         }
         //int lyckade = importer.Where((ImportPerson p) => p.Success).Count();

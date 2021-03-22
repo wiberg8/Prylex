@@ -14,6 +14,8 @@ namespace ScannerDialog
 {
     static class Program
     {
+        public static Installningar AppSettings { get; set; } = new Installningar();
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -51,11 +53,6 @@ namespace ScannerDialog
                     return p;
             }
             return null;
-        }
-
-        private static void ReadLocalesToMemory()
-        {
-
         }
 
         public static void BackupDatabase()
