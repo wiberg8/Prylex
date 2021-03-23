@@ -37,6 +37,8 @@ namespace ScannerDialog.Forms
             this.cmdVerkstallImport = new System.Windows.Forms.Button();
             this.cbTillhorighet = new System.Windows.Forms.ComboBox();
             this.laTillhorighet = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.laCurrentImportPerson = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtImportFil
@@ -51,7 +53,7 @@ namespace ScannerDialog.Forms
             // 
             // cmdImportFilUtforska
             // 
-            this.cmdImportFilUtforska.Location = new System.Drawing.Point(432, 51);
+            this.cmdImportFilUtforska.Location = new System.Drawing.Point(432, 49);
             this.cmdImportFilUtforska.Name = "cmdImportFilUtforska";
             this.cmdImportFilUtforska.Size = new System.Drawing.Size(95, 23);
             this.cmdImportFilUtforska.TabIndex = 1;
@@ -62,11 +64,11 @@ namespace ScannerDialog.Forms
             // laImportFil
             // 
             this.laImportFil.AutoSize = true;
-            this.laImportFil.Location = new System.Drawing.Point(28, 32);
+            this.laImportFil.Location = new System.Drawing.Point(25, 32);
             this.laImportFil.Name = "laImportFil";
-            this.laImportFil.Size = new System.Drawing.Size(185, 13);
+            this.laImportFil.Size = new System.Drawing.Size(262, 13);
             this.laImportFil.TabIndex = 2;
-            this.laImportFil.Text = "Import fil: Förnamn; Efternamn; PersNr";
+            this.laImportFil.Text = "Import fil: PersNr; Efternamn; Förnamn (UTF-8 / ASCII)";
             // 
             // lbPersoner
             // 
@@ -121,11 +123,31 @@ namespace ScannerDialog.Forms
             this.laTillhorighet.Visible = false;
             this.laTillhorighet.Click += new System.EventHandler(this.laTillhorighet_Click);
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(31, 421);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(493, 23);
+            this.progressBar.TabIndex = 12;
+            this.progressBar.Visible = false;
+            // 
+            // laCurrentImportPerson
+            // 
+            this.laCurrentImportPerson.AutoSize = true;
+            this.laCurrentImportPerson.Location = new System.Drawing.Point(29, 404);
+            this.laCurrentImportPerson.Name = "laCurrentImportPerson";
+            this.laCurrentImportPerson.Size = new System.Drawing.Size(41, 13);
+            this.laCurrentImportPerson.TabIndex = 13;
+            this.laCurrentImportPerson.Text = "Display";
+            this.laCurrentImportPerson.Visible = false;
+            // 
             // ImportDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(553, 425);
+            this.ClientSize = new System.Drawing.Size(553, 449);
+            this.Controls.Add(this.laCurrentImportPerson);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.cbTillhorighet);
             this.Controls.Add(this.laTillhorighet);
             this.Controls.Add(this.cmdVerkstallImport);
@@ -156,5 +178,7 @@ namespace ScannerDialog.Forms
         private System.Windows.Forms.Button cmdVerkstallImport;
         private System.Windows.Forms.ComboBox cbTillhorighet;
         private System.Windows.Forms.Label laTillhorighet;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Label laCurrentImportPerson;
     }
 }

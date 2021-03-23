@@ -6,17 +6,21 @@ using System.Threading.Tasks;
 
 namespace Testing
 {
-    public static class Functions
+    public class Functions
     {
-        private static Random random = new Random();
-        public static string RandomGeneratedString(int length, bool numbersOnly = false)
+        private static readonly Random random = new Random();
+        private const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        private const string numbers = "123456789";
+
+        public static string GenerateRandom(int length)
         {
-            string chars;
-            if (numbersOnly)
-                chars = "123456789";
-            else
-                chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        public static string GenerateRandomNumbers(int length)
+        {
+            return new string(Enumerable.Repeat(numbers, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }

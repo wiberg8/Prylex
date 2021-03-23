@@ -34,8 +34,8 @@ namespace PrylanLibary
                 DataAccess.ConnectionChanged.Invoke(DBConn.ConnectionString, new EventArgs());
         }
         public static bool Error()
-        { 
-            return !string.IsNullOrEmpty(Exception);
+        {
+            return !string.IsNullOrEmpty(Exception) || DBDT == null;
         }
         public static bool TryOpen()
         {
@@ -122,10 +122,7 @@ namespace PrylanLibary
                             cmd.CommandText = File.ReadAllText("tables.sql3");
                             cmd.ExecuteNonQuery();
                         }
-                        if(connection.State != ConnectionState.Closed)
-                        {
-                            connection.Close();
-                        }
+                        connection.Close();
                     }
                     return File.Exists(filNamn);
                 }

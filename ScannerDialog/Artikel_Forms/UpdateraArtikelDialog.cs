@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FluentValidation.Results;
 using PrylanLibary;
 using PrylanLibary.Models;
+using PrylanLibary.Validators;
 
 namespace ScannerDialog
 {
@@ -29,17 +31,27 @@ namespace ScannerDialog
             FyllFalt(this.artikelEdit);
         }
 
+        private void FyllErrors(ValidationResult lista)
+        {
+            lbErrors.Items.Clear();
+            foreach (var x in lista.Errors)
+            {
+                lbErrors.Items.Add(x);
+            }
+        }
+
         private void cmdSpara_Click(object sender, EventArgs e)
         {
             Artikel artikelFranFalt = FaltTillArtikel();
-            if (string.IsNullOrWhiteSpace(artikelFranFalt.Beskrivning) || IsAllaFaltTomma(artikelFranFalt))
-            {
-                MessageBox.Show("Beskrivning / Alla fält är tomma");
-                return;
-            }
+            ArtikelValidator validator = new ArtikelValidator();
+            var validationResult = validator.Validate(artikelFranFalt);
+            FyllErrors(validationResult);
 
-            this.Result = FaltTillArtikel();
-            this.DialogResult = DialogResult.OK;
+            if (validationResult.IsValid)
+            {
+                this.Result = FaltTillArtikel();
+                this.DialogResult = DialogResult.OK;
+            }
         }
 
         private bool IsAllaFaltTomma(Artikel artikel)

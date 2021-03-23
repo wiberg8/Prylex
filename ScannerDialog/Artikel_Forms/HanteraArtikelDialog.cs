@@ -262,6 +262,8 @@ namespace ScannerDialog
 
         private void laDisplay_DoubleClick(object sender, MouseEventArgs e)
         {
+            if (sender is null)
+                return;
             Clipboard.SetText(((Label)sender).Text);
         }
 

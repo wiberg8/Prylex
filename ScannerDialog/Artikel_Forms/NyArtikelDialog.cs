@@ -8,9 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using FluentValidation.Results;
 using PrylanLibary;
 using PrylanLibary.Models;
+using PrylanLibary.Validators;
 
 namespace ScannerDialog
 {
@@ -58,26 +59,40 @@ namespace ScannerDialog
 
         }
 
+        private void FyllErrors(ValidationResult lista)
+        {
+            lbErrors.Items.Clear();
+            foreach (var x in lista.Errors)
+            {
+                lbErrors.Items.Add(x);
+            }
+        }
+
         private void cmdSave_Click(object sender, EventArgs e)
         {
             Artikel artikelFranFalt = FaltTillArtikel();
 
-            if (string.IsNullOrWhiteSpace(cbBeskrivningar.Text) || IsAllaFaltTomma(artikelFranFalt))
+            ArtikelValidator validator = new ArtikelValidator();
+            var validationResult = validator.Validate(artikelFranFalt);
+            FyllErrors(validationResult);
+            //if (string.IsNullOrWhiteSpace(cbBeskrivningar.Text) || IsAllaFaltTomma(artikelFranFalt))
+            //{
+            //    MessageBox.Show("Beskrivning / Alla fält är tomma");
+            //    return;
+            //}
+            if (validationResult.IsValid)
             {
-                MessageBox.Show("Beskrivning / Alla fält är tomma");
-                return;
-            }
-
-            using (var dataAccess = new DataAccess())
-            {
-                if (dataAccess.ExisterarArtikel(artikelFranFalt))
+                using (var dataAccess = new DataAccess())
                 {
-                    MessageBox.Show("SerieNr existerar redan");
-                }
-                else
-                {
-                    dataAccess.InfogaArtikel(artikelFranFalt);
-                    AterstallFalt();
+                    if (dataAccess.ExisterarArtikel(artikelFranFalt))
+                    {
+                        MessageBox.Show("SerieNr existerar redan");
+                    }
+                    else
+                    {
+                        dataAccess.InfogaArtikel(artikelFranFalt);
+                        AterstallFalt();
+                    }
                 }
             }
         }

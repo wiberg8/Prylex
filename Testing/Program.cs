@@ -12,7 +12,7 @@ namespace Testing
 
         static Program()
         {
-            AppSettings = new Installningar() {};
+            AppSettings = new Installningar();
         }
         /// <summary>
         /// The main entry point for the application.
@@ -20,11 +20,9 @@ namespace Testing
         [STAThread]
         static void Main()
         {
-            AppSettings.Ladda();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new NyArtikelDialog());
-            AppSettings.Spara();
         }
 
     }

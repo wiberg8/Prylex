@@ -45,7 +45,6 @@
             this.txtSerieNr = new System.Windows.Forms.TextBox();
             this.laSerieNr = new System.Windows.Forms.Label();
             this.gbFalt = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtMAC = new System.Windows.Forms.TextBox();
             this.laMAC = new System.Windows.Forms.Label();
             this.txtOvrigt = new System.Windows.Forms.TextBox();
@@ -53,6 +52,7 @@
             this.cmdSpara = new System.Windows.Forms.Button();
             this.cmdAvbryt = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lbErrors = new System.Windows.Forms.ListBox();
             this.gbSnabbVal.SuspendLayout();
             this.gbFalt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -222,7 +222,6 @@
             // 
             // gbFalt
             // 
-            this.gbFalt.Controls.Add(this.label1);
             this.gbFalt.Controls.Add(this.txtMAC);
             this.gbFalt.Controls.Add(this.laMAC);
             this.gbFalt.Controls.Add(this.txtOvrigt);
@@ -239,16 +238,6 @@
             this.gbFalt.TabIndex = 1;
             this.gbFalt.TabStop = false;
             this.gbFalt.Text = "Info";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(217, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Rekommenderas";
             // 
             // txtMAC
             // 
@@ -292,7 +281,7 @@
             // 
             // cmdSpara
             // 
-            this.cmdSpara.Location = new System.Drawing.Point(336, 269);
+            this.cmdSpara.Location = new System.Drawing.Point(333, 269);
             this.cmdSpara.Name = "cmdSpara";
             this.cmdSpara.Size = new System.Drawing.Size(88, 23);
             this.cmdSpara.TabIndex = 8;
@@ -303,7 +292,7 @@
             // cmdAvbryt
             // 
             this.cmdAvbryt.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdAvbryt.Location = new System.Drawing.Point(474, 269);
+            this.cmdAvbryt.Location = new System.Drawing.Point(470, 269);
             this.cmdAvbryt.Name = "cmdAvbryt";
             this.cmdAvbryt.Size = new System.Drawing.Size(88, 23);
             this.cmdAvbryt.TabIndex = 9;
@@ -316,6 +305,14 @@
             this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider.ContainerControl = this;
             // 
+            // lbErrors
+            // 
+            this.lbErrors.FormattingEnabled = true;
+            this.lbErrors.Location = new System.Drawing.Point(333, 175);
+            this.lbErrors.Name = "lbErrors";
+            this.lbErrors.Size = new System.Drawing.Size(225, 82);
+            this.lbErrors.TabIndex = 17;
+            // 
             // NyArtikelDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,6 +320,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.cmdAvbryt;
             this.ClientSize = new System.Drawing.Size(572, 299);
+            this.Controls.Add(this.lbErrors);
             this.Controls.Add(this.cmdAvbryt);
             this.Controls.Add(this.cmdSpara);
             this.Controls.Add(this.gbFalt);
@@ -366,7 +364,7 @@
         private System.Windows.Forms.Label laMAC;
         private System.Windows.Forms.Label laInkop;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkOsFritext;
+        private System.Windows.Forms.ListBox lbErrors;
     }
 }

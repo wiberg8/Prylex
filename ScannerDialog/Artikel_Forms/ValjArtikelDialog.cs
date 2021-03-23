@@ -18,12 +18,10 @@ namespace ScannerDialog
     {
         public Artikel ValdArtikel { get; private set; }
         private List<Artikel> artiklar;
-        private bool endastLediga;
-        public ValjArtikelDialog(List<Artikel> artiklar, bool endastLediga = false)
+        public ValjArtikelDialog(List<Artikel> artiklar)
         {
             InitializeComponent();
             this.artiklar = artiklar;
-            this.endastLediga = endastLediga;
         }
 
         private void FyllDataGrid(List<Artikel> artiklar)
@@ -53,19 +51,9 @@ namespace ScannerDialog
 
         private void cmdSok_Click(object sender, EventArgs e)
         {
-            if (endastLediga)
+            using (DataAccess dataAccess = new DataAccess())
             {
-                using (DataAccess dataAccess = new DataAccess())
-                {
-                    FyllDataGrid(dataAccess.HamtaSokArtiklarLediga(txtSok.Text));
-                }
-            }
-            else
-            {
-                using (DataAccess dataAccess = new DataAccess())
-                {
-                    FyllDataGrid(dataAccess.HamtaSokArtiklar(txtSok.Text));
-                }
+                FyllDataGrid(dataAccess.HamtaSokArtiklarLediga(txtSok.Text));
             }
         }
 

@@ -48,9 +48,10 @@ namespace ScannerDialog
             Process[] procs = Process.GetProcessesByName(curr.ProcessName);
             foreach (Process p in procs)
             {
-                if ((p.Id != curr.Id) &&
-                    (p.MainModule.FileName == curr.MainModule.FileName))
+                if ((p.Id != curr.Id) && (p.MainModule.FileName == curr.MainModule.FileName))
+                {
                     return p;
+                }
             }
             return null;
         }

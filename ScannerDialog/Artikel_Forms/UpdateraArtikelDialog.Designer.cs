@@ -44,6 +44,7 @@
             this.cbBeskrivningar = new System.Windows.Forms.ComboBox();
             this.laBeskrivningar = new System.Windows.Forms.Label();
             this.cmdAvbryt = new System.Windows.Forms.Button();
+            this.lbErrors = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.gbFalt.SuspendLayout();
             this.gbSnabbVal.SuspendLayout();
@@ -56,7 +57,7 @@
             // 
             // cmdSpara
             // 
-            this.cmdSpara.Location = new System.Drawing.Point(343, 191);
+            this.cmdSpara.Location = new System.Drawing.Point(333, 191);
             this.cmdSpara.Name = "cmdSpara";
             this.cmdSpara.Size = new System.Drawing.Size(88, 23);
             this.cmdSpara.TabIndex = 12;
@@ -191,11 +192,20 @@
             this.cmdAvbryt.Text = "Avbryt";
             this.cmdAvbryt.UseVisualStyleBackColor = true;
             // 
+            // lbErrors
+            // 
+            this.lbErrors.FormattingEnabled = true;
+            this.lbErrors.Location = new System.Drawing.Point(333, 132);
+            this.lbErrors.Name = "lbErrors";
+            this.lbErrors.Size = new System.Drawing.Size(225, 56);
+            this.lbErrors.TabIndex = 18;
+            // 
             // UpdateraArtikelDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(581, 224);
+            this.Controls.Add(this.lbErrors);
             this.Controls.Add(this.cmdSpara);
             this.Controls.Add(this.gbFalt);
             this.Controls.Add(this.gbSnabbVal);
@@ -231,5 +241,6 @@
         private System.Windows.Forms.ComboBox cbBeskrivningar;
         private System.Windows.Forms.Label laBeskrivningar;
         private System.Windows.Forms.Button cmdAvbryt;
+        private System.Windows.Forms.ListBox lbErrors;
     }
 }

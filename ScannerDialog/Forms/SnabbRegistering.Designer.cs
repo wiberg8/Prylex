@@ -45,17 +45,17 @@
             // 
             this.lbRegistreradeArtiklar.Enabled = false;
             this.lbRegistreradeArtiklar.FormattingEnabled = true;
-            this.lbRegistreradeArtiklar.Location = new System.Drawing.Point(307, 38);
+            this.lbRegistreradeArtiklar.Location = new System.Drawing.Point(355, 64);
             this.lbRegistreradeArtiklar.Name = "lbRegistreradeArtiklar";
-            this.lbRegistreradeArtiklar.Size = new System.Drawing.Size(408, 186);
+            this.lbRegistreradeArtiklar.Size = new System.Drawing.Size(357, 251);
             this.lbRegistreradeArtiklar.TabIndex = 3;
             // 
             // lbPersoner
             // 
             this.lbPersoner.FormattingEnabled = true;
-            this.lbPersoner.Location = new System.Drawing.Point(12, 38);
+            this.lbPersoner.Location = new System.Drawing.Point(12, 64);
             this.lbPersoner.Name = "lbPersoner";
-            this.lbPersoner.Size = new System.Drawing.Size(289, 355);
+            this.lbPersoner.Size = new System.Drawing.Size(337, 251);
             this.lbPersoner.TabIndex = 4;
             this.lbPersoner.SelectedIndexChanged += new System.EventHandler(this.lbPersoner_SelectedIndexChanged);
             // 
@@ -63,16 +63,16 @@
             // 
             this.cbTillhorighet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTillhorighet.FormattingEnabled = true;
-            this.cbTillhorighet.Location = new System.Drawing.Point(12, 11);
+            this.cbTillhorighet.Location = new System.Drawing.Point(12, 38);
             this.cbTillhorighet.Name = "cbTillhorighet";
-            this.cbTillhorighet.Size = new System.Drawing.Size(289, 21);
+            this.cbTillhorighet.Size = new System.Drawing.Size(334, 21);
             this.cbTillhorighet.TabIndex = 18;
             this.cbTillhorighet.SelectedIndexChanged += new System.EventHandler(this.cbTillhorighet_SelectedIndexChanged);
             // 
             // laRegistreradeArtiklar
             // 
             this.laRegistreradeArtiklar.AutoSize = true;
-            this.laRegistreradeArtiklar.Location = new System.Drawing.Point(304, 22);
+            this.laRegistreradeArtiklar.Location = new System.Drawing.Point(352, 47);
             this.laRegistreradeArtiklar.Name = "laRegistreradeArtiklar";
             this.laRegistreradeArtiklar.Size = new System.Drawing.Size(101, 13);
             this.laRegistreradeArtiklar.TabIndex = 19;
@@ -81,7 +81,7 @@
             // cbPrintOnScan
             // 
             this.cbPrintOnScan.AutoSize = true;
-            this.cbPrintOnScan.Location = new System.Drawing.Point(307, 306);
+            this.cbPrintOnScan.Location = new System.Drawing.Point(579, 43);
             this.cbPrintOnScan.Name = "cbPrintOnScan";
             this.cbPrintOnScan.Size = new System.Drawing.Size(133, 17);
             this.cbPrintOnScan.TabIndex = 28;
@@ -90,7 +90,7 @@
             // 
             // cmdRegistreraSkanna
             // 
-            this.cmdRegistreraSkanna.Location = new System.Drawing.Point(307, 277);
+            this.cmdRegistreraSkanna.Location = new System.Drawing.Point(443, 10);
             this.cmdRegistreraSkanna.Name = "cmdRegistreraSkanna";
             this.cmdRegistreraSkanna.Size = new System.Drawing.Size(133, 23);
             this.cmdRegistreraSkanna.TabIndex = 27;
@@ -100,7 +100,7 @@
             // 
             // cmdRegistreraArtikel
             // 
-            this.cmdRegistreraArtikel.Location = new System.Drawing.Point(307, 248);
+            this.cmdRegistreraArtikel.Location = new System.Drawing.Point(582, 10);
             this.cmdRegistreraArtikel.Name = "cmdRegistreraArtikel";
             this.cmdRegistreraArtikel.Size = new System.Drawing.Size(133, 23);
             this.cmdRegistreraArtikel.TabIndex = 26;
@@ -110,7 +110,7 @@
             // 
             // cmdSok
             // 
-            this.cmdSok.Location = new System.Drawing.Point(430, 354);
+            this.cmdSok.Location = new System.Drawing.Point(245, 10);
             this.cmdSok.Name = "cmdSok";
             this.cmdSok.Size = new System.Drawing.Size(101, 23);
             this.cmdSok.TabIndex = 30;
@@ -120,16 +120,16 @@
             // 
             // txtSok
             // 
-            this.txtSok.Location = new System.Drawing.Point(430, 328);
+            this.txtSok.Location = new System.Drawing.Point(12, 12);
             this.txtSok.Name = "txtSok";
-            this.txtSok.Size = new System.Drawing.Size(326, 20);
+            this.txtSok.Size = new System.Drawing.Size(227, 20);
             this.txtSok.TabIndex = 29;
             // 
             // SnabbRegistering
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 405);
+            this.ClientSize = new System.Drawing.Size(728, 326);
             this.Controls.Add(this.cmdSok);
             this.Controls.Add(this.txtSok);
             this.Controls.Add(this.cbPrintOnScan);
@@ -140,6 +140,7 @@
             this.Controls.Add(this.lbPersoner);
             this.Controls.Add(this.lbRegistreradeArtiklar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SnabbRegistering";
             this.ShowIcon = false;

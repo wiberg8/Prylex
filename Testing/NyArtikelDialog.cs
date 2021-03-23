@@ -112,7 +112,6 @@ namespace Testing
         private async void button1_Click_1(object sender, EventArgs e)
         {
             CreateTestImportFile();
-            //AppSettings.Skrivare = "kalle";
             //this.Enabled = false;
             //while (progressBar1.Value != 150)
             //{
@@ -126,21 +125,24 @@ namespace Testing
 
         private void CreateTestImportFile()
         {
-            List<Person> pExport = new List<Person>();
-            List<string> lines = new List<string>();
-            for (int i = 0; i <= 80000; i++)
+            List<Person> people = new List<Person>();
+            List<string> personer = new List<string>();
+            string exportFile = "exporter.csv";
+            for(int i=1; i<=15000; i++)
             {
-                Person p = new Person();
-                p.Fornamn = Functions.RandomGeneratedString(6);
-                p.Efternamn = Functions.RandomGeneratedString(6);
-                p.PersNr = Functions.RandomGeneratedString(6, true) + "-" + Functions.RandomGeneratedString(4, true);
-                pExport.Add(p);
+                Person p = new Person()
+                {
+                    Fornamn = Functions.GenerateRandom(8),
+                    Efternamn = Functions.GenerateRandom(8),
+                    PersNr = Functions.GenerateRandomNumbers(6) + "-" + Functions.GenerateRandomNumbers(4)
+                };
+                people.Add(p);
             }
-            foreach (Person p in pExport)
+            foreach (Person p in people)
             {
-                lines.Add(p.Fornamn + ";" + p.Efternamn + ";" + p.PersNr);
+                personer.Add(p.Fornamn + ";" + p.Efternamn+ ";" + p.PersNr);
             }
-            File.WriteAllLines("export.csv", lines);
+            File.WriteAllLines(exportFile, personer);
         }
 
         private void txtSerieNr_TextChanged(object sender, EventArgs e)

@@ -124,7 +124,7 @@ namespace ScannerDialog
             {
                 ledigaArtiklar = dataAccess.HamtaLedigaArtiklar();
             }
-            var dialog = new ValjArtikelDialog(ledigaArtiklar, true);
+            var dialog = new ValjArtikelDialog(ledigaArtiklar);
             dialog.ShowDialog();
             if(dialog.ValdArtikel != null)
             {
@@ -194,6 +194,8 @@ namespace ScannerDialog
 
         private void laDisplay_DoubleClick(object sender, MouseEventArgs e)
         {
+            if (sender is null)
+                return;
             Clipboard.SetText(((Label)sender).Text);
         }
 
@@ -231,7 +233,7 @@ namespace ScannerDialog
             }
             else
             {
-                MessageBox.Show("Personen har artiklar fortfarande registrerade på sig");
+                MessageBox.Show($"{nuvarandePerson.GetNamn()} har artiklar fortfarande registrerade på sig");
             }
         }
 
