@@ -12,7 +12,7 @@ namespace Testing
 
         static Program()
         {
-            AppSettings = new Installningar() { FileName = "ins.json"};
+            AppSettings = new Installningar() {};
         }
         /// <summary>
         /// The main entry point for the application.

@@ -26,9 +26,9 @@ namespace PrylanLibary
         }
 
         public static int LastInsertRowId { get { return DBHandler.GetLastInsertId(); } }
-        public static void CreateFile(string fileName)
+        public static bool CreateFile(string fileName)
         {
-            DBHandler.CreateFile(fileName);
+            return DBHandler.CreateFile(fileName);
         }
         public void Close()
         {

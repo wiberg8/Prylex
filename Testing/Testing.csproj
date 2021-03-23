@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functions.cs" />
     <Compile Include="Installningar.cs" />
     <Compile Include="NyArtikelDialog.cs">
       <SubType>Form</SubType>

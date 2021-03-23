@@ -50,8 +50,16 @@ namespace Testing
 
         public void Spara()
         {
-            string installningarEncoded = JsonConvert.SerializeObject(this, Formatting.Indented);
-            File.WriteAllText(FileName, installningarEncoded);
+            try
+            {
+                string installningarEncoded = JsonConvert.SerializeObject(this, Formatting.Indented);
+                File.WriteAllText(FileName, installningarEncoded);
+            }
+            catch
+            {
+
+            }
+           
         }
     }
 }

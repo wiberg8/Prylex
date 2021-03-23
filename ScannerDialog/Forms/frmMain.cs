@@ -88,14 +88,17 @@ namespace ScannerDialog.Forms
             DialogResult dialogResult = fileDialog.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
-                DataAccess.CreateFile(fileDialog.FileName);
+                if (!DataAccess.CreateFile(fileDialog.FileName))
+                {
+                    MessageBox.Show("Lyckades ej skapa databasen filen");
+                }
             }
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             var ins = Installningar.Hamta();
-            laDatabaseWarning.Visible = !System.IO.File.Exists(ins.Databas);
+            laDatabaseWarning.Visible = !File.Exists(ins.Databas);
             RefreshDataGrids();
         }
 
@@ -164,22 +167,21 @@ namespace ScannerDialog.Forms
                 return;
             }
 
-            Artikel artikel;
+            Artikel artikelFromDb;
             using (DataAccess dataAccess = new DataAccess())
             {
-                artikel = dataAccess.HamtaArtikelFranSerieNr(scannedInput);
+                artikelFromDb = dataAccess.HamtaArtikelFranSerieNr(scannedInput);
             }
-            if (artikel is null)
+            if (artikelFromDb is null)
             {
-                MessageBox.Show("Inga träffar");
+                MessageBox.Show("Ingen träff");
             }
             else
             {
-                var artikelDialog = new HanteraArtikelDialog(artikel);
+                var artikelDialog = new HanteraArtikelDialog(artikelFromDb);
                 artikelDialog.ShowDialog();
                 RefreshDataGrids();
             }
-            Console.WriteLine(DataAccess.LastInsertRowId);
         }
 
         private void tabPersoner_TabIndexChanged(object sender, EventArgs e)
