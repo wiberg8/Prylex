@@ -281,18 +281,11 @@ namespace ScannerDialog.Forms
 
         private void tspSnabbReg_Click(object sender, EventArgs e)
         {
-            if (Config.PremiumEnabled)
-            {
-                SnabbRegistering snabbRegistering = new SnabbRegistering();
-                dgvArtiklar.Rows.Clear();
-                dgvPersoner.Rows.Clear();
-                snabbRegistering.ShowDialog();
-                RefreshDataGrids();
-            }
-            else
-            {
-                MessageBox.Show(Config.PremiumNeeded);
-            }
+            SnabbRegistering snabbRegistering = new SnabbRegistering();
+            dgvArtiklar.Rows.Clear();
+            dgvPersoner.Rows.Clear();
+            snabbRegistering.ShowDialog();
+            RefreshDataGrids();
         }
 
         private void cmdSnabbReg_Click(object sender, EventArgs e)
