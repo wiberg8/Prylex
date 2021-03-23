@@ -15,26 +15,27 @@ namespace PrylanLibary
         private static string currentFile;
         public static string CurrentFile { get { return currentFile; } set { DBHandler.SetConnection(value); currentFile = value; } }
         public static EventHandler ConnectionChanged { get; set; }
+        public static int LastInsertRowId { get { return DBHandler.GetLastInsertId(); } }
 
         public DataAccess()
         {
             DBHandler.TryOpen();
         }
-        void IDisposable.Dispose()
-        {
-            DBHandler.Close();
-        }
 
-        public static int LastInsertRowId { get { return DBHandler.GetLastInsertId(); } }
-        public static void CreateFile(string fileName)
-        {
-            DBHandler.CreateFile(fileName);
-        }
         public void Close()
         {
             DBHandler.Close();
         }
 
+        void IDisposable.Dispose()
+        {
+            Close();
+        }
+       
+        public static void CreateFile(string fileName)
+        {
+            DBHandler.CreateFile(fileName);
+        }
         public static EventHandler ArtikelChange { get; set; }
         public static EventHandler PersonChange { get; set; }
 

@@ -95,9 +95,9 @@ namespace ScannerDialog.Forms
                 {
                     Person p = new Person()
                     {
-                        Fornamn = lineSplit[0],
+                        PersNr = lineSplit[0],
                         Efternamn = lineSplit[1],
-                        PersNr = lineSplit[2],
+                        Fornamn = lineSplit[2],
                         Tillhorighet = cbTillhorighet.Text
                     };
                     AddInlastPerson(p);
@@ -105,28 +105,46 @@ namespace ScannerDialog.Forms
             }
         }
 
-        private void cmdVerkstallImport_Click(object sender, EventArgs e)
+        private async void cmdVerkstallImport_Click(object sender, EventArgs e)
+        {
+            await VerkstallImport();
+        }
+
+        private async Task VerkstallImport()
         {
             if (lbPersoner.Items.Count > 0)
             {
+                this.Enabled = false;
+                int importedCount = 0;
+                progressBar.Visible = true;
+                laCurrentImportPerson.Visible = true;
+                progressBar.Value = 0;
+                progressBar.Maximum = lbPersoner.Items.Count;
                 List<ImportPerson> importer = new List<ImportPerson>();
                 PersonValidator validator = new PersonValidator();
                 using (DataAccess dataAccess = new DataAccess())
                 {
                     foreach (Person p in lbPersoner.Items)
                     {
-                        ImportPerson importPerson = new ImportPerson() { Person = p};
+                        laCurrentImportPerson.Text = p.ToString();
+                        ImportPerson importPerson = new ImportPerson() { Person = p };
                         importPerson.Errors = validator.Validate(p);
                         importPerson.AlreadyExist = dataAccess.ExisterarPerson(importPerson.Person.PersNr);
                         importPerson.Success = importPerson.Errors.IsValid && !importPerson.AlreadyExist;
                         if (importPerson.Success)
                         {
-                            dataAccess.InfogaPerson(importPerson.Person);
+                            await Task.Run(() => dataAccess.InfogaPerson(importPerson.Person));
                             importPerson.Person.Id = DataAccess.LastInsertRowId;
                         }
+                        progressBar.Increment(1);
+                        importedCount += 1;
                         importer.Add(importPerson);
                     }
                 }
+                progressBar.Value = 0;
+                progressBar.Visible = false;
+                laCurrentImportPerson.Visible = false;
+                this.Enabled = true;
                 ClearInlastPersoner();
                 ImportResultDialog resultDialog = new ImportResultDialog(importer);
                 resultDialog.ShowDialog();

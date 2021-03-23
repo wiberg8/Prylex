@@ -111,7 +111,7 @@ namespace Testing
 
         private async void button1_Click_1(object sender, EventArgs e)
         {
-            AppSettings.Skrivare = "kalle";
+            CreateTestImportFile();
             //this.Enabled = false;
             //while (progressBar1.Value != 150)
             //{
@@ -121,6 +121,28 @@ namespace Testing
             //this.Enabled = true;
             //progressBar1.Value = 0;
             //MessageBox.Show("Import verkställd");
+        }
+
+        private void CreateTestImportFile()
+        {
+            List<Person> people = new List<Person>();
+            List<string> personer = new List<string>();
+            string exportFile = "exporter.csv";
+            for(int i=1; i<=15000; i++)
+            {
+                Person p = new Person()
+                {
+                    Fornamn = Functions.GenerateRandom(8),
+                    Efternamn = Functions.GenerateRandom(8),
+                    PersNr = Functions.GenerateRandomNumbers(6) + "-" + Functions.GenerateRandomNumbers(4)
+                };
+                people.Add(p);
+            }
+            foreach (Person p in people)
+            {
+                personer.Add(p.Fornamn + ";" + p.Efternamn+ ";" + p.PersNr);
+            }
+            File.WriteAllLines(exportFile, personer);
         }
 
         private void txtSerieNr_TextChanged(object sender, EventArgs e)

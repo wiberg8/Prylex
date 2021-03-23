@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PrylanLibary.Validators;
+using FluentValidation.Results;
 
 namespace ScannerDialog
 {
@@ -58,32 +60,28 @@ namespace ScannerDialog
                 return false;
             return true;
         }
-        private void VisaValideringsFel()
-        {
-            if (txtFornamn.Text.RemoveWhiteSpaces().Length < 2)
-                errorFornamn.SetError(txtFornamn, "Minst 2 tecken");
-            else
-                errorFornamn.Clear();
-            if (txtEfternamn.Text.RemoveWhiteSpaces().Length < 2)
-                errorEfternamn.SetError(txtEfternamn, "Minst 2 tecken");
-            else
-                errorEfternamn.Clear();
-            if (cbTillhorighet.Text.RemoveWhiteSpaces().Length < 2)
-                errorTillhorighet.SetError(cbTillhorighet, "Minst 2 tecken");
-            else
-                errorTillhorighet.Clear();
-
-        }
 
         private void cmdSpara_Click(object sender, EventArgs e)
         {
-            if (IsFaltGiltiga())
+            Person p = FaltToPerson();
+            PersonValidator validator = new PersonValidator();
+            var validation = validator.Validate(p);
+            FyllErrors(validation);
+            if (validation.IsValid)
             {
-                this.Result = this.FaltToPerson();
+                this.Result = p;
                 this.DialogResult = DialogResult.OK;
             }
         }
 
+        private void FyllErrors(ValidationResult lista)
+        {
+            lbErrors.Items.Clear();
+            foreach (var x in lista.Errors)
+            {
+                lbErrors.Items.Add(x);
+            }
+        }
 
         private void LaddaSnabbVal()
         {
@@ -97,23 +95,22 @@ namespace ScannerDialog
         private void UpdateraPersonDialog_Load(object sender, EventArgs e)
         {
             LaddaSnabbVal();
-            VisaValideringsFel();
             FyllFalt(this.personEdit);
         }
 
         private void cbTillhorighet_TextChanged(object sender, EventArgs e)
         {
-            VisaValideringsFel();
+            
         }
 
         private void txtEfternamn_TextChanged(object sender, EventArgs e)
         {
-            VisaValideringsFel();
+           
         }
 
         private void txtFornamn_TextChanged(object sender, EventArgs e)
         {
-            VisaValideringsFel();
+            
         }
 
         private void UpdateraPersonDialog_KeyDown(object sender, KeyEventArgs e)

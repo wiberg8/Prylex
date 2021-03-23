@@ -49,6 +49,7 @@
             this.laOvrigt = new System.Windows.Forms.Label();
             this.txtFornamn = new System.Windows.Forms.TextBox();
             this.laFornamn = new System.Windows.Forms.Label();
+            this.lbErrors = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorFornamn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorEfternamn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorTillhorighet)).BeginInit();
@@ -248,11 +249,20 @@
             this.laFornamn.TabIndex = 0;
             this.laFornamn.Text = "Förnamn:";
             // 
+            // lbErrors
+            // 
+            this.lbErrors.FormattingEnabled = true;
+            this.lbErrors.Location = new System.Drawing.Point(487, 12);
+            this.lbErrors.Name = "lbErrors";
+            this.lbErrors.Size = new System.Drawing.Size(212, 225);
+            this.lbErrors.TabIndex = 17;
+            // 
             // UpdateraPersonDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 244);
+            this.ClientSize = new System.Drawing.Size(710, 244);
+            this.Controls.Add(this.lbErrors);
             this.Controls.Add(this.gbFalt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
@@ -291,5 +301,6 @@
         private System.Windows.Forms.Label laOvrigt;
         private System.Windows.Forms.TextBox txtFornamn;
         private System.Windows.Forms.Label laFornamn;
+        private System.Windows.Forms.ListBox lbErrors;
     }
 }

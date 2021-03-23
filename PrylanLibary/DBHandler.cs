@@ -122,6 +122,7 @@ namespace PrylanLibary
                             cmd.CommandText = File.ReadAllText("tables.sql3");
                             cmd.ExecuteNonQuery();
                         }
+                        connection.Close();
                     }
                     return File.Exists(filNamn);
                 }
