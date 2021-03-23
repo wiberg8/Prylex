@@ -32,9 +32,9 @@ namespace PrylanLibary
             Close();
         }
        
-        public static void CreateFile(string fileName)
+        public static bool CreateFile(string fileName)
         {
-            DBHandler.CreateFile(fileName);
+            return DBHandler.CreateFile(fileName);
         }
         public static EventHandler ArtikelChange { get; set; }
         public static EventHandler PersonChange { get; set; }

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbSearch = new System.Windows.Forms.GroupBox();
             this.cmdScanLabel = new System.Windows.Forms.Button();
             this.cmdSok = new System.Windows.Forms.Button();
@@ -71,6 +71,7 @@
             this.clmTillhorighet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmOvrigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.laDatabaseWarning = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gbSearch.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabArtiklarPersoner.SuspendLayout();
@@ -78,6 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvArtiklar)).BeginInit();
             this.tabPersoner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersoner)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // gbSearch
@@ -276,14 +278,14 @@
             this.dgvArtiklar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvArtiklar.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvArtiklar.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArtiklar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArtiklar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvArtiklar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArtiklar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -394,14 +396,14 @@
             this.dgvPersoner.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPersoner.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvPersoner.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPersoner.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPersoner.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvPersoner.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersoner.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -474,11 +476,21 @@
             this.laDatabaseWarning.AutoSize = true;
             this.laDatabaseWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.laDatabaseWarning.ForeColor = System.Drawing.Color.Red;
-            this.laDatabaseWarning.Location = new System.Drawing.Point(589, 25);
+            this.laDatabaseWarning.Location = new System.Drawing.Point(583, 115);
             this.laDatabaseWarning.Name = "laDatabaseWarning";
             this.laDatabaseWarning.Size = new System.Drawing.Size(342, 20);
             this.laDatabaseWarning.TabIndex = 13;
             this.laDatabaseWarning.Text = "Gå till inställningar och välj sökväg till databas fil";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ScannerDialog.Properties.Resources.BigLogga;
+            this.pictureBox1.Location = new System.Drawing.Point(628, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(314, 84);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
             // 
             // frmMain
             // 
@@ -486,6 +498,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(942, 655);
             this.Controls.Add(this.laDatabaseWarning);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabArtiklarPersoner);
             this.Controls.Add(this.gbSearch);
             this.Controls.Add(this.toolStrip1);
@@ -504,6 +517,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvArtiklar)).EndInit();
             this.tabPersoner.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersoner)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -550,6 +564,7 @@
         private System.Windows.Forms.Label laDatabaseWarning;
         private System.Windows.Forms.ToolStripButton tspMassRegistrering;
         private System.Windows.Forms.ToolStripButton tspImportPersoner;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

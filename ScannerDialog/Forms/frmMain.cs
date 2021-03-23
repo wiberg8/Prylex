@@ -27,6 +27,7 @@ namespace ScannerDialog.Forms
             Installningar.Change += Installningar_Change;
             DataAccess.ArtikelChange += Artiklar_Change;
             DataAccess.ConnectionChanged += Database_Connection_Changed;
+            this.Icon = Properties.Resources.ApplikationIkon;
         }
 
         private void Database_Connection_Changed(object sender, EventArgs e)
@@ -283,18 +284,11 @@ namespace ScannerDialog.Forms
 
         private void tspSnabbReg_Click(object sender, EventArgs e)
         {
-            if (Config.PremiumEnabled)
-            {
                 SnabbRegistering snabbRegistering = new SnabbRegistering();
                 dgvArtiklar.Rows.Clear();
                 dgvPersoner.Rows.Clear();
                 snabbRegistering.ShowDialog();
                 RefreshDataGrids();
-            }
-            else
-            {
-                MessageBox.Show(Config.PremiumNeeded);
-            }
         }
 
         private void cmdSnabbReg_Click(object sender, EventArgs e)
