@@ -476,6 +476,7 @@
             this.Controls.Add(this.gbFalt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "HanteraPersonDialog";
             this.ShowIcon = false;

@@ -188,7 +188,7 @@
             // lbErrors
             // 
             this.lbErrors.FormattingEnabled = true;
-            this.lbErrors.Location = new System.Drawing.Point(257, 18);
+            this.lbErrors.Location = new System.Drawing.Point(257, 20);
             this.lbErrors.Name = "lbErrors";
             this.lbErrors.Size = new System.Drawing.Size(212, 238);
             this.lbErrors.TabIndex = 16;

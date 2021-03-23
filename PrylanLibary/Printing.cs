@@ -12,11 +12,12 @@ namespace PrylanLibary
     public static class Printing
     {
         public static string exception;
+        private static string LabelFileName = "Prylan.label";
         public static void PrintLabel(Artikel artikel, Person person)
         {
             try
             {
-                var label = Label.Open("Prylan.label");
+                var label = Label.Open(LabelFileName);
                 label.SetObjectText("dynDatorNamn", artikel.DatorNamn);
                 label.SetObjectText("dynSerieNr", artikel.SerieNr);
                 label.SetObjectText("dynNamn", person.GetNamn());
@@ -32,7 +33,7 @@ namespace PrylanLibary
         {
             try
             {
-                var label = Label.Open("Prylan.label");
+                var label = Label.Open(LabelFileName);
                 label.SetObjectText("dynDatorNamn", datorNamn);
                 label.SetObjectText("dynNamn", namn);
                 label.SetObjectText("dynSerieNr", serieNr);
