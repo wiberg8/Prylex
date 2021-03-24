@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrylanLibary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace Testing
 
         static Program()
         {
+            Installningar.FileName = Config.InstallningarFileName;
             AppSettings = new Installningar();
         }
         /// <summary>
@@ -20,9 +22,11 @@ namespace Testing
         [STAThread]
         static void Main()
         {
+            AppSettings.Ladda();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new NyArtikelDialog());
+            AppSettings.Spara();
         }
 
     }

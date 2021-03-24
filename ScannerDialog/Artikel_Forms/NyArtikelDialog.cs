@@ -12,7 +12,7 @@ using FluentValidation.Results;
 using PrylanLibary;
 using PrylanLibary.Models;
 using PrylanLibary.Validators;
-
+using static ScannerDialog.Program;
 namespace ScannerDialog
 {
     public partial class NyArtikelDialog : Form
@@ -191,17 +191,12 @@ namespace ScannerDialog
 
         private void LaddaSnabbval()
         {
-            Installningar ins = Installningar.Hamta();
-
-            if (ins != null)
-            {
-                cbBeskrivningar.DataSource = ins.Beskrivningar;
-                if (cbBeskrivningar.Items.Count > 0)
-                    cbBeskrivningar.SelectedIndex = 0;
-                cbOS.DataSource = ins.Os;
-                if (cbOS.Items.Count > 0)
-                    cbOS.SelectedIndex = 0;
-            }
+            cbBeskrivningar.DataSource = AppSettings.Beskrivningar;
+            if (cbBeskrivningar.Items.Count > 0)
+                cbBeskrivningar.SelectedIndex = 0;
+            cbOS.DataSource = AppSettings.Os;
+            if (cbOS.Items.Count > 0)
+                cbOS.SelectedIndex = 0;
         }
 
         private void cmdAvbryt_Click(object sender, EventArgs e)

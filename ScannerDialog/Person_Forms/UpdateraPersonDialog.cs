@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PrylanLibary.Validators;
 using FluentValidation.Results;
+using static ScannerDialog.Program;
 
 namespace ScannerDialog
 {
@@ -85,8 +86,7 @@ namespace ScannerDialog
 
         private void LaddaSnabbVal()
         {
-            Installningar ins = Installningar.Hamta();
-            foreach(string v in ins.Tillhorigheter)
+            foreach(string v in AppSettings.Tillhorigheter)
             {
                 cbTillhorighet.Items.Add(v);
             }

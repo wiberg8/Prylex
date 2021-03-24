@@ -27,66 +27,57 @@ namespace PrylanLibary
         public string NuvarandeLicens { get; set; }
         public DateTime SenasteDatum { get; set; }
 
-        public static void Spara(Installningar installningar)
+        public void TriggerChangeEvent()
         {
-            string installningarEncoded = JsonConvert.SerializeObject(installningar, Formatting.Indented);
-            File.WriteAllText(FileName, installningarEncoded);
-            if(Change != null)
-                Change.Invoke(installningar, new EventArgs());
-        }
-
-        public void Spara()
-        {
-            string installningarEncoded = JsonConvert.SerializeObject(this, Formatting.Indented);
-            File.WriteAllText(FileName, installningarEncoded);
             if (Change != null)
                 Change.Invoke(this, new EventArgs());
         }
 
-        public void Spara(string fName)
-        {
-            string installningarEncoded = JsonConvert.SerializeObject(this, Formatting.Indented);
-            File.WriteAllText(fName, installningarEncoded);
-        }
-
-        public static Installningar Hamta()
+        public void Ladda()
         {
             Installningar installningar;
             try
             {
-                string lastInfo = File.ReadAllText(FileName);
-                installningar = JsonConvert.DeserializeObject<Installningar>(lastInfo);
+                string lastinfo = File.ReadAllText(FileName);
+                installningar = JsonConvert.DeserializeObject<Installningar>(lastinfo);
             }
             catch
             {
-                installningar = new Installningar();
+                installningar = null;
             }
-            if(installningar is null)
+            if (installningar != null)
             {
-                return new Installningar();
+                SetThisAsAnother(installningar);
             }
-            return installningar;
         }
 
-        public static Installningar Hamta(string fName)
+        public void Spara()
         {
-            Installningar installningar;
             try
             {
-                string fileData = File.ReadAllText(fName);
-                installningar = JsonConvert.DeserializeObject<Installningar>(fileData);
+                string installningarEncoded = JsonConvert.SerializeObject(this, Formatting.Indented);
+                Console.WriteLine(installningarEncoded);
+                File.WriteAllText(FileName, installningarEncoded);
             }
             catch
             {
-                installningar = new Installningar();
+
             }
-            if (installningar is null)
-            {
-                return new Installningar();
-            }
-            return installningar;
+
         }
 
+        private void SetThisAsAnother(Installningar another)
+        {
+            this.Databas = another.Databas;
+            this.DatabasBackup = another.DatabasBackup;
+            this.ForetagsNamn = another.ForetagsNamn;
+            this.Skrivare = another.Skrivare;
+            this.BackupOnStart = another.BackupOnStart;
+            this.Beskrivningar = another.Beskrivningar;
+            this.Os = another.Os;
+            this.Tillhorigheter = another.Tillhorigheter;
+            this.Handelser = another.Handelser;
+        }
 
     }
 }

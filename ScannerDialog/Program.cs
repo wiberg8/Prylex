@@ -35,11 +35,13 @@ namespace ScannerDialog
         private static void ApplicationStart()
         {
             Installningar.FileName = Config.InstallningarFileName;
+            AppSettings.Ladda();
             BackupDatabase();
-            DataAccess.CurrentFile = Installningar.Hamta().Databas;
+            DataAccess.CurrentFile = AppSettings.Databas;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMain());
+            AppSettings.Spara();
         }
 
         private static Process PriorProcess()
@@ -58,10 +60,9 @@ namespace ScannerDialog
 
         public static void BackupDatabase()
         {
-            var ins = Installningar.Hamta();
-            if (ins.BackupOnStart && File.Exists(ins.Databas) && Directory.Exists(ins.DatabasBackup))
+            if (AppSettings.BackupOnStart && File.Exists(AppSettings.Databas) && Directory.Exists(AppSettings.DatabasBackup))
             {
-                IO.Backup(ins.DatabasBackup, ins.Databas);
+                IO.Backup(AppSettings.DatabasBackup, AppSettings.Databas);
             }
         }
 

@@ -447,6 +447,7 @@
             this.Name = "HanteraArtikelDialog";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "                                     ";
             this.Load += new System.EventHandler(this.ManageArticle_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HanteraArtikelDialog_KeyDown);
             this.gbRegisterPerson.ResumeLayout(false);

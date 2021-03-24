@@ -13,7 +13,7 @@ namespace PrylanLibary
     {
         public static string exception;
         private static string LabelFileName = "Prylan.label";
-        public static void PrintLabel(Artikel artikel, Person person)
+        public static void PrintLabel(Artikel artikel, Person person, string printer)
         {
             try
             {
@@ -22,29 +22,14 @@ namespace PrylanLibary
                 label.SetObjectText("dynSerieNr", artikel.SerieNr);
                 label.SetObjectText("dynNamn", person.GetNamn());
                 label.SetObjectText("dynTillhorighet", person.Tillhorighet);
-                label.Print(Installningar.Hamta().Skrivare);
+                label.Print(printer);
             }
             catch (Exception ex)
             {
                 exception = ex.Message;
             }
         }
-        public static void PrintLabel(string datorNamn, string namn, string serieNr, string tillhorighet)
-        {
-            try
-            {
-                var label = Label.Open(LabelFileName);
-                label.SetObjectText("dynDatorNamn", datorNamn);
-                label.SetObjectText("dynNamn", namn);
-                label.SetObjectText("dynSerieNr", serieNr);
-                label.SetObjectText("dynTillhorighet", tillhorighet);
-                label.Print(Installningar.Hamta().Skrivare);
-            }
-            catch(Exception ex)
-            {
-                exception = ex.Message;
-            }
-        }
+
         public static List<string> GetPrinters()
         {
             List<string> printers = new List<string>();

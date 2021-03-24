@@ -11,6 +11,7 @@ using FluentValidation.Results;
 using PrylanLibary;
 using PrylanLibary.Models;
 using PrylanLibary.Validators;
+using static ScannerDialog.Program;
 
 namespace ScannerDialog
 {
@@ -139,8 +140,7 @@ namespace ScannerDialog
 
         private void LaddaSnabbVal()
         {
-            Installningar ins = Installningar.Hamta();
-            cbTillhorighet.DataSource = ins.Tillhorigheter;
+            cbTillhorighet.DataSource = AppSettings.Tillhorigheter;
             if (cbTillhorighet.Items.Count > 0)
                 cbTillhorighet.SelectedIndex = 0;
         }

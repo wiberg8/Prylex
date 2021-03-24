@@ -12,6 +12,7 @@ using System.IO;
 using PrylanLibary;
 using PrylanLibary.Models;
 using PrylanLibary.Enums;
+using static ScannerDialog.Program;
 
 namespace ScannerDialog
 {
@@ -178,7 +179,7 @@ namespace ScannerDialog
             }
             if (a != null && cbPrintOnScan.Checked)
             {
-                Printing.PrintLabel(a.DatorNamn, nuvarandePerson.GetNamn(), a.SerieNr, nuvarandePerson.Tillhorighet);
+                Printing.PrintLabel(a, nuvarandePerson, AppSettings.Skrivare);
             }
         }
 
@@ -242,7 +243,7 @@ namespace ScannerDialog
             if (lbRegistreradeArtiklar.SelectedItem != null)
             {
                 Artikel selectedArtikel = (Artikel)lbRegistreradeArtiklar.SelectedItem;
-                Printing.PrintLabel(selectedArtikel.DatorNamn, nuvarandePerson.GetNamn(), selectedArtikel.SerieNr, nuvarandePerson.Tillhorighet);
+                Printing.PrintLabel(selectedArtikel, nuvarandePerson, AppSettings.Skrivare);
                 if (!string.IsNullOrEmpty(Printing.exception))
                 {
                     MessageBox.Show(Printing.exception);

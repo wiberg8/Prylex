@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PrylanLibary;
+using static ScannerDialog.Program;
 
 namespace ScannerDialog
 {
@@ -38,13 +39,12 @@ namespace ScannerDialog
 
         private void InstallningarDialog_Load(object sender, EventArgs e)
         {
-            var ins = Installningar.Hamta();
-            FyllDatabasVy(ins.Databas, ins.DatabasBackup, ins.BackupOnStart);
+            FyllDatabasVy(AppSettings.Databas, AppSettings.DatabasBackup, AppSettings.BackupOnStart);
             foreach (string v in Printing.GetPrinters())
             {
                 cbPrinter.Items.Add(v);
             }
-            cbPrinter.Text = ins.Skrivare;
+            cbPrinter.Text = AppSettings.Skrivare;
         }
 
         private void cmdForvalUpp_Click(object sender, EventArgs e)
@@ -62,7 +62,6 @@ namespace ScannerDialog
         private void SparaForval()
         {
             List<string> forvalLista = new List<string>();
-            Installningar installningar = Installningar.Hamta();
             foreach (string forval in lbForval.Items)
             {
                 forvalLista.Add(forval);
@@ -70,19 +69,18 @@ namespace ScannerDialog
             switch (cbForvalValj.SelectedIndex)
             {
                 case 0:    //Beskrivningar
-                    installningar.Beskrivningar = forvalLista;
+                    AppSettings.Beskrivningar = forvalLista;
                     break;
                 case 1:    //Händelser
-                    installningar.Handelser = forvalLista;
+                    AppSettings.Handelser = forvalLista;
                     break;
                 case 2:    //Os
-                    installningar.Os = forvalLista;
+                    AppSettings.Os = forvalLista;
                     break;
                 case 3:    //Tillhörighet
-                    installningar.Tillhorigheter = forvalLista;
+                    AppSettings.Tillhorigheter = forvalLista;
                     break;
             }
-            Installningar.Spara(installningar);
         }
 
         private void MoveUp(ListBox myListBox)
@@ -115,8 +113,6 @@ namespace ScannerDialog
 
         private void cmdForvalLaggTill_Click(object sender, EventArgs e)
         {
-            var installningar = Installningar.Hamta();
-
             using (InputBox inputDialog = new InputBox())
             {
                 inputDialog.ShowDialog();
@@ -125,19 +121,18 @@ namespace ScannerDialog
                     switch (cbForvalValj.SelectedIndex)
                     {
                         case 0:    //Beskrivningar
-                            installningar.Beskrivningar.Add(inputDialog.Input);
+                            AppSettings.Beskrivningar.Add(inputDialog.Input);
                             break;
                         case 1:    //Händelser
-                            installningar.Handelser.Add(inputDialog.Input);
+                            AppSettings.Handelser.Add(inputDialog.Input);
                             break;
                         case 2:    //Os
-                            installningar.Os.Add(inputDialog.Input);
+                            AppSettings.Os.Add(inputDialog.Input);
                             break;
                         case 3:    //Tillhörighet
-                            installningar.Tillhorigheter.Add(inputDialog.Input);
+                            AppSettings.Tillhorigheter.Add(inputDialog.Input);
                             break;
                     }
-                    Installningar.Spara(installningar);
                     LaddaForval();
                 }
             }
@@ -146,57 +141,53 @@ namespace ScannerDialog
 
         private void cmdForvalTabort_Click(object sender, EventArgs e)
         {
-            var installningar = Installningar.Hamta();
-
             if(lbForval.SelectedIndex != -1)
             {
                 lbForval.Items.RemoveAt(lbForval.SelectedIndex);
                 switch (cbForvalValj.SelectedIndex)
                 {
                     case 0:    //Beskrivningar
-                        installningar.Beskrivningar = lbForval.Items.Cast<String>().ToList();
+                        AppSettings.Beskrivningar = lbForval.Items.Cast<String>().ToList();
                         break;
                     case 1:    //Händelser
-                        installningar.Handelser = lbForval.Items.Cast<String>().ToList();
+                        AppSettings.Handelser = lbForval.Items.Cast<String>().ToList();
                         break;
                     case 2:    //Os
-                        installningar.Os = lbForval.Items.Cast<String>().ToList();
+                        AppSettings.Os = lbForval.Items.Cast<String>().ToList();
                         break;
                     case 3:    //Tillhörighet
-                        installningar.Tillhorigheter = lbForval.Items.Cast<String>().ToList();
+                        AppSettings.Tillhorigheter = lbForval.Items.Cast<String>().ToList();
                         break;
                 }
-                Installningar.Spara(installningar);
                 LaddaForval();
             }
         }
 
         private void LaddaForval()
         {
-            Installningar installnigar = Installningar.Hamta();
             lbForval.Items.Clear();
             switch (cbForvalValj.SelectedIndex)
             {
                 case 0:    //Beskrivningar
-                    foreach (string v in installnigar.Beskrivningar)
+                    foreach (string v in AppSettings.Beskrivningar)
                     {
                         lbForval.Items.Add(v);
                     }
                     break;
                 case 1:    //Händelser
-                    foreach (string v in installnigar.Handelser)
+                    foreach (string v in AppSettings.Handelser)
                     {
                         lbForval.Items.Add(v);
                     }
                     break;
                 case 2:    //Os
-                    foreach (string v in installnigar.Os)
+                    foreach (string v in AppSettings.Os)
                     {
                         lbForval.Items.Add(v);
                     }
                     break;
                 case 3:    //Tillhörighet
-                    foreach (string v in installnigar.Tillhorigheter)
+                    foreach (string v in AppSettings.Tillhorigheter)
                     {
                         lbForval.Items.Add(v);
                     }
@@ -213,10 +204,9 @@ namespace ScannerDialog
             {
                 if (fileDialog.CheckFileExists)
                 {
-                    var ins = Installningar.Hamta();
-                    ins.Databas = fileDialog.FileName;
-                    ins.Spara();
-                    DataAccess.CurrentFile = Installningar.Hamta().Databas;
+                    AppSettings.Databas = fileDialog.FileName;
+                    DataAccess.CurrentFile = AppSettings.Databas;
+                    AppSettings.TriggerChangeEvent();
                 }
                 else
                 {
@@ -227,10 +217,9 @@ namespace ScannerDialog
 
         private void cmdDatabasAterstall_Click(object sender, EventArgs e)
         {
-            var ins = Installningar.Hamta();
-            ins.Databas = string.Empty;
-            ins.Spara();
-            DataAccess.CurrentFile = Installningar.Hamta().Databas;
+            AppSettings.Databas = string.Empty;
+            AppSettings.TriggerChangeEvent();
+            DataAccess.CurrentFile = AppSettings.Databas;
         }
 
         private void cmdNuvarandeDbBackupUtforska_Click(object sender, EventArgs e)
@@ -241,9 +230,7 @@ namespace ScannerDialog
             {
                 if (Directory.Exists(folderDialog.SelectedPath))
                 {
-                    var ins = Installningar.Hamta();
-                    ins.DatabasBackup = folderDialog.SelectedPath;
-                    ins.Spara();
+                    AppSettings.DatabasBackup = folderDialog.SelectedPath;
                 }
                 else
                 {
@@ -254,9 +241,7 @@ namespace ScannerDialog
 
         private void cmdNuvarandeDbBackupAterstall_Click(object sender, EventArgs e)
         {
-            var ins = Installningar.Hamta();
-            ins.DatabasBackup = string.Empty;
-            ins.Spara();
+            AppSettings.DatabasBackup = string.Empty;
         }
 
         private void laNuvarandeDbDisplay_DoubleClick(object sender, EventArgs e)
@@ -280,90 +265,48 @@ namespace ScannerDialog
 
         private void cmdImportForval_Click(object sender, EventArgs e)
         {
-            var installningar = Installningar.Hamta();
             using (DataAccess dataAccess = new DataAccess())
             {
                 foreach (string v in dataAccess.GetUniqueBesk())
                 {
-                    if (!installningar.Beskrivningar.Contains(v))
+                    if (!AppSettings.Beskrivningar.Contains(v))
                     {
-                        installningar.Beskrivningar.Add(v);
+                        AppSettings.Beskrivningar.Add(v);
                     }
                 }
                 foreach (string v in dataAccess.GetUniqueOS())
                 {
-                    if (!installningar.Os.Contains(v))
+                    if (!AppSettings.Os.Contains(v))
                     {
-                        installningar.Os.Add(v);
+                        AppSettings.Os.Add(v);
                     }
                 }
                 foreach (string v in dataAccess.GetUniqueTillhorighet())
                 {
-                    if (!installningar.Tillhorigheter.Contains(v))
+                    if (!AppSettings.Tillhorigheter.Contains(v))
                     {
-                        installningar.Tillhorigheter.Add(v);
+                        AppSettings.Tillhorigheter.Add(v);
                     }
                 }
                 foreach (string v in dataAccess.GetUniqueHandelser())
                 {
-                    if (!installningar.Handelser.Contains(v))
+                    if (!AppSettings.Handelser.Contains(v))
                     {
-                        installningar.Handelser.Add(v);
+                        AppSettings.Handelser.Add(v);
                     }
                 }
-                installningar.Spara();
             }
             LaddaForval();
         }
 
         private void cbBackupOnStart_CheckedChanged(object sender, EventArgs e)
         {
-            var ins = Installningar.Hamta();
-            ins.BackupOnStart = cbBackupOnStart.Checked;
-            ins.Spara();
-        }
-
-        private void cmdExportSettings_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog fileDialog = new SaveFileDialog
-            {
-                Filter = "Json (*.txt)|*.json",
-                DefaultExt = "txt",
-                AddExtension = true
-            };
-            DialogResult dialogResult = fileDialog.ShowDialog();
-            if (dialogResult == DialogResult.OK && fileDialog.CheckPathExists && !fileDialog.CheckFileExists)
-            {
-                var ins = Installningar.Hamta();
-                ins.Spara(fileDialog.FileName);
-            }
-        }
-
-        private void cmdImportSettings_Click(object sender, EventArgs e)
-        {
-            var fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "json files (*.json)|*.json";
-
-            if (fileDialog.ShowDialog() == DialogResult.OK)
-            {
-                if (fileDialog.CheckFileExists)
-                {
-                    var ins = Installningar.Hamta(fileDialog.FileName);
-                    ins.Spara();
-                    DataAccess.CurrentFile = ins.Databas;
-                }
-                else
-                {
-                    MessageBox.Show("Något är fel med den utpekade filen");
-                }
-            }
+            AppSettings.BackupOnStart = cbBackupOnStart.Checked;
         }
 
         private void cbPrinter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var ins = Installningar.Hamta();
-            ins.Skrivare = cbPrinter.Text;
-            ins.Spara();
+            AppSettings.Skrivare = cbPrinter.Text;
         }
 
         private void lbForval_KeyDown(object sender, KeyEventArgs e)

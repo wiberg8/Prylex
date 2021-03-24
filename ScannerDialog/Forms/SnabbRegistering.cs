@@ -12,6 +12,7 @@ using System.IO;
 using PrylanLibary;
 using PrylanLibary.Models;
 using PrylanLibary.Enums;
+using static ScannerDialog.Program;
 
 namespace ScannerDialog
 {
@@ -31,11 +32,9 @@ namespace ScannerDialog
 
         private void HanteraPersonDialogcs_Load(object sender, EventArgs e)
         {
-            var ins = Installningar.Hamta();
-
             cbTillhorighet.Items.Add(valjTillhorighet);
             cbTillhorighet.SelectedIndex = 0;
-            ins.Tillhorigheter.ForEach((string x) => cbTillhorighet.Items.Add(x));
+            AppSettings.Tillhorigheter.ForEach((string x) => cbTillhorighet.Items.Add(x));
         }
 
         //private void UpdateRegistreradeArtiklar()
@@ -280,7 +279,7 @@ namespace ScannerDialog
             }
             if (a != null && cbPrintOnScan.Checked)
             {
-                Printing.PrintLabel(a, person);
+                Printing.PrintLabel(a, person, AppSettings.Skrivare);
             }
         }
 

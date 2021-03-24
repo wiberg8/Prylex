@@ -11,6 +11,7 @@ using System.IO;
 using PrylanLibary.Models;
 using PrylanLibary.Validators;
 using PrylanLibary;
+using static ScannerDialog.Program;
 
 namespace ScannerDialog.Forms
 {
@@ -165,20 +166,6 @@ namespace ScannerDialog.Forms
                 resultDialog.ShowDialog();
             }
         }
-        //int lyckade = importer.Where((ImportPerson p) => p.Success).Count();
-        //int misslyckade = importer.Where((ImportPerson p) => !p.Success).Count();
-        //if (lyckade == misslyckade)
-        //{
-        //    rbLyckade.Checked = true;
-        //}
-        //else if (lyckade > misslyckade)
-        //{
-        //    rbLyckade.Checked = true;
-        //}
-        //else if (lyckade < misslyckade)
-        //{
-        //    rbMisslyckade.Checked = true;
-        //}
 
         private void laTillhorighet_Click(object sender, EventArgs e)
         {
@@ -197,8 +184,7 @@ namespace ScannerDialog.Forms
 
         private void LaddaSnabbVal()
         {
-            Installningar ins = Installningar.Hamta();
-            cbTillhorighet.DataSource = ins.Tillhorigheter;
+            cbTillhorighet.DataSource = Program.AppSettings.Tillhorigheter;
             if (cbTillhorighet.Items.Count > 0)
                 cbTillhorighet.SelectedIndex = 0;
         }

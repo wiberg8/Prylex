@@ -13,6 +13,7 @@ using PrylanLibary;
 using PrylanLibary.Enums;
 using PrylanLibary.Models;
 using PrylanLibary.Validators;
+using static ScannerDialog.Program;
 
 namespace ScannerDialog
 {
@@ -163,6 +164,10 @@ namespace ScannerDialog
                     artikelAttEditera = dataAccess.HamtaArtikelFranId(artikelAttEditera.Id);
                     if (artikelAttEditera != null )
                     {
+                        if(artikelAttEditera.PersId == dialog.ValdPerson.Id)
+                        {
+                            registreradPerson = dialog.ValdPerson;
+                        }
                         Handelse handelse = new Handelse() { ArtikelId = artikelAttEditera.Id, PersId = artikelAttEditera.PersId, Typ = HandelseTyp.REGISTRERING};
                         dataAccess.InfogaHandelse(handelse);
                         FyllHandelser(dataAccess.HamtaHandelserArtikel(artikelAttEditera));
@@ -181,6 +186,10 @@ namespace ScannerDialog
                 artikelAttEditera = dataAccess.HamtaArtikelFranId(artikelAttEditera.Id);
                 if (artikelAttEditera != null)
                 {
+                    if (artikelAttEditera.PersId == person.Id)
+                    {
+                        registreradPerson = person;
+                    }
                     Handelse handelse = new Handelse() { ArtikelId = artikelAttEditera.Id, PersId = artikelAttEditera.PersId, Typ = HandelseTyp.REGISTRERING };
                     dataAccess.InfogaHandelse(handelse);
                     FyllHandelser(dataAccess.HamtaHandelserArtikel(artikelAttEditera));
@@ -304,7 +313,7 @@ namespace ScannerDialog
                 return;
             if (artikelAttEditera.Status == Status.UTE)
             {
-                Printing.PrintLabel(artikelAttEditera.DatorNamn, registreradPerson.GetNamn(), artikelAttEditera.SerieNr, registreradPerson.Tillhorighet);
+                Printing.PrintLabel(artikelAttEditera, registreradPerson, AppSettings.Skrivare);
                 if (!string.IsNullOrWhiteSpace(Printing.exception))
                 {
                     MessageBox.Show(Printing.exception);

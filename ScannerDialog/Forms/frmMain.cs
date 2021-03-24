@@ -13,6 +13,8 @@ using PrylanLibary.Enums;
 using System.IO;
 using PrylanLibary.Validators;
 using System.Text.RegularExpressions;
+using ScannerDialog;
+using static ScannerDialog.Program;
 
 
 //Refresh datagrid måste göras om till dataaccess med FyllArtiklar, FyllPersoner funktioner
@@ -98,8 +100,7 @@ namespace ScannerDialog.Forms
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            var ins = Installningar.Hamta();
-            laDatabaseWarning.Visible = !File.Exists(ins.Databas);
+            laDatabaseWarning.Visible = !File.Exists(AppSettings.Databas);
             RefreshDataGrids();
         }
 

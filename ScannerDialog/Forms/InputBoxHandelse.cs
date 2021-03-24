@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PrylanLibary;
+using static ScannerDialog.Program;
 
 namespace ScannerDialog
 {
@@ -47,8 +48,7 @@ namespace ScannerDialog
 
         private void InputBoxHandelse_Load(object sender, EventArgs e)
         {
-            var ins = Installningar.Hamta();
-            comboBox1.DataSource = ins.Handelser;
+            comboBox1.DataSource = AppSettings.Handelser;
             if(comboBox1.Items.Count > 0)
             {
                 comboBox1.SelectedIndex = 0;
