@@ -104,7 +104,7 @@ namespace ScannerDialog.Forms
             // 
             this.cbTillhorighet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTillhorighet.FormattingEnabled = true;
-            this.cbTillhorighet.Location = new System.Drawing.Point(177, 95);
+            this.cbTillhorighet.Location = new System.Drawing.Point(177, 94);
             this.cbTillhorighet.Name = "cbTillhorighet";
             this.cbTillhorighet.Size = new System.Drawing.Size(202, 21);
             this.cbTillhorighet.TabIndex = 11;
@@ -115,7 +115,7 @@ namespace ScannerDialog.Forms
             // laTillhorighet
             // 
             this.laTillhorighet.AutoSize = true;
-            this.laTillhorighet.Location = new System.Drawing.Point(174, 79);
+            this.laTillhorighet.Location = new System.Drawing.Point(174, 78);
             this.laTillhorighet.Name = "laTillhorighet";
             this.laTillhorighet.Size = new System.Drawing.Size(61, 13);
             this.laTillhorighet.TabIndex = 10;

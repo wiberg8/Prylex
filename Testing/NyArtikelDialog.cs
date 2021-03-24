@@ -128,7 +128,7 @@ namespace Testing
             List<Person> people = new List<Person>();
             List<string> personer = new List<string>();
             string exportFile = "exporter.csv";
-            for(int i=1; i<=15000; i++)
+            for(int i=1; i<=350; i++)
             {
                 Person p = new Person()
                 {
@@ -140,7 +140,7 @@ namespace Testing
             }
             foreach (Person p in people)
             {
-                personer.Add(p.Fornamn + ";" + p.Efternamn+ ";" + p.PersNr);
+                personer.Add(p.PersNr + ";" + p.Efternamn + ";" + p.Fornamn);
             }
             File.WriteAllLines(exportFile, personer);
         }

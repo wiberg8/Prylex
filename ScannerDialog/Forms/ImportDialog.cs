@@ -68,27 +68,36 @@ namespace ScannerDialog.Forms
             lbPersoner.Items.Add(itm);
             bool itemExists = lbPersoner.Items.Count > 0;
 
+            lbPersoner.SelectedIndex = lbPersoner.Items.Count - 1;
             laTillhorighet.Visible = itemExists;
             cbTillhorighet.Visible = itemExists;
             cmdVerkstallImport.Visible = itemExists;
         }
 
-        private void cmdLasFranFil_Click(object sender, EventArgs e)
+        private async void cmdLasFranFil_Click(object sender, EventArgs e)
+        {
+            await ReadPersonerFromSelectedFile();
+        }
+
+        private async Task ReadPersonerFromSelectedFile()
         {
             if (!File.Exists(SelectedImportFil))
             {
                 return;
             }
             Encoding encoding = IO.GetEncoding(SelectedImportFil);
-            if(!(encoding == Encoding.UTF8 || encoding == Encoding.ASCII))
+            if (!(encoding == Encoding.UTF8 || encoding == Encoding.ASCII))
             {
                 MessageBox.Show("Filen måste ha UTF8 eller ASCII enkodning");
                 return;
             }
-                
+
+            this.Enabled = false;
             ClearInlastPersoner();
-            List<string> fileData = File.ReadAllLines(SelectedImportFil).ToList();
-            foreach (string line in fileData)
+            int counter = 0;
+            string line;
+            StreamReader file = new StreamReader(SelectedImportFil);
+            while ((line = await file.ReadLineAsync()) != null)
             {
                 string[] lineSplit = line.Split(';');
                 if (lineSplit.Length >= 3)
@@ -102,7 +111,9 @@ namespace ScannerDialog.Forms
                     };
                     AddInlastPerson(p);
                 }
+                counter++;
             }
+           this.Enabled = true;
         }
 
         private async void cmdVerkstallImport_Click(object sender, EventArgs e)
@@ -122,6 +133,7 @@ namespace ScannerDialog.Forms
                 progressBar.Maximum = lbPersoner.Items.Count;
                 List<ImportPerson> importer = new List<ImportPerson>();
                 PersonValidator validator = new PersonValidator();
+                int lastInsertId = 0;
                 using (DataAccess dataAccess = new DataAccess())
                 {
                     foreach (Person p in lbPersoner.Items)
@@ -134,7 +146,10 @@ namespace ScannerDialog.Forms
                         if (importPerson.Success)
                         {
                             await Task.Run(() => dataAccess.InfogaPerson(importPerson.Person));
-                            importPerson.Person.Id = DataAccess.LastInsertRowId;
+                            if (DataAccess.LastInsertRowId == lastInsertId)
+                                importPerson.Success = false;
+                            else
+                                importPerson.Person.Id = DataAccess.LastInsertRowId;
                         }
                         progressBar.Increment(1);
                         importedCount += 1;
