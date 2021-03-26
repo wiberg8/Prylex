@@ -111,7 +111,7 @@ namespace Testing
 
         private async void button1_Click_1(object sender, EventArgs e)
         {
-            CreateTestImportFile();
+            CreateTestImportFile(1500000);
             //this.Enabled = false;
             //while (progressBar1.Value != 150)
             //{
@@ -123,12 +123,12 @@ namespace Testing
             //MessageBox.Show("Import verkställd");
         }
 
-        private void CreateTestImportFile()
+        private void CreateTestImportFile(int generateAmount)
         {
             List<Person> people = new List<Person>();
             List<string> personer = new List<string>();
             string exportFile = "exporter.csv";
-            for(int i=1; i<=350; i++)
+            for(int i=1; i<= generateAmount; i++)
             {
                 Person p = new Person()
                 {

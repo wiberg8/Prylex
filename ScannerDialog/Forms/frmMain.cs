@@ -42,6 +42,7 @@ namespace ScannerDialog.Forms
         {
             var ins = (Installningar)sender;
             laDatabaseWarning.Visible = !System.IO.File.Exists(ins.Databas);
+            tspNuvarandeDb.Text = ins.Databas;
         }
 
         private void Artiklar_Change(object sender, EventArgs e)
@@ -101,6 +102,7 @@ namespace ScannerDialog.Forms
         private void frmMain_Load(object sender, EventArgs e)
         {
             laDatabaseWarning.Visible = !File.Exists(AppSettings.Databas);
+            tspNuvarandeDb.Text = AppSettings.Databas;
             RefreshDataGrids();
         }
 
@@ -304,23 +306,5 @@ namespace ScannerDialog.Forms
             importDialog.ShowDialog();
             RefreshDataGrids();
         }
-
-        //private void dgvArtiklar_MouseDoubleClick(object sender, MouseEventArgs e)
-        //{
-        //    if (dgvArtiklar.SelectedRows.Count > 0)
-        //    {
-        //        Artikel valdArtikel = (Artikel)dgvArtiklar.SelectedRows[0].Tag;
-        //        using(var hanteraDialog=new HanteraArtikelDialog(valdArtikel))
-        //        {
-        //            hanteraDialog.ShowDialog();
-
-        //        }
-        //    }
-        //}
-
-        //private void cmdVisaAllaArtiklar_Click(object sender, EventArgs e)
-        //{
-        //    FyllDataGrid(DataAccess.HamtaArtiklar());
-        //}
     }
 }
