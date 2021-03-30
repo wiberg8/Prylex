@@ -21,7 +21,7 @@ namespace ScannerDialog
         {
             InitializeComponent();
             cbForvalValj.SelectedIndex = 0;
-            Installningar.Change += Installningar_Change;
+            AppSettings.PropertyChanged += Installningar_Change;
         }
 
         private void Installningar_Change(object sender, EventArgs e)
@@ -206,7 +206,6 @@ namespace ScannerDialog
                 {
                     AppSettings.Databas = fileDialog.FileName;
                     DataAccess.CurrentFile = AppSettings.Databas;
-                    AppSettings.TriggerChangeEvent();
                 }
                 else
                 {
@@ -218,7 +217,6 @@ namespace ScannerDialog
         private void cmdDatabasAterstall_Click(object sender, EventArgs e)
         {
             AppSettings.Databas = string.Empty;
-            AppSettings.TriggerChangeEvent();
             DataAccess.CurrentFile = AppSettings.Databas;
         }
 
@@ -319,6 +317,38 @@ namespace ScannerDialog
             if (e.KeyCode == Keys.Escape)
             {
                 this.DialogResult = DialogResult.Cancel;
+            }
+        }
+
+        private void cmdExporteraPersoner_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.Filter = "Json file(*.json)|*.json";
+            fileDialog.DefaultExt = "json";
+            fileDialog.AddExtension = true;
+            DialogResult dialogResult = fileDialog.ShowDialog();
+            if (dialogResult == DialogResult.OK && !fileDialog.CheckFileExists && fileDialog.CheckPathExists)
+            {
+                using (DataAccess dataAccess = new DataAccess())
+                {
+                    File.WriteAllText(fileDialog.FileName, dataAccess.HamtaPersoner().ToJson());
+                }
+            }
+        }
+
+        private void cmdExporteraArtiklar_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.Filter = "Json file(*.json)|*.json";
+            fileDialog.DefaultExt = "json";
+            fileDialog.AddExtension = true;
+            DialogResult dialogResult = fileDialog.ShowDialog();
+            if (dialogResult == DialogResult.OK && !fileDialog.CheckFileExists && fileDialog.CheckPathExists)
+            {
+                using (DataAccess dataAccess = new DataAccess())
+                {
+                    File.WriteAllText(fileDialog.FileName, dataAccess.HamtaArtiklar().ToJson());
+                }
             }
         }
     }

@@ -111,7 +111,14 @@ namespace Testing
 
         private async void button1_Click_1(object sender, EventArgs e)
         {
-            CreateTestImportFile(1500000);
+            try
+            {
+                CreateTestImportFile(int.Parse(textBox1.Text));
+            }
+            catch
+            {
+
+            }
             //this.Enabled = false;
             //while (progressBar1.Value != 150)
             //{
@@ -126,23 +133,21 @@ namespace Testing
         private void CreateTestImportFile(int generateAmount)
         {
             List<Person> people = new List<Person>();
-            List<string> personer = new List<string>();
             string exportFile = "exporter.csv";
-            for(int i=1; i<= generateAmount; i++)
+            using (StreamWriter writer = new StreamWriter(exportFile))
             {
-                Person p = new Person()
+                writer.WriteLine("PersNr;Efternamn;Förnamn");
+                for (int i = 1; i <= generateAmount; i++)
                 {
-                    Fornamn = Functions.GenerateRandom(8),
-                    Efternamn = Functions.GenerateRandom(8),
-                    PersNr = Functions.GenerateRandomNumbers(6) + "-" + Functions.GenerateRandomNumbers(4)
-                };
-                people.Add(p);
+                    Person p = new Person()
+                    {
+                        Fornamn = Functions.GenerateRandom(8),
+                        Efternamn = Functions.GenerateRandom(8),
+                        PersNr = Functions.GenerateRandomNumbers(6) + "-" + Functions.GenerateRandomNumbers(4)
+                    };
+                    writer.WriteLine(p.PersNr + ";" + p.Efternamn + ";" + p.Fornamn);
+                }
             }
-            foreach (Person p in people)
-            {
-                personer.Add(p.PersNr + ";" + p.Efternamn + ";" + p.Fornamn);
-            }
-            File.WriteAllLines(exportFile, personer);
         }
 
         private void txtSerieNr_TextChanged(object sender, EventArgs e)

@@ -26,7 +26,7 @@ namespace ScannerDialog.Forms
         public frmMain()
         {
             InitializeComponent();
-            Installningar.Change += Installningar_Change;
+            AppSettings.PropertyChanged += Installningar_Change;
             DataAccess.ArtikelChange += Artiklar_Change;
             DataAccess.ConnectionChanged += Database_Connection_Changed;
             this.Icon = Properties.Resources.ApplikationIkon;
@@ -41,7 +41,7 @@ namespace ScannerDialog.Forms
         private void Installningar_Change(object sender, EventArgs e)
         {
             var ins = (Installningar)sender;
-            laDatabaseWarning.Visible = !System.IO.File.Exists(ins.Databas);
+            laDatabaseWarning.Visible = !File.Exists(ins.Databas);
             tspNuvarandeDb.Text = ins.Databas;
         }
 

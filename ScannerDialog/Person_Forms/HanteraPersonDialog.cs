@@ -280,29 +280,21 @@ namespace ScannerDialog
 
         private void cmdExporteraDatornamn_Click(object sender, EventArgs e)
         {
-            List<string> datorNamnLista = new List<string>();
-            foreach (Artikel a in lbRegistreradeArtiklar.Items)
+            List<Artikel> artiklar = lbRegistreradeArtiklar.Items.Cast<Artikel>().ToList();
+            if(artiklar.Count > 0)
             {
-                datorNamnLista.Add(a.DatorNamn);
-            }
-            if(datorNamnLista.Count > 0)
-            {
-                string temp = string.Empty;
-                datorNamnLista.ForEach((string datorNamn) => temp += datorNamn + "\n");
-
                 SaveFileDialog fileDialog = new SaveFileDialog
                 {
-                    Filter = "Text file(*.txt)|*.txt",
-                    DefaultExt = "txt",
+                    Filter = "Json file(*.json)|*.json",
+                    DefaultExt = "json",
                     AddExtension = true
                 };
                 DialogResult dialogResult = fileDialog.ShowDialog();
-                if(dialogResult == DialogResult.OK && fileDialog.CheckPathExists && !fileDialog.CheckFileExists)
+                if (dialogResult == DialogResult.OK && fileDialog.CheckPathExists && !fileDialog.CheckFileExists)
                 {
-                    File.WriteAllText(fileDialog.FileName, temp);
+                    File.WriteAllText(fileDialog.FileName, artiklar.ToJson());
                 }
             }
-            
         }
 
         private void lbHandelser_SelectedIndexChanged(object sender, EventArgs e)

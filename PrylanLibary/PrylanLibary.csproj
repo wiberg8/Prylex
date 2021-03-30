@@ -79,6 +79,7 @@
     <Compile Include="Enums\HandelseTyp.cs" />
     <Compile Include="Import.cs" />
     <Compile Include="IO.cs" />
+    <Compile Include="ModelConverting.cs" />
     <Compile Include="Models\Artikel.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="DataAccess.cs" />

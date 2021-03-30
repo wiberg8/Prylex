@@ -34,7 +34,7 @@ namespace ScannerDialog
 
         private static void ApplicationStart()
         {
-            Installningar.FileName = Config.InstallningarFileName;
+            AppSettings.FileName = Config.InstallningarFileName;
             AppSettings.Ladda();
             BackupDatabase();
             DataAccess.CurrentFile = AppSettings.Databas;

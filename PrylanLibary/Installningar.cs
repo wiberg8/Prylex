@@ -1,36 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace PrylanLibary
 {
-    public class Installningar
+    public class Installningar : INotifyPropertyChanged
     {
-        public static event EventHandler Change;
-        public static string FileName { get; set; } 
+        public event PropertyChangedEventHandler PropertyChanged;
+        public string FileName { get; set; }
 
-        public string Databas { get; set; }
-        public string DatabasBackup { get; set; }
-        public string ForetagsNamn { get; set; }
-        public string Skrivare { get; set; }
-        public bool BackupOnStart { get; set; }
+        private string _databas;
+        private string _databasBackup;
+        private string _foretagsNamn;
+        private string _skrivare;
+        private bool _backupOnStart;
+        private List<string> _beskrivningar = new List<string>();
+        private List<string> _os = new List<string>();
+        private List<string> _tillhorigheter = new List<string>();
+        private List<string> _handelser = new List<string>();
 
-        public List<string> Beskrivningar { get; set; } = new List<string>();
-        public List<string> Os { get; set; } = new List<string>();
-        public List<string> Tillhorigheter { get; set; } = new List<string>();
-        public List<string> Handelser { get; set; } = new List<string>();
+        public string Databas { get { return _databas; } set { _databas = value; NotifyPropertyChanged(); } }
+        public string DatabasBackup { get { return _databasBackup; } set { _databasBackup = value; NotifyPropertyChanged(); } }
+        public string ForetagsNamn { get { return _foretagsNamn; } set { _foretagsNamn = value; } }
+        public string Skrivare { get { return _skrivare; } set { _skrivare = value; } }
+        public bool BackupOnStart { get { return _backupOnStart; } set { _backupOnStart = value; } }
+        public List<string> Beskrivningar { get { return _beskrivningar; } set { _beskrivningar = value; } }
+        public List<string> Os { get { return _os; } set { _os = value; } }
+        public List<string> Tillhorigheter { get { return _tillhorigheter; } set { _tillhorigheter = value; } }
+        public List<string> Handelser { get { return _handelser; } set { _handelser = value; } }
 
-        public string NuvarandeLicens { get; set; }
-        public DateTime SenasteDatum { get; set; }
-
-        public void TriggerChangeEvent()
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
-            if (Change != null)
-                Change.Invoke(this, new EventArgs());
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public void Ladda()
@@ -65,6 +72,8 @@ namespace PrylanLibary
             }
 
         }
+
+
 
         private void SetThisAsAnother(Installningar another)
         {

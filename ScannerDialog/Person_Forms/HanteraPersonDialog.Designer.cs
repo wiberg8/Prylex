@@ -353,7 +353,7 @@
             this.cmdExporteraDatornamn.Name = "cmdExporteraDatornamn";
             this.cmdExporteraDatornamn.Size = new System.Drawing.Size(133, 23);
             this.cmdExporteraDatornamn.TabIndex = 22;
-            this.cmdExporteraDatornamn.Text = "Exportera (Datornamn)";
+            this.cmdExporteraDatornamn.Text = "Exportera (Artikel lista)";
             this.cmdExporteraDatornamn.UseVisualStyleBackColor = true;
             this.cmdExporteraDatornamn.Click += new System.EventHandler(this.cmdExporteraDatornamn_Click);
             // 

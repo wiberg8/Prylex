@@ -31,9 +31,9 @@
             this.gbInstallningarDb = new System.Windows.Forms.GroupBox();
             this.cbBackupOnStart = new System.Windows.Forms.CheckBox();
             this.cmdNuvarandeDbBackupAterstall = new System.Windows.Forms.Button();
+            this.cmdNuvarandeDbUtforska = new System.Windows.Forms.Button();
             this.cmdDatabasAterstall = new System.Windows.Forms.Button();
             this.cmdNuvarandeDbBackupUtforska = new System.Windows.Forms.Button();
-            this.cmdNuvarandeDbUtforska = new System.Windows.Forms.Button();
             this.laNuvarandeDbBackup = new System.Windows.Forms.Label();
             this.laNuvarandeDb = new System.Windows.Forms.Label();
             this.lbForval = new System.Windows.Forms.ListBox();
@@ -49,6 +49,8 @@
             this.laPrinter = new System.Windows.Forms.Label();
             this.gbForval = new System.Windows.Forms.GroupBox();
             this.gbUtskrift = new System.Windows.Forms.GroupBox();
+            this.cmdExporteraPersoner = new System.Windows.Forms.Button();
+            this.cmdExporteraArtiklar = new System.Windows.Forms.Button();
             this.gbInstallningarDb.SuspendLayout();
             this.gbForval.SuspendLayout();
             this.gbUtskrift.SuspendLayout();
@@ -89,6 +91,16 @@
             this.cmdNuvarandeDbBackupAterstall.UseVisualStyleBackColor = true;
             this.cmdNuvarandeDbBackupAterstall.Click += new System.EventHandler(this.cmdNuvarandeDbBackupAterstall_Click);
             // 
+            // cmdNuvarandeDbUtforska
+            // 
+            this.cmdNuvarandeDbUtforska.Location = new System.Drawing.Point(433, 27);
+            this.cmdNuvarandeDbUtforska.Name = "cmdNuvarandeDbUtforska";
+            this.cmdNuvarandeDbUtforska.Size = new System.Drawing.Size(75, 23);
+            this.cmdNuvarandeDbUtforska.TabIndex = 16;
+            this.cmdNuvarandeDbUtforska.Text = "Utforska";
+            this.cmdNuvarandeDbUtforska.UseVisualStyleBackColor = true;
+            this.cmdNuvarandeDbUtforska.Click += new System.EventHandler(this.cmdNuvarandeDbUtforska_Click);
+            // 
             // cmdDatabasAterstall
             // 
             this.cmdDatabasAterstall.Location = new System.Drawing.Point(514, 27);
@@ -108,16 +120,6 @@
             this.cmdNuvarandeDbBackupUtforska.Text = "Utforska";
             this.cmdNuvarandeDbBackupUtforska.UseVisualStyleBackColor = true;
             this.cmdNuvarandeDbBackupUtforska.Click += new System.EventHandler(this.cmdNuvarandeDbBackupUtforska_Click);
-            // 
-            // cmdNuvarandeDbUtforska
-            // 
-            this.cmdNuvarandeDbUtforska.Location = new System.Drawing.Point(433, 27);
-            this.cmdNuvarandeDbUtforska.Name = "cmdNuvarandeDbUtforska";
-            this.cmdNuvarandeDbUtforska.Size = new System.Drawing.Size(75, 23);
-            this.cmdNuvarandeDbUtforska.TabIndex = 16;
-            this.cmdNuvarandeDbUtforska.Text = "Utforska";
-            this.cmdNuvarandeDbUtforska.UseVisualStyleBackColor = true;
-            this.cmdNuvarandeDbUtforska.Click += new System.EventHandler(this.cmdNuvarandeDbUtforska_Click);
             // 
             // laNuvarandeDbBackup
             // 
@@ -278,11 +280,33 @@
             this.gbUtskrift.TabStop = false;
             this.gbUtskrift.Text = "Utskrift";
             // 
+            // cmdExporteraPersoner
+            // 
+            this.cmdExporteraPersoner.Location = new System.Drawing.Point(477, 386);
+            this.cmdExporteraPersoner.Name = "cmdExporteraPersoner";
+            this.cmdExporteraPersoner.Size = new System.Drawing.Size(163, 23);
+            this.cmdExporteraPersoner.TabIndex = 31;
+            this.cmdExporteraPersoner.Text = "Exportera personer";
+            this.cmdExporteraPersoner.UseVisualStyleBackColor = true;
+            this.cmdExporteraPersoner.Click += new System.EventHandler(this.cmdExporteraPersoner_Click);
+            // 
+            // cmdExporteraArtiklar
+            // 
+            this.cmdExporteraArtiklar.Location = new System.Drawing.Point(477, 415);
+            this.cmdExporteraArtiklar.Name = "cmdExporteraArtiklar";
+            this.cmdExporteraArtiklar.Size = new System.Drawing.Size(163, 23);
+            this.cmdExporteraArtiklar.TabIndex = 32;
+            this.cmdExporteraArtiklar.Text = "Exportera artiklar";
+            this.cmdExporteraArtiklar.UseVisualStyleBackColor = true;
+            this.cmdExporteraArtiklar.Click += new System.EventHandler(this.cmdExporteraArtiklar_Click);
+            // 
             // InstallningarDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(652, 450);
+            this.Controls.Add(this.cmdExporteraArtiklar);
+            this.Controls.Add(this.cmdExporteraPersoner);
             this.Controls.Add(this.gbUtskrift);
             this.Controls.Add(this.gbForval);
             this.Controls.Add(this.laNuvarandeDbBackupDisplay);
@@ -330,5 +354,7 @@
         private System.Windows.Forms.Label laPrinter;
         private System.Windows.Forms.GroupBox gbForval;
         private System.Windows.Forms.GroupBox gbUtskrift;
+        private System.Windows.Forms.Button cmdExporteraPersoner;
+        private System.Windows.Forms.Button cmdExporteraArtiklar;
     }
 }
