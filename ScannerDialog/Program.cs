@@ -22,6 +22,13 @@ namespace ScannerDialog
         [STAThread]
         static void Main()
         {
+            DateTime expireDate = DateTime.Parse("2021-04-05");
+            if (DateTime.Now > expireDate)
+            {
+                MessageBox.Show("Datum spärr gick ut: " + expireDate.ToString());
+                return;
+            }
+
             if (PriorProcess() is null)
             {
                 ApplicationStart();

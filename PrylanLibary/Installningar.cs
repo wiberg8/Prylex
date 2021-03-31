@@ -63,7 +63,6 @@ namespace PrylanLibary
             try
             {
                 string installningarEncoded = JsonConvert.SerializeObject(this, Formatting.Indented);
-                Console.WriteLine(installningarEncoded);
                 File.WriteAllText(FileName, installningarEncoded);
             }
             catch
