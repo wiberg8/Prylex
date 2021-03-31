@@ -47,12 +47,7 @@ namespace PrylanLibary
 
         public static List<string> GetPrinters()
         {
-            List<string> printers = new List<string>();
-            foreach (string printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
-            {
-                printers.Add(printer);
-            }
-            return printers;
+            return System.Drawing.Printing.PrinterSettings.InstalledPrinters.Cast<string>().ToList();
         }
     }
 }
