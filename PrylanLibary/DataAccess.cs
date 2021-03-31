@@ -10,16 +10,19 @@ using PrylanLibary.Models;
 
 namespace PrylanLibary
 {
-    public class DataAccess :  System.IDisposable
+    public class DataAccess
     {
-        private static string currentFile;
-        public static string CurrentFile { get { return currentFile; } set { DBHandler.SetConnection(value); currentFile = value; } }
-        public static EventHandler ConnectionChanged { get; set; }
-        public static int LastInsertRowId { get { return DBHandler.GetLastInsertId(); } }
+        private string currentFile;
+        public string CurrentFile { get { return currentFile; } set { DBHandler.SetConnection(value, ConnectionChanged); currentFile = value; } }
+        public EventHandler ConnectionChanged { get; set; }
+        public int LastInsertRowId { get { return DBHandler.GetLastInsertId(); } }
 
-        public DataAccess()
+        public EventHandler ArtikelChange { get; set; }
+        public EventHandler PersonChange { get; set; }
+
+        public bool TryOpen()
         {
-            DBHandler.TryOpen();
+            return DBHandler.TryOpen();
         }
 
         public void Close()
@@ -27,17 +30,10 @@ namespace PrylanLibary
             DBHandler.Close();
         }
 
-        void IDisposable.Dispose()
-        {
-            Close();
-        }
-       
         public static bool CreateFile(string fileName)
         {
             return DBHandler.CreateFile(fileName);
         }
-        public static EventHandler ArtikelChange { get; set; }
-        public static EventHandler PersonChange { get; set; }
 
         public List<string> GetUniqueBesk()
         {

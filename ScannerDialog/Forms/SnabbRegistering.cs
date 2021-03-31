@@ -195,16 +195,13 @@ namespace ScannerDialog
             }
             else
             {
-                using (DataAccess dataAccess = new DataAccess())
+                List<AdvancedPerson> advancedPersoner = new List<AdvancedPerson>();
+                foreach (Person p in DBAccess.HamtaPersonerFranTillhorighet(cbTillhorighet.Text))
                 {
-                    List<AdvancedPerson> advancedPersoner = new List<AdvancedPerson>();
-                    foreach (Person p in dataAccess.HamtaPersonerFranTillhorighet(cbTillhorighet.Text))
-                    {
-                        AdvancedPerson advancedPerson = new AdvancedPerson() { Person = p, RegistreradeArtiklar = dataAccess.HamtaRegistreradeArtiklar(p)};
-                        advancedPersoner.Add(advancedPerson);
-                    }
-                    FyllPersoner(advancedPersoner);
+                    AdvancedPerson advancedPerson = new AdvancedPerson() { Person = p, RegistreradeArtiklar = DBAccess.HamtaRegistreradeArtiklar(p)};
+                    advancedPersoner.Add(advancedPerson);
                 }
+                FyllPersoner(advancedPersoner);
             }
         }
 
@@ -238,10 +235,7 @@ namespace ScannerDialog
                 if (!string.IsNullOrWhiteSpace(scannedInput))
                 {
                     Artikel artikel;
-                    using (DataAccess dataAccess = new DataAccess())
-                    {
-                        artikel = dataAccess.HamtaArtikelFranSerieNr(scannedInput);
-                    }
+                    artikel = DBAccess.HamtaArtikelFranSerieNr(scannedInput);
                     if (artikel is null)
                     {
                         MessageBox.Show("Inga träffar");
@@ -260,23 +254,20 @@ namespace ScannerDialog
         private void KnytArtikelToperson(Artikel artikel, Person person)
         {
             Artikel a;
-            using (DataAccess dataAccess = new DataAccess())
+            DBAccess.RegisterArtikelToPerson(person, artikel);
+            a = DBAccess.HamtaArtikelFranId(artikel.Id);
+            if (a != null && a.Status == Status.UTE)
             {
-                dataAccess.RegisterArtikelToPerson(person, artikel);
-                a = dataAccess.HamtaArtikelFranId(artikel.Id);
-                if (a != null && a.Status == Status.UTE)
-                {
-                    Handelse h = new Handelse() { PersId = person.Id, ArtikelId = a.Id, Typ = HandelseTyp.REGISTRERING };
-                    dataAccess.InfogaHandelse(h);
-                }
-                List<AdvancedPerson> advancedPersoner = new List<AdvancedPerson>();
-                foreach (Person p in dataAccess.HamtaPersonerFranTillhorighet(cbTillhorighet.Text))
-                {
-                    AdvancedPerson advancedPerson = new AdvancedPerson() { Person = p, RegistreradeArtiklar = dataAccess.HamtaRegistreradeArtiklar(p) };
-                    advancedPersoner.Add(advancedPerson);
-                }
-                FyllPersoner(advancedPersoner, person);
+                Handelse h = new Handelse() { PersId = person.Id, ArtikelId = a.Id, Typ = HandelseTyp.REGISTRERING };
+                DBAccess.InfogaHandelse(h);
             }
+            List<AdvancedPerson> advancedPersoner = new List<AdvancedPerson>();
+            foreach (Person p in DBAccess.HamtaPersonerFranTillhorighet(cbTillhorighet.Text))
+            {
+                AdvancedPerson advancedPerson = new AdvancedPerson() { Person = p, RegistreradeArtiklar = DBAccess.HamtaRegistreradeArtiklar(p) };
+                advancedPersoner.Add(advancedPerson);
+            }
+            FyllPersoner(advancedPersoner, person);
             if (a != null && cbPrintOnScan.Checked)
             {
                 Printing.PrintLabel(a, person, AppSettings.Skrivare);
@@ -293,10 +284,7 @@ namespace ScannerDialog
             {
                 Person selectedPerson = (lbPersoner.SelectedItem as AdvancedPerson).Person;
                 List<Artikel> ledigaArtiklar;
-                using (DataAccess dataAccess = new DataAccess())
-                {
-                    ledigaArtiklar = dataAccess.HamtaLedigaArtiklar();
-                }
+                ledigaArtiklar = DBAccess.HamtaLedigaArtiklar();
                 var dialog = new ValjArtikelDialog(ledigaArtiklar);
                 dialog.ShowDialog();
                 if (dialog.ValdArtikel != null)
@@ -309,16 +297,13 @@ namespace ScannerDialog
         private void cmdSok_Click(object sender, EventArgs e)
         {
             lbPersoner.Items.Clear();
-            using (DataAccess dataAccess = new DataAccess())
+            List<AdvancedPerson> advancedPersoner = new List<AdvancedPerson>();
+            foreach (Person p in DBAccess.HamtaSokPersoner(txtSok.Text).Where((Person p) => p.Tillhorighet == cbTillhorighet.Text))
             {
-                List<AdvancedPerson> advancedPersoner = new List<AdvancedPerson>();
-                foreach (Person p in dataAccess.HamtaSokPersoner(txtSok.Text).Where((Person p) => p.Tillhorighet == cbTillhorighet.Text))
-                {
-                    AdvancedPerson advancedPerson = new AdvancedPerson() { Person = p, RegistreradeArtiklar = dataAccess.HamtaRegistreradeArtiklar(p) };
-                    advancedPersoner.Add(advancedPerson);
-                }
-                FyllPersoner(advancedPersoner);
+                AdvancedPerson advancedPerson = new AdvancedPerson() { Person = p, RegistreradeArtiklar = DBAccess.HamtaRegistreradeArtiklar(p) };
+                advancedPersoner.Add(advancedPerson);
             }
+            FyllPersoner(advancedPersoner);
         }
     }
 }

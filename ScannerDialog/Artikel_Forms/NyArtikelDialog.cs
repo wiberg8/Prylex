@@ -82,18 +82,18 @@ namespace ScannerDialog
             //}
             if (validationResult.IsValid)
             {
-                using (var dataAccess = new DataAccess())
+                if (DBAccess.ExisterarArtikel(artikelFranFalt))
                 {
-                    if (dataAccess.ExisterarArtikel(artikelFranFalt))
-                    {
-                        MessageBox.Show("SerieNr existerar redan");
-                    }
-                    else
+                    MessageBox.Show("SerieNr existerar redan");
+                }
+                else
+                {
+                    if (cbPrintEttiket.Checked)
                     {
                         Printing.PrintSerieNrLabel(artikelFranFalt.SerieNr, AppSettings.Skrivare);
-                        dataAccess.InfogaArtikel(artikelFranFalt);
-                        AterstallFalt();
                     }
+                    DBAccess.InfogaArtikel(artikelFranFalt);
+                    AterstallFalt();
                 }
             }
         }

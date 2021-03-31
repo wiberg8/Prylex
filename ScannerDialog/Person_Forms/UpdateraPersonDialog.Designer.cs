@@ -50,6 +50,8 @@
             this.txtFornamn = new System.Windows.Forms.TextBox();
             this.laFornamn = new System.Windows.Forms.Label();
             this.lbErrors = new System.Windows.Forms.ListBox();
+            this.txtPersNr = new System.Windows.Forms.TextBox();
+            this.laPersNr = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorFornamn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorEfternamn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorTillhorighet)).BeginInit();
@@ -76,6 +78,8 @@
             // 
             // gbFalt
             // 
+            this.gbFalt.Controls.Add(this.txtPersNr);
+            this.gbFalt.Controls.Add(this.laPersNr);
             this.gbFalt.Controls.Add(this.cbTillhorighet);
             this.gbFalt.Controls.Add(this.laTillhorighet);
             this.gbFalt.Controls.Add(this.cmdAvbryt);
@@ -257,6 +261,27 @@
             this.lbErrors.Size = new System.Drawing.Size(212, 225);
             this.lbErrors.TabIndex = 17;
             // 
+            // txtPersNr
+            // 
+            this.txtPersNr.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPersNr.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPersNr.HideSelection = false;
+            this.txtPersNr.Location = new System.Drawing.Point(15, 121);
+            this.txtPersNr.Name = "txtPersNr";
+            this.txtPersNr.ReadOnly = true;
+            this.txtPersNr.Size = new System.Drawing.Size(91, 20);
+            this.txtPersNr.TabIndex = 11;
+            this.txtPersNr.TabStop = false;
+            // 
+            // laPersNr
+            // 
+            this.laPersNr.AutoSize = true;
+            this.laPersNr.Location = new System.Drawing.Point(12, 104);
+            this.laPersNr.Name = "laPersNr";
+            this.laPersNr.Size = new System.Drawing.Size(42, 13);
+            this.laPersNr.TabIndex = 12;
+            this.laPersNr.Text = "PersNr:";
+            // 
             // UpdateraPersonDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -302,5 +327,7 @@
         private System.Windows.Forms.TextBox txtFornamn;
         private System.Windows.Forms.Label laFornamn;
         private System.Windows.Forms.ListBox lbErrors;
+        private System.Windows.Forms.TextBox txtPersNr;
+        private System.Windows.Forms.Label laPersNr;
     }
 }

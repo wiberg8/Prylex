@@ -205,7 +205,12 @@ namespace ScannerDialog
                 if (fileDialog.CheckFileExists)
                 {
                     AppSettings.Databas = fileDialog.FileName;
-                    DataAccess.CurrentFile = AppSettings.Databas;
+                    DBAccess.Close();
+                    DBAccess.CurrentFile = AppSettings.Databas;
+                    if (!DBAccess.TryOpen())
+                    {
+                        MessageBox.Show("Något är fel med den utpekade filen");
+                    }
                 }
                 else
                 {
@@ -217,7 +222,8 @@ namespace ScannerDialog
         private void cmdDatabasAterstall_Click(object sender, EventArgs e)
         {
             AppSettings.Databas = string.Empty;
-            DataAccess.CurrentFile = AppSettings.Databas;
+            DBAccess.Close();
+            DBAccess.CurrentFile = AppSettings.Databas;
         }
 
         private void cmdNuvarandeDbBackupUtforska_Click(object sender, EventArgs e)
@@ -263,35 +269,32 @@ namespace ScannerDialog
 
         private void cmdImportForval_Click(object sender, EventArgs e)
         {
-            using (DataAccess dataAccess = new DataAccess())
+            foreach (string v in DBAccess.GetUniqueBesk())
             {
-                foreach (string v in dataAccess.GetUniqueBesk())
+                if (!AppSettings.Beskrivningar.Contains(v))
                 {
-                    if (!AppSettings.Beskrivningar.Contains(v))
-                    {
-                        AppSettings.Beskrivningar.Add(v);
-                    }
+                    AppSettings.Beskrivningar.Add(v);
                 }
-                foreach (string v in dataAccess.GetUniqueOS())
+            }
+            foreach (string v in DBAccess.GetUniqueOS())
+            {
+                if (!AppSettings.Os.Contains(v))
                 {
-                    if (!AppSettings.Os.Contains(v))
-                    {
-                        AppSettings.Os.Add(v);
-                    }
+                    AppSettings.Os.Add(v);
                 }
-                foreach (string v in dataAccess.GetUniqueTillhorighet())
+            }
+            foreach (string v in DBAccess.GetUniqueTillhorighet())
+            {
+                if (!AppSettings.Tillhorigheter.Contains(v))
                 {
-                    if (!AppSettings.Tillhorigheter.Contains(v))
-                    {
-                        AppSettings.Tillhorigheter.Add(v);
-                    }
+                    AppSettings.Tillhorigheter.Add(v);
                 }
-                foreach (string v in dataAccess.GetUniqueHandelser())
+            }
+            foreach (string v in DBAccess.GetUniqueHandelser())
+            {
+                if (!AppSettings.Handelser.Contains(v))
                 {
-                    if (!AppSettings.Handelser.Contains(v))
-                    {
-                        AppSettings.Handelser.Add(v);
-                    }
+                    AppSettings.Handelser.Add(v);
                 }
             }
             LaddaForval();
@@ -329,10 +332,7 @@ namespace ScannerDialog
             DialogResult dialogResult = fileDialog.ShowDialog();
             if (dialogResult == DialogResult.OK && !fileDialog.CheckFileExists && fileDialog.CheckPathExists)
             {
-                using (DataAccess dataAccess = new DataAccess())
-                {
-                    File.WriteAllText(fileDialog.FileName, dataAccess.HamtaPersoner().ToJson());
-                }
+                File.WriteAllText(fileDialog.FileName, DBAccess.HamtaPersoner().ToJson());
             }
         }
 
@@ -345,10 +345,7 @@ namespace ScannerDialog
             DialogResult dialogResult = fileDialog.ShowDialog();
             if (dialogResult == DialogResult.OK && !fileDialog.CheckFileExists && fileDialog.CheckPathExists)
             {
-                using (DataAccess dataAccess = new DataAccess())
-                {
-                    File.WriteAllText(fileDialog.FileName, dataAccess.HamtaArtiklar().ToJson());
-                }
+                File.WriteAllText(fileDialog.FileName, DBAccess.HamtaArtiklar().ToJson());
             }
         }
     }

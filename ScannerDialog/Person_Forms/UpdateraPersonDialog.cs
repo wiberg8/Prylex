@@ -43,6 +43,7 @@ namespace ScannerDialog
         {
             txtFornamn.Text = person.Fornamn;
             txtEfternamn.Text = person.Efternamn;
+            txtPersNr.Text = person.PersNr;
             txtSign.Text = person.Sign;
             txtEpost.Text = person.Epost;
             txtTelefon.Text = person.Telefon;

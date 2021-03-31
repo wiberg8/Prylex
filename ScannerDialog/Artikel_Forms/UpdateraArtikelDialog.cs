@@ -47,7 +47,6 @@ namespace ScannerDialog
             ArtikelValidator validator = new ArtikelValidator();
             var validationResult = validator.Validate(artikelFranFalt);
             FyllErrors(validationResult);
-
             if (validationResult.IsValid)
             {
                 this.Result = FaltTillArtikel();

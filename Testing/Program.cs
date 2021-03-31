@@ -10,6 +10,7 @@ namespace Testing
     static class Program
     {
         public static Installningar AppSettings { get; set; }
+        public static DataAccess dataAccess { get; set; }
 
         static Program()
         {
@@ -23,6 +24,7 @@ namespace Testing
         static void Main()
         {
             AppSettings.Ladda();
+            dataAccess = new DataAccess() { CurrentFile = AppSettings.Databas };
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new NyArtikelDialog());

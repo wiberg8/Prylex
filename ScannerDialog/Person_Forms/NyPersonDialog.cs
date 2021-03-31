@@ -61,17 +61,14 @@ namespace ScannerDialog
             FyllErrors(errors);
             if (errors.IsValid)
             {
-                using (var dataAccess = new DataAccess())
+                if (DBAccess.ExisterarPerson(person.PersNr))
                 {
-                    if (dataAccess.ExisterarPerson(person.PersNr))
-                    {
-                        MessageBox.Show("PersNr existerar redan");
-                    }
-                    else
-                    {
-                        dataAccess.InfogaPerson(person);
-                        FaltRensa();
-                    }
+                    MessageBox.Show("PersNr existerar redan");
+                }
+                else
+                {
+                    DBAccess.InfogaPerson(person);
+                    FaltRensa();
                 }
             }
         }

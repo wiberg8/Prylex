@@ -49,21 +49,14 @@ namespace ScannerDialog
         private void HanteraPersonDialogcs_Load(object sender, EventArgs e)
         {
             FyllFalt(nuvarandePerson);
-            using (DataAccess dataAccess = new DataAccess())
-            {
-                FyllHandelser(dataAccess.HamtaHandelserPerson(nuvarandePerson));
-            }
-            
+            FyllHandelser(DBAccess.HamtaHandelserPerson(nuvarandePerson));
             UpdateRegistreradeArtiklar();
         }
 
         private void UpdateRegistreradeArtiklar()
         {
             List<Artikel> registreradeArtiklar;
-            using (DataAccess dataAccess = new DataAccess())
-            {
-                registreradeArtiklar = dataAccess.HamtaRegistreradeArtiklar(nuvarandePerson);
-            }
+            registreradeArtiklar = DBAccess.HamtaRegistreradeArtiklar(nuvarandePerson);
             lbRegistreradeArtiklar.Items.Clear();
             foreach (Artikel artikel in registreradeArtiklar)
             {
@@ -83,48 +76,36 @@ namespace ScannerDialog
             if (MessageBox.Show("Är du säker på att avregistrera artikeln från personen?", "Prylex", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                     Artikel selectedArtikel = (Artikel)lbRegistreradeArtiklar.SelectedItem;
-                    using (DataAccess dataAccess = new DataAccess())
+                    DBAccess.UnregisterArtikelFromPerson(selectedArtikel);
+                    Artikel a = DBAccess.HamtaArtikelFranId(selectedArtikel.Id);
+                    if (a.Status == Status.INNE) 
                     {
-                        dataAccess.UnregisterArtikelFromPerson(selectedArtikel);
-                        Artikel a = dataAccess.HamtaArtikelFranId(selectedArtikel.Id);
-                        if (a.Status == Status.INNE) 
-                        {
-                            Handelse h = new Handelse() { PersId = nuvarandePerson.Id, ArtikelId = a.Id, Typ = HandelseTyp.AVREGISTRERING};
-                            dataAccess.InfogaHandelse(h);
-                        }
-                        FyllHandelser(dataAccess.HamtaHandelserPerson(nuvarandePerson));
-                        FyllRegistreradeArtiklar(dataAccess.HamtaRegistreradeArtiklar(nuvarandePerson));
+                        Handelse h = new Handelse() { PersId = nuvarandePerson.Id, ArtikelId = a.Id, Typ = HandelseTyp.AVREGISTRERING};
+                        DBAccess.InfogaHandelse(h);
                     }
+                    FyllHandelser(DBAccess.HamtaHandelserPerson(nuvarandePerson));
+                    FyllRegistreradeArtiklar(DBAccess.HamtaRegistreradeArtiklar(nuvarandePerson));
             }
         }
 
         private void cmdArtikelSok_Click(object sender, EventArgs e)
         {
             List<Artikel> artiklar;
-            using (DataAccess dataAccess = new DataAccess())
-            {
-                artiklar = dataAccess.HamtaSokRegistreradeArtiklar(nuvarandePerson, txtArtikelSok.Text);
-            }
+            artiklar = DBAccess.HamtaSokRegistreradeArtiklar(nuvarandePerson, txtArtikelSok.Text);
             FyllRegistreradeArtiklar(artiklar);
         }
 
         private void cmdShowAllRegistrerade_Click(object sender, EventArgs e)
         {
             List<Artikel> artiklar;
-            using (DataAccess dataAccess = new DataAccess())
-            {
-                artiklar = dataAccess.HamtaRegistreradeArtiklar(nuvarandePerson);
-            }
+            artiklar = DBAccess.HamtaRegistreradeArtiklar(nuvarandePerson);
             FyllRegistreradeArtiklar(artiklar);
         }
 
         private void cmdRegistreraArtikel_Click(object sender, EventArgs e)
         {
             List<Artikel> ledigaArtiklar;
-            using (DataAccess dataAccess = new DataAccess())
-            {
-                ledigaArtiklar = dataAccess.HamtaLedigaArtiklar();
-            }
+            ledigaArtiklar = DBAccess.HamtaLedigaArtiklar();
             var dialog = new ValjArtikelDialog(ledigaArtiklar);
             dialog.ShowDialog();
             if(dialog.ValdArtikel != null)
@@ -142,10 +123,7 @@ namespace ScannerDialog
             if (!string.IsNullOrWhiteSpace(scannedInput))
             {
                 Artikel artikel;
-                using (DataAccess dataAccess = new DataAccess())
-                {
-                    artikel = dataAccess.HamtaArtikelFranSerieNr(scannedInput);
-                }
+                artikel = DBAccess.HamtaArtikelFranSerieNr(scannedInput);
                 if (artikel is null)
                 {
                     MessageBox.Show("Inga träffar");
@@ -165,18 +143,15 @@ namespace ScannerDialog
         private void KnytArtikel(Artikel artikel)
         {
             Artikel a;
-            using (DataAccess dataAccess = new DataAccess())
+            DBAccess.RegisterArtikelToPerson(nuvarandePerson, artikel);
+            a = DBAccess.HamtaArtikelFranId(artikel.Id);
+            if (a != null && a.Status == Status.UTE)
             {
-                dataAccess.RegisterArtikelToPerson(nuvarandePerson, artikel);
-                a = dataAccess.HamtaArtikelFranId(artikel.Id);
-                if (a != null && a.Status == Status.UTE)
-                {
-                    Handelse h = new Handelse() { PersId = nuvarandePerson.Id, ArtikelId = a.Id, Typ = HandelseTyp.REGISTRERING };
-                    dataAccess.InfogaHandelse(h);
-                }
-                FyllRegistreradeArtiklar(dataAccess.HamtaRegistreradeArtiklar(nuvarandePerson));
-                FyllHandelser(dataAccess.HamtaHandelserPerson(nuvarandePerson));
+                Handelse h = new Handelse() { PersId = nuvarandePerson.Id, ArtikelId = a.Id, Typ = HandelseTyp.REGISTRERING };
+                DBAccess.InfogaHandelse(h);
             }
+            FyllRegistreradeArtiklar(DBAccess.HamtaRegistreradeArtiklar(nuvarandePerson));
+            FyllHandelser(DBAccess.HamtaHandelserPerson(nuvarandePerson));
             if (a != null && cbPrintOnScan.Checked)
             {
                 Printing.PrintLabel(a, nuvarandePerson, AppSettings.Skrivare);
@@ -217,18 +192,13 @@ namespace ScannerDialog
         private void cmdDelete_Click(object sender, EventArgs e)
         {
             List<Artikel> registreradeArtiklar;
-            using (DataAccess dataAccess = new DataAccess())
-            {
-                registreradeArtiklar = dataAccess.HamtaRegistreradeArtiklar(nuvarandePerson);
-            }
+
+            registreradeArtiklar = DBAccess.HamtaRegistreradeArtiklar(nuvarandePerson);
             if(registreradeArtiklar.Count < 1)
             {
                 if (MessageBox.Show("Är du säker?", "Prylex", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    using (DataAccess dataAccess = new DataAccess())
-                    {
-                        dataAccess.RaderaPerson(this.nuvarandePerson);
-                    }
+                    DBAccess.RaderaPerson(this.nuvarandePerson);
                     this.DialogResult = DialogResult.OK;
                 }
             }
@@ -262,15 +232,12 @@ namespace ScannerDialog
                 updateraPerson.ShowDialog();
                 if (updateraPerson.Result != null)
                 {
-                    using (DataAccess dataAccess = new DataAccess())
+                    DBAccess.UpdateraPerson(updateraPerson.Result);
+                    Person personFromDB = DBAccess.HamtaPersonFranId(updateraPerson.Result.Id);
+                    if (personFromDB != null)
                     {
-                        dataAccess.UpdateraPerson(updateraPerson.Result);
-                        Person personFromDB = dataAccess.HamtaPersonFranId(updateraPerson.Result.Id);
-                        if (personFromDB != null)
-                        {
-                            this.nuvarandePerson = personFromDB;
-                            FyllFalt(this.nuvarandePerson);
-                        }
+                        this.nuvarandePerson = personFromDB;
+                        FyllFalt(this.nuvarandePerson);
                     }
                 }
             }
@@ -303,10 +270,7 @@ namespace ScannerDialog
             {
                 Handelse handelse = (Handelse)lbHandelser.SelectedItem;
                 Artikel artikelFromId;
-                using (DataAccess dataAccess = new DataAccess())
-                {
-                    artikelFromId = dataAccess.HamtaArtikelFranId(handelse.ArtikelId);
-                }
+                artikelFromId = DBAccess.HamtaArtikelFranId(handelse.ArtikelId);
                 if (artikelFromId is null)
                 {
                     txtHandelseArtikel.Text = noPersonBound;

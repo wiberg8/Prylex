@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using PrylanLibary;
 using PrylanLibary.Models;
+using static ScannerDialog.Program;
 
 namespace ScannerDialog
 {
@@ -42,10 +43,7 @@ namespace ScannerDialog
 
         private void cmdSok_Click(object sender, EventArgs e)
         {
-            using (DataAccess dataAccess = new DataAccess())
-            {
-                FyllDataGrid(dataAccess.HamtaSokPersoner(txtSok.Text));
-            }
+            FyllDataGrid(DBAccess.HamtaSokPersoner(txtSok.Text));
         }
 
         private void dgvPersoner_MouseDoubleClick_1(object sender, MouseEventArgs e)

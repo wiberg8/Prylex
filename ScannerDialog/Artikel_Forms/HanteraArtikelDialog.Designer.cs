@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gbRegisterPerson = new System.Windows.Forms.GroupBox();
+            this.cmdEttiketSerieNr = new System.Windows.Forms.Button();
             this.cmdRegistreraScanna = new System.Windows.Forms.Button();
             this.cmdSkrivUtEttiket = new System.Windows.Forms.Button();
             this.txtRegistredPerson = new System.Windows.Forms.TextBox();
@@ -63,7 +64,6 @@
             this.lbHandelser = new System.Windows.Forms.ListBox();
             this.cmdNyHandelse = new System.Windows.Forms.Button();
             this.laHandelsePersId = new System.Windows.Forms.Label();
-            this.cmdEttiketSerieNr = new System.Windows.Forms.Button();
             this.gbRegisterPerson.SuspendLayout();
             this.gbFalt.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -84,19 +84,29 @@
             this.gbRegisterPerson.TabStop = false;
             this.gbRegisterPerson.Text = "Registrera / Avregistrera person";
             // 
+            // cmdEttiketSerieNr
+            // 
+            this.cmdEttiketSerieNr.Location = new System.Drawing.Point(13, 93);
+            this.cmdEttiketSerieNr.Name = "cmdEttiketSerieNr";
+            this.cmdEttiketSerieNr.Size = new System.Drawing.Size(150, 23);
+            this.cmdEttiketSerieNr.TabIndex = 17;
+            this.cmdEttiketSerieNr.Text = "Ettiket (Steckkod)";
+            this.cmdEttiketSerieNr.UseVisualStyleBackColor = true;
+            this.cmdEttiketSerieNr.Click += new System.EventHandler(this.cmdEttiketSerieNr_Click);
+            // 
             // cmdRegistreraScanna
             // 
             this.cmdRegistreraScanna.Location = new System.Drawing.Point(13, 69);
             this.cmdRegistreraScanna.Name = "cmdRegistreraScanna";
             this.cmdRegistreraScanna.Size = new System.Drawing.Size(150, 23);
             this.cmdRegistreraScanna.TabIndex = 16;
-            this.cmdRegistreraScanna.Text = "Registrera (Scanna)";
+            this.cmdRegistreraScanna.Text = "Registrera (Legitimation)";
             this.cmdRegistreraScanna.UseVisualStyleBackColor = true;
             this.cmdRegistreraScanna.Click += new System.EventHandler(this.cmdRegistreraScanna_Click);
             // 
             // cmdSkrivUtEttiket
             // 
-            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(169, 69);
+            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(169, 93);
             this.cmdSkrivUtEttiket.Name = "cmdSkrivUtEttiket";
             this.cmdSkrivUtEttiket.Size = new System.Drawing.Size(153, 23);
             this.cmdSkrivUtEttiket.TabIndex = 15;
@@ -432,16 +442,6 @@
             this.laHandelsePersId.Size = new System.Drawing.Size(43, 13);
             this.laHandelsePersId.TabIndex = 34;
             this.laHandelsePersId.Text = "Person:";
-            // 
-            // cmdEttiketSerieNr
-            // 
-            this.cmdEttiketSerieNr.Location = new System.Drawing.Point(169, 93);
-            this.cmdEttiketSerieNr.Name = "cmdEttiketSerieNr";
-            this.cmdEttiketSerieNr.Size = new System.Drawing.Size(153, 23);
-            this.cmdEttiketSerieNr.TabIndex = 17;
-            this.cmdEttiketSerieNr.Text = "Ettiket (Steckkod)";
-            this.cmdEttiketSerieNr.UseVisualStyleBackColor = true;
-            this.cmdEttiketSerieNr.Click += new System.EventHandler(this.cmdEttiketSerieNr_Click);
             // 
             // HanteraArtikelDialog
             // 

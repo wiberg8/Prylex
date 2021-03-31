@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using PrylanLibary;
 using PrylanLibary.Models;
 using PrylanLibary.Enums;
+using static ScannerDialog.Program;
 
 namespace ScannerDialog
 {
@@ -51,10 +52,7 @@ namespace ScannerDialog
 
         private void cmdSok_Click(object sender, EventArgs e)
         {
-            using (DataAccess dataAccess = new DataAccess())
-            {
-                FyllDataGrid(dataAccess.HamtaSokArtiklarLediga(txtSok.Text));
-            }
+            FyllDataGrid(DBAccess.HamtaSokArtiklarLediga(txtSok.Text));
         }
 
         private void dgvArtiklar_MouseDoubleClick_1(object sender, MouseEventArgs e)

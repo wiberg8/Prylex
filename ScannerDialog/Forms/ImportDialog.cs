@@ -135,27 +135,24 @@ namespace ScannerDialog.Forms
                 List<ImportPerson> importer = new List<ImportPerson>();
                 PersonValidator validator = new PersonValidator();
                 int lastInsertId = 0;
-                using (DataAccess dataAccess = new DataAccess())
+                foreach (Person p in lbPersoner.Items)
                 {
-                    foreach (Person p in lbPersoner.Items)
+                    laCurrentImportPerson.Text = p.ToString();
+                    ImportPerson importPerson = new ImportPerson() { Person = p };
+                    importPerson.Errors = validator.Validate(p);
+                    importPerson.AlreadyExist = DBAccess.ExisterarPerson(importPerson.Person.PersNr);
+                    importPerson.Success = importPerson.Errors.IsValid && !importPerson.AlreadyExist;
+                    if (importPerson.Success)
                     {
-                        laCurrentImportPerson.Text = p.ToString();
-                        ImportPerson importPerson = new ImportPerson() { Person = p };
-                        importPerson.Errors = validator.Validate(p);
-                        importPerson.AlreadyExist = dataAccess.ExisterarPerson(importPerson.Person.PersNr);
-                        importPerson.Success = importPerson.Errors.IsValid && !importPerson.AlreadyExist;
-                        if (importPerson.Success)
-                        {
-                            await Task.Run(() => dataAccess.InfogaPerson(importPerson.Person));
-                            if (DataAccess.LastInsertRowId == lastInsertId)
-                                importPerson.Success = false;
-                            else
-                                importPerson.Person.Id = DataAccess.LastInsertRowId;
-                        }
-                        progressBar.Increment(1);
-                        importedCount += 1;
-                        importer.Add(importPerson);
+                        await Task.Run(() => DBAccess.InfogaPerson(importPerson.Person));
+                        if (DBAccess.LastInsertRowId == lastInsertId)
+                            importPerson.Success = false;
+                        else
+                            importPerson.Person.Id = DBAccess.LastInsertRowId;
                     }
+                    progressBar.Increment(1);
+                    importedCount += 1;
+                    importer.Add(importPerson);
                 }
                 progressBar.Value = 0;
                 progressBar.Visible = false;

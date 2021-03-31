@@ -27,8 +27,8 @@ namespace ScannerDialog.Forms
         {
             InitializeComponent();
             AppSettings.PropertyChanged += Installningar_Change;
-            DataAccess.ArtikelChange += Artiklar_Change;
-            DataAccess.ConnectionChanged += Database_Connection_Changed;
+            DBAccess.ArtikelChange += Artiklar_Change;
+            DBAccess.ConnectionChanged += Database_Connection_Changed;
             this.Icon = Properties.Resources.ApplikationIkon;
         }
 
@@ -115,19 +115,17 @@ namespace ScannerDialog.Forms
  
         private void cmdSearch_Click(object sender, EventArgs e)
         {
-            using (var dataAccess = new DataAccess())
+
+            switch (tabArtiklarPersoner.SelectedTab.Name)
             {
-                switch (tabArtiklarPersoner.SelectedTab.Name)
-                {
-                    case "tabArtiklar":
-                        List<Artikel> artiklar = dataAccess.HamtaSokArtiklar(txtSok.Text);
-                        FyllDataGrid(artiklar);
-                        break;
-                    case "tabPersoner":
-                        List<Person> personer = dataAccess.HamtaSokPersoner(txtSok.Text);
-                        FyllDataGrid(personer);
-                        break;
-                }
+                case "tabArtiklar":
+                    List<Artikel> artiklar = DBAccess.HamtaSokArtiklar(txtSok.Text);
+                    FyllDataGrid(artiklar);
+                    break;
+                case "tabPersoner":
+                    List<Person> personer = DBAccess.HamtaSokPersoner(txtSok.Text);
+                    FyllDataGrid(personer);
+                    break;
             }
         }
 
@@ -149,14 +147,11 @@ namespace ScannerDialog.Forms
         private void txtSok_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-            {
-                using (var dataAccess = new DataAccess())
-                {
-                    if (tabArtiklarPersoner.SelectedTab == tabArtiklar)
-                        FyllDataGrid(dataAccess.HamtaSokArtiklar(txtSok.Text));
-                    if (tabArtiklarPersoner.SelectedTab == tabPersoner)
-                        FyllDataGrid(dataAccess.HamtaSokArtiklar(txtSok.Text));
-                }
+        {
+                if (tabArtiklarPersoner.SelectedTab == tabArtiklar)
+                    FyllDataGrid(DBAccess.HamtaSokArtiklar(txtSok.Text));
+                if (tabArtiklarPersoner.SelectedTab == tabPersoner)
+                    FyllDataGrid(DBAccess.HamtaSokArtiklar(txtSok.Text));
             }
 
         }
@@ -175,10 +170,7 @@ namespace ScannerDialog.Forms
             }
 
             Artikel artikelFromDb;
-            using (DataAccess dataAccess = new DataAccess())
-            {
-                artikelFromDb = dataAccess.HamtaArtikelFranSerieNr(scannedInput);
-            }
+            artikelFromDb = DBAccess.HamtaArtikelFranSerieNr(scannedInput);
             if (artikelFromDb is null)
             {
                 MessageBox.Show("Ingen träff");
@@ -210,17 +202,14 @@ namespace ScannerDialog.Forms
 
         private void RefreshDataGrids()
         {
-            using (var dataAccess = new DataAccess())
+            switch (tabArtiklarPersoner.SelectedTab.Name)
             {
-                switch (tabArtiklarPersoner.SelectedTab.Name)
-                {
-                    case "tabArtiklar":
-                        FyllDataGrid(dataAccess.HamtaArtiklar());
-                        break;
-                    case "tabPersoner":
-                        FyllDataGrid(dataAccess.HamtaPersoner());
-                        break;
-                }
+                case "tabArtiklar":
+                    FyllDataGrid(DBAccess.HamtaArtiklar());
+                    break;
+                case "tabPersoner":
+                    FyllDataGrid(DBAccess.HamtaPersoner());
+                    break;
             }
         }
 
@@ -259,9 +248,7 @@ namespace ScannerDialog.Forms
                 dgvArtiklar.Rows.Clear();
                 var hanteraArtikelDialog = new HanteraArtikelDialog(a);
                 hanteraArtikelDialog.ShowDialog();
-                DataAccess dataAccess = new DataAccess();
-                FyllDataGrid(dataAccess.HamtaArtiklar());
-                dataAccess.Close();
+                FyllDataGrid(DBAccess.HamtaArtiklar());
             }
         }
 
@@ -273,9 +260,7 @@ namespace ScannerDialog.Forms
                 dgvPersoner.Rows.Clear();
                 var hanteraPersonDialog = new HanteraPersonDialog(p);
                 hanteraPersonDialog.ShowDialog();
-                var dataAccess = new DataAccess();
-                FyllDataGrid(dataAccess.HamtaPersoner());
-                dataAccess.Close();
+                FyllDataGrid(DBAccess.HamtaPersoner());
             }
         }
 

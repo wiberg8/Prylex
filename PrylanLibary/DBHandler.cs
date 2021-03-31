@@ -26,12 +26,12 @@ namespace PrylanLibary
         public static int RecordCount;
         public static string Exception;
         
-        public static void SetConnection(string filePath)
+        public static void SetConnection(string filePath, EventHandler connectionChanged)
         {
             DBConn = new SQLiteConnection();
             DBConn.ConnectionString = "Data Source =" + filePath + "; Version = 3; FailIfMissing=True";
-            if (DataAccess.ConnectionChanged != null)
-                DataAccess.ConnectionChanged.Invoke(DBConn.ConnectionString, new EventArgs());
+            if (connectionChanged != null)
+                connectionChanged.Invoke(DBConn.ConnectionString, new EventArgs());
         }
         public static bool Error()
         {

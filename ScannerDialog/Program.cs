@@ -15,7 +15,7 @@ namespace ScannerDialog
     static class Program
     {
         public static Installningar AppSettings { get; set; } = new Installningar();
-
+        public static DataAccess DBAccess { get; set; }
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -37,10 +37,12 @@ namespace ScannerDialog
             AppSettings.FileName = Config.InstallningarFileName;
             AppSettings.Ladda();
             BackupDatabase();
-            DataAccess.CurrentFile = AppSettings.Databas;
+            DBAccess = new DataAccess() { CurrentFile = AppSettings.Databas };
+            DBAccess.TryOpen();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMain());
+            DBAccess.Close();
             AppSettings.Spara();
         }
 
