@@ -92,7 +92,7 @@ namespace ScannerDialog.Forms
             DialogResult dialogResult = fileDialog.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
-                if (!DataAccess.CreateFile(fileDialog.FileName))
+                if (!DBAccess.CreateFile(fileDialog.FileName))
                 {
                     MessageBox.Show("Lyckades ej skapa databasen filen");
                 }

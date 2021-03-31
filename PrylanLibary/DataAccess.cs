@@ -12,37 +12,38 @@ namespace PrylanLibary
 {
     public class DataAccess
     {
+        private DBHandler dbHandler = new DBHandler();
         private string currentFile;
-        public string CurrentFile { get { return currentFile; } set { DBHandler.SetConnection(value, ConnectionChanged); currentFile = value; } }
+        public string CurrentFile { get { return currentFile; } set { dbHandler.SetConnection(value, ConnectionChanged); currentFile = value; } }
         public EventHandler ConnectionChanged { get; set; }
-        public int LastInsertRowId { get { return DBHandler.GetLastInsertId(); } }
+        public int LastInsertRowId { get { return dbHandler.GetLastInsertId(); } }
 
         public EventHandler ArtikelChange { get; set; }
         public EventHandler PersonChange { get; set; }
 
         public bool TryOpen()
         {
-            return DBHandler.TryOpen();
+            return dbHandler.TryOpen();
         }
 
         public void Close()
         {
-            DBHandler.Close();
+            dbHandler.Close();
         }
 
-        public static bool CreateFile(string fileName)
+        public bool CreateFile(string fileName)
         {
-            return DBHandler.CreateFile(fileName);
+            return dbHandler.CreateFile(fileName);
         }
 
         public List<string> GetUniqueBesk()
         {
             List<Artikel> artiklar = new List<Artikel>();
             List<string> beskrivningar = new List<string>();
-            DBHandler.ExecQuery("SELECT DISTINCT Besk FROM artiklar");
-            if(DBHandler.DBDT != null)
+            dbHandler.ExecQuery("SELECT DISTINCT Besk FROM artiklar");
+            if(dbHandler.DBDT != null)
             {
-                foreach (DataRow R in DBHandler.DBDT.Rows)
+                foreach (DataRow R in dbHandler.DBDT.Rows)
                 {
                     if (!string.IsNullOrWhiteSpace(R["Besk"].ToString()))
                     {
@@ -56,10 +57,10 @@ namespace PrylanLibary
         {
             List<Artikel> artiklar = new List<Artikel>();
             List<string> Os = new List<string>();
-            DBHandler.ExecQuery("SELECT DISTINCT Os FROM artiklar");
-            if (DBHandler.DBDT != null)
+            dbHandler.ExecQuery("SELECT DISTINCT Os FROM artiklar");
+            if (dbHandler.DBDT != null)
             {
-                foreach (DataRow R in DBHandler.DBDT.Rows)
+                foreach (DataRow R in dbHandler.DBDT.Rows)
                 {
                     if (!string.IsNullOrWhiteSpace(R["Os"].ToString()))
                     {
@@ -73,10 +74,10 @@ namespace PrylanLibary
         {
             List<Artikel> artiklar = new List<Artikel>();
             List<string> tillhorighet = new List<string>();
-            DBHandler.ExecQuery("SELECT DISTINCT Tillhorighet FROM personer");
-            if (DBHandler.DBDT != null)
+            dbHandler.ExecQuery("SELECT DISTINCT Tillhorighet FROM personer");
+            if (dbHandler.DBDT != null)
             {
-                foreach (DataRow R in DBHandler.DBDT.Rows)
+                foreach (DataRow R in dbHandler.DBDT.Rows)
                 {
                     if (!string.IsNullOrWhiteSpace(R["Tillhorighet"].ToString()))
                     {
@@ -90,10 +91,10 @@ namespace PrylanLibary
         {
             List<Artikel> artiklar = new List<Artikel>();
             List<string> handelser = new List<string>();
-            DBHandler.ExecQuery("SELECT DISTINCT FriText FROM handelser");
-            if (DBHandler.DBDT != null)
+            dbHandler.ExecQuery("SELECT DISTINCT FriText FROM handelser");
+            if (dbHandler.DBDT != null)
             {
-                foreach (DataRow R in DBHandler.DBDT.Rows)
+                foreach (DataRow R in dbHandler.DBDT.Rows)
                 {
                     if (!string.IsNullOrWhiteSpace(R["FriText"].ToString()))
                     {
@@ -108,47 +109,47 @@ namespace PrylanLibary
         {
             List<Artikel> hamtadeArtiklar = new List<Artikel>();
 
-            DBHandler.ExecQuery("SELECT * FROM artiklar ORDER BY Id");
-            FyllArtikelLista(hamtadeArtiklar, DBHandler.DBDT);
+            dbHandler.ExecQuery("SELECT * FROM artiklar ORDER BY Id");
+            FyllArtikelLista(hamtadeArtiklar, dbHandler.DBDT);
             return hamtadeArtiklar;
         }
         public List<Artikel> HamtaLedigaArtiklar()
         {
             List<Artikel> hamtadeArtiklar = new List<Artikel>();
 
-            DBHandler.AddParam("@Status", Status.INNE);
-            DBHandler.ExecQuery("SELECT * FROM artiklar WHERE Status = @Status");
-            FyllArtikelLista(hamtadeArtiklar, DBHandler.DBDT);
+            dbHandler.AddParam("@Status", Status.INNE);
+            dbHandler.ExecQuery("SELECT * FROM artiklar WHERE Status = @Status");
+            FyllArtikelLista(hamtadeArtiklar, dbHandler.DBDT);
             return hamtadeArtiklar;
         }
         public List<Artikel> HamtaSokArtiklar(string sok)
         {
             List<Artikel> hamtadeArtiklar = new List<Artikel>();
 
-            DBHandler.AddParam("@Sok", $"{sok}%");
-            DBHandler.ExecQuery("SELECT * FROM artiklar WHERE Id LIKE @Sok OR Besk LIKE @Sok OR Stoldtag LIKE @Sok OR Datornamn LIKE @Sok OR SerieNr LIKE @Sok OR Mac LIKE @Sok OR Os LIKE @Sok OR Inkop LIKE @Sok OR Ovrigt LIKE @Sok ORDER BY Id");
-            FyllArtikelLista(hamtadeArtiklar, DBHandler.DBDT);
+            dbHandler.AddParam("@Sok", $"{sok}%");
+            dbHandler.ExecQuery("SELECT * FROM artiklar WHERE Id LIKE @Sok OR Besk LIKE @Sok OR Stoldtag LIKE @Sok OR Datornamn LIKE @Sok OR SerieNr LIKE @Sok OR Mac LIKE @Sok OR Os LIKE @Sok OR Inkop LIKE @Sok OR Ovrigt LIKE @Sok ORDER BY Id");
+            FyllArtikelLista(hamtadeArtiklar, dbHandler.DBDT);
             return hamtadeArtiklar;
         }
         public List<Artikel> HamtaSokArtiklarLediga(string sok)
         {
             List<Artikel> hamtadeArtiklar = new List<Artikel>();
 
-            DBHandler.AddParam("@Sok", $"{sok}%");
-            DBHandler.AddParam("@Status", Status.INNE);
-            DBHandler.ExecQuery("SELECT * FROM artiklar WHERE (Id LIKE @Sok OR Besk LIKE @Sok OR Stoldtag LIKE @Sok OR Datornamn LIKE @Sok OR SerieNr LIKE @Sok OR Mac LIKE @Sok OR Os LIKE @Sok OR Inkop LIKE @Sok OR Ovrigt LIKE @Sok) AND Status = @Status ORDER BY Id");
-            FyllArtikelLista(hamtadeArtiklar, DBHandler.DBDT);
+            dbHandler.AddParam("@Sok", $"{sok}%");
+            dbHandler.AddParam("@Status", Status.INNE);
+            dbHandler.ExecQuery("SELECT * FROM artiklar WHERE (Id LIKE @Sok OR Besk LIKE @Sok OR Stoldtag LIKE @Sok OR Datornamn LIKE @Sok OR SerieNr LIKE @Sok OR Mac LIKE @Sok OR Os LIKE @Sok OR Inkop LIKE @Sok OR Ovrigt LIKE @Sok) AND Status = @Status ORDER BY Id");
+            FyllArtikelLista(hamtadeArtiklar, dbHandler.DBDT);
             return hamtadeArtiklar;
         }
         public Artikel HamtaArtikelFranId(int Id)
         {
-            DBHandler.AddParam("@Id", Id);
-            DBHandler.ExecQuery("SELECT * FROM artiklar WHERE Id=@Id");
-            if (DBHandler.DBDT is null)
+            dbHandler.AddParam("@Id", Id);
+            dbHandler.ExecQuery("SELECT * FROM artiklar WHERE Id=@Id");
+            if (dbHandler.DBDT is null)
                 return null;
-            if (DBHandler.DBDT.Rows.Count > 0)
+            if (dbHandler.DBDT.Rows.Count > 0)
             {
-                var R = DBHandler.DBDT.Rows[0];
+                var R = dbHandler.DBDT.Rows[0];
                 try
                 {
                     Artikel a = new Artikel(int.Parse(R["Id"].ToString()))
@@ -178,13 +179,13 @@ namespace PrylanLibary
         }
         public Artikel HamtaArtikelFranSerieNr(string serieNr)
         {
-            DBHandler.AddParam("@SerieNr", serieNr);
-            DBHandler.ExecQuery("SELECT * FROM artiklar WHERE SerieNr=@SerieNr");
-            if (DBHandler.DBDT is null)
+            dbHandler.AddParam("@SerieNr", serieNr);
+            dbHandler.ExecQuery("SELECT * FROM artiklar WHERE SerieNr=@SerieNr");
+            if (dbHandler.DBDT is null)
                 return null;
-            if (DBHandler.DBDT.Rows.Count > 0)
+            if (dbHandler.DBDT.Rows.Count > 0)
             {
-                var R = DBHandler.DBDT.Rows[0];
+                var R = dbHandler.DBDT.Rows[0];
                 try
                 {
                     Artikel a = new Artikel(int.Parse(R["Id"].ToString()))
@@ -214,75 +215,75 @@ namespace PrylanLibary
         }
         public void InfogaArtikel(Artikel artikel)
         {
-            DBHandler.AddParam("@Besk", artikel.Beskrivning);
-            DBHandler.AddParam("@Stoldtag", artikel.StoldTag);
-            DBHandler.AddParam("@Datornamn", artikel.DatorNamn);
-            DBHandler.AddParam("@SerieNr", artikel.SerieNr);
-            DBHandler.AddParam("@Mac", artikel.Mac);
-            DBHandler.AddParam("@Os", artikel.Os);
-            DBHandler.AddParam("@Inkop", artikel.Inkop);
-            DBHandler.AddParam("@Ovrigt", artikel.Ovrigt);
-            DBHandler.ExecQuery("INSERT INTO artiklar (Besk,Stoldtag,Datornamn,SerieNr,Mac,Os,Inkop,Ovrigt) VALUES(@Besk,@Stoldtag,@Datornamn,@SerieNr,@Mac,@Os,@Inkop,@Ovrigt)");
+            dbHandler.AddParam("@Besk", artikel.Beskrivning);
+            dbHandler.AddParam("@Stoldtag", artikel.StoldTag);
+            dbHandler.AddParam("@Datornamn", artikel.DatorNamn);
+            dbHandler.AddParam("@SerieNr", artikel.SerieNr);
+            dbHandler.AddParam("@Mac", artikel.Mac);
+            dbHandler.AddParam("@Os", artikel.Os);
+            dbHandler.AddParam("@Inkop", artikel.Inkop);
+            dbHandler.AddParam("@Ovrigt", artikel.Ovrigt);
+            dbHandler.ExecQuery("INSERT INTO artiklar (Besk,Stoldtag,Datornamn,SerieNr,Mac,Os,Inkop,Ovrigt) VALUES(@Besk,@Stoldtag,@Datornamn,@SerieNr,@Mac,@Os,@Inkop,@Ovrigt)");
             if (ArtikelChange != null)
                 ArtikelChange.Invoke(artikel, new EventArgs());
         }
         public void UpdateraArtikel(Artikel artikel)
         {
-            DBHandler.AddParam("@Besk", artikel.Beskrivning);
-            DBHandler.AddParam("@Stoldtag", artikel.StoldTag);
-            DBHandler.AddParam("@Datornamn", artikel.DatorNamn);
-            DBHandler.AddParam("@SerieNr", artikel.SerieNr);
-            DBHandler.AddParam("@Mac", artikel.Mac);
-            DBHandler.AddParam("@Os", artikel.Os);
-            DBHandler.AddParam("@Ovrigt", artikel.Ovrigt);
-            DBHandler.AddParam("@Id", artikel.Id);
-            DBHandler.ExecQuery("UPDATE artiklar SET Besk=@Besk,Stoldtag=@Stoldtag,Datornamn=@Datornamn,SerieNr=@SerieNr,Mac=@Mac,Os=@Os,Ovrigt=@Ovrigt WHERE Id=@Id");
+            dbHandler.AddParam("@Besk", artikel.Beskrivning);
+            dbHandler.AddParam("@Stoldtag", artikel.StoldTag);
+            dbHandler.AddParam("@Datornamn", artikel.DatorNamn);
+            dbHandler.AddParam("@SerieNr", artikel.SerieNr);
+            dbHandler.AddParam("@Mac", artikel.Mac);
+            dbHandler.AddParam("@Os", artikel.Os);
+            dbHandler.AddParam("@Ovrigt", artikel.Ovrigt);
+            dbHandler.AddParam("@Id", artikel.Id);
+            dbHandler.ExecQuery("UPDATE artiklar SET Besk=@Besk,Stoldtag=@Stoldtag,Datornamn=@Datornamn,SerieNr=@SerieNr,Mac=@Mac,Os=@Os,Ovrigt=@Ovrigt WHERE Id=@Id");
             if (ArtikelChange != null)
                 ArtikelChange.Invoke(artikel, new EventArgs());
         }
         public bool ExisterarArtikel(Artikel artikel)
         {
-            DBHandler.AddParam("@SerieNr", artikel.SerieNr);
-            DBHandler.AddParam("@Id", artikel.Id);
-            DBHandler.ExecQuery("SELECT SerieNr FROM artiklar WHERE UPPER(SerieNr)=UPPER(@SerieNr) AND SerieNr <> '' AND NOT Id=@Id");
+            dbHandler.AddParam("@SerieNr", artikel.SerieNr);
+            dbHandler.AddParam("@Id", artikel.Id);
+            dbHandler.ExecQuery("SELECT SerieNr FROM artiklar WHERE UPPER(SerieNr)=UPPER(@SerieNr) AND SerieNr <> '' AND NOT Id=@Id");
 
-            return DBHandler.RecordCount > 0;
+            return dbHandler.RecordCount > 0;
         }
         public void RaderaArtikel(Artikel artikel)
         {
-            DBHandler.AddParam("@Id", artikel.Id);
-            DBHandler.ExecQuery("DELETE FROM artiklar WHERE Id=@Id");
+            dbHandler.AddParam("@Id", artikel.Id);
+            dbHandler.ExecQuery("DELETE FROM artiklar WHERE Id=@Id");
         }
         public void RegisterArtikelToPerson(Person person, Artikel artikel)
         {
-            DBHandler.AddParam("@pId", person.Id);
-            DBHandler.AddParam("@aId", artikel.Id);
-            DBHandler.AddParam("@Status", Status.UTE);
-            DBHandler.ExecQuery("UPDATE artiklar SET PersId=@pId,Status=@Status WHERE Id=@aId");
+            dbHandler.AddParam("@pId", person.Id);
+            dbHandler.AddParam("@aId", artikel.Id);
+            dbHandler.AddParam("@Status", Status.UTE);
+            dbHandler.ExecQuery("UPDATE artiklar SET PersId=@pId,Status=@Status WHERE Id=@aId");
         }
         public void UnregisterArtikelFromPerson(Artikel artikel)
         {
-            DBHandler.AddParam("@Id", artikel.Id);
-            DBHandler.AddParam("@Status", Status.INNE);
-            DBHandler.ExecQuery("UPDATE artiklar SET PersId=null,Status=@Status WHERE Id=@Id");
+            dbHandler.AddParam("@Id", artikel.Id);
+            dbHandler.AddParam("@Status", Status.INNE);
+            dbHandler.ExecQuery("UPDATE artiklar SET PersId=null,Status=@Status WHERE Id=@Id");
         }
         public List<Artikel> HamtaRegistreradeArtiklar(Person person)
         {
             List<Artikel> personArtiklar = new List<Artikel>();
-            DBHandler.AddParam("@pId", person.Id);
-            DBHandler.AddParam("@Status", Status.UTE);
-            DBHandler.ExecQuery("SELECT * FROM artiklar WHERE PersId = @pId AND Status = @Status");
-            FyllArtikelLista(personArtiklar, DBHandler.DBDT);
+            dbHandler.AddParam("@pId", person.Id);
+            dbHandler.AddParam("@Status", Status.UTE);
+            dbHandler.ExecQuery("SELECT * FROM artiklar WHERE PersId = @pId AND Status = @Status");
+            FyllArtikelLista(personArtiklar, dbHandler.DBDT);
             return personArtiklar;
         }
         public List<Artikel> HamtaSokRegistreradeArtiklar(Person person, string sok)
         {
             List<Artikel> personArtiklar = new List<Artikel>();
-            DBHandler.AddParam("@pId", person.Id);
-            DBHandler.AddParam("@Status", Status.UTE);
-            DBHandler.AddParam("@Sok", $"{sok}%");
-            DBHandler.ExecQuery("SELECT * FROM artiklar WHERE (Id LIKE @Sok OR Besk LIKE @Sok OR Stoldtag LIKE @Sok OR Datornamn LIKE @Sok OR SerieNr LIKE @Sok OR Mac LIKE @Sok OR Os LIKE @Sok OR Inkop LIKE @Sok OR Ovrigt LIKE @Sok) AND PersId = @pId AND Status = @Status ORDER BY Id");
-            FyllArtikelLista(personArtiklar, DBHandler.DBDT);
+            dbHandler.AddParam("@pId", person.Id);
+            dbHandler.AddParam("@Status", Status.UTE);
+            dbHandler.AddParam("@Sok", $"{sok}%");
+            dbHandler.ExecQuery("SELECT * FROM artiklar WHERE (Id LIKE @Sok OR Besk LIKE @Sok OR Stoldtag LIKE @Sok OR Datornamn LIKE @Sok OR SerieNr LIKE @Sok OR Mac LIKE @Sok OR Os LIKE @Sok OR Inkop LIKE @Sok OR Ovrigt LIKE @Sok) AND PersId = @pId AND Status = @Status ORDER BY Id");
+            FyllArtikelLista(personArtiklar, dbHandler.DBDT);
             return personArtiklar;
         }
 
@@ -290,37 +291,37 @@ namespace PrylanLibary
         {
             var hamtadePersoner = new List<Person>();
 
-            DBHandler.ExecQuery("SELECT * FROM personer ORDER BY Id");
-            FyllPersonLista(hamtadePersoner, DBHandler.DBDT);
+            dbHandler.ExecQuery("SELECT * FROM personer ORDER BY Id");
+            FyllPersonLista(hamtadePersoner, dbHandler.DBDT);
             return hamtadePersoner;
         }
         public List<Person> HamtaSokPersoner(string sok)
         {
             var hamtadePersoner = new List<Person>();
-            DBHandler.AddParam("@Sok", $"{sok}%");
-            DBHandler.ExecQuery("SELECT * FROM personer WHERE Id LIKE @Sok OR Fornamn LIKE @Sok OR Efternamn LIKE @Sok OR PersNr LIKE @Sok OR Sign LIKE @Sok OR Tillhorighet LIKE @Sok OR Telefon LIKE @Sok OR Epost LIKE @Sok OR Ovrigt LIKE @Sok ORDER BY Id");
-            FyllPersonLista(hamtadePersoner, DBHandler.DBDT);
+            dbHandler.AddParam("@Sok", $"{sok}%");
+            dbHandler.ExecQuery("SELECT * FROM personer WHERE Id LIKE @Sok OR Fornamn LIKE @Sok OR Efternamn LIKE @Sok OR PersNr LIKE @Sok OR Sign LIKE @Sok OR Tillhorighet LIKE @Sok OR Telefon LIKE @Sok OR Epost LIKE @Sok OR Ovrigt LIKE @Sok ORDER BY Id");
+            FyllPersonLista(hamtadePersoner, dbHandler.DBDT);
             return hamtadePersoner;
         }
         public List<Person> HamtaPersonerFranTillhorighet(string tillhorighet)
         {
             var hamtadePersoner = new List<Person>();
 
-            DBHandler.AddParam("@Tillhorighet", tillhorighet);
-            DBHandler.ExecQuery("SELECT * FROM personer WHERE Tillhorighet = @Tillhorighet ORDER BY Id");
-            FyllPersonLista(hamtadePersoner, DBHandler.DBDT);
+            dbHandler.AddParam("@Tillhorighet", tillhorighet);
+            dbHandler.ExecQuery("SELECT * FROM personer WHERE Tillhorighet = @Tillhorighet ORDER BY Id");
+            FyllPersonLista(hamtadePersoner, dbHandler.DBDT);
             return hamtadePersoner;
         }
         public Person HamtaPersonFranId(int Id)
         {
-            DBHandler.AddParam("@Id", Id);
-            DBHandler.ExecQuery("SELECT * FROM personer WHERE Id=@Id");
-            if (DBHandler.DBDT is null)
+            dbHandler.AddParam("@Id", Id);
+            dbHandler.ExecQuery("SELECT * FROM personer WHERE Id=@Id");
+            if (dbHandler.DBDT is null)
                 return null;
 
-            if (DBHandler.DBDT.Rows.Count > 0)
+            if (dbHandler.DBDT.Rows.Count > 0)
             {
-                DataRow R = DBHandler.DBDT.Rows[0];
+                DataRow R = dbHandler.DBDT.Rows[0];
                 try
                 {
                     Person p = new Person(int.Parse(R["Id"].ToString()))
@@ -345,14 +346,14 @@ namespace PrylanLibary
         }
         public Person HamtaPersonFranPersNr(string persNr)
         {
-            DBHandler.AddParam("@PersNr", persNr);
-            DBHandler.ExecQuery("SELECT * FROM personer WHERE PersNr=@PersNr");
-            if (DBHandler.DBDT is null)
+            dbHandler.AddParam("@PersNr", persNr);
+            dbHandler.ExecQuery("SELECT * FROM personer WHERE PersNr=@PersNr");
+            if (dbHandler.DBDT is null)
                 return null;
 
-            if (DBHandler.DBDT.Rows.Count > 0)
+            if (dbHandler.DBDT.Rows.Count > 0)
             {
-                DataRow R = DBHandler.DBDT.Rows[0];
+                DataRow R = dbHandler.DBDT.Rows[0];
                 try
                 {
                     Person p = new Person(int.Parse(R["Id"].ToString()))
@@ -378,70 +379,70 @@ namespace PrylanLibary
 
         public void InfogaPerson(Person person)
         {
-            DBHandler.AddParam("@Fornamn", person.Fornamn);
-            DBHandler.AddParam("@Efternamn", person.Efternamn);
-            DBHandler.AddParam("@PersNr", person.PersNr);
-            DBHandler.AddParam("@Sign", person.Sign);
-            DBHandler.AddParam("@Epost", person.Epost);
-            DBHandler.AddParam("@Telefon", person.Telefon);
-            DBHandler.AddParam("@Ovrigt", person.Ovrigt);
-            DBHandler.AddParam("@Tillhorighet", person.Tillhorighet);
-            DBHandler.ExecQuery("INSERT INTO personer (Fornamn,Efternamn,PersNr,Sign,Epost,Telefon,Ovrigt,Tillhorighet) VALUES (@Fornamn,@Efternamn,@PersNr,@Sign,@Epost,@Telefon,@Ovrigt,@Tillhorighet)");
+            dbHandler.AddParam("@Fornamn", person.Fornamn);
+            dbHandler.AddParam("@Efternamn", person.Efternamn);
+            dbHandler.AddParam("@PersNr", person.PersNr);
+            dbHandler.AddParam("@Sign", person.Sign);
+            dbHandler.AddParam("@Epost", person.Epost);
+            dbHandler.AddParam("@Telefon", person.Telefon);
+            dbHandler.AddParam("@Ovrigt", person.Ovrigt);
+            dbHandler.AddParam("@Tillhorighet", person.Tillhorighet);
+            dbHandler.ExecQuery("INSERT INTO personer (Fornamn,Efternamn,PersNr,Sign,Epost,Telefon,Ovrigt,Tillhorighet) VALUES (@Fornamn,@Efternamn,@PersNr,@Sign,@Epost,@Telefon,@Ovrigt,@Tillhorighet)");
             if (PersonChange != null) 
                 PersonChange.Invoke(person, new EventArgs());
         }
         public void UpdateraPerson(Person person)
         {
-            DBHandler.AddParam("@Fornamn", person.Fornamn);
-            DBHandler.AddParam("@Efternamn", person.Efternamn);
-            DBHandler.AddParam("@Sign", person.Sign);
-            DBHandler.AddParam("@Epost", person.Epost);
-            DBHandler.AddParam("@Telefon", person.Telefon);
-            DBHandler.AddParam("@Ovrigt", person.Ovrigt);
-            DBHandler.AddParam("@Tillhorighet", person.Tillhorighet);
-            DBHandler.AddParam("@Id", person.Id);
-            DBHandler.ExecQuery("UPDATE personer SET Fornamn=@Fornamn,Efternamn=@Efternamn,Sign=@Sign,Epost=@Epost,Telefon=@Telefon,Ovrigt=@Ovrigt,Tillhorighet=@Tillhorighet WHERE Id=@Id");
+            dbHandler.AddParam("@Fornamn", person.Fornamn);
+            dbHandler.AddParam("@Efternamn", person.Efternamn);
+            dbHandler.AddParam("@Sign", person.Sign);
+            dbHandler.AddParam("@Epost", person.Epost);
+            dbHandler.AddParam("@Telefon", person.Telefon);
+            dbHandler.AddParam("@Ovrigt", person.Ovrigt);
+            dbHandler.AddParam("@Tillhorighet", person.Tillhorighet);
+            dbHandler.AddParam("@Id", person.Id);
+            dbHandler.ExecQuery("UPDATE personer SET Fornamn=@Fornamn,Efternamn=@Efternamn,Sign=@Sign,Epost=@Epost,Telefon=@Telefon,Ovrigt=@Ovrigt,Tillhorighet=@Tillhorighet WHERE Id=@Id");
             if (PersonChange != null)
                 PersonChange.Invoke(person, new EventArgs());
         }
         public bool ExisterarPerson(string persNr)
         {
-            DBHandler.AddParam("@PersNr", persNr);
-            DBHandler.ExecQuery("SELECT PersNr FROM personer WHERE PersNr=@PersNr AND PersNr <> '' ");
-            return DBHandler.RecordCount > 0;
+            dbHandler.AddParam("@PersNr", persNr);
+            dbHandler.ExecQuery("SELECT PersNr FROM personer WHERE PersNr=@PersNr AND PersNr <> '' ");
+            return dbHandler.RecordCount > 0;
         }
         public void RaderaPerson(Person person)
         {
-            DBHandler.AddParam("@Id", person.Id);
-            DBHandler.ExecQuery("DELETE FROM personer WHERE Id=@Id");
-            DBHandler.AddParam("@PersId", person.Id);
-            DBHandler.AddParam("@Status", Status.INNE);
-            DBHandler.ExecQuery("UPDATE artiklar SET PersId=NULL,Status=@Status WHERE PersId=@PersId");
+            dbHandler.AddParam("@Id", person.Id);
+            dbHandler.ExecQuery("DELETE FROM personer WHERE Id=@Id");
+            dbHandler.AddParam("@PersId", person.Id);
+            dbHandler.AddParam("@Status", Status.INNE);
+            dbHandler.ExecQuery("UPDATE artiklar SET PersId=NULL,Status=@Status WHERE PersId=@PersId");
         }
 
         public void InfogaHandelse(Handelse handelse)
         {
-            DBHandler.AddParam("@ArtikelId", handelse.ArtikelId);
-            DBHandler.AddParam("@PersId", handelse.PersId);
-            DBHandler.AddParam("@Typ", handelse.Typ);
-            DBHandler.AddParam("@FriText", handelse.FriText);
-            DBHandler.AddParam("@Datum", handelse.Datum);
-            DBHandler.ExecQuery("INSERT INTO handelser (ArtikelId,PersId,Typ,FriText,Datum) VALUES (@ArtikelId,@PersId,@Typ,@FriText,@Datum)");
+            dbHandler.AddParam("@ArtikelId", handelse.ArtikelId);
+            dbHandler.AddParam("@PersId", handelse.PersId);
+            dbHandler.AddParam("@Typ", handelse.Typ);
+            dbHandler.AddParam("@FriText", handelse.FriText);
+            dbHandler.AddParam("@Datum", handelse.Datum);
+            dbHandler.ExecQuery("INSERT INTO handelser (ArtikelId,PersId,Typ,FriText,Datum) VALUES (@ArtikelId,@PersId,@Typ,@FriText,@Datum)");
         }
         public List<Handelse> HamtaHandelserArtikel(Artikel artikel)
         {
             List<Handelse> hamtadeHandelser = new List<Handelse>();
-            DBHandler.AddParam("@ArtikelId", artikel.Id);
-            DBHandler.ExecQuery("SELECT * FROM handelser WHERE ArtikelId=@ArtikelId ORDER BY Datum DESC");
-            FyllHandelseLista(hamtadeHandelser, DBHandler.DBDT);
+            dbHandler.AddParam("@ArtikelId", artikel.Id);
+            dbHandler.ExecQuery("SELECT * FROM handelser WHERE ArtikelId=@ArtikelId ORDER BY Datum DESC");
+            FyllHandelseLista(hamtadeHandelser, dbHandler.DBDT);
             return hamtadeHandelser;
         }
         public List<Handelse> HamtaHandelserPerson(Person person)
         {
             List<Handelse> hamtadeHandelser = new List<Handelse>();
-            DBHandler.AddParam("@PersId", person.Id);
-            DBHandler.ExecQuery("SELECT * FROM handelser WHERE PersId=@PersId ORDER BY Id DESC");
-            FyllHandelseLista(hamtadeHandelser, DBHandler.DBDT);
+            dbHandler.AddParam("@PersId", person.Id);
+            dbHandler.ExecQuery("SELECT * FROM handelser WHERE PersId=@PersId ORDER BY Id DESC");
+            FyllHandelseLista(hamtadeHandelser, dbHandler.DBDT);
             return hamtadeHandelser;
         }
 

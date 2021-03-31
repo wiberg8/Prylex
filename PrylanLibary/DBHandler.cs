@@ -9,35 +9,35 @@ using System.IO;
 
 namespace PrylanLibary
 {
-    static class DBHandler
+    class DBHandler
     {
         //private
-        private static SQLiteConnection DBConn;
+        private SQLiteConnection DBConn;
 
-        private static SQLiteCommand DBCmd;
+        private SQLiteCommand DBCmd;
 
-        private static SQLiteDataAdapter DBDA;
+        private SQLiteDataAdapter DBDA;
 
-        private static List<SQLiteParameter> Params = new List<SQLiteParameter>();
+        private List<SQLiteParameter> Params = new List<SQLiteParameter>();
 
 
         //Public
-        public static DataTable DBDT;
-        public static int RecordCount;
-        public static string Exception;
+        public DataTable DBDT;
+        public int RecordCount;
+        public string Exception;
         
-        public static void SetConnection(string filePath, EventHandler connectionChanged)
+        public void SetConnection(string filePath, EventHandler connectionChanged)
         {
             DBConn = new SQLiteConnection();
             DBConn.ConnectionString = "Data Source =" + filePath + "; Version = 3; FailIfMissing=True";
             if (connectionChanged != null)
                 connectionChanged.Invoke(DBConn.ConnectionString, new EventArgs());
         }
-        public static bool Error()
+        public bool Error()
         {
             return !string.IsNullOrEmpty(Exception) || DBDT == null;
         }
-        public static bool TryOpen()
+        public bool TryOpen()
         {
             Console.WriteLine("Öppnar");
             try
@@ -51,7 +51,7 @@ namespace PrylanLibary
             }
             return DBConn.State == ConnectionState.Open;
         }
-        public static void Close()
+        public void Close()
         {
             Console.WriteLine("Stänger");
             try
@@ -65,7 +65,7 @@ namespace PrylanLibary
             }
         }
 
-        public static int GetLastInsertId()
+        public int GetLastInsertId()
         {
             try
             {
@@ -77,7 +77,7 @@ namespace PrylanLibary
             }
         }
 
-        public static void ExecQuery(string Query)
+        public void ExecQuery(string Query)
         {
             RecordCount = 0;
             Exception = string.Empty;
@@ -99,7 +99,7 @@ namespace PrylanLibary
                 Console.WriteLine(Exception);
             }
         }
-        public static void AddParam(string Name, object Value)
+        public void AddParam(string Name, object Value)
         {
             SQLiteParameter NewParam = new SQLiteParameter(Name, Value);
             Params.Add(NewParam);
@@ -107,7 +107,7 @@ namespace PrylanLibary
 
         //private static string artiklarQuery = "CREATE TABLE IF NOT EXISTS \"artiklar\" (\"Id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \"Besk\" TEXT, \"Stoldtag\", \"Datornamn\" TEXT, \"SerieNr\" TEXT, \"Mac\" TEXT, \"Os\" TEXT, \"Inkop\" TEXT, \"AndvandInkop\" INTEGER NOT NULL DEFAULT 0, \"Ovrigt\" TEXT, \"Status\" INTEGER NOT NULL DEFAULT 0, PersId INTEGER)";
         //private static string personerQuery = "CREATE TABLE IF NOT EXISTS \"personer\" (\"Id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \"Fornamn\" TEXT, \"Efternamn\", \"PersNr\" TEXT, \"Sign\" TEXT, \"Epost\" TEXT, \"Telefon\" TEXT, \"Tillhorighet\" TEXT, \"Ovrigt\" TEXT)";
-        public static bool CreateFile(string filNamn)
+        public bool CreateFile(string filNamn)
         {
             if (!File.Exists(filNamn))
             {
@@ -136,29 +136,5 @@ namespace PrylanLibary
                 return false;
             }
         }
-        //public static DataTable GetDataTable(string sql, string fileName)
-        //{
-        //    try
-        //    {
-        //        DataTable dt = new DataTable();
-        //        using (var c = new SQLiteConnection(fileName))
-        //        {
-        //            c.Open();
-        //            using (SQLiteCommand cmd = new SQLiteCommand(sql, c))
-        //            {
-        //                using (SQLiteDataReader rdr = cmd.ExecuteReader())
-        //                {
-        //                    dt.Load(rdr);
-        //                    return dt;
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine(e.Message);
-        //        return null;
-        //    }
-        //}
     }
 }
