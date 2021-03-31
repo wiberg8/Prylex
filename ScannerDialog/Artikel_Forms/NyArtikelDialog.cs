@@ -90,6 +90,7 @@ namespace ScannerDialog
                     }
                     else
                     {
+                        Printing.PrintSerieNrLabel(artikelFranFalt.SerieNr, AppSettings.Skrivare);
                         dataAccess.InfogaArtikel(artikelFranFalt);
                         AterstallFalt();
                     }

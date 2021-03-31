@@ -256,6 +256,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SerieNr.label">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="tables.sql3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

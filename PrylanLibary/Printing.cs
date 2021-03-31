@@ -13,6 +13,21 @@ namespace PrylanLibary
     {
         public static string exception;
         private static string LabelFileName = "Prylan.label";
+
+        public static void PrintSerieNrLabel(string serieNr, string printer)
+        {
+            try
+            {
+                var label = Label.Open("SerieNr.label");
+                label.SetObjectText("dynSerieNr", serieNr);
+                label.Print(printer);
+            }
+            catch (Exception ex)
+            {
+                exception = ex.Message;
+            }
+        }
+
         public static void PrintLabel(Artikel artikel, Person person, string printer)
         {
             try

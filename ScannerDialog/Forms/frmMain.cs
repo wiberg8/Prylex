@@ -117,16 +117,16 @@ namespace ScannerDialog.Forms
         {
             using (var dataAccess = new DataAccess())
             {
-                if (tabArtiklarPersoner.SelectedTab == tabArtiklar)
+                switch (tabArtiklarPersoner.SelectedTab.Name)
                 {
-                    List<Artikel> artiklar = dataAccess.HamtaSokArtiklar(txtSok.Text);
-                    FyllDataGrid(artiklar);
-                }
-                    
-                if (tabArtiklarPersoner.SelectedTab == tabPersoner)
-                {
-                    List<Person> personer = dataAccess.HamtaSokPersoner(txtSok.Text);
-                    FyllDataGrid(personer);
+                    case "tabArtiklar":
+                        List<Artikel> artiklar = dataAccess.HamtaSokArtiklar(txtSok.Text);
+                        FyllDataGrid(artiklar);
+                        break;
+                    case "tabPersoner":
+                        List<Person> personer = dataAccess.HamtaSokPersoner(txtSok.Text);
+                        FyllDataGrid(personer);
+                        break;
                 }
             }
         }
@@ -163,7 +163,10 @@ namespace ScannerDialog.Forms
 
         private void cmdScanLabel_Click(object sender, EventArgs e)
         {
-            InputBox inputBox = new InputBox();
+            InputBox inputBox = new InputBox
+            {
+                PromptText = "Skanna - Ettiket"
+            };
             inputBox.ShowDialog();
             string scannedInput = inputBox.Input.ToUpper();
             if (string.IsNullOrWhiteSpace(scannedInput))
@@ -207,15 +210,16 @@ namespace ScannerDialog.Forms
 
         private void RefreshDataGrids()
         {
-            using (DataAccess dataAccess = new DataAccess())
+            using (var dataAccess = new DataAccess())
             {
-                if (tabArtiklarPersoner.SelectedTab == tabArtiklar)
+                switch (tabArtiklarPersoner.SelectedTab.Name)
                 {
-                    FyllDataGrid(dataAccess.HamtaArtiklar());
-                }
-                if (tabArtiklarPersoner.SelectedTab == tabPersoner)
-                {
-                    FyllDataGrid(dataAccess.HamtaPersoner());
+                    case "tabArtiklar":
+                        FyllDataGrid(dataAccess.HamtaArtiklar());
+                        break;
+                    case "tabPersoner":
+                        FyllDataGrid(dataAccess.HamtaPersoner());
+                        break;
                 }
             }
         }

@@ -48,6 +48,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tspMassRegistrering = new System.Windows.Forms.ToolStripButton();
             this.tspImportPersoner = new System.Windows.Forms.ToolStripButton();
+            this.tspNuvarandeDb = new System.Windows.Forms.ToolStripLabel();
             this.tabArtiklarPersoner = new System.Windows.Forms.TabControl();
             this.tabArtiklar = new System.Windows.Forms.TabPage();
             this.dgvArtiklar = new System.Windows.Forms.DataGridView();
@@ -72,7 +73,6 @@
             this.clmOvrigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.laDatabaseWarning = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tspNuvarandeDb = new System.Windows.Forms.ToolStripLabel();
             this.gbSearch.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabArtiklarPersoner.SuspendLayout();
@@ -98,11 +98,11 @@
             // 
             // cmdScanLabel
             // 
-            this.cmdScanLabel.Location = new System.Drawing.Point(234, 50);
+            this.cmdScanLabel.Location = new System.Drawing.Point(218, 50);
             this.cmdScanLabel.Name = "cmdScanLabel";
-            this.cmdScanLabel.Size = new System.Drawing.Size(99, 22);
+            this.cmdScanLabel.Size = new System.Drawing.Size(115, 22);
             this.cmdScanLabel.TabIndex = 11;
-            this.cmdScanLabel.Text = "Skanna";
+            this.cmdScanLabel.Text = "Skanna (Ettiket)";
             this.cmdScanLabel.UseVisualStyleBackColor = true;
             this.cmdScanLabel.Click += new System.EventHandler(this.cmdScanLabel_Click);
             // 
@@ -144,31 +144,31 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(146, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // tspArkivNyDatabasFil
             // 
             this.tspArkivNyDatabasFil.Name = "tspArkivNyDatabasFil";
-            this.tspArkivNyDatabasFil.Size = new System.Drawing.Size(149, 22);
+            this.tspArkivNyDatabasFil.Size = new System.Drawing.Size(180, 22);
             this.tspArkivNyDatabasFil.Text = "Skapa Ny (DB)";
             this.tspArkivNyDatabasFil.Click += new System.EventHandler(this.tspFileNewDB_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // tspArkivInstallningar
             // 
             this.tspArkivInstallningar.Name = "tspArkivInstallningar";
-            this.tspArkivInstallningar.Size = new System.Drawing.Size(149, 22);
+            this.tspArkivInstallningar.Size = new System.Drawing.Size(180, 22);
             this.tspArkivInstallningar.Text = "Inställningar";
             this.tspArkivInstallningar.Click += new System.EventHandler(this.tspArkivInstallningar_Click);
             // 
             // tspArkivAvsluta
             // 
             this.tspArkivAvsluta.Name = "tspArkivAvsluta";
-            this.tspArkivAvsluta.Size = new System.Drawing.Size(149, 22);
+            this.tspArkivAvsluta.Size = new System.Drawing.Size(180, 22);
             this.tspArkivAvsluta.Text = "Avsluta";
             this.tspArkivAvsluta.Click += new System.EventHandler(this.tspArkivAvsluta_Click);
             // 
@@ -246,6 +246,15 @@
             this.tspImportPersoner.Text = "Importera (Personer)";
             this.tspImportPersoner.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.tspImportPersoner.Click += new System.EventHandler(this.tspImportPersoner_Click);
+            // 
+            // tspNuvarandeDb
+            // 
+            this.tspNuvarandeDb.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tspNuvarandeDb.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tspNuvarandeDb.Name = "tspNuvarandeDb";
+            this.tspNuvarandeDb.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tspNuvarandeDb.Size = new System.Drawing.Size(80, 22);
+            this.tspNuvarandeDb.Text = "NuvarandeDb";
             // 
             // tabArtiklarPersoner
             // 
@@ -493,15 +502,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
-            // 
-            // tspNuvarandeDb
-            // 
-            this.tspNuvarandeDb.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tspNuvarandeDb.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tspNuvarandeDb.Name = "tspNuvarandeDb";
-            this.tspNuvarandeDb.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tspNuvarandeDb.Size = new System.Drawing.Size(80, 22);
-            this.tspNuvarandeDb.Text = "NuvarandeDb";
             // 
             // frmMain
             // 

@@ -63,6 +63,7 @@
             this.lbHandelser = new System.Windows.Forms.ListBox();
             this.cmdNyHandelse = new System.Windows.Forms.Button();
             this.laHandelsePersId = new System.Windows.Forms.Label();
+            this.cmdEttiketSerieNr = new System.Windows.Forms.Button();
             this.gbRegisterPerson.SuspendLayout();
             this.gbFalt.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -70,6 +71,7 @@
             // 
             // gbRegisterPerson
             // 
+            this.gbRegisterPerson.Controls.Add(this.cmdEttiketSerieNr);
             this.gbRegisterPerson.Controls.Add(this.cmdRegistreraScanna);
             this.gbRegisterPerson.Controls.Add(this.cmdSkrivUtEttiket);
             this.gbRegisterPerson.Controls.Add(this.txtRegistredPerson);
@@ -77,7 +79,7 @@
             this.gbRegisterPerson.Controls.Add(this.cmdUnregisterPerson);
             this.gbRegisterPerson.Location = new System.Drawing.Point(12, 249);
             this.gbRegisterPerson.Name = "gbRegisterPerson";
-            this.gbRegisterPerson.Size = new System.Drawing.Size(330, 98);
+            this.gbRegisterPerson.Size = new System.Drawing.Size(330, 122);
             this.gbRegisterPerson.TabIndex = 13;
             this.gbRegisterPerson.TabStop = false;
             this.gbRegisterPerson.Text = "Registrera / Avregistrera person";
@@ -94,11 +96,11 @@
             // 
             // cmdSkrivUtEttiket
             // 
-            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(169, 71);
+            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(169, 69);
             this.cmdSkrivUtEttiket.Name = "cmdSkrivUtEttiket";
             this.cmdSkrivUtEttiket.Size = new System.Drawing.Size(153, 23);
             this.cmdSkrivUtEttiket.TabIndex = 15;
-            this.cmdSkrivUtEttiket.Text = "Ettiket";
+            this.cmdSkrivUtEttiket.Text = "Ettiket (Streckkod / Namn)";
             this.cmdSkrivUtEttiket.UseVisualStyleBackColor = true;
             this.cmdSkrivUtEttiket.Click += new System.EventHandler(this.cmdSkrivUtEttiket_Click);
             // 
@@ -372,7 +374,7 @@
             // cmdAvbryt
             // 
             this.cmdAvbryt.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdAvbryt.Location = new System.Drawing.Point(593, 324);
+            this.cmdAvbryt.Location = new System.Drawing.Point(593, 339);
             this.cmdAvbryt.Name = "cmdAvbryt";
             this.cmdAvbryt.Size = new System.Drawing.Size(88, 23);
             this.cmdAvbryt.TabIndex = 22;
@@ -431,11 +433,21 @@
             this.laHandelsePersId.TabIndex = 34;
             this.laHandelsePersId.Text = "Person:";
             // 
+            // cmdEttiketSerieNr
+            // 
+            this.cmdEttiketSerieNr.Location = new System.Drawing.Point(169, 93);
+            this.cmdEttiketSerieNr.Name = "cmdEttiketSerieNr";
+            this.cmdEttiketSerieNr.Size = new System.Drawing.Size(153, 23);
+            this.cmdEttiketSerieNr.TabIndex = 17;
+            this.cmdEttiketSerieNr.Text = "Ettiket (Steckkod)";
+            this.cmdEttiketSerieNr.UseVisualStyleBackColor = true;
+            this.cmdEttiketSerieNr.Click += new System.EventHandler(this.cmdEttiketSerieNr_Click);
+            // 
             // HanteraArtikelDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 357);
+            this.ClientSize = new System.Drawing.Size(693, 374);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cmdAvbryt);
             this.Controls.Add(this.gbFalt);
@@ -495,5 +507,6 @@
         private System.Windows.Forms.Label laHandelsePersId;
         private System.Windows.Forms.TextBox txtHandelsePerson;
         private System.Windows.Forms.Button cmdRegistreraScanna;
+        private System.Windows.Forms.Button cmdEttiketSerieNr;
     }
 }

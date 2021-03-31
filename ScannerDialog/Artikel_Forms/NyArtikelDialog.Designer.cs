@@ -53,6 +53,7 @@
             this.cmdAvbryt = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.lbErrors = new System.Windows.Forms.ListBox();
+            this.cbPrintEttiket = new System.Windows.Forms.CheckBox();
             this.gbSnabbVal.SuspendLayout();
             this.gbFalt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -79,6 +80,7 @@
             // 
             // gbSnabbVal
             // 
+            this.gbSnabbVal.Controls.Add(this.cbPrintEttiket);
             this.gbSnabbVal.Controls.Add(this.checkOsFritext);
             this.gbSnabbVal.Controls.Add(this.cbOS);
             this.gbSnabbVal.Controls.Add(this.laOS);
@@ -313,6 +315,16 @@
             this.lbErrors.Size = new System.Drawing.Size(225, 82);
             this.lbErrors.TabIndex = 17;
             // 
+            // cbPrintEttiket
+            // 
+            this.cbPrintEttiket.AutoSize = true;
+            this.cbPrintEttiket.Location = new System.Drawing.Point(124, 128);
+            this.cbPrintEttiket.Name = "cbPrintEttiket";
+            this.cbPrintEttiket.Size = new System.Drawing.Size(94, 17);
+            this.cbPrintEttiket.TabIndex = 29;
+            this.cbPrintEttiket.Text = "Skriv ut ettiket";
+            this.cbPrintEttiket.UseVisualStyleBackColor = true;
+            // 
             // NyArtikelDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,5 +378,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.CheckBox checkOsFritext;
         private System.Windows.Forms.ListBox lbErrors;
+        private System.Windows.Forms.CheckBox cbPrintEttiket;
     }
 }

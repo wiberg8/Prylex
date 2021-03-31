@@ -37,7 +37,7 @@ namespace PrylanLibary.Models
 
         public bool ValidTillhorighet()
         {
-            if(this.Tillhorighet.RemoveWhiteSpaces().Length > 2)
+            if (this.Tillhorighet.RemoveWhiteSpaces().Length > 2)
             {
                 return true;
             }
@@ -59,6 +59,24 @@ namespace PrylanLibary.Models
                 Tillhorighet = this.Tillhorighet
             };
             return person;
+        }
+
+        public static Person Empty 
+        { 
+            get 
+            {
+                return new Person(){
+                    Id = 0,
+                    Fornamn = string.Empty,
+                    Efternamn = string.Empty,
+                    PersNr = string.Empty,
+                    Sign = string.Empty,
+                    Epost = string.Empty,
+                    Telefon = string.Empty,
+                    Ovrigt = string.Empty,
+                    Tillhorighet = string.Empty
+                };
+            } 
         }
 
         public string GetNamn()

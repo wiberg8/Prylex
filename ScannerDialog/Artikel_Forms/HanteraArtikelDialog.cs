@@ -436,5 +436,10 @@ namespace ScannerDialog
                 RegistreraPerson(personFromInput);
             }
         }
+
+        private void cmdEttiketSerieNr_Click(object sender, EventArgs e)
+        {
+            Printing.PrintSerieNrLabel(artikelAttEditera.SerieNr, AppSettings.Skrivare);
+        }
     }
 }
