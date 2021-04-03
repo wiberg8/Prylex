@@ -63,5 +63,13 @@ namespace ScannerDialog
                 this.DialogResult = DialogResult.OK;
             }
         }
+
+        private void ValjArtikelDialog_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
+        }
     }
 }

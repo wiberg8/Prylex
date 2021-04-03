@@ -19,7 +19,6 @@ namespace ScannerDialog
 {
     public partial class HanteraArtikelDialog : Form
     {
-        private Label clickedLabel;
         private Artikel artikelAttEditera;
         private Person registreradPerson;
         private string noPersonBound = "Ingen person knyten till händelsen";
@@ -32,6 +31,10 @@ namespace ScannerDialog
 
         private void ManageArticle_Load(object sender, EventArgs e)
         {
+            cbSelectHandelseTyp.Items.Add("Visa alla");
+            cbSelectHandelseTyp.Items.Add("Visa registreringar / avregistreringar");
+            cbSelectHandelseTyp.Items.Add("Visa Fritext");
+            cbSelectHandelseTyp.SelectedIndex = 0;
             txtHandelsePerson.Text = noPersonBound;
             registreradPerson = DBAccess.HamtaPersonFranId(artikelAttEditera.PersId);
             if(registreradPerson != null)
@@ -276,15 +279,13 @@ namespace ScannerDialog
         private void mouseEnter(object sender, EventArgs e)
         {
             Label theLabel = (Label)sender;
-            if (theLabel != clickedLabel)
-                theLabel.ForeColor = Config.highlightColor;
+             theLabel.ForeColor = Config.highlightColor;
         }
 
         private void mouseLeave(object sender, EventArgs e)
         {
             Label theLabel = (Label)sender;
-            if (theLabel != clickedLabel)
-                theLabel.ForeColor = Config.standardForeColor;
+            theLabel.ForeColor = Config.standardForeColor;
         }
 
         private void cmdSkrivUtEttiket_Click(object sender, EventArgs e)
@@ -406,6 +407,22 @@ namespace ScannerDialog
         private void cmdEttiketSerieNr_Click(object sender, EventArgs e)
         {
             Printing.PrintSerieNrLabel(artikelAttEditera.SerieNr, AppSettings.Skrivare);
+        }
+
+        private void cbSelectHandelseTyp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbSelectHandelseTyp.SelectedIndex)
+            {
+                case 0: //Visa alla
+                    FyllHandelser(DBAccess.HamtaHandelserArtikel(artikelAttEditera));
+                    break;
+                case 1: //Visa registrering / avregistrering
+                    FyllHandelser(DBAccess.HamtaHandelserArtikel(artikelAttEditera).Where(h => h.Typ == HandelseTyp.AVREGISTRERING || h.Typ == HandelseTyp.REGISTRERING).ToList());
+                    break;
+                case 2:
+                    FyllHandelser(DBAccess.HamtaHandelserArtikel(artikelAttEditera).Where(h => h.Typ == HandelseTyp.FRITEXT).ToList());
+                    break;
+            }
         }
     }
 }

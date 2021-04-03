@@ -52,6 +52,7 @@
             this.laEfternamn = new System.Windows.Forms.Label();
             this.lbRegistreradeArtiklar = new System.Windows.Forms.ListBox();
             this.gbRegistreradeArtiklar = new System.Windows.Forms.GroupBox();
+            this.laAntalRegArtiklar = new System.Windows.Forms.Label();
             this.cbPrintOnScan = new System.Windows.Forms.CheckBox();
             this.cmdExporteraDatornamn = new System.Windows.Forms.Button();
             this.cmdRegistreraSkanna = new System.Windows.Forms.Button();
@@ -63,6 +64,7 @@
             this.cmdArtikelSok = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbSelectHandelseTyp = new System.Windows.Forms.ComboBox();
             this.txtHandelseArtikel = new System.Windows.Forms.TextBox();
             this.lbHandelser = new System.Windows.Forms.ListBox();
             this.laHandelseArtikel = new System.Windows.Forms.Label();
@@ -236,7 +238,6 @@
             this.laTillhorighet.Size = new System.Drawing.Size(61, 13);
             this.laTillhorighet.TabIndex = 0;
             this.laTillhorighet.Text = "Tillhörighet:";
-            this.laTillhorighet.Click += new System.EventHandler(this.laTillhorighet_Click);
             // 
             // laTelefon
             // 
@@ -319,6 +320,7 @@
             // 
             // gbRegistreradeArtiklar
             // 
+            this.gbRegistreradeArtiklar.Controls.Add(this.laAntalRegArtiklar);
             this.gbRegistreradeArtiklar.Controls.Add(this.cbPrintOnScan);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdExporteraDatornamn);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdRegistreraSkanna);
@@ -331,10 +333,18 @@
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdArtikelSok);
             this.gbRegistreradeArtiklar.Location = new System.Drawing.Point(329, 12);
             this.gbRegistreradeArtiklar.Name = "gbRegistreradeArtiklar";
-            this.gbRegistreradeArtiklar.Size = new System.Drawing.Size(447, 304);
+            this.gbRegistreradeArtiklar.Size = new System.Drawing.Size(447, 324);
             this.gbRegistreradeArtiklar.TabIndex = 17;
             this.gbRegistreradeArtiklar.TabStop = false;
             this.gbRegistreradeArtiklar.Text = "Registrerade artiklar";
+            // 
+            // laAntalRegArtiklar
+            // 
+            this.laAntalRegArtiklar.Location = new System.Drawing.Point(20, 298);
+            this.laAntalRegArtiklar.Name = "laAntalRegArtiklar";
+            this.laAntalRegArtiklar.Size = new System.Drawing.Size(411, 19);
+            this.laAntalRegArtiklar.TabIndex = 26;
+            this.laAntalRegArtiklar.Text = "Antal:";
             // 
             // cbPrintOnScan
             // 
@@ -345,7 +355,6 @@
             this.cbPrintOnScan.TabIndex = 25;
             this.cbPrintOnScan.Text = "Skriv ut vid registrering";
             this.cbPrintOnScan.UseVisualStyleBackColor = true;
-            this.cbPrintOnScan.CheckedChanged += new System.EventHandler(this.cbPrintOnScan_CheckedChanged);
             // 
             // cmdExporteraDatornamn
             // 
@@ -428,21 +437,32 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbSelectHandelseTyp);
             this.groupBox1.Controls.Add(this.txtHandelseArtikel);
             this.groupBox1.Controls.Add(this.lbHandelser);
             this.groupBox1.Controls.Add(this.laHandelseArtikel);
-            this.groupBox1.Location = new System.Drawing.Point(12, 271);
+            this.groupBox1.Location = new System.Drawing.Point(8, 271);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(311, 243);
+            this.groupBox1.Size = new System.Drawing.Size(315, 268);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Händelser";
+            // 
+            // cbSelectHandelseTyp
+            // 
+            this.cbSelectHandelseTyp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSelectHandelseTyp.FormattingEnabled = true;
+            this.cbSelectHandelseTyp.Location = new System.Drawing.Point(18, 25);
+            this.cbSelectHandelseTyp.Name = "cbSelectHandelseTyp";
+            this.cbSelectHandelseTyp.Size = new System.Drawing.Size(273, 21);
+            this.cbSelectHandelseTyp.TabIndex = 35;
+            this.cbSelectHandelseTyp.SelectedIndexChanged += new System.EventHandler(this.cbSelectHandelseTyp_SelectedIndexChanged);
             // 
             // txtHandelseArtikel
             // 
             this.txtHandelseArtikel.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtHandelseArtikel.HideSelection = false;
-            this.txtHandelseArtikel.Location = new System.Drawing.Point(18, 211);
+            this.txtHandelseArtikel.Location = new System.Drawing.Point(18, 232);
             this.txtHandelseArtikel.Name = "txtHandelseArtikel";
             this.txtHandelseArtikel.ReadOnly = true;
             this.txtHandelseArtikel.Size = new System.Drawing.Size(273, 20);
@@ -451,7 +471,7 @@
             // lbHandelser
             // 
             this.lbHandelser.FormattingEnabled = true;
-            this.lbHandelser.Location = new System.Drawing.Point(18, 31);
+            this.lbHandelser.Location = new System.Drawing.Point(18, 52);
             this.lbHandelser.Name = "lbHandelser";
             this.lbHandelser.Size = new System.Drawing.Size(273, 160);
             this.lbHandelser.TabIndex = 15;
@@ -460,7 +480,7 @@
             // laHandelseArtikel
             // 
             this.laHandelseArtikel.AutoSize = true;
-            this.laHandelseArtikel.Location = new System.Drawing.Point(15, 194);
+            this.laHandelseArtikel.Location = new System.Drawing.Point(15, 215);
             this.laHandelseArtikel.Name = "laHandelseArtikel";
             this.laHandelseArtikel.Size = new System.Drawing.Size(39, 13);
             this.laHandelseArtikel.TabIndex = 34;
@@ -470,7 +490,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 527);
+            this.ClientSize = new System.Drawing.Size(789, 549);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbRegistreradeArtiklar);
             this.Controls.Add(this.gbFalt);
@@ -481,6 +501,7 @@
             this.Name = "HanteraPersonDialog";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = " ";
             this.Load += new System.EventHandler(this.HanteraPersonDialogcs_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HanteraPersonDialog_KeyDown);
             this.gbFalt.ResumeLayout(false);
@@ -532,5 +553,7 @@
         private System.Windows.Forms.ListBox lbHandelser;
         private System.Windows.Forms.Label laHandelseArtikel;
         private System.Windows.Forms.CheckBox cbPrintOnScan;
+        private System.Windows.Forms.Label laAntalRegArtiklar;
+        private System.Windows.Forms.ComboBox cbSelectHandelseTyp;
     }
 }

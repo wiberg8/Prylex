@@ -33,6 +33,7 @@ namespace ScannerDialog.Forms
         private void ImportDialog_Load(object sender, EventArgs e)
         {
             LaddaSnabbVal();
+            cmdLasFranFil.Visible = false;
         }
 
         private void cmdImportFilUtforska_Click(object sender, EventArgs e)
@@ -43,7 +44,8 @@ namespace ScannerDialog.Forms
 
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (fileDialog.CheckFileExists)
+                cmdLasFranFil.Visible = fileDialog.CheckFileExists;
+                if (cmdLasFranFil.Visible)
                 {
                     SelectedImportFil = fileDialog.FileName;
                 }

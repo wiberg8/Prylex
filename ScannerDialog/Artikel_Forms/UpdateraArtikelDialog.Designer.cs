@@ -211,6 +211,7 @@
             this.Controls.Add(this.gbSnabbVal);
             this.Controls.Add(this.cmdAvbryt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "UpdateraArtikelDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.UpdateraArtikelDialog_Load);

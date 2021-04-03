@@ -188,12 +188,14 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmdSok);
             this.Controls.Add(this.txtSok);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ValjArtikelDialog";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.ValjArtikelDialog_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ValjArtikelDialog_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArtiklar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

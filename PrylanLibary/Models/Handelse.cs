@@ -22,13 +22,13 @@ namespace PrylanLibary.Models
             switch (Typ)
             {
                 case HandelseTyp.AVREGISTRERING:
-                    x = $"{"AvRegistrering"} {Datum}";
+                    x = $"{"Avregistrering"}  |  {Datum}";
                     break;
                 case HandelseTyp.REGISTRERING:
-                    x = $"{"Registrering"} {Datum}";
+                    x = $"{"Registrering"}  |  {Datum}";
                     break;
                 default:
-                    x = $"{FriText} {Datum}";
+                    x = $"{FriText}  |  {Datum}";
                     break;   
             }
             return x;

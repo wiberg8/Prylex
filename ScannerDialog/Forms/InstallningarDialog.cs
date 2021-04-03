@@ -15,8 +15,6 @@ namespace ScannerDialog
 {
     public partial class InstallningarDialog : Form
     {
-        private Label clickedLabel;
-
         public InstallningarDialog()
         {
             InitializeComponent();
@@ -256,15 +254,13 @@ namespace ScannerDialog
         private void mouseEnter(object sender, EventArgs e)
         {
             Label theLabel = (Label)sender;
-            if (theLabel != clickedLabel)
-                theLabel.ForeColor = Config.highlightColor;
+            theLabel.ForeColor = Config.highlightColor;
         }
 
         private void mouseLeave(object sender, EventArgs e)
         {
             Label theLabel = (Label)sender;
-            if (theLabel != clickedLabel)
-                theLabel.ForeColor = Config.standardForeColor;
+            theLabel.ForeColor = Config.standardForeColor;
         }
 
         private void cmdImportForval_Click(object sender, EventArgs e)
