@@ -78,7 +78,6 @@
             this.gbFalt.TabIndex = 0;
             this.gbFalt.TabStop = false;
             this.gbFalt.Text = "Info";
-            this.gbFalt.Enter += new System.EventHandler(this.gbFalt_Enter);
             // 
             // cmdAvbryt
             // 
@@ -89,7 +88,6 @@
             this.cmdAvbryt.TabIndex = 9;
             this.cmdAvbryt.Text = "Avbryt";
             this.cmdAvbryt.UseVisualStyleBackColor = true;
-            this.cmdAvbryt.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
             // txtSign
             // 
@@ -103,7 +101,6 @@
             // 
             // cmdSpara
             // 
-            this.cmdSpara.Enabled = false;
             this.cmdSpara.Location = new System.Drawing.Point(234, 199);
             this.cmdSpara.Name = "cmdSpara";
             this.cmdSpara.Size = new System.Drawing.Size(87, 23);
@@ -129,8 +126,6 @@
             this.txtPersNr.Name = "txtPersNr";
             this.txtPersNr.Size = new System.Drawing.Size(90, 20);
             this.txtPersNr.TabIndex = 2;
-            this.txtPersNr.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtPersNr_MaskInputRejected);
-            this.txtPersNr.TextChanged += new System.EventHandler(this.txtPersNr_TextChanged);
             // 
             // txtTelefon
             // 
@@ -140,7 +135,6 @@
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(213, 20);
             this.txtTelefon.TabIndex = 6;
-            this.txtTelefon.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
             // 
             // laTelefon
             // 
@@ -150,7 +144,6 @@
             this.laTelefon.Size = new System.Drawing.Size(46, 13);
             this.laTelefon.TabIndex = 3;
             this.laTelefon.Text = "Telefon:";
-            this.laTelefon.Click += new System.EventHandler(this.laPhone_Click);
             // 
             // txtEpost
             // 
@@ -208,7 +201,6 @@
             this.txtEfternamn.Name = "txtEfternamn";
             this.txtEfternamn.Size = new System.Drawing.Size(212, 20);
             this.txtEfternamn.TabIndex = 1;
-            this.txtEfternamn.TextChanged += new System.EventHandler(this.txtEfternamn_TextChanged);
             // 
             // laEfternamn
             // 
@@ -255,7 +247,6 @@
             this.txtFornamn.Name = "txtFornamn";
             this.txtFornamn.Size = new System.Drawing.Size(212, 20);
             this.txtFornamn.TabIndex = 0;
-            this.txtFornamn.TextChanged += new System.EventHandler(this.txtFornamn_TextChanged);
             // 
             // laFornamn
             // 

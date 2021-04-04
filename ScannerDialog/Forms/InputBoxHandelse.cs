@@ -20,39 +20,39 @@ namespace ScannerDialog
             InitializeComponent();
         }
 
-        private void cmdOk_Click(object sender, EventArgs e)
+        //form events
+        private void InputBoxHandelse_Load(object sender, EventArgs e)
+        {
+            FormStartup();
+        }
+        private void InputScanner_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Ok();
+            }
+        }
+
+        //cmd events
+        private void cmdOk_Click_1(object sender, EventArgs e)
         {
             Ok();
         }
 
+        private void FormStartup()
+        {
+            comboBox1.Items.AddRange(AppSettings.Handelser.ToArray());
+            if (comboBox1.Items.Count > 0)
+            {
+                comboBox1.SelectedIndex = 0;
+            }
+        }
         private void Ok()
         {
             if (string.IsNullOrWhiteSpace(comboBox1.Text))
                 return;
             this.Input = comboBox1.Text.Trim();
             this.DialogResult = DialogResult.OK;
-        }
-
-        private void InputScanner_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                Ok();
-            }
-        }
-
-        private void cmdOk_Click_1(object sender, EventArgs e)
-        {
-            Ok();
-        }
-
-        private void InputBoxHandelse_Load(object sender, EventArgs e)
-        {
-            comboBox1.DataSource = AppSettings.Handelser;
-            if(comboBox1.Items.Count > 0)
-            {
-                comboBox1.SelectedIndex = 0;
-            }
         }
     }
 }

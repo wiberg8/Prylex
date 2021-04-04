@@ -24,64 +24,42 @@ namespace ScannerDialog.Forms
             set { this.selectedImportFil = value; txtImportFil.Text = value; }
         }
       
-
         public ImportDialog()
         {
             InitializeComponent();
         }
 
+        //form events
         private void ImportDialog_Load(object sender, EventArgs e)
         {
-            LaddaSnabbVal();
-            cmdLasFranFil.Visible = false;
+            FormStartup();
         }
-
-        private void cmdImportFilUtforska_Click(object sender, EventArgs e)
+        private void ImportDialog_KeyDown(object sender, KeyEventArgs e)
         {
-            lbPersoner.Items.Clear();
-            var fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "Csv filer (*.csv)|*.csv";
-
-            if (fileDialog.ShowDialog() == DialogResult.OK)
+            if (e.KeyCode == Keys.Escape)
             {
-                cmdLasFranFil.Visible = fileDialog.CheckFileExists;
-                if (cmdLasFranFil.Visible)
-                {
-                    SelectedImportFil = fileDialog.FileName;
-                }
-                else
-                {
-                    MessageBox.Show("Något är fel med den utpekade filen");
-                }
+                this.DialogResult = DialogResult.Cancel;
             }
         }
-
-
-
-        private void ClearInlastPersoner()
+        //cmd event
+        private void cmdImportFilUtforska_Click(object sender, EventArgs e)
         {
-            lbPersoner.Items.Clear();
-            laTillhorighet.Visible = false;
-            cbTillhorighet.Visible = false;
-            cmdVerkstallImport.Visible = false;
+            SelectImportFil();
         }
-
-        private void AddInlastPerson(object itm)
-        {
-            lbPersoner.Items.Add(itm);
-            bool itemExists = lbPersoner.Items.Count > 0;
-
-            lbPersoner.SelectedIndex = lbPersoner.Items.Count - 1;
-            laTillhorighet.Visible = itemExists;
-            cbTillhorighet.Visible = itemExists;
-            cmdVerkstallImport.Visible = itemExists;
-        }
-
         private async void cmdLasFranFil_Click(object sender, EventArgs e)
         {
             await ReadPersonerFromSelectedFile();
         }
+        private async void cmdVerkstallImport_Click(object sender, EventArgs e)
+        {
+            await VerkstallImport();
+        }
 
+        private void FormStartup()
+        {
+            LaddaSnabbVal();
+            cmdLasFranFil.Visible = false;
+        }     
         private async Task ReadPersonerFromSelectedFile()
         {
             if (!File.Exists(SelectedImportFil))
@@ -116,14 +94,8 @@ namespace ScannerDialog.Forms
                 }
                 counter++;
             }
-           this.Enabled = true;
+            this.Enabled = true;
         }
-
-        private async void cmdVerkstallImport_Click(object sender, EventArgs e)
-        {
-            await VerkstallImport();
-        }
-
         private async Task VerkstallImport()
         {
             if (lbPersoner.Items.Count > 0)
@@ -165,35 +137,47 @@ namespace ScannerDialog.Forms
                 resultDialog.ShowDialog();
             }
         }
-
-        private void laTillhorighet_Click(object sender, EventArgs e)
+        private void ClearInlastPersoner()
         {
-
+            lbPersoner.Items.Clear();
+            laTillhorighet.Visible = false;
+            cbTillhorighet.Visible = false;
+            cmdVerkstallImport.Visible = false;
         }
-
-        private void cbTillhorighet_SelectedIndexChanged(object sender, EventArgs e)
+        private void AddInlastPerson(object itm)
         {
+            lbPersoner.Items.Add(itm);
+            bool itemExists = lbPersoner.Items.Count > 0;
 
+            lbPersoner.SelectedIndex = lbPersoner.Items.Count - 1;
+            laTillhorighet.Visible = itemExists;
+            cbTillhorighet.Visible = itemExists;
+            cmdVerkstallImport.Visible = itemExists;
         }
-
-        private void lbPersoner_SelectedIndexChanged(object sender, EventArgs e)
+        private void SelectImportFil()
         {
-            
-        }
+            lbPersoner.Items.Clear();
+            var fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "Csv filer (*.csv)|*.csv";
 
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                cmdLasFranFil.Visible = fileDialog.CheckFileExists;
+                if (cmdLasFranFil.Visible)
+                {
+                    SelectedImportFil = fileDialog.FileName;
+                }
+                else
+                {
+                    MessageBox.Show("Något är fel med den utpekade filen");
+                }
+            }
+        }
         private void LaddaSnabbVal()
         {
             cbTillhorighet.DataSource = Program.AppSettings.Tillhorigheter;
             if (cbTillhorighet.Items.Count > 0)
                 cbTillhorighet.SelectedIndex = 0;
-        }
-
-        private void ImportDialog_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Escape)
-            {
-                this.DialogResult = DialogResult.Cancel;
-            }
         }
     }
 }

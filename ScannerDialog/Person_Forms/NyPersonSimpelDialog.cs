@@ -24,37 +24,18 @@ namespace ScannerDialog
             txtPersNr.Text = persNr;
         }
 
-        private void TextBox_Leave(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void TextBox_Enter(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void cmdCancel_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void laPhone_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPhone_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
+        //form events
         private void NyPersonDialog_Load(object sender, EventArgs e)
         {
             LaddaSnabbVal();
         }
-
+        //cmd events
         private void cmdSpara_Click(object sender, EventArgs e)
+        {
+            Spara();
+        }
+
+        private void Spara()
         {
             Person person = this.FaltToPerson();
             var validator = new PersonValidator();
@@ -66,25 +47,6 @@ namespace ScannerDialog
                 this.DialogResult = DialogResult.OK;
             }
         }
-
-        private void FyllErrors(ValidationResult lista)
-        {
-            lbErrors.Items.Clear();
-            foreach (var x in lista.Errors)
-            {
-                lbErrors.Items.Add(x);
-            }
-        }
-
-        private void txtFornamn_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-        private void txtEfternamn_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private Person FaltToPerson()
         {
             string transformedPersNr = string.Empty;
@@ -102,43 +64,19 @@ namespace ScannerDialog
             };
             return person;
         }
-        private void FaltRensa()
-        {
-            //Rensar alla fält förutom cbTillhorighet
-            txtFornamn.Clear();
-            txtEfternamn.Clear();
-            txtPersNr.Clear();
-            txtSign.Clear();
-        }
-        private bool IsFaltGiltiga()
-        {
-            //Kollar om textfäleten "Förnamn", "Efternamn", "Tillhörighet" har minst 2 tecken i sig som ej är blanksteg
-            if(
-                txtFornamn.Text.RemoveWhiteSpaces().Length < 2 
-                || txtEfternamn.Text.RemoveWhiteSpaces().Length < 2
-                || cbTillhorighet.Text.RemoveWhiteSpaces().Length < 2
-                )
-                return false;
-            return true;
-        }
-       
-
         private void LaddaSnabbVal()
         {
             cbTillhorighet.DataSource = AppSettings.Tillhorigheter;
             if (cbTillhorighet.Items.Count > 0)
                 cbTillhorighet.SelectedIndex = 0;
         }
-
-        //private void FaltRensaValideringsFel()
-        //{
-        //    errorFornamn.Clear();
-        //    errorEfternamn.Clear();
-        //}
-
-        private void gbFalt_Enter(object sender, EventArgs e)
+        private void FyllErrors(ValidationResult lista)
         {
-
+            lbErrors.Items.Clear();
+            foreach (var x in lista.Errors)
+            {
+                lbErrors.Items.Add(x);
+            }
         }
     }
 }

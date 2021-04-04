@@ -65,7 +65,6 @@
             this.gbFalt.TabIndex = 0;
             this.gbFalt.TabStop = false;
             this.gbFalt.Text = "Info";
-            this.gbFalt.Enter += new System.EventHandler(this.gbFalt_Enter);
             // 
             // cbTillhorighet
             // 
@@ -95,7 +94,6 @@
             this.cmdAvbryt.TabIndex = 9;
             this.cmdAvbryt.Text = "Avbryt";
             this.cmdAvbryt.UseVisualStyleBackColor = true;
-            this.cmdAvbryt.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
             // txtSign
             // 
@@ -146,7 +144,6 @@
             this.txtEfternamn.Name = "txtEfternamn";
             this.txtEfternamn.Size = new System.Drawing.Size(212, 20);
             this.txtEfternamn.TabIndex = 1;
-            this.txtEfternamn.TextChanged += new System.EventHandler(this.txtEfternamn_TextChanged);
             // 
             // laEfternamn
             // 
@@ -174,7 +171,6 @@
             this.txtFornamn.Name = "txtFornamn";
             this.txtFornamn.Size = new System.Drawing.Size(212, 20);
             this.txtFornamn.TabIndex = 0;
-            this.txtFornamn.TextChanged += new System.EventHandler(this.txtFornamn_TextChanged);
             // 
             // laFornamn
             // 

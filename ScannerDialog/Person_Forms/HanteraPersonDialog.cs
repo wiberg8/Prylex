@@ -117,7 +117,6 @@ namespace ScannerDialog
             VisaHandelser();
             VisaRegistreradeArtiklar();
         }
-
         private void SkrivUtEttiket()
         {
             if (lbRegistreradeArtiklar.SelectedItem is null)
@@ -152,7 +151,6 @@ namespace ScannerDialog
                 }
             }
         }
-
         private void UpdateraPerson()
         {
             using (var updateraPerson = new UpdateraPersonDialog(this.nuvarandePerson))
@@ -186,7 +184,6 @@ namespace ScannerDialog
                 MessageBox.Show($"{nuvarandePerson.GetNamn()} har artiklar fortfarande registrerade på sig");
             }
         }
-
         private void HandelseSelected()
         {
             if (lbHandelser.SelectedItem != null)
@@ -219,7 +216,6 @@ namespace ScannerDialog
                     break;
             }
         }
-
         private void RegistreraOnPerson(Artikel artikel)
         {
             Artikel artikelFranId;
@@ -290,7 +286,6 @@ namespace ScannerDialog
                 laAntalRegArtiklar.Text = $"Antal: {lbRegistreradeArtiklar.Items.Count}";
             }
         }
-
         private void VisaRegistreradeArtiklar()
         {
             List<Artikel> artiklar = DBAccess.HamtaRegistreradeArtiklar(nuvarandePerson);
@@ -306,7 +301,6 @@ namespace ScannerDialog
             List<Artikel> artiklar = DBAccess.HamtaSokRegistreradeArtiklar(nuvarandePerson, txtArtikelSok.Text);
             FyllRegistreradeArtiklar(artiklar);
         }
-
         private void FyllFalt(Person person)
         {
             laPersonIdDisplay.Text = person.Id.ToString();

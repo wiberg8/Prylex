@@ -26,22 +26,31 @@ namespace ScannerDialog
             this.artikelEdit = artikel;
         }
 
+        //form events
         private void UpdateraArtikelDialog_Load(object sender, EventArgs e)
+        {
+            FormStartup();
+        }
+        private void UpdateraArtikelDialog_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
+        }
+
+        //cmd events
+        private void cmdSpara_Click(object sender, EventArgs e)
+        {
+            Spara();
+        }
+
+        private void FormStartup()
         {
             LaddaSnabbval();
             FyllFalt(this.artikelEdit);
         }
-
-        private void FyllErrors(ValidationResult lista)
-        {
-            lbErrors.Items.Clear();
-            foreach (var x in lista.Errors)
-            {
-                lbErrors.Items.Add(x);
-            }
-        }
-
-        private void cmdSpara_Click(object sender, EventArgs e)
+        private void Spara()
         {
             Artikel artikelFranFalt = FaltTillArtikel();
             ArtikelValidator validator = new ArtikelValidator();
@@ -53,21 +62,6 @@ namespace ScannerDialog
                 this.DialogResult = DialogResult.OK;
             }
         }
-
-        private bool IsAllaFaltTomma(Artikel artikel)
-        {
-            return string.IsNullOrWhiteSpace(artikel.DatorNamn) && string.IsNullOrWhiteSpace(artikel.StoldTag) && string.IsNullOrWhiteSpace(artikel.Mac) && string.IsNullOrWhiteSpace(artikel.SerieNr) && string.IsNullOrWhiteSpace(artikel.Ovrigt);
-        }
-
-        private void FyllFalt(Artikel artikel)
-        {
-            txtDatornamn.Text = artikel.DatorNamn;
-            txtStoldtag.Text = artikel.StoldTag;
-            txtOvrigt.Text = artikel.Ovrigt;
-            cbBeskrivningar.Text = artikel.Beskrivning;
-            cbOS.Text = artikel.Os;
-        }
-
         private Artikel FaltTillArtikel()
         {
             Artikel artikel = this.artikelEdit.Copy();
@@ -79,7 +73,6 @@ namespace ScannerDialog
 
             return artikel;
         }
-
         private void LaddaSnabbval()
         {
             cbBeskrivningar.DataSource = AppSettings.Beskrivningar;
@@ -89,13 +82,23 @@ namespace ScannerDialog
             if (cbOS.Items.Count > 0)
                 cbOS.SelectedIndex = 0;
         }
-
-        private void UpdateraArtikelDialog_KeyDown(object sender, KeyEventArgs e)
+        private void FyllErrors(ValidationResult lista)
         {
-            if(e.KeyCode == Keys.Escape)
+            lbErrors.Items.Clear();
+            foreach (var x in lista.Errors)
             {
-                this.DialogResult = DialogResult.Cancel;
+                lbErrors.Items.Add(x);
             }
         }
+        private void FyllFalt(Artikel artikel)
+        {
+            txtDatornamn.Text = artikel.DatorNamn;
+            txtStoldtag.Text = artikel.StoldTag;
+            txtOvrigt.Text = artikel.Ovrigt;
+            cbBeskrivningar.Text = artikel.Beskrivning;
+            cbOS.Text = artikel.Os;
+        }
+
+
     }
 }

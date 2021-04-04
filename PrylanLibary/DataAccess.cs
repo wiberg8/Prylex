@@ -12,7 +12,7 @@ namespace PrylanLibary
 {
     public class DataAccess
     {
-        private DBHandler dbHandler = new DBHandler();
+        private readonly DBHandler dbHandler = new DBHandler();
         private string currentFile;
         public string CurrentFile { get { return currentFile; } set { dbHandler.SetConnection(value, ConnectionChanged); currentFile = value; } }
         public EventHandler ConnectionChanged { get; set; }

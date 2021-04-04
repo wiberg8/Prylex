@@ -14,12 +14,22 @@ namespace ScannerDialog
     {
         public string Input { get; private set; } = string.Empty;
         public string PromptText { get { return lbPrompt.Text; } set { lbPrompt.Text = value; } }
+
         public InputBox()
         {
             InitializeComponent();
         }
 
-        private void cmdOk_Click(object sender, EventArgs e)
+        //form events
+        private void InputScanner_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && !string.IsNullOrWhiteSpace(txtScannedResult.Text))
+            {
+                Ok();
+            }
+        }
+        //cmd events
+        private void cmdOk_Click_1(object sender, EventArgs e)
         {
             Ok();
         }
@@ -28,19 +38,6 @@ namespace ScannerDialog
         {
             this.Input = txtScannedResult.Text.Trim();
             this.DialogResult = DialogResult.OK;
-        }
-
-        private void InputScanner_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter && !string.IsNullOrWhiteSpace(txtScannedResult.Text))
-            {
-                Ok();
-            }
-        }
-
-        private void cmdOk_Click_1(object sender, EventArgs e)
-        {
-            Ok();
         }
     }
 }

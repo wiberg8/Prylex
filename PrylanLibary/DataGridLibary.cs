@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace PrylanLibary
 {
-    public class DataGridLibary
+    public static class DataGridLibary
     {
         public static void SetColorVariationToRows(DataGridView dataGridView)
         {

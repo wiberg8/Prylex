@@ -22,93 +22,119 @@ namespace ScannerDialog
             AppSettings.PropertyChanged += Installningar_Change;
         }
 
+        //form events
+        private void InstallningarDialog_Load(object sender, EventArgs e)
+        {
+            FormStartup();
+        }
+        private void InstallningarDialog_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
+        }
+
+        //cmd events
+        private void cmdForvalUpp_Click(object sender, EventArgs e)
+        {
+            MoveSelectedUp(lbForval);
+            ForvalSpara();
+        }
+        private void cmdForvalNer_Click(object sender, EventArgs e)
+        {
+            MoveSelectedDown(lbForval);
+            ForvalSpara();
+        }
+        private void cmdForvalLaggTill_Click(object sender, EventArgs e)
+        {
+            ForvalLaggTill();
+        }
+        private void cmdForvalTabort_Click(object sender, EventArgs e)
+        {
+            ForvalTaBort();
+        }
+        private void cmdNuvarandeDbUtforska_Click(object sender, EventArgs e)
+        {
+            ChangeDatabas();
+        }
+        private void cmdDatabasAterstall_Click(object sender, EventArgs e)
+        {
+            AppSettings.Databas = string.Empty;
+            DBAccess.Close();
+            DBAccess.CurrentFile = AppSettings.Databas;
+        }
+        private void cmdNuvarandeDbBackupUtforska_Click(object sender, EventArgs e)
+        {
+            ChangeDatabasBackup();
+        }
+        private void cmdNuvarandeDbBackupAterstall_Click(object sender, EventArgs e)
+        {
+            AppSettings.DatabasBackup = string.Empty;
+        }
+        private void cmdExporteraPersoner_Click(object sender, EventArgs e)
+        {
+            ExporteraPersoner();
+        }
+        private void cmdExporteraArtiklar_Click(object sender, EventArgs e)
+        {
+            ExporteraArtiklar();
+        }
+        private void cmdImportForval_Click(object sender, EventArgs e)
+        {
+            ForvalImportera();
+        }
+
+        //combobox events
+        private void cbForvalValj_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ForvalRefresh();
+        }
+        private void cbPrinter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AppSettings.Skrivare = cbPrinter.Text;
+        }
+        //checkbox events
+        private void cbBackupOnStart_CheckedChanged(object sender, EventArgs e)
+        {
+            AppSettings.BackupOnStart = cbBackupOnStart.Checked;
+        }
+      
+        //shared events
+        private void laNuvarandeDbDisplay_DoubleClick(object sender, EventArgs e)
+        {
+            Clipboard.SetText(laNuvarandeDbDisplay.Text);
+        }
+        private void mouseEnter(object sender, EventArgs e)
+        {
+            Label theLabel = (Label)sender;
+            theLabel.ForeColor = Config.HighlightColor;
+        }
+        private void mouseLeave(object sender, EventArgs e)
+        {
+            Label theLabel = (Label)sender;
+            theLabel.ForeColor = Config.StandardForeColor;
+        }
+
+        //events
         private void Installningar_Change(object sender, EventArgs e)
         {
             var ins = (Installningar)sender;
             FyllDatabasVy(ins.Databas, ins.DatabasBackup, ins.BackupOnStart);
         }
 
-        private void InstallningarDialog_Load(object sender, EventArgs e)
+        private void FormStartup()
         {
-            FormStartup();
-        }
-
-
-        private void cmdForvalUpp_Click(object sender, EventArgs e)
-        {
-            MoveUp(lbForval);
-            SparaForval();
-        }
-
-        private void cmdForvalNer_Click(object sender, EventArgs e)
-        {
-            MoveDown(lbForval);
-            SparaForval();
-        }
-
-        private void SparaForval()
-        {
-            List<string> forvalLista = new List<string>();
-            foreach (string forval in lbForval.Items)
+            FyllDatabasVy(AppSettings.Databas, AppSettings.DatabasBackup, AppSettings.BackupOnStart);
+            foreach (string v in Printing.GetPrinters())
             {
-                forvalLista.Add(forval);
+                cbPrinter.Items.Add(v);
             }
-            switch (cbForvalValj.SelectedIndex)
-            {
-                case 0:    //Beskrivningar
-                    AppSettings.Beskrivningar = forvalLista;
-                    break;
-                case 1:    //Händelser
-                    AppSettings.Handelser = forvalLista;
-                    break;
-                case 2:    //Os
-                    AppSettings.Os = forvalLista;
-                    break;
-                case 3:    //Tillhörighet
-                    AppSettings.Tillhorigheter = forvalLista;
-                    break;
-            }
+            cbPrinter.Text = AppSettings.Skrivare;
         }
-
-        private void MoveUp(ListBox myListBox)
+        private void ForvalTaBort()
         {
-            int selectedIndex = myListBox.SelectedIndex;
-            if (selectedIndex > 0)
-            {
-                myListBox.Items.Insert(selectedIndex - 1, myListBox.Items[selectedIndex]);
-                myListBox.Items.RemoveAt(selectedIndex + 1);
-                myListBox.SelectedIndex = selectedIndex - 1;
-            }
-        }
-
-        private void MoveDown(ListBox myListBox)
-        {
-            int selectedIndex = myListBox.SelectedIndex;
-            if (selectedIndex < myListBox.Items.Count - 1 & selectedIndex != -1)
-            {
-                myListBox.Items.Insert(selectedIndex + 2, myListBox.Items[selectedIndex]);
-                myListBox.Items.RemoveAt(selectedIndex);
-                myListBox.SelectedIndex = selectedIndex + 1;
-            }
-        }
-
-        private void cbForvalValj_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LaddaForval();
-
-        }
-
-        private void cmdForvalLaggTill_Click(object sender, EventArgs e)
-        {
-            LaggTillForval();
-
-        }
-
-        
-
-        private void cmdForvalTabort_Click(object sender, EventArgs e)
-        {
-            if(lbForval.SelectedIndex != -1)
+            if (lbForval.SelectedIndex != -1)
             {
                 lbForval.Items.RemoveAt(lbForval.SelectedIndex);
                 switch (cbForvalValj.SelectedIndex)
@@ -126,11 +152,10 @@ namespace ScannerDialog
                         AppSettings.Tillhorigheter = lbForval.Items.Cast<String>().ToList();
                         break;
                 }
-                LaddaForval();
+                ForvalRefresh();
             }
         }
-
-        private void LaddaForval()
+        private void ForvalRefresh()
         {
             lbForval.Items.Clear();
             switch (cbForvalValj.SelectedIndex)
@@ -161,66 +186,56 @@ namespace ScannerDialog
                     break;
             }
         }
-
-        private void cmdNuvarandeDbUtforska_Click(object sender, EventArgs e)
+        private void ForvalSpara()
         {
-            ChangeDatabas();
-        }
-
-        
-
-        private void cmdDatabasAterstall_Click(object sender, EventArgs e)
-        {
-            AppSettings.Databas = string.Empty;
-            DBAccess.Close();
-            DBAccess.CurrentFile = AppSettings.Databas;
-        }
-
-        private void cmdNuvarandeDbBackupUtforska_Click(object sender, EventArgs e)
-        {
-            ChangeDatabasBackup();
-        }
-
-        private static void ChangeDatabasBackup()
-        {
-            var folderDialog = new FolderBrowserDialog();
-
-            if (folderDialog.ShowDialog() == DialogResult.OK)
+            List<string> forvalLista = new List<string>();
+            foreach (string forval in lbForval.Items)
             {
-                if (Directory.Exists(folderDialog.SelectedPath))
+                forvalLista.Add(forval);
+            }
+            switch (cbForvalValj.SelectedIndex)
+            {
+                case 0:    //Beskrivningar
+                    AppSettings.Beskrivningar = forvalLista;
+                    break;
+                case 1:    //Händelser
+                    AppSettings.Handelser = forvalLista;
+                    break;
+                case 2:    //Os
+                    AppSettings.Os = forvalLista;
+                    break;
+                case 3:    //Tillhörighet
+                    AppSettings.Tillhorigheter = forvalLista;
+                    break;
+            }
+        }
+        private void ForvalLaggTill()
+        {
+            using (InputBox inputDialog = new InputBox())
+            {
+                inputDialog.ShowDialog();
+                if (!string.IsNullOrWhiteSpace(inputDialog.Input))
                 {
-                    AppSettings.DatabasBackup = folderDialog.SelectedPath;
-                }
-                else
-                {
-                    MessageBox.Show("Något är fel med den utpekade mappen");
+                    switch (cbForvalValj.SelectedIndex)
+                    {
+                        case 0:    //Beskrivningar
+                            AppSettings.Beskrivningar.Add(inputDialog.Input);
+                            break;
+                        case 1:    //Händelser
+                            AppSettings.Handelser.Add(inputDialog.Input);
+                            break;
+                        case 2:    //Os
+                            AppSettings.Os.Add(inputDialog.Input);
+                            break;
+                        case 3:    //Tillhörighet
+                            AppSettings.Tillhorigheter.Add(inputDialog.Input);
+                            break;
+                    }
+                    ForvalRefresh();
                 }
             }
         }
-
-        private void cmdNuvarandeDbBackupAterstall_Click(object sender, EventArgs e)
-        {
-            AppSettings.DatabasBackup = string.Empty;
-        }
-
-        private void laNuvarandeDbDisplay_DoubleClick(object sender, EventArgs e)
-        {
-            Clipboard.SetText(laNuvarandeDbDisplay.Text);
-        }
-       
-        private void mouseEnter(object sender, EventArgs e)
-        {
-            Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.HighlightColor;
-        }
-
-        private void mouseLeave(object sender, EventArgs e)
-        {
-            Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.StandardForeColor;
-        }
-
-        private void cmdImportForval_Click(object sender, EventArgs e)
+        private void ForvalImportera()
         {
             foreach (string v in DBAccess.GetUniqueBesk())
             {
@@ -250,43 +265,69 @@ namespace ScannerDialog
                     AppSettings.Handelser.Add(v);
                 }
             }
-            LaddaForval();
+            ForvalRefresh();
         }
-
-        private void cbBackupOnStart_CheckedChanged(object sender, EventArgs e)
+        private void MoveSelectedUp(ListBox myListBox)
         {
-            AppSettings.BackupOnStart = cbBackupOnStart.Checked;
-        }
-
-        private void cbPrinter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AppSettings.Skrivare = cbPrinter.Text;
-        }
-
-        private void lbForval_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void InstallningarDialog_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
+            int selectedIndex = myListBox.SelectedIndex;
+            if (selectedIndex > 0)
             {
-                this.DialogResult = DialogResult.Cancel;
+                myListBox.Items.Insert(selectedIndex - 1, myListBox.Items[selectedIndex]);
+                myListBox.Items.RemoveAt(selectedIndex + 1);
+                myListBox.SelectedIndex = selectedIndex - 1;
             }
         }
-
-        private void cmdExporteraPersoner_Click(object sender, EventArgs e)
+        private void MoveSelectedDown(ListBox myListBox)
         {
-            ExporteraPersoner();
+            int selectedIndex = myListBox.SelectedIndex;
+            if (selectedIndex < myListBox.Items.Count - 1 & selectedIndex != -1)
+            {
+                myListBox.Items.Insert(selectedIndex + 2, myListBox.Items[selectedIndex]);
+                myListBox.Items.RemoveAt(selectedIndex);
+                myListBox.SelectedIndex = selectedIndex + 1;
+            }
         }
-
-        private void cmdExporteraArtiklar_Click(object sender, EventArgs e)
+        private void ExporteraPersoner()
         {
-            ExporteraArtiklar();
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.Filter = "Json file(*.json)|*.json";
+            fileDialog.DefaultExt = "json";
+            fileDialog.AddExtension = true;
+            DialogResult dialogResult = fileDialog.ShowDialog();
+            if (dialogResult == DialogResult.OK && !fileDialog.CheckFileExists && fileDialog.CheckPathExists)
+            {
+                File.WriteAllText(fileDialog.FileName, DBAccess.HamtaPersoner().ToJson());
+            }
         }
+        private void ExporteraArtiklar()
+        {
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.Filter = "Json file(*.json)|*.json";
+            fileDialog.DefaultExt = "json";
+            fileDialog.AddExtension = true;
+            DialogResult dialogResult = fileDialog.ShowDialog();
+            if (dialogResult == DialogResult.OK && !fileDialog.CheckFileExists && fileDialog.CheckPathExists)
+            {
+                File.WriteAllText(fileDialog.FileName, DBAccess.HamtaArtiklar().ToJson());
+            }
+        }
+        private void ChangeDatabasBackup()
+        {
+            var folderDialog = new FolderBrowserDialog();
 
-        private static void ChangeDatabas()
+            if (folderDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (Directory.Exists(folderDialog.SelectedPath))
+                {
+                    AppSettings.DatabasBackup = folderDialog.SelectedPath;
+                }
+                else
+                {
+                    MessageBox.Show("Något är fel med den utpekade mappen");
+                }
+            }
+        }
+        private void ChangeDatabas()
         {
             var fileDialog = new OpenFileDialog
             {
@@ -311,60 +352,6 @@ namespace ScannerDialog
                 }
             }
         }
-
-        private void LaggTillForval()
-        {
-            using (InputBox inputDialog = new InputBox())
-            {
-                inputDialog.ShowDialog();
-                if (!string.IsNullOrWhiteSpace(inputDialog.Input))
-                {
-                    switch (cbForvalValj.SelectedIndex)
-                    {
-                        case 0:    //Beskrivningar
-                            AppSettings.Beskrivningar.Add(inputDialog.Input);
-                            break;
-                        case 1:    //Händelser
-                            AppSettings.Handelser.Add(inputDialog.Input);
-                            break;
-                        case 2:    //Os
-                            AppSettings.Os.Add(inputDialog.Input);
-                            break;
-                        case 3:    //Tillhörighet
-                            AppSettings.Tillhorigheter.Add(inputDialog.Input);
-                            break;
-                    }
-                    LaddaForval();
-                }
-            }
-        }
-
-        private static void ExporteraPersoner()
-        {
-            SaveFileDialog fileDialog = new SaveFileDialog();
-            fileDialog.Filter = "Json file(*.json)|*.json";
-            fileDialog.DefaultExt = "json";
-            fileDialog.AddExtension = true;
-            DialogResult dialogResult = fileDialog.ShowDialog();
-            if (dialogResult == DialogResult.OK && !fileDialog.CheckFileExists && fileDialog.CheckPathExists)
-            {
-                File.WriteAllText(fileDialog.FileName, DBAccess.HamtaPersoner().ToJson());
-            }
-        }
-
-        private static void ExporteraArtiklar()
-        {
-            SaveFileDialog fileDialog = new SaveFileDialog();
-            fileDialog.Filter = "Json file(*.json)|*.json";
-            fileDialog.DefaultExt = "json";
-            fileDialog.AddExtension = true;
-            DialogResult dialogResult = fileDialog.ShowDialog();
-            if (dialogResult == DialogResult.OK && !fileDialog.CheckFileExists && fileDialog.CheckPathExists)
-            {
-                File.WriteAllText(fileDialog.FileName, DBAccess.HamtaArtiklar().ToJson());
-            }
-        }
-
         private void FyllDatabasVy(string database, string databaseBackup, bool backupOnStart)
         {
             laNuvarandeDbDisplay.Text = database;
@@ -372,14 +359,6 @@ namespace ScannerDialog
             cbBackupOnStart.Checked = backupOnStart;
         }
 
-        private void FormStartup()
-        {
-            FyllDatabasVy(AppSettings.Databas, AppSettings.DatabasBackup, AppSettings.BackupOnStart);
-            foreach (string v in Printing.GetPrinters())
-            {
-                cbPrinter.Items.Add(v);
-            }
-            cbPrinter.Text = AppSettings.Skrivare;
-        }
+ 
     }
 }

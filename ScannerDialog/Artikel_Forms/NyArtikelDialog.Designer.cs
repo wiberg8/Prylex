@@ -32,6 +32,7 @@
             this.cbBeskrivningar = new System.Windows.Forms.ComboBox();
             this.laBeskrivningar = new System.Windows.Forms.Label();
             this.gbSnabbVal = new System.Windows.Forms.GroupBox();
+            this.cbPrintEttiket = new System.Windows.Forms.CheckBox();
             this.checkOsFritext = new System.Windows.Forms.CheckBox();
             this.cbOS = new System.Windows.Forms.ComboBox();
             this.laOS = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@
             this.cmdAvbryt = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.lbErrors = new System.Windows.Forms.ListBox();
-            this.cbPrintEttiket = new System.Windows.Forms.CheckBox();
             this.gbSnabbVal.SuspendLayout();
             this.gbFalt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -95,7 +95,16 @@
             this.gbSnabbVal.TabIndex = 0;
             this.gbSnabbVal.TabStop = false;
             this.gbSnabbVal.Text = "Info - Snabb val ";
-            this.gbSnabbVal.Enter += new System.EventHandler(this.gbStaticFields_Enter);
+            // 
+            // cbPrintEttiket
+            // 
+            this.cbPrintEttiket.AutoSize = true;
+            this.cbPrintEttiket.Location = new System.Drawing.Point(124, 128);
+            this.cbPrintEttiket.Name = "cbPrintEttiket";
+            this.cbPrintEttiket.Size = new System.Drawing.Size(94, 17);
+            this.cbPrintEttiket.TabIndex = 29;
+            this.cbPrintEttiket.Text = "Skriv ut ettiket";
+            this.cbPrintEttiket.UseVisualStyleBackColor = true;
             // 
             // checkOsFritext
             // 
@@ -140,7 +149,6 @@
             this.dtpInkop.TabIndex = 3;
             this.dtpInkop.TabStop = false;
             this.dtpInkop.Value = new System.DateTime(2020, 6, 23, 13, 10, 47, 0);
-            this.dtpInkop.ValueChanged += new System.EventHandler(this.dtpInkop_ValueChanged);
             // 
             // laInkop
             // 
@@ -191,7 +199,6 @@
             this.txtStoldtag.Name = "txtStoldtag";
             this.txtStoldtag.Size = new System.Drawing.Size(289, 20);
             this.txtStoldtag.TabIndex = 6;
-            this.txtStoldtag.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // laStoldtag
             // 
@@ -211,7 +218,6 @@
             this.txtSerieNr.Name = "txtSerieNr";
             this.txtSerieNr.Size = new System.Drawing.Size(289, 20);
             this.txtSerieNr.TabIndex = 4;
-            this.txtSerieNr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // laSerieNr
             // 
@@ -249,7 +255,6 @@
             this.txtMAC.Name = "txtMAC";
             this.txtMAC.Size = new System.Drawing.Size(289, 20);
             this.txtMAC.TabIndex = 5;
-            this.txtMAC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // laMAC
             // 
@@ -269,7 +274,6 @@
             this.txtOvrigt.Name = "txtOvrigt";
             this.txtOvrigt.Size = new System.Drawing.Size(289, 66);
             this.txtOvrigt.TabIndex = 8;
-            this.txtOvrigt.TextChanged += new System.EventHandler(this.txtOther_TextChanged);
             // 
             // laOvrigt
             // 
@@ -279,7 +283,6 @@
             this.laOvrigt.Size = new System.Drawing.Size(38, 13);
             this.laOvrigt.TabIndex = 8;
             this.laOvrigt.Text = "Övrigt:";
-            this.laOvrigt.Click += new System.EventHandler(this.label1_Click);
             // 
             // cmdSpara
             // 
@@ -300,7 +303,6 @@
             this.cmdAvbryt.TabIndex = 9;
             this.cmdAvbryt.Text = "Avbryt";
             this.cmdAvbryt.UseVisualStyleBackColor = true;
-            this.cmdAvbryt.Click += new System.EventHandler(this.cmdAvbryt_Click);
             // 
             // errorProvider
             // 
@@ -314,16 +316,6 @@
             this.lbErrors.Name = "lbErrors";
             this.lbErrors.Size = new System.Drawing.Size(225, 82);
             this.lbErrors.TabIndex = 17;
-            // 
-            // cbPrintEttiket
-            // 
-            this.cbPrintEttiket.AutoSize = true;
-            this.cbPrintEttiket.Location = new System.Drawing.Point(124, 128);
-            this.cbPrintEttiket.Name = "cbPrintEttiket";
-            this.cbPrintEttiket.Size = new System.Drawing.Size(94, 17);
-            this.cbPrintEttiket.TabIndex = 29;
-            this.cbPrintEttiket.Text = "Skriv ut ettiket";
-            this.cbPrintEttiket.UseVisualStyleBackColor = true;
             // 
             // NyArtikelDialog
             // 

@@ -19,13 +19,54 @@ namespace ScannerDialog
     {
         public Artikel ValdArtikel { get; private set; }
         private List<Artikel> artiklar;
+
         public ValjArtikelDialog(List<Artikel> artiklar)
         {
             InitializeComponent();
             this.artiklar = artiklar;
         }
 
-        private void FyllDataGrid(List<Artikel> artiklar)
+        //form events
+        private void ValjArtikelDialog_Load(object sender, EventArgs e)
+        {
+            FormStartup();
+        }
+        private void ValjArtikelDialog_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
+        }
+        //cmd events
+        private void cmdSok_Click(object sender, EventArgs e)
+        {
+            Sok();
+        }
+        //datagridview events
+        private void dgvArtiklar_MouseDoubleClick_1(object sender, MouseEventArgs e)
+        {
+            ArtikelSelectedClick();
+        }
+
+        private void FormStartup()
+        {
+            FyllGrid(this.artiklar);
+            dgvArtiklar.ClearSelection();
+        }
+        private void ArtikelSelectedClick()
+        {
+            if (dgvArtiklar.SelectedRows.Count > 0)
+            {
+                this.ValdArtikel = (Artikel)dgvArtiklar.SelectedRows[0].Tag;
+                this.DialogResult = DialogResult.OK;
+            }
+        }
+        private void Sok()
+        {
+            FyllGrid(DBAccess.HamtaSokArtiklarLediga(txtSok.Text));
+        }
+        private void FyllGrid(List<Artikel> artiklar)
         {
             dgvArtiklar.Rows.Clear();
             foreach (Artikel artikel in artiklar)
@@ -39,37 +80,5 @@ namespace ScannerDialog
             DataGridLibary.SetColorVariationToRows(dgvArtiklar);
         }
 
-        private void ValjArtikelDialog_Load(object sender, EventArgs e)
-        {
-            FyllDataGrid(this.artiklar);
-            dgvArtiklar.ClearSelection();
-        }
-
-        private void dgvArtiklar_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void cmdSok_Click(object sender, EventArgs e)
-        {
-            FyllDataGrid(DBAccess.HamtaSokArtiklarLediga(txtSok.Text));
-        }
-
-        private void dgvArtiklar_MouseDoubleClick_1(object sender, MouseEventArgs e)
-        {
-            if (dgvArtiklar.SelectedRows.Count > 0)
-            {
-                this.ValdArtikel = (Artikel)dgvArtiklar.SelectedRows[0].Tag;
-                this.DialogResult = DialogResult.OK;
-            }
-        }
-
-        private void ValjArtikelDialog_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.DialogResult = DialogResult.Cancel;
-            }
-        }
     }
 }
