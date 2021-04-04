@@ -44,7 +44,7 @@ namespace PrylanLibary
 
         public static Encoding GetEncoding(string fileName)
         {
-            
+            Encoding encoding;
             // open the file with the stream-reader:
             using (StreamReader reader = new StreamReader(fileName, true))
             {
@@ -52,8 +52,9 @@ namespace PrylanLibary
                 string contents = reader.ReadToEnd();
 
                 // return the encoding.
-                return reader.CurrentEncoding;
+                encoding = reader.CurrentEncoding;
             }
+            return encoding;
         }
     }
 }

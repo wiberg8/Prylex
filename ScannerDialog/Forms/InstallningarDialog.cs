@@ -28,22 +28,11 @@ namespace ScannerDialog
             FyllDatabasVy(ins.Databas, ins.DatabasBackup, ins.BackupOnStart);
         }
 
-        private void FyllDatabasVy(string database, string databaseBackup, bool backupOnStart)
-        {
-            laNuvarandeDbDisplay.Text = database;
-            laNuvarandeDbBackupDisplay.Text = databaseBackup;
-            cbBackupOnStart.Checked = backupOnStart;
-        }
-
         private void InstallningarDialog_Load(object sender, EventArgs e)
         {
-            FyllDatabasVy(AppSettings.Databas, AppSettings.DatabasBackup, AppSettings.BackupOnStart);
-            foreach (string v in Printing.GetPrinters())
-            {
-                cbPrinter.Items.Add(v);
-            }
-            cbPrinter.Text = AppSettings.Skrivare;
+            FormStartup();
         }
+
 
         private void cmdForvalUpp_Click(object sender, EventArgs e)
         {
@@ -111,31 +100,11 @@ namespace ScannerDialog
 
         private void cmdForvalLaggTill_Click(object sender, EventArgs e)
         {
-            using (InputBox inputDialog = new InputBox())
-            {
-                inputDialog.ShowDialog();
-                if (!string.IsNullOrWhiteSpace(inputDialog.Input))
-                {
-                    switch (cbForvalValj.SelectedIndex)
-                    {
-                        case 0:    //Beskrivningar
-                            AppSettings.Beskrivningar.Add(inputDialog.Input);
-                            break;
-                        case 1:    //Händelser
-                            AppSettings.Handelser.Add(inputDialog.Input);
-                            break;
-                        case 2:    //Os
-                            AppSettings.Os.Add(inputDialog.Input);
-                            break;
-                        case 3:    //Tillhörighet
-                            AppSettings.Tillhorigheter.Add(inputDialog.Input);
-                            break;
-                    }
-                    LaddaForval();
-                }
-            }
+            LaggTillForval();
 
         }
+
+        
 
         private void cmdForvalTabort_Click(object sender, EventArgs e)
         {
@@ -195,27 +164,10 @@ namespace ScannerDialog
 
         private void cmdNuvarandeDbUtforska_Click(object sender, EventArgs e)
         {
-            var fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "db files (*.db)|*.db";
-
-            if (fileDialog.ShowDialog() == DialogResult.OK)
-            {
-                if (fileDialog.CheckFileExists)
-                {
-                    AppSettings.Databas = fileDialog.FileName;
-                    DBAccess.Close();
-                    DBAccess.CurrentFile = AppSettings.Databas;
-                    if (!DBAccess.TryOpen())
-                    {
-                        MessageBox.Show("Något är fel med den utpekade filen");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Något är fel med den utpekade filen");
-                }
-            }
+            ChangeDatabas();
         }
+
+        
 
         private void cmdDatabasAterstall_Click(object sender, EventArgs e)
         {
@@ -225,6 +177,11 @@ namespace ScannerDialog
         }
 
         private void cmdNuvarandeDbBackupUtforska_Click(object sender, EventArgs e)
+        {
+            ChangeDatabasBackup();
+        }
+
+        private static void ChangeDatabasBackup()
         {
             var folderDialog = new FolderBrowserDialog();
 
@@ -254,13 +211,13 @@ namespace ScannerDialog
         private void mouseEnter(object sender, EventArgs e)
         {
             Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.highlightColor;
+            theLabel.ForeColor = Config.HighlightColor;
         }
 
         private void mouseLeave(object sender, EventArgs e)
         {
             Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.standardForeColor;
+            theLabel.ForeColor = Config.StandardForeColor;
         }
 
         private void cmdImportForval_Click(object sender, EventArgs e)
@@ -321,6 +278,69 @@ namespace ScannerDialog
 
         private void cmdExporteraPersoner_Click(object sender, EventArgs e)
         {
+            ExporteraPersoner();
+        }
+
+        private void cmdExporteraArtiklar_Click(object sender, EventArgs e)
+        {
+            ExporteraArtiklar();
+        }
+
+        private static void ChangeDatabas()
+        {
+            var fileDialog = new OpenFileDialog
+            {
+                Filter = "db files (*.db)|*.db"
+            };
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (fileDialog.CheckFileExists)
+                {
+                    AppSettings.Databas = fileDialog.FileName;
+                    DBAccess.Close();
+                    DBAccess.CurrentFile = AppSettings.Databas;
+                    if (!DBAccess.TryOpen())
+                    {
+                        MessageBox.Show("Något är fel med den utpekade filen");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Något är fel med den utpekade filen");
+                }
+            }
+        }
+
+        private void LaggTillForval()
+        {
+            using (InputBox inputDialog = new InputBox())
+            {
+                inputDialog.ShowDialog();
+                if (!string.IsNullOrWhiteSpace(inputDialog.Input))
+                {
+                    switch (cbForvalValj.SelectedIndex)
+                    {
+                        case 0:    //Beskrivningar
+                            AppSettings.Beskrivningar.Add(inputDialog.Input);
+                            break;
+                        case 1:    //Händelser
+                            AppSettings.Handelser.Add(inputDialog.Input);
+                            break;
+                        case 2:    //Os
+                            AppSettings.Os.Add(inputDialog.Input);
+                            break;
+                        case 3:    //Tillhörighet
+                            AppSettings.Tillhorigheter.Add(inputDialog.Input);
+                            break;
+                    }
+                    LaddaForval();
+                }
+            }
+        }
+
+        private static void ExporteraPersoner()
+        {
             SaveFileDialog fileDialog = new SaveFileDialog();
             fileDialog.Filter = "Json file(*.json)|*.json";
             fileDialog.DefaultExt = "json";
@@ -332,7 +352,7 @@ namespace ScannerDialog
             }
         }
 
-        private void cmdExporteraArtiklar_Click(object sender, EventArgs e)
+        private static void ExporteraArtiklar()
         {
             SaveFileDialog fileDialog = new SaveFileDialog();
             fileDialog.Filter = "Json file(*.json)|*.json";
@@ -343,6 +363,23 @@ namespace ScannerDialog
             {
                 File.WriteAllText(fileDialog.FileName, DBAccess.HamtaArtiklar().ToJson());
             }
+        }
+
+        private void FyllDatabasVy(string database, string databaseBackup, bool backupOnStart)
+        {
+            laNuvarandeDbDisplay.Text = database;
+            laNuvarandeDbBackupDisplay.Text = databaseBackup;
+            cbBackupOnStart.Checked = backupOnStart;
+        }
+
+        private void FormStartup()
+        {
+            FyllDatabasVy(AppSettings.Databas, AppSettings.DatabasBackup, AppSettings.BackupOnStart);
+            foreach (string v in Printing.GetPrinters())
+            {
+                cbPrinter.Items.Add(v);
+            }
+            cbPrinter.Text = AppSettings.Skrivare;
         }
     }
 }

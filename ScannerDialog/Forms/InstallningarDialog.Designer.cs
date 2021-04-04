@@ -146,7 +146,6 @@
             this.lbForval.Name = "lbForval";
             this.lbForval.Size = new System.Drawing.Size(214, 186);
             this.lbForval.TabIndex = 0;
-            this.lbForval.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lbForval_KeyDown);
             // 
             // cbForvalValj
             // 
@@ -226,7 +225,7 @@
             // 
             // cmdImportForval
             // 
-            this.cmdImportForval.Location = new System.Drawing.Point(131, 245);
+            this.cmdImportForval.Location = new System.Drawing.Point(130, 245);
             this.cmdImportForval.Name = "cmdImportForval";
             this.cmdImportForval.Size = new System.Drawing.Size(116, 23);
             this.cmdImportForval.TabIndex = 24;

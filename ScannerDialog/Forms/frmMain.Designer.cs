@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbSearch = new System.Windows.Forms.GroupBox();
             this.cmdScanLabel = new System.Windows.Forms.Button();
             this.cmdSok = new System.Windows.Forms.Button();
@@ -41,10 +41,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tspArkivInstallningar = new System.Windows.Forms.ToolStripMenuItem();
             this.tspArkivAvsluta = new System.Windows.Forms.ToolStripMenuItem();
-            this.tspPerson = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tspPersonNy = new System.Windows.Forms.ToolStripMenuItem();
-            this.tspArtikel = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tspArtikelNy = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tspMassRegistrering = new System.Windows.Forms.ToolStripButton();
             this.tspImportPersoner = new System.Windows.Forms.ToolStripButton();
@@ -73,6 +69,8 @@
             this.clmOvrigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.laDatabaseWarning = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tspNyArtikel = new System.Windows.Forms.ToolStripButton();
+            this.tspNyPerson = new System.Windows.Forms.ToolStripButton();
             this.gbSearch.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabArtiklarPersoner.SuspendLayout();
@@ -172,48 +170,12 @@
             this.tspArkivAvsluta.Text = "Avsluta";
             this.tspArkivAvsluta.Click += new System.EventHandler(this.tspArkivAvsluta_Click);
             // 
-            // tspPerson
-            // 
-            this.tspPerson.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tspPerson.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tspPersonNy});
-            this.tspPerson.Image = ((System.Drawing.Image)(resources.GetObject("tspPerson.Image")));
-            this.tspPerson.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tspPerson.Name = "tspPerson";
-            this.tspPerson.Size = new System.Drawing.Size(56, 22);
-            this.tspPerson.Text = "Person";
-            // 
-            // tspPersonNy
-            // 
-            this.tspPersonNy.Name = "tspPersonNy";
-            this.tspPersonNy.Size = new System.Drawing.Size(89, 22);
-            this.tspPersonNy.Text = "Ny";
-            this.tspPersonNy.Click += new System.EventHandler(this.tspPeopleNew_Click);
-            // 
-            // tspArtikel
-            // 
-            this.tspArtikel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tspArtikel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tspArtikelNy});
-            this.tspArtikel.Image = ((System.Drawing.Image)(resources.GetObject("tspArtikel.Image")));
-            this.tspArtikel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tspArtikel.Name = "tspArtikel";
-            this.tspArtikel.Size = new System.Drawing.Size(54, 22);
-            this.tspArtikel.Text = "Artikel";
-            // 
-            // tspArtikelNy
-            // 
-            this.tspArtikelNy.Name = "tspArtikelNy";
-            this.tspArtikelNy.Size = new System.Drawing.Size(89, 22);
-            this.tspArtikelNy.Text = "Ny";
-            this.tspArtikelNy.Click += new System.EventHandler(this.tspArticlesNew_Click);
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tspArkiv,
-            this.tspPerson,
-            this.tspArtikel,
+            this.tspNyPerson,
+            this.tspNyArtikel,
             this.tspMassRegistrering,
             this.tspImportPersoner,
             this.tspNuvarandeDb});
@@ -289,14 +251,14 @@
             this.dgvArtiklar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvArtiklar.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvArtiklar.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArtiklar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArtiklar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvArtiklar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArtiklar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -407,14 +369,14 @@
             this.dgvPersoner.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPersoner.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvPersoner.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPersoner.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPersoner.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPersoner.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersoner.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -503,6 +465,26 @@
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
+            // tspNyArtikel
+            // 
+            this.tspNyArtikel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tspNyArtikel.Image = ((System.Drawing.Image)(resources.GetObject("tspNyArtikel.Image")));
+            this.tspNyArtikel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tspNyArtikel.Name = "tspNyArtikel";
+            this.tspNyArtikel.Size = new System.Drawing.Size(61, 22);
+            this.tspNyArtikel.Text = "Ny artikel";
+            this.tspNyArtikel.Click += new System.EventHandler(this.tspNyArtikel_Click);
+            // 
+            // tspNyPerson
+            // 
+            this.tspNyPerson.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tspNyPerson.Image = ((System.Drawing.Image)(resources.GetObject("tspNyPerson.Image")));
+            this.tspNyPerson.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tspNyPerson.Name = "tspNyPerson";
+            this.tspNyPerson.Size = new System.Drawing.Size(65, 22);
+            this.tspNyPerson.Text = "Ny person";
+            this.tspNyPerson.Click += new System.EventHandler(this.tspNyPerson_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -544,10 +526,6 @@
         private System.Windows.Forms.ToolStripMenuItem tspArkivInstallningar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tspArkivAvsluta;
-        private System.Windows.Forms.ToolStripDropDownButton tspPerson;
-        private System.Windows.Forms.ToolStripMenuItem tspPersonNy;
-        private System.Windows.Forms.ToolStripDropDownButton tspArtikel;
-        private System.Windows.Forms.ToolStripMenuItem tspArtikelNy;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.Button cmdScanLabel;
         private System.Windows.Forms.TabControl tabArtiklarPersoner;
@@ -577,6 +555,8 @@
         private System.Windows.Forms.ToolStripButton tspImportPersoner;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripLabel tspNuvarandeDb;
+        private System.Windows.Forms.ToolStripButton tspNyPerson;
+        private System.Windows.Forms.ToolStripButton tspNyArtikel;
     }
 }
 

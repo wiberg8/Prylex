@@ -27,66 +27,11 @@ namespace ScannerDialog
             nuvarandePerson = personAttEditera;
         }
 
+        //form events
         private void HanteraPersonDialogcs_Load(object sender, EventArgs e)
         {
             FormStartup();
         }
-    
-        private void cmdArtikelAvregistrera_Click(object sender, EventArgs e)
-        {
-            AvregistreraSelectedArtikel();
-        }
-
-        private void cmdArtikelSok_Click(object sender, EventArgs e)
-        {
-            SokRegistreradeArtiklar();
-        }
-
-        private void cmdShowAllRegistrerade_Click(object sender, EventArgs e)
-        {
-            VisaRegistreradeArtiklar();
-        }   
-
-        private void cmdRegistreraArtikel_Click(object sender, EventArgs e)
-        {
-            RegistreraArtikelViaDialog();
-        }
-
-        private void cmdRegistreraSkanna_Click(object sender, EventArgs e)
-        {
-            RegistreraViaSkannaEttiket();
-        }
-
-        private void cmdDelete_Click(object sender, EventArgs e)
-        {
-            RaderaPerson();
-        }
-
-        private void cmdSkrivUtEttiket_Click(object sender, EventArgs e)
-        {
-            SkrivUtEttiket();
-        }
-
-        private void cmdEdit_Click(object sender, EventArgs e)
-        {
-            UpdateraPerson();
-        }
-
-        private void cmdExporteraDatornamn_Click(object sender, EventArgs e)
-        {
-            ExporteraArtikelLista();
-        }
-
-        private void lbHandelser_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            HandelseSelected();
-        }
-
-        private void cbSelectHandelseTyp_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            HandelseShowTypSelect();
-        }
-
         private void HanteraPersonDialog_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -94,6 +39,57 @@ namespace ScannerDialog
                 this.DialogResult = DialogResult.Cancel;
             }
         }
+
+        //cmd events
+        private void cmdArtikelAvregistrera_Click(object sender, EventArgs e)
+        {
+            AvregistreraSelectedArtikel();
+        }
+        private void cmdArtikelSok_Click(object sender, EventArgs e)
+        {
+            SokRegistreradeArtiklar();
+        }
+        private void cmdShowAllRegistrerade_Click(object sender, EventArgs e)
+        {
+            VisaRegistreradeArtiklar();
+        }   
+        private void cmdRegistreraArtikel_Click(object sender, EventArgs e)
+        {
+            RegistreraArtikelViaDialog();
+        }
+        private void cmdRegistreraSkanna_Click(object sender, EventArgs e)
+        {
+            RegistreraViaSkannaEttiket();
+        }
+        private void cmdDelete_Click(object sender, EventArgs e)
+        {
+            RaderaPerson();
+        }
+        private void cmdSkrivUtEttiket_Click(object sender, EventArgs e)
+        {
+            SkrivUtEttiket();
+        }
+        private void cmdEdit_Click(object sender, EventArgs e)
+        {
+            UpdateraPerson();
+        }
+        private void cmdExporteraDatornamn_Click(object sender, EventArgs e)
+        {
+            ExporteraArtikelLista();
+        }
+
+        //listbox events
+        private void lbHandelser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HandelseSelected();
+        }
+
+        //combox events
+        private void cbSelectHandelseTyp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HandelseShowTypSelect();
+        }
+
         private void laDisplay_DoubleClick(object sender, MouseEventArgs e)
         {
             if (sender is null)
@@ -103,12 +99,12 @@ namespace ScannerDialog
         private void mouseEnter(object sender, EventArgs e)
         {
             Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.highlightColor;
+            theLabel.ForeColor = Config.HighlightColor;
         }
         private void mouseLeave(object sender, EventArgs e)
         {
             Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.standardForeColor;
+            theLabel.ForeColor = Config.StandardForeColor;
         }
 
         private void FormStartup()
@@ -132,9 +128,9 @@ namespace ScannerDialog
             {
                 Artikel selectedArtikel = (Artikel)lbRegistreradeArtiklar.SelectedItem;
                 Printing.PrintLabel(selectedArtikel, nuvarandePerson, AppSettings.Skrivare);
-                if (!string.IsNullOrEmpty(Printing.exception))
+                if (!string.IsNullOrEmpty(Printing.Exception))
                 {
-                    MessageBox.Show(Printing.exception);
+                    MessageBox.Show(Printing.Exception);
                 }
             }
         }

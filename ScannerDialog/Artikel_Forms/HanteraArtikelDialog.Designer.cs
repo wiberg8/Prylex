@@ -60,12 +60,12 @@
             this.cmdAvbryt = new System.Windows.Forms.Button();
             this.toolTipHelp = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbSelectHandelseTyp = new System.Windows.Forms.ComboBox();
             this.txtHandelsePerson = new System.Windows.Forms.TextBox();
             this.lbHandelser = new System.Windows.Forms.ListBox();
             this.cmdNyHandelse = new System.Windows.Forms.Button();
             this.laHandelsePersId = new System.Windows.Forms.Label();
             this.gbSkrivUt = new System.Windows.Forms.GroupBox();
-            this.cbSelectHandelseTyp = new System.Windows.Forms.ComboBox();
             this.gbRegisterPerson.SuspendLayout();
             this.gbFalt.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -407,6 +407,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Händelser";
             // 
+            // cbSelectHandelseTyp
+            // 
+            this.cbSelectHandelseTyp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSelectHandelseTyp.FormattingEnabled = true;
+            this.cbSelectHandelseTyp.Location = new System.Drawing.Point(18, 29);
+            this.cbSelectHandelseTyp.Name = "cbSelectHandelseTyp";
+            this.cbSelectHandelseTyp.Size = new System.Drawing.Size(359, 21);
+            this.cbSelectHandelseTyp.TabIndex = 36;
+            this.cbSelectHandelseTyp.SelectedIndexChanged += new System.EventHandler(this.cbSelectHandelseTyp_SelectedIndexChanged);
+            // 
             // txtHandelsePerson
             // 
             this.txtHandelsePerson.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -456,16 +466,6 @@
             this.gbSkrivUt.TabStop = false;
             this.gbSkrivUt.Text = "Skriv ut";
             // 
-            // cbSelectHandelseTyp
-            // 
-            this.cbSelectHandelseTyp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSelectHandelseTyp.FormattingEnabled = true;
-            this.cbSelectHandelseTyp.Location = new System.Drawing.Point(18, 29);
-            this.cbSelectHandelseTyp.Name = "cbSelectHandelseTyp";
-            this.cbSelectHandelseTyp.Size = new System.Drawing.Size(359, 21);
-            this.cbSelectHandelseTyp.TabIndex = 36;
-            this.cbSelectHandelseTyp.SelectedIndexChanged += new System.EventHandler(this.cbSelectHandelseTyp_SelectedIndexChanged);
-            // 
             // HanteraArtikelDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -484,7 +484,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "                                     ";
-            this.Load += new System.EventHandler(this.ManageArticle_Load);
+            this.Load += new System.EventHandler(this.HanteraArtikelDialog_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HanteraArtikelDialog_KeyDown);
             this.gbRegisterPerson.ResumeLayout(false);
             this.gbRegisterPerson.PerformLayout();

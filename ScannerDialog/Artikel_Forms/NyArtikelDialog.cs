@@ -32,10 +32,7 @@ namespace ScannerDialog
 
         private void cbInputChoose_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBeskrivningarFritext.Checked)
-                cbBeskrivningar.DropDownStyle = ComboBoxStyle.DropDown;
-            else
-                cbBeskrivningar.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbBeskrivningar.DropDownStyle = checkBeskrivningarFritext.Checked ? ComboBoxStyle.DropDown : ComboBoxStyle.DropDownList;
 
         }
 
@@ -62,10 +59,7 @@ namespace ScannerDialog
         private void FyllErrors(ValidationResult lista)
         {
             lbErrors.Items.Clear();
-            foreach (var x in lista.Errors)
-            {
-                lbErrors.Items.Add(x);
-            }
+            lbErrors.Items.AddRange(lista.Errors.ToArray());
         }
 
         private void cmdSave_Click(object sender, EventArgs e)
@@ -217,10 +211,11 @@ namespace ScannerDialog
 
         private void checkOsFritext_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkOsFritext.Checked)
-                cbOS.DropDownStyle = ComboBoxStyle.DropDown;
-            else
-                cbOS.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbOS.DropDownStyle = checkOsFritext.Checked ? ComboBoxStyle.DropDown : ComboBoxStyle.DropDownList;
+            //if (checkOsFritext.Checked)
+            //    cbOS.DropDownStyle = ComboBoxStyle.DropDown;
+            //else
+            //    cbOS.DropDownStyle = ComboBoxStyle.DropDownList;
         }
     }
 }

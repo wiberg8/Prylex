@@ -34,8 +34,7 @@ namespace ScannerDialog.Forms
 
         private void Database_Connection_Changed(object sender, EventArgs e)
         {
-            dgvArtiklar.Rows.Clear();
-            dgvPersoner.Rows.Clear();
+            ClearGrids();
         }
 
         private void Installningar_Change(object sender, EventArgs e)
@@ -60,30 +59,162 @@ namespace ScannerDialog.Forms
 
         }
 
-        private void tspArticlesNew_Click(object sender, EventArgs e)
-        {
-            NyArtikelDialog artikelDialog = new NyArtikelDialog();
-            dgvArtiklar.Rows.Clear();
-            dgvPersoner.Rows.Clear();
-            artikelDialog.ShowDialog();
-            RefreshDataGrids();
-        }
-
-        private void tspPeopleNew_Click(object sender, EventArgs e)
-        {
-            var newPersonDialog = new NyPersonDialog();
-            dgvArtiklar.Rows.Clear();
-            dgvPersoner.Rows.Clear();
-            newPersonDialog.ShowDialog();
-            RefreshDataGrids();
-        }
-
         private void cmdTesting_Click(object sender, EventArgs e)
         {
             
         }
 
         private void tspFileNewDB_Click(object sender, EventArgs e)
+        {
+            NyDatabas();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            FormStartup();
+        }
+
+        private void dgvArtiklar_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ArtikelSelectedGrid();
+        }
+
+        private void dgvPersoner_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            PersonSelectedGrid();
+        }
+
+        private void tspArkivInstallningar_Click(object sender, EventArgs e)
+        {
+            VisaInstallnigarDialog();
+        }
+
+        private void cmdSearch_Click(object sender, EventArgs e)
+        {
+            SearchSelectedGrid();
+        }
+
+        private void gbSearch_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tspNyPerson_Click(object sender, EventArgs e)
+        {
+            VisaNyPersonDialog();
+        }
+
+        private void cmdSok_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtSok_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void tspNyArtikel_Click(object sender, EventArgs e)
+        {
+            VisaNyArtikelDialog();
+        }
+
+        private void txtSok_KeyDown(object sender, KeyEventArgs e)
+        {
+            SearchSelectedGrid();
+        }
+
+        private void cmdScanLabel_Click(object sender, EventArgs e)
+        {
+            SkannaEttiket();
+        }
+
+        private void tabPersoner_TabIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tabArtiklarPersoner_TabIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tabArtiklarPersoner_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ClearGrids();
+            RefreshSelectedGrid();
+        }
+
+        private void cmdSokAlla_Click(object sender, EventArgs e)
+        {
+            RefreshSelectedGrid();
+        }
+
+        private void tspArkivAvsluta_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void tspSnabbReg_Click(object sender, EventArgs e)
+        {
+            VisaSnabbRegistrering();
+        }
+
+        private void cmdSnabbReg_Click(object sender, EventArgs e)
+        {
+            VisaSnabbRegistreringDialog();
+        }
+
+        private void tspImportPersoner_Click(object sender, EventArgs e)
+        {
+            VisaImportDialog();
+        }
+
+        private void VisaImportDialog()
+        {
+            ImportDialog importDialog = new ImportDialog();
+            importDialog.ShowDialog();
+            RefreshSelectedGrid();
+        }
+
+        private static void VisaSnabbRegistreringDialog()
+        {
+            SnabbRegistering snabbRegistering = new SnabbRegistering();
+            snabbRegistering.ShowDialog();
+        }
+
+        private void VisaSnabbRegistrering()
+        {
+            SnabbRegistering snabbRegistering = new SnabbRegistering();
+            ClearGrids();
+            snabbRegistering.ShowDialog();
+            RefreshSelectedGrid();
+        }
+
+        private void VisaNyArtikelDialog()
+        {
+            NyArtikelDialog artikelDialog = new NyArtikelDialog();
+            ClearGrids();
+            artikelDialog.ShowDialog();
+            RefreshSelectedGrid();
+        }
+
+        private void VisaNyPersonDialog()
+        {
+            var newPersonDialog = new NyPersonDialog();
+            ClearGrids();
+            newPersonDialog.ShowDialog();
+            RefreshSelectedGrid();
+        }
+
+        private void VisaInstallnigarDialog()
+        {
+            var dialog = new InstallningarDialog();
+            dialog.ShowDialog();
+            RefreshSelectedGrid();
+        }
+
+        private void NyDatabas()
         {
             SaveFileDialog fileDialog = new SaveFileDialog();
             fileDialog.Filter = "Database file(*.db)|*.db";
@@ -99,64 +230,7 @@ namespace ScannerDialog.Forms
             }
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            laDatabaseWarning.Visible = !File.Exists(AppSettings.Databas);
-            tspNuvarandeDb.Text = AppSettings.Databas;
-            RefreshDataGrids();
-        }
-
-        private void tspArkivInstallningar_Click(object sender, EventArgs e)
-        {
-            var dialog = new InstallningarDialog();
-            dialog.ShowDialog();
-            RefreshDataGrids();
-        }
- 
-        private void cmdSearch_Click(object sender, EventArgs e)
-        {
-
-            switch (tabArtiklarPersoner.SelectedTab.Name)
-            {
-                case "tabArtiklar":
-                    List<Artikel> artiklar = DBAccess.HamtaSokArtiklar(txtSok.Text);
-                    FyllDataGrid(artiklar);
-                    break;
-                case "tabPersoner":
-                    List<Person> personer = DBAccess.HamtaSokPersoner(txtSok.Text);
-                    FyllDataGrid(personer);
-                    break;
-            }
-        }
-
-        private void gbSearch_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmdSok_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void txtSok_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
-
-        private void txtSok_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-        {
-                if (tabArtiklarPersoner.SelectedTab == tabArtiklar)
-                    FyllDataGrid(DBAccess.HamtaSokArtiklar(txtSok.Text));
-                if (tabArtiklarPersoner.SelectedTab == tabPersoner)
-                    FyllDataGrid(DBAccess.HamtaSokArtiklar(txtSok.Text));
-            }
-
-        }
-
-        private void cmdScanLabel_Click(object sender, EventArgs e)
+        private void SkannaEttiket()
         {
             InputBox inputBox = new InputBox
             {
@@ -179,41 +253,54 @@ namespace ScannerDialog.Forms
             {
                 var artikelDialog = new HanteraArtikelDialog(artikelFromDb);
                 artikelDialog.ShowDialog();
-                RefreshDataGrids();
+                RefreshSelectedGrid();
             }
         }
 
-        private void tabPersoner_TabIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
 
-        private void tabArtiklarPersoner_TabIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void tabArtiklarPersoner_SelectedIndexChanged(object sender, EventArgs e)
+        private void ClearGrids()
         {
             dgvArtiklar.Rows.Clear();
             dgvPersoner.Rows.Clear();
-            RefreshDataGrids();
         }
 
-        private void RefreshDataGrids()
+
+        private void SearchSelectedGrid()
         {
             switch (tabArtiklarPersoner.SelectedTab.Name)
             {
                 case "tabArtiklar":
-                    FyllDataGrid(DBAccess.HamtaArtiklar());
+                    List<Artikel> artiklar = DBAccess.HamtaSokArtiklar(txtSok.Text);
+                    FyllGrid(artiklar);
                     break;
                 case "tabPersoner":
-                    FyllDataGrid(DBAccess.HamtaPersoner());
+                    List<Person> personer = DBAccess.HamtaSokPersoner(txtSok.Text);
+                    FyllGrid(personer);
                     break;
             }
         }
 
-        private void FyllDataGrid(List<Artikel> artiklar)
+        private void FormStartup()
+        {
+            laDatabaseWarning.Visible = !File.Exists(AppSettings.Databas);
+            tspNuvarandeDb.Text = AppSettings.Databas;
+            RefreshSelectedGrid();
+        }
+
+        private void RefreshSelectedGrid()
+        {
+            switch (tabArtiklarPersoner.SelectedTab.Name)
+            {
+                case "tabArtiklar":
+                    FyllGrid(DBAccess.HamtaArtiklar());
+                    break;
+                case "tabPersoner":
+                    FyllGrid(DBAccess.HamtaPersoner());
+                    break;
+            }
+        }
+
+        private void FyllGrid(List<Artikel> artiklar)
         {
             dgvArtiklar.Rows.Clear();
             foreach (Artikel artikel in artiklar)
@@ -228,7 +315,7 @@ namespace ScannerDialog.Forms
             DataGridLibary.SetColorVariationToRows(dgvArtiklar);
         }
 
-        private void FyllDataGrid(List<Person> lista)
+        private void FyllGrid(List<Person> lista)
         {
             dgvPersoner.Rows.Clear();
             foreach (var person in lista)
@@ -240,7 +327,7 @@ namespace ScannerDialog.Forms
             DataGridLibary.SetColorVariationToRows(dgvPersoner);
         }
 
-        private void dgvArtiklar_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void ArtikelSelectedGrid()
         {
             if (dgvArtiklar.SelectedRows.Count > 0)
             {
@@ -248,11 +335,11 @@ namespace ScannerDialog.Forms
                 dgvArtiklar.Rows.Clear();
                 var hanteraArtikelDialog = new HanteraArtikelDialog(a);
                 hanteraArtikelDialog.ShowDialog();
-                FyllDataGrid(DBAccess.HamtaArtiklar());
+                FyllGrid(DBAccess.HamtaArtiklar());
             }
         }
 
-        private void dgvPersoner_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void PersonSelectedGrid()
         {
             if (dgvPersoner.SelectedRows.Count > 0)
             {
@@ -260,40 +347,8 @@ namespace ScannerDialog.Forms
                 dgvPersoner.Rows.Clear();
                 var hanteraPersonDialog = new HanteraPersonDialog(p);
                 hanteraPersonDialog.ShowDialog();
-                FyllDataGrid(DBAccess.HamtaPersoner());
+                FyllGrid(DBAccess.HamtaPersoner());
             }
-        }
-
-        private void cmdSokAlla_Click(object sender, EventArgs e)
-        {
-            RefreshDataGrids();
-        }
-
-        private void tspArkivAvsluta_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void tspSnabbReg_Click(object sender, EventArgs e)
-        {
-                SnabbRegistering snabbRegistering = new SnabbRegistering();
-                dgvArtiklar.Rows.Clear();
-                dgvPersoner.Rows.Clear();
-                snabbRegistering.ShowDialog();
-                RefreshDataGrids();
-        }
-
-        private void cmdSnabbReg_Click(object sender, EventArgs e)
-        {
-            SnabbRegistering snabbRegistering = new SnabbRegistering();
-            snabbRegistering.ShowDialog();
-        }
-
-        private void tspImportPersoner_Click(object sender, EventArgs e)
-        {
-            ImportDialog importDialog = new ImportDialog();
-            importDialog.ShowDialog();
-            RefreshDataGrids();
         }
     }
 }

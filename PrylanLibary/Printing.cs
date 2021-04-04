@@ -11,28 +11,31 @@ namespace PrylanLibary
 {
     public static class Printing
     {
-        public static string exception;
-        private static string LabelFileName = "Prylan.label";
+        public static string Exception { get; set; }
+        private const string labelKombo = "Prylan.label";
+        private const string labelSerieNr = "SerieNr.label";
 
-        public static void PrintSerieNrLabel(string serieNr, string printer)
+        public static bool PrintSerieNrLabel(string serieNr, string printer)
         {
             try
             {
-                var label = Label.Open("SerieNr.label");
+                var label = Label.Open(labelSerieNr);
                 label.SetObjectText("dynSerieNr", serieNr);
                 label.Print(printer);
             }
             catch (Exception ex)
             {
-                exception = ex.Message;
+                Exception = ex.Message;
+                return false;
             }
+            return true;
         }
 
-        public static void PrintLabel(Artikel artikel, Person person, string printer)
+        public static bool PrintLabel(Artikel artikel, Person person, string printer)
         {
             try
             {
-                var label = Label.Open(LabelFileName);
+                var label = Label.Open(labelKombo);
                 label.SetObjectText("dynDatorNamn", artikel.DatorNamn);
                 label.SetObjectText("dynSerieNr", artikel.SerieNr);
                 label.SetObjectText("dynNamn", person.GetNamn());
@@ -41,13 +44,15 @@ namespace PrylanLibary
             }
             catch (Exception ex)
             {
-                exception = ex.Message;
+                Exception = ex.Message;
+                return false;
             }
+            return true;
         }
 
-        public static List<string> GetPrinters()
+        public static IEnumerable<string> GetPrinters()
         {
-            return System.Drawing.Printing.PrinterSettings.InstalledPrinters.Cast<string>().ToList();
+            return System.Drawing.Printing.PrinterSettings.InstalledPrinters.Cast<string>();
         }
     }
 }
