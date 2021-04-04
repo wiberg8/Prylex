@@ -250,9 +250,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PrylanLibary\PrylanLibary.csproj">
+    <ProjectReference Include="..\PrylanLibary\PrylexLibary.csproj">
       <Project>{98EE3200-5845-4451-82B0-EDAB46BF51B9}</Project>
-      <Name>PrylanLibary</Name>
+      <Name>PrylexLibary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScannerDialog", "ScannerDialog\ScannerDialog.csproj", "{DAE10EBF-77DD-4E8B-82E6-1CB15CBCA037}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prylex", "ScannerDialog\Prylex.csproj", "{DAE10EBF-77DD-4E8B-82E6-1CB15CBCA037}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrylanLibary", "PrylanLibary\PrylanLibary.csproj", "{98EE3200-5845-4451-82B0-EDAB46BF51B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrylexLibary", "PrylanLibary\PrylexLibary.csproj", "{98EE3200-5845-4451-82B0-EDAB46BF51B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{ABFE3125-359D-46BD-A1A2-CAF6818B4D76}"
 EndProject
