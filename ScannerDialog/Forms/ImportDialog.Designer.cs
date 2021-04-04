@@ -77,7 +77,6 @@ namespace ScannerDialog.Forms
             this.lbPersoner.Name = "lbPersoner";
             this.lbPersoner.Size = new System.Drawing.Size(493, 277);
             this.lbPersoner.TabIndex = 3;
-            this.lbPersoner.SelectedIndexChanged += new System.EventHandler(this.lbPersoner_SelectedIndexChanged);
             // 
             // cmdLasFranFil
             // 
@@ -110,7 +109,6 @@ namespace ScannerDialog.Forms
             this.cbTillhorighet.TabIndex = 11;
             this.cbTillhorighet.TabStop = false;
             this.cbTillhorighet.Visible = false;
-            this.cbTillhorighet.SelectedIndexChanged += new System.EventHandler(this.cbTillhorighet_SelectedIndexChanged);
             // 
             // laTillhorighet
             // 
@@ -121,7 +119,6 @@ namespace ScannerDialog.Forms
             this.laTillhorighet.TabIndex = 10;
             this.laTillhorighet.Text = "Tillhörighet:";
             this.laTillhorighet.Visible = false;
-            this.laTillhorighet.Click += new System.EventHandler(this.laTillhorighet_Click);
             // 
             // progressBar
             // 
