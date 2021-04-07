@@ -49,126 +49,36 @@ namespace ScannerDialog.Forms
             //dgvArtiklar.Rows.Clear();
         }
 
-        private void tspScan_Click(object sender, EventArgs e)
-        {
-            
-        }
+        //frm events
+        private void frmMain_Load(object sender, EventArgs e) => FormStartup();
 
-        private void tspScan_Click_1(object sender, EventArgs e)
-        {
+        //cmd events
+        private void cmdSearch_Click(object sender, EventArgs e) => SearchSelectedGrid();
+        private void cmdScanLabel_Click(object sender, EventArgs e) => SkannaEttiket();
+        private void cmdSokAlla_Click(object sender, EventArgs e) => RefreshSelectedGrid();
+        private void cmdSnabbReg_Click(object sender, EventArgs e) => VisaSnabbRegistreringDialog();
+        //toolstrip events
+        private void tspArkivInstallningar_Click(object sender, EventArgs e) => VisaInstallnigarDialog();
+        private void tspNyPerson_Click(object sender, EventArgs e) => VisaNyPersonDialog();
+        private void tspNyArtikel_Click(object sender, EventArgs e) => VisaNyArtikelDialog();
+        private void tspFileNewDB_Click(object sender, EventArgs e) => NyDatabas();
+        private void tspSnabbReg_Click(object sender, EventArgs e) => VisaSnabbRegistrering();
+        private void tspImportPersoner_Click(object sender, EventArgs e) => VisaImportDialog();
+        private void tspArkivAvsluta_Click(object sender, EventArgs e) => Application.Exit();
 
-        }
+        //textbox events
+        private void txtSok_KeyDown(object sender, KeyEventArgs e) => SearchSelectedGrid();
 
-        private void cmdTesting_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void tspFileNewDB_Click(object sender, EventArgs e)
-        {
-            NyDatabas();
-        }
-
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            FormStartup();
-        }
-
-        private void dgvArtiklar_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            ArtikelSelectedGrid();
-        }
-
-        private void dgvPersoner_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            PersonSelectedGrid();
-        }
-
-        private void tspArkivInstallningar_Click(object sender, EventArgs e)
-        {
-            VisaInstallnigarDialog();
-        }
-
-        private void cmdSearch_Click(object sender, EventArgs e)
-        {
-            SearchSelectedGrid();
-        }
-
-        private void gbSearch_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tspNyPerson_Click(object sender, EventArgs e)
-        {
-            VisaNyPersonDialog();
-        }
-
-        private void cmdSok_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void txtSok_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
-
-        private void tspNyArtikel_Click(object sender, EventArgs e)
-        {
-            VisaNyArtikelDialog();
-        }
-
-        private void txtSok_KeyDown(object sender, KeyEventArgs e)
-        {
-            SearchSelectedGrid();
-        }
-
-        private void cmdScanLabel_Click(object sender, EventArgs e)
-        {
-            SkannaEttiket();
-        }
-
-        private void tabPersoner_TabIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void tabArtiklarPersoner_TabIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
+        //datagridview events
+        private void dgvArtiklar_MouseDoubleClick(object sender, MouseEventArgs e) => ArtikelSelectedGrid();
+        private void dgvPersoner_MouseDoubleClick(object sender, MouseEventArgs e) => PersonSelectedGrid();
 
         private void tabArtiklarPersoner_SelectedIndexChanged(object sender, EventArgs e)
         {
             ClearGrids();
             RefreshSelectedGrid();
         }
-
-        private void cmdSokAlla_Click(object sender, EventArgs e)
-        {
-            RefreshSelectedGrid();
-        }
-
-        private void tspArkivAvsluta_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void tspSnabbReg_Click(object sender, EventArgs e)
-        {
-            VisaSnabbRegistrering();
-        }
-
-        private void cmdSnabbReg_Click(object sender, EventArgs e)
-        {
-            VisaSnabbRegistreringDialog();
-        }
-
-        private void tspImportPersoner_Click(object sender, EventArgs e)
-        {
-            VisaImportDialog();
-        }
+   
 
         private void VisaImportDialog()
         {
@@ -225,7 +135,7 @@ namespace ScannerDialog.Forms
             {
                 if (!DBAccess.CreateFile(fileDialog.FileName))
                 {
-                    MessageBox.Show("Lyckades ej skapa databasen filen");
+                    MessageBox.Show(Locales.CouldNotCreateDatabaseFile);
                 }
             }
         }
@@ -234,7 +144,7 @@ namespace ScannerDialog.Forms
         {
             InputBox inputBox = new InputBox
             {
-                PromptText = "Skanna - Ettiket"
+                PromptText = Locales.SkannaSerieNr
             };
             inputBox.ShowDialog();
             string scannedInput = inputBox.Input.ToUpper();
@@ -247,7 +157,7 @@ namespace ScannerDialog.Forms
             artikelFromDb = DBAccess.HamtaArtikelFranSerieNr(scannedInput);
             if (artikelFromDb is null)
             {
-                MessageBox.Show("Ingen träff");
+                MessageBox.Show(Locales.IngenTraff);
             }
             else
             {
@@ -274,7 +184,11 @@ namespace ScannerDialog.Forms
                     FyllGrid(artiklar);
                     break;
                 case "tabPersoner":
-                    List<Person> personer = DBAccess.HamtaSokPersoner(txtSok.Text);
+                    List<Person> personer;
+                    if (cbTillhorighet.SelectedIndex  == 0)
+                        personer = DBAccess.HamtaSokPersoner(txtSok.Text);
+                    else
+                        personer = DBAccess.HamtaSokPersoner(txtSok.Text).Where(p => p.Tillhorighet == cbTillhorighet.Text).ToList();
                     FyllGrid(personer);
                     break;
             }
@@ -283,8 +197,16 @@ namespace ScannerDialog.Forms
         private void FormStartup()
         {
             laDatabaseWarning.Visible = !File.Exists(AppSettings.Databas);
+            LaddaTillhorighet();
             tspNuvarandeDb.Text = AppSettings.Databas;
             RefreshSelectedGrid();
+        }
+
+        private void LaddaTillhorighet()
+        {
+            cbTillhorighet.Items.Add("Välj tillhörighet");
+            cbTillhorighet.SelectedIndex = 0;
+            cbTillhorighet.Items.AddRange(AppSettings.Tillhorigheter.ToArray());
         }
 
         private void RefreshSelectedGrid()

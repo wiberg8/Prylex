@@ -73,7 +73,7 @@ namespace ScannerDialog.Forms
             {
                 ImportPerson importPerson = lbPersonerErrosSuccess.SelectedItem as ImportPerson;
                 lbPersonErrors.Items.Clear();
-                lbPersonErrors.Items.AddRange(importPerson.Errors.Errors.ToArray());
+                lbPersonErrors.Items.AddRange(importPerson.Validation.Errors.ToArray());
             }
         }
     }

@@ -21,7 +21,6 @@ namespace ScannerDialog
     {
         private Artikel nuvarandeArtikel;
         private Person registreradPerson;
-        private string noPersonBound = "Ingen person knyten till händelsen";
 
         public HanteraArtikelDialog(Artikel _artikelAttEditera)
         {
@@ -104,12 +103,12 @@ namespace ScannerDialog
         private void mouseEnter(object sender, EventArgs e)
         {
             Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.HighlightColor;
+            theLabel.ForeColor = Config.HIGHLIGHT_COLOR;
         }
         private void mouseLeave(object sender, EventArgs e)
         {
             Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.StandardForeColor;
+            theLabel.ForeColor = Config.STANDARD_FORE_COLOR;
         }
 
         private void FormStart()
@@ -118,7 +117,7 @@ namespace ScannerDialog
             cbSelectHandelseTyp.Items.Add("Visa registreringar / avregistreringar");
             cbSelectHandelseTyp.Items.Add("Visa Fritext");
             cbSelectHandelseTyp.SelectedIndex = 0;
-            txtHandelsePerson.Text = noPersonBound;
+            txtHandelsePerson.Text = Locales.NoPersonBound;
             registreradPerson = DBAccess.HamtaPersonFranId(nuvarandeArtikel.PersId);
             if (registreradPerson != null)
             {
@@ -135,7 +134,7 @@ namespace ScannerDialog
             if (MessageBox.Show("Är du säker på att avregistrera artikeln från personen?", "Prylex", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 int unregisterPersId = nuvarandeArtikel.PersId;
-                DBAccess.UnregisterArtikelFromPerson(nuvarandeArtikel);
+                DBAccess.AvregistreraArtikelFromPerson(nuvarandeArtikel);
                 nuvarandeArtikel = DBAccess.HamtaArtikelFranId(nuvarandeArtikel.Id);
                 if (nuvarandeArtikel != null && nuvarandeArtikel.Status == Status.INNE)
                 {
@@ -313,7 +312,7 @@ namespace ScannerDialog
             personFromId = DBAccess.HamtaPersonFranId(handelse.PersId);
             if (personFromId is null)
             {
-                txtHandelsePerson.Text = noPersonBound;
+                txtHandelsePerson.Text = Locales.NoPersonBound;
             }
             else
             {

@@ -38,7 +38,7 @@ namespace PrylanLibary
                 var label = Label.Open(labelKombo);
                 label.SetObjectText("dynDatorNamn", artikel.DatorNamn);
                 label.SetObjectText("dynSerieNr", artikel.SerieNr);
-                label.SetObjectText("dynNamn", person.GetNamn());
+                label.SetObjectText("dynNamn", person.FullName);
                 label.SetObjectText("dynTillhorighet", person.Tillhorighet);
                 label.Print(printer);
             }

@@ -30,10 +30,7 @@ namespace ScannerDialog.Forms
         }
 
         //form events
-        private void ImportDialog_Load(object sender, EventArgs e)
-        {
-            FormStartup();
-        }
+        private void ImportDialog_Load(object sender, EventArgs e) => FormStartup();
         private void ImportDialog_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -42,18 +39,9 @@ namespace ScannerDialog.Forms
             }
         }
         //cmd event
-        private void cmdImportFilUtforska_Click(object sender, EventArgs e)
-        {
-            SelectImportFil();
-        }
-        private async void cmdLasFranFil_Click(object sender, EventArgs e)
-        {
-            await ReadPersonerFromSelectedFile();
-        }
-        private async void cmdVerkstallImport_Click(object sender, EventArgs e)
-        {
-            await VerkstallImport();
-        }
+        private void cmdImportFilUtforska_Click(object sender, EventArgs e) => SelectImportFil();
+        private async void cmdLasFranFil_Click(object sender, EventArgs e) => await ReadPersonerFromSelectedFile();
+        private async void cmdVerkstallImport_Click(object sender, EventArgs e) => await VerkstallImport();
 
         private void FormStartup()
         {
@@ -100,22 +88,18 @@ namespace ScannerDialog.Forms
         {
             if (lbPersoner.Items.Count > 0)
             {
-                this.Enabled = false;
-                int importedCount = 0;
-                progressBar.Visible = true;
-                laCurrentImportPerson.Visible = true;
-                progressBar.Value = 0;
-                progressBar.Maximum = lbPersoner.Items.Count;
+                ImportSetup();
                 List<ImportPerson> importer = new List<ImportPerson>();
                 PersonValidator validator = new PersonValidator();
+                int importedCount = 0;
                 int lastInsertId = 0;
                 foreach (Person p in lbPersoner.Items)
                 {
                     laCurrentImportPerson.Text = p.ToString();
                     ImportPerson importPerson = new ImportPerson() { Person = p };
-                    importPerson.Errors = validator.Validate(p);
+                    importPerson.Validation = validator.Validate(p);
                     importPerson.AlreadyExist = DBAccess.ExisterarPerson(importPerson.Person.PersNr);
-                    importPerson.Success = importPerson.Errors.IsValid && !importPerson.AlreadyExist;
+                    importPerson.Success = importPerson.Validation.IsValid && !importPerson.AlreadyExist;
                     if (importPerson.Success)
                     {
                         await Task.Run(() => DBAccess.InfogaPerson(importPerson.Person));
@@ -128,14 +112,27 @@ namespace ScannerDialog.Forms
                     importedCount += 1;
                     importer.Add(importPerson);
                 }
-                progressBar.Value = 0;
-                progressBar.Visible = false;
-                laCurrentImportPerson.Visible = false;
-                this.Enabled = true;
-                ClearInlastPersoner();
+                ImportFinished();
                 ImportResultDialog resultDialog = new ImportResultDialog(importer);
                 resultDialog.ShowDialog();
             }
+        }
+
+        private void ImportFinished()
+        {
+            progressBar.Value = 0;
+            progressBar.Visible = false;
+            laCurrentImportPerson.Visible = false;
+            this.Enabled = true;
+            ClearInlastPersoner();
+        }
+        private void ImportSetup()
+        {
+            this.Enabled = false;
+            progressBar.Visible = true;
+            laCurrentImportPerson.Visible = true;
+            progressBar.Value = 0;
+            progressBar.Maximum = lbPersoner.Items.Count;
         }
         private void ClearInlastPersoner()
         {

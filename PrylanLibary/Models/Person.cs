@@ -9,7 +9,6 @@ namespace PrylanLibary.Models
 {
     public class Person
     {
-        private static readonly string PERSNR_REGEX = "^[0-9]{8}[-][0-9]{4}$";
         public Person()
         {
 
@@ -29,20 +28,6 @@ namespace PrylanLibary.Models
         public string Telefon { get; set; }
         public string Ovrigt { get; set; }
         public string Tillhorighet { get; set; }
-
-        public bool ValidPersNr()
-        {
-            return Regex.IsMatch(this.PersNr, PERSNR_REGEX);
-        }
-
-        public bool ValidTillhorighet()
-        {
-            if (this.Tillhorighet.RemoveWhiteSpaces().Length > 2)
-            {
-                return true;
-            }
-            return false;
-        }
 
         public Person Copy()
         {
@@ -79,10 +64,7 @@ namespace PrylanLibary.Models
             } 
         }
 
-        public string GetNamn()
-        {
-            return this.Fornamn + " " + this.Efternamn;
-        }
+        public string FullName { get { return $"{this.Fornamn} {this.Efternamn}"; } }
 
         public override string ToString()
         {

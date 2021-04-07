@@ -22,7 +22,7 @@ namespace ScannerDialog
         [STAThread]
         static void Main()
         {
-            DateTime expireDate = DateTime.Parse("2021-04-05");
+            DateTime expireDate = DateTime.Parse("2021-04-09");
             if (DateTime.Now > expireDate)
             {
                 MessageBox.Show("Datum spärr gick ut: " + expireDate.ToString());
@@ -35,13 +35,13 @@ namespace ScannerDialog
             }
             else
             {
-                MessageBox.Show("Applikationen kör redan");
+                MessageBox.Show(Locales.AlreadyRunning);
             }
         }
 
         private static void ApplicationStart()
         {
-            AppSettings.FileName = Config.InstallningarFileName;
+            Installningar.FileName = Config.INSTALLNINGAR_FILENAME;
             AppSettings.Ladda();
             BackupDatabase();
             DBAccess = new DataAccess() { CurrentFile = AppSettings.Databas };

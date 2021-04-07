@@ -261,7 +261,7 @@ namespace PrylanLibary
             dbHandler.AddParam("@Status", Status.UTE);
             dbHandler.ExecQuery("UPDATE artiklar SET PersId=@pId,Status=@Status WHERE Id=@aId");
         }
-        public void UnregisterArtikelFromPerson(Artikel artikel)
+        public void AvregistreraArtikelFromPerson(Artikel artikel)
         {
             dbHandler.AddParam("@Id", artikel.Id);
             dbHandler.AddParam("@Status", Status.INNE);

@@ -77,14 +77,14 @@ namespace PrylanLibary
             }
         }
 
-        public void ExecQuery(string Query)
+        public void ExecQuery(string query)
         {
             RecordCount = 0;
             Exception = string.Empty;
 
             try
             {
-                DBCmd = new SQLiteCommand(Query, DBConn);
+                DBCmd = new SQLiteCommand(query, DBConn);
 
                 Params.ForEach((SQLiteParameter p) => DBCmd.Parameters.Add(p));
                 Params.Clear();
@@ -99,10 +99,10 @@ namespace PrylanLibary
                 Console.WriteLine(Exception);
             }
         }
-        public void AddParam(string Name, object Value)
+        public void AddParam(string name, object value)
         {
-            SQLiteParameter NewParam = new SQLiteParameter(Name, Value);
-            Params.Add(NewParam);
+            SQLiteParameter newParam = new SQLiteParameter(name, value);
+            Params.Add(newParam);
         }
 
         //private static string artiklarQuery = "CREATE TABLE IF NOT EXISTS \"artiklar\" (\"Id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \"Besk\" TEXT, \"Stoldtag\", \"Datornamn\" TEXT, \"SerieNr\" TEXT, \"Mac\" TEXT, \"Os\" TEXT, \"Inkop\" TEXT, \"AndvandInkop\" INTEGER NOT NULL DEFAULT 0, \"Ovrigt\" TEXT, \"Status\" INTEGER NOT NULL DEFAULT 0, PersId INTEGER)";
@@ -119,7 +119,7 @@ namespace PrylanLibary
                         connection.Open();
                         using (SQLiteCommand cmd = new SQLiteCommand(connection))
                         {
-                            cmd.CommandText = File.ReadAllText("tables.sql3");
+                            cmd.CommandText = File.ReadAllText(Config.TABLE_QUERIES_FILENAME);
                             cmd.ExecuteNonQuery();
                         }
                         connection.Close();

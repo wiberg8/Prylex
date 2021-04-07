@@ -87,7 +87,6 @@
             this.Name = "InputBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = " ";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputScanner_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

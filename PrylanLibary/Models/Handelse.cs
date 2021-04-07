@@ -22,10 +22,10 @@ namespace PrylanLibary.Models
             switch (Typ)
             {
                 case HandelseTyp.AVREGISTRERING:
-                    x = $"{"Avregistrering"}  |  {Datum}";
+                    x = $"{Locales.Avregistrering}  |  {Datum}";
                     break;
                 case HandelseTyp.REGISTRERING:
-                    x = $"{"Registrering"}  |  {Datum}";
+                    x = $"{Locales.Registrering}  |  {Datum}";
                     break;
                 default:
                     x = $"{FriText}  |  {Datum}";

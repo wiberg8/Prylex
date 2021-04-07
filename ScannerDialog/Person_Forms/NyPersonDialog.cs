@@ -23,16 +23,10 @@ namespace ScannerDialog
         }
 
         //form events
-        private void NyPersonDialog_Load(object sender, EventArgs e)
-        {
-            FormStartup();
-        }
+        private void NyPersonDialog_Load(object sender, EventArgs e) => FormStartup();
 
         //cmd events
-        private void cmdSpara_Click(object sender, EventArgs e)
-        {
-            Spara();
-        }
+        private void cmdSpara_Click(object sender, EventArgs e) => Spara();
 
         private void FormStartup()
         {

@@ -13,7 +13,7 @@ namespace PrylanLibary
     public class Installningar : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public string FileName { get; set; }
+        public static string FileName { get; set; }
 
         private string _databas;
         private string _databasBackup;
@@ -27,13 +27,13 @@ namespace PrylanLibary
 
         public string Databas { get { return _databas; } set { _databas = value; NotifyPropertyChanged(); } }
         public string DatabasBackup { get { return _databasBackup; } set { _databasBackup = value; NotifyPropertyChanged(); } }
-        public string ForetagsNamn { get { return _foretagsNamn; } set { _foretagsNamn = value; } }
-        public string Skrivare { get { return _skrivare; } set { _skrivare = value; } }
-        public bool BackupOnStart { get { return _backupOnStart; } set { _backupOnStart = value; } }
-        public List<string> Beskrivningar { get { return _beskrivningar; } set { _beskrivningar = value; } }
-        public List<string> Os { get { return _os; } set { _os = value; } }
-        public List<string> Tillhorigheter { get { return _tillhorigheter; } set { _tillhorigheter = value; } }
-        public List<string> Handelser { get { return _handelser; } set { _handelser = value; } }
+        public string ForetagsNamn { get => _foretagsNamn; set => _foretagsNamn = value; }
+        public string Skrivare { get => _skrivare; set => _skrivare = value; }
+        public bool BackupOnStart { get => _backupOnStart; set => _backupOnStart = value; }
+        public List<string> Beskrivningar { get => _beskrivningar; set => _beskrivningar = value; }
+        public List<string> Os { get => _os; set => _os = value; }
+        public List<string> Tillhorigheter { get => _tillhorigheter; set => _tillhorigheter = value; }
+        public List<string> Handelser { get => _handelser; set => _handelser = value; }
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
@@ -71,8 +71,6 @@ namespace PrylanLibary
             }
 
         }
-
-
 
         private void SetThisAsAnother(Installningar another)
         {

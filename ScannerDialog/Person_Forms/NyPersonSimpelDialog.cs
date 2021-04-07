@@ -25,15 +25,9 @@ namespace ScannerDialog
         }
 
         //form events
-        private void NyPersonDialog_Load(object sender, EventArgs e)
-        {
-            LaddaSnabbVal();
-        }
+        private void NyPersonDialog_Load(object sender, EventArgs e) => LaddaSnabbVal();
         //cmd events
-        private void cmdSpara_Click(object sender, EventArgs e)
-        {
-            Spara();
-        }
+        private void cmdSpara_Click(object sender, EventArgs e) => Spara();
 
         private void Spara()
         {

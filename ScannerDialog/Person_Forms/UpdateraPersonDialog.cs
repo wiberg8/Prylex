@@ -26,44 +26,28 @@ namespace ScannerDialog
             this.personEdit = person;
         }
 
-        private Person FaltToPerson()
+        //form events
+        private void UpdateraPersonDialog_Load(object sender, EventArgs e) => FormStartup();
+
+        private void UpdateraPersonDialog_KeyDown(object sender, KeyEventArgs e)
         {
-            Person person = this.personEdit.Copy();
-            person.Fornamn = txtFornamn.Text.Trim();
-            person.Efternamn = txtEfternamn.Text.Trim();
-            person.Sign = txtSign.Text.Trim();
-            person.Epost = txtEpost.Text.Trim();
-            person.Telefon = txtTelefon.Text.Trim();
-            person.Ovrigt = txtOvrigt.Text;
-            person.Tillhorighet = cbTillhorighet.Text;
-            return person;
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
         }
 
-        private void FyllFalt(Person person)
+        //cmd events
+        private void cmdSpara_Click(object sender, EventArgs e) => Spara();
+
+     
+        private void FormStartup()
         {
-            txtFornamn.Text = person.Fornamn;
-            txtEfternamn.Text = person.Efternamn;
-            txtPersNr.Text = person.PersNr;
-            txtSign.Text = person.Sign;
-            txtEpost.Text = person.Epost;
-            txtTelefon.Text = person.Telefon;
-            txtOvrigt.Text = person.Ovrigt;
-            cbTillhorighet.Text = person.Tillhorighet;
+            LaddaSnabbVal();
+            FyllFalt(this.personEdit);
         }
 
-        private bool IsFaltGiltiga()
-        {
-            //Kollar om textfäleten "Förnamn", "Efternamn", "Tillhörighet" har minst 2 tecken i sig som ej är blanksteg
-            if (
-                txtFornamn.Text.RemoveWhiteSpaces().Length < 2
-                || txtEfternamn.Text.RemoveWhiteSpaces().Length < 2
-                || cbTillhorighet.Text.RemoveWhiteSpaces().Length < 2
-                )
-                return false;
-            return true;
-        }
-
-        private void cmdSpara_Click(object sender, EventArgs e)
+        private void Spara()
         {
             Person p = FaltToPerson();
             PersonValidator validator = new PersonValidator();
@@ -76,6 +60,27 @@ namespace ScannerDialog
             }
         }
 
+        private void LaddaSnabbVal()
+        {
+            foreach (string v in AppSettings.Tillhorigheter)
+            {
+                cbTillhorighet.Items.Add(v);
+            }
+        }
+
+         private Person FaltToPerson()
+        {
+            Person person = this.personEdit.Copy();
+            person.Fornamn = txtFornamn.Text.Trim();
+            person.Efternamn = txtEfternamn.Text.Trim();
+            person.Sign = txtSign.Text.Trim();
+            person.Epost = txtEpost.Text.Trim();
+            person.Telefon = txtTelefon.Text.Trim();
+            person.Ovrigt = txtOvrigt.Text;
+            person.Tillhorighet = cbTillhorighet.Text;
+            return person;
+        }
+
         private void FyllErrors(ValidationResult lista)
         {
             lbErrors.Items.Clear();
@@ -85,41 +90,16 @@ namespace ScannerDialog
             }
         }
 
-        private void LaddaSnabbVal()
+        private void FyllFalt(Person person)
         {
-            foreach(string v in AppSettings.Tillhorigheter)
-            {
-                cbTillhorighet.Items.Add(v);
-            }
-        }
-
-        private void UpdateraPersonDialog_Load(object sender, EventArgs e)
-        {
-            LaddaSnabbVal();
-            FyllFalt(this.personEdit);
-        }
-
-        private void cbTillhorighet_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtEfternamn_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void txtFornamn_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void UpdateraPersonDialog_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.DialogResult = DialogResult.Cancel;
-            }
+            txtFornamn.Text = person.Fornamn;
+            txtEfternamn.Text = person.Efternamn;
+            txtPersNr.Text = person.PersNr;
+            txtSign.Text = person.Sign;
+            txtEpost.Text = person.Epost;
+            txtTelefon.Text = person.Telefon;
+            txtOvrigt.Text = person.Ovrigt;
+            cbTillhorighet.Text = person.Tillhorighet;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace PrylanLibary.Models
     public class ImportPerson
     {
         public Person Person { get; set; }
-        public ValidationResult Errors { get; set; }
+        public ValidationResult Validation { get; set; }
         public bool AlreadyExist { get; set; }
         public bool Success { get; set; }
 

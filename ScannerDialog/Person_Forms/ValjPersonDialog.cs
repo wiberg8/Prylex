@@ -25,10 +25,7 @@ namespace ScannerDialog
         }
 
         //form events
-        private void ValjPersonDialog_Load(object sender, EventArgs e)
-        {
-            FormStartup();
-        }
+        private void ValjPersonDialog_Load(object sender, EventArgs e) => FormStartup();
         private void ValjPersonDialog_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -37,15 +34,9 @@ namespace ScannerDialog
             }
         }
         //cmd events
-        private void cmdSok_Click(object sender, EventArgs e)
-        {
-            Sok();
-        }
+        private void cmdSok_Click(object sender, EventArgs e) => Sok();
         //datagridview events
-        private void dgvPersoner_MouseDoubleClick_1(object sender, MouseEventArgs e)
-        {
-            PersonSelectedClick();
-        }
+        private void dgvPersoner_MouseDoubleClick_1(object sender, MouseEventArgs e) => PersonSelectedClick();
 
         private void FormStartup()
         {

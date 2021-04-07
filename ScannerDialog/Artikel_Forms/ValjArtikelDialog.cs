@@ -27,10 +27,7 @@ namespace ScannerDialog
         }
 
         //form events
-        private void ValjArtikelDialog_Load(object sender, EventArgs e)
-        {
-            FormStartup();
-        }
+        private void ValjArtikelDialog_Load(object sender, EventArgs e) => FormStartup();
         private void ValjArtikelDialog_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -39,15 +36,9 @@ namespace ScannerDialog
             }
         }
         //cmd events
-        private void cmdSok_Click(object sender, EventArgs e)
-        {
-            Sok();
-        }
+        private void cmdSok_Click(object sender, EventArgs e) => FyllGrid(DBAccess.HamtaSokArtiklarLediga(txtSok.Text));
         //datagridview events
-        private void dgvArtiklar_MouseDoubleClick_1(object sender, MouseEventArgs e)
-        {
-            ArtikelSelectedClick();
-        }
+        private void dgvArtiklar_MouseDoubleClick_1(object sender, MouseEventArgs e) => ArtikelSelectedClick();
 
         private void FormStartup()
         {
@@ -61,10 +52,6 @@ namespace ScannerDialog
                 this.ValdArtikel = (Artikel)dgvArtiklar.SelectedRows[0].Tag;
                 this.DialogResult = DialogResult.OK;
             }
-        }
-        private void Sok()
-        {
-            FyllGrid(DBAccess.HamtaSokArtiklarLediga(txtSok.Text));
         }
         private void FyllGrid(List<Artikel> artiklar)
         {

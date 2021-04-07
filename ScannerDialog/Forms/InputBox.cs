@@ -29,10 +29,7 @@ namespace ScannerDialog
             }
         }
         //cmd events
-        private void cmdOk_Click_1(object sender, EventArgs e)
-        {
-            Ok();
-        }
+        private void cmdOk_Click_1(object sender, EventArgs e) => Ok();
 
         private void Ok()
         {

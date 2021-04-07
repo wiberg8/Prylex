@@ -21,10 +21,7 @@ namespace ScannerDialog
         }
 
         //form events
-        private void InputBoxHandelse_Load(object sender, EventArgs e)
-        {
-            FormStartup();
-        }
+        private void InputBoxHandelse_Load(object sender, EventArgs e) => FormStartup();
         private void InputScanner_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -34,10 +31,7 @@ namespace ScannerDialog
         }
 
         //cmd events
-        private void cmdOk_Click_1(object sender, EventArgs e)
-        {
-            Ok();
-        }
+        private void cmdOk_Click_1(object sender, EventArgs e) => Ok();
 
         private void FormStartup()
         {

@@ -27,10 +27,7 @@ namespace ScannerDialog
         }
 
         //form events
-        private void UpdateraArtikelDialog_Load(object sender, EventArgs e)
-        {
-            FormStartup();
-        }
+        private void UpdateraArtikelDialog_Load(object sender, EventArgs e) => FormStartup();
         private void UpdateraArtikelDialog_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -40,10 +37,7 @@ namespace ScannerDialog
         }
 
         //cmd events
-        private void cmdSpara_Click(object sender, EventArgs e)
-        {
-            Spara();
-        }
+        private void cmdSpara_Click(object sender, EventArgs e) => Spara();
 
         private void FormStartup()
         {
@@ -75,12 +69,17 @@ namespace ScannerDialog
         }
         private void LaddaSnabbval()
         {
-            cbBeskrivningar.DataSource = AppSettings.Beskrivningar;
+            cbBeskrivningar.Items.AddRange(AppSettings.Beskrivningar.ToArray());
+            cbOS.Items.AddRange(AppSettings.Os.ToArray());
+
             if (cbBeskrivningar.Items.Count > 0)
+            {
                 cbBeskrivningar.SelectedIndex = 0;
-            cbOS.DataSource = AppSettings.Os;
+            }
             if (cbOS.Items.Count > 0)
+            {
                 cbOS.SelectedIndex = 0;
+            }   
         }
         private void FyllErrors(ValidationResult lista)
         {

@@ -24,15 +24,9 @@ namespace ScannerDialog
         }
 
         //form events
-        private void NyArtikelDialog_Load(object sender, EventArgs e)
-        {
-            LaddaSnabbval();
-        }
+        private void NyArtikelDialog_Load(object sender, EventArgs e) => LaddaSnabbval();
         //cmd events
-        private void cmdSave_Click(object sender, EventArgs e)
-        {
-            Spara();
-        }
+        private void cmdSave_Click(object sender, EventArgs e) => Spara();
         //checkbox events
         private void cbInputChoose_CheckedChanged(object sender, EventArgs e)
         {

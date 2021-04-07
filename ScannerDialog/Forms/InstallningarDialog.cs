@@ -46,74 +46,38 @@ namespace ScannerDialog
             MoveSelectedDown(lbForval);
             ForvalSpara();
         }
-        private void cmdForvalLaggTill_Click(object sender, EventArgs e)
-        {
-            ForvalLaggTill();
-        }
-        private void cmdForvalTabort_Click(object sender, EventArgs e)
-        {
-            ForvalTaBort();
-        }
-        private void cmdNuvarandeDbUtforska_Click(object sender, EventArgs e)
-        {
-            ChangeDatabas();
-        }
+        private void cmdForvalLaggTill_Click(object sender, EventArgs e) => ForvalLaggTill();
+        private void cmdForvalTabort_Click(object sender, EventArgs e) => ForvalTaBort();
+        private void cmdNuvarandeDbUtforska_Click(object sender, EventArgs e) => ChangeDatabas();
         private void cmdDatabasAterstall_Click(object sender, EventArgs e)
         {
             AppSettings.Databas = string.Empty;
             DBAccess.Close();
             DBAccess.CurrentFile = AppSettings.Databas;
         }
-        private void cmdNuvarandeDbBackupUtforska_Click(object sender, EventArgs e)
-        {
-            ChangeDatabasBackup();
-        }
-        private void cmdNuvarandeDbBackupAterstall_Click(object sender, EventArgs e)
-        {
-            AppSettings.DatabasBackup = string.Empty;
-        }
-        private void cmdExporteraPersoner_Click(object sender, EventArgs e)
-        {
-            ExporteraPersoner();
-        }
-        private void cmdExporteraArtiklar_Click(object sender, EventArgs e)
-        {
-            ExporteraArtiklar();
-        }
-        private void cmdImportForval_Click(object sender, EventArgs e)
-        {
-            ForvalImportera();
-        }
+        private void cmdNuvarandeDbBackupUtforska_Click(object sender, EventArgs e) => ChangeDatabasBackup();
+        private void cmdNuvarandeDbBackupAterstall_Click(object sender, EventArgs e) => AppSettings.DatabasBackup = string.Empty;
+        private void cmdExporteraPersoner_Click(object sender, EventArgs e) => ExporteraPersoner();
+        private void cmdExporteraArtiklar_Click(object sender, EventArgs e) => ExporteraArtiklar();
+        private void cmdImportForval_Click(object sender, EventArgs e) => ForvalImportera();
 
         //combobox events
-        private void cbForvalValj_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ForvalRefresh();
-        }
-        private void cbPrinter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AppSettings.Skrivare = cbPrinter.Text;
-        }
+        private void cbForvalValj_SelectedIndexChanged(object sender, EventArgs e) => ForvalRefresh();
+        private void cbPrinter_SelectedIndexChanged(object sender, EventArgs e) => AppSettings.Skrivare = cbPrinter.Text;
         //checkbox events
-        private void cbBackupOnStart_CheckedChanged(object sender, EventArgs e)
-        {
-            AppSettings.BackupOnStart = cbBackupOnStart.Checked;
-        }
-      
+        private void cbBackupOnStart_CheckedChanged(object sender, EventArgs e) => AppSettings.BackupOnStart = cbBackupOnStart.Checked;
+
         //shared events
-        private void laNuvarandeDbDisplay_DoubleClick(object sender, EventArgs e)
-        {
-            Clipboard.SetText(laNuvarandeDbDisplay.Text);
-        }
+        private void laNuvarandeDbDisplay_DoubleClick(object sender, EventArgs e) => Clipboard.SetText(laNuvarandeDbDisplay.Text);
         private void mouseEnter(object sender, EventArgs e)
         {
             Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.HighlightColor;
+            theLabel.ForeColor = Config.HIGHLIGHT_COLOR;
         }
         private void mouseLeave(object sender, EventArgs e)
         {
             Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.StandardForeColor;
+            theLabel.ForeColor = Config.STANDARD_FORE_COLOR;
         }
 
         //events

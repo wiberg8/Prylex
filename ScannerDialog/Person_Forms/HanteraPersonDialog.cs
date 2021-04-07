@@ -19,7 +19,6 @@ namespace ScannerDialog
     public partial class HanteraPersonDialog : Form
     {
         private Person nuvarandePerson;
-        private string noPersonBound = "Ingen artikel knyten till händelsen";
 
         public HanteraPersonDialog(Person personAttEditera)
         {
@@ -28,10 +27,7 @@ namespace ScannerDialog
         }
 
         //form events
-        private void HanteraPersonDialogcs_Load(object sender, EventArgs e)
-        {
-            FormStartup();
-        }
+        private void HanteraPersonDialogcs_Load(object sender, EventArgs e) => FormStartup();
         private void HanteraPersonDialog_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -41,54 +37,23 @@ namespace ScannerDialog
         }
 
         //cmd events
-        private void cmdArtikelAvregistrera_Click(object sender, EventArgs e)
-        {
-            AvregistreraSelectedArtikel();
-        }
-        private void cmdArtikelSok_Click(object sender, EventArgs e)
-        {
-            SokRegistreradeArtiklar();
-        }
-        private void cmdShowAllRegistrerade_Click(object sender, EventArgs e)
-        {
-            VisaRegistreradeArtiklar();
-        }   
-        private void cmdRegistreraArtikel_Click(object sender, EventArgs e)
-        {
-            RegistreraArtikelViaDialog();
-        }
-        private void cmdRegistreraSkanna_Click(object sender, EventArgs e)
-        {
-            RegistreraViaSkannaEttiket();
-        }
-        private void cmdDelete_Click(object sender, EventArgs e)
-        {
-            RaderaPerson();
-        }
-        private void cmdSkrivUtEttiket_Click(object sender, EventArgs e)
-        {
-            SkrivUtEttiket();
-        }
-        private void cmdEdit_Click(object sender, EventArgs e)
-        {
-            UpdateraPerson();
-        }
-        private void cmdExporteraDatornamn_Click(object sender, EventArgs e)
-        {
-            ExporteraArtikelLista();
-        }
+        private void cmdArtikelAvregistrera_Click(object sender, EventArgs e) => AvregistreraSelectedArtikel();
+        private void cmdArtikelSok_Click(object sender, EventArgs e) => SokRegistreradeArtiklar();
+        private void cmdShowAllRegistrerade_Click(object sender, EventArgs e) => VisaRegistreradeArtiklar();
+        private void cmdRegistreraArtikel_Click(object sender, EventArgs e) => RegistreraArtikelViaDialog();
+        private void cmdRegistreraSkanna_Click(object sender, EventArgs e) => RegistreraViaSkannaEttiket();
+        private void cmdDelete_Click(object sender, EventArgs e) => RaderaPerson();
+
+        private void cmdSkrivUtEttiket_Click(object sender, EventArgs e) => SkrivUtEttiket();
+        private void cmdEdit_Click(object sender, EventArgs e) => UpdateraPerson();
+        private void cmdExporteraDatornamn_Click(object sender, EventArgs e) => ExporteraArtikelLista();
+        private void cmdNyHandelse_Click(object sender, EventArgs e) => NyHandelse();
 
         //listbox events
-        private void lbHandelser_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            HandelseSelected();
-        }
+        private void lbHandelser_SelectedIndexChanged(object sender, EventArgs e) => HandelseSelected();
 
-        //combox events
-        private void cbSelectHandelseTyp_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            HandelseShowTypSelect();
-        }
+        //combobox events
+        private void cbSelectHandelseTyp_SelectedIndexChanged(object sender, EventArgs e) => HandelseShowTypSelect();
 
         private void laDisplay_DoubleClick(object sender, MouseEventArgs e)
         {
@@ -99,12 +64,12 @@ namespace ScannerDialog
         private void mouseEnter(object sender, EventArgs e)
         {
             Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.HighlightColor;
+            theLabel.ForeColor = Config.HIGHLIGHT_COLOR;
         }
         private void mouseLeave(object sender, EventArgs e)
         {
             Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.StandardForeColor;
+            theLabel.ForeColor = Config.STANDARD_FORE_COLOR;
         }
 
         private void FormStartup()
@@ -181,9 +146,21 @@ namespace ScannerDialog
             }
             else
             {
-                MessageBox.Show($"{nuvarandePerson.GetNamn()} har artiklar fortfarande registrerade på sig");
+                MessageBox.Show($"{nuvarandePerson.FullName} har artiklar fortfarande registrerade på sig");
             }
         }
+
+        private void NyHandelse()
+        {
+            var x = new InputBoxHandelse();
+            if (x.ShowDialog() == DialogResult.OK)
+            {
+                Handelse handelse = new Handelse() { PersId = nuvarandePerson.Id, FriText = x.Input, Typ = HandelseTyp.FRITEXT };
+                DBAccess.InfogaHandelse(handelse);
+                FyllHandelser(DBAccess.HamtaHandelserPerson(nuvarandePerson));
+            }
+        }
+
         private void HandelseSelected()
         {
             if (lbHandelser.SelectedItem != null)
@@ -193,7 +170,7 @@ namespace ScannerDialog
                 artikelFromId = DBAccess.HamtaArtikelFranId(handelse.ArtikelId);
                 if (artikelFromId is null)
                 {
-                    txtHandelseArtikel.Text = noPersonBound;
+                    txtHandelseArtikel.Text = Locales.NoArtikelBound;
                 }
                 else
                 {
@@ -235,7 +212,7 @@ namespace ScannerDialog
         }
         private void RegistreraViaSkannaEttiket()
         {
-            InputBox inputBox = new InputBox() { PromptText = "Skanna Ettiket (SerieNr)" };
+            InputBox inputBox = new InputBox() { PromptText =  Locales.SkannaSerieNr};
             inputBox.ShowDialog();
             string scannedInput = inputBox.Input.ToUpper();
 
@@ -245,11 +222,11 @@ namespace ScannerDialog
                 artikel = DBAccess.HamtaArtikelFranSerieNr(scannedInput);
                 if (artikel is null)
                 {
-                    MessageBox.Show("Inga träffar");
+                    MessageBox.Show(Locales.IngenTraff);
                 }
                 else if (artikel.Status == Status.UTE)
                 {
-                    MessageBox.Show("Artikeln är redan utlämnad");
+                    MessageBox.Show(Locales.ArtikelRedanUtlamnad);
                 }
                 else
                 {
@@ -271,10 +248,10 @@ namespace ScannerDialog
         {
             if (lbRegistreradeArtiklar.SelectedItem is null)
                 return;
-            if (MessageBox.Show("Är du säker på att avregistrera artikeln från personen?", "Prylex", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show(Locales.AreYouSureYouWantToAvregistrera, Application.ProductName, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Artikel selectedArtikel = (Artikel)lbRegistreradeArtiklar.SelectedItem;
-                DBAccess.UnregisterArtikelFromPerson(selectedArtikel);
+                DBAccess.AvregistreraArtikelFromPerson(selectedArtikel);
                 Artikel a = DBAccess.HamtaArtikelFranId(selectedArtikel.Id);
                 if (a.Status == Status.INNE)
                 {
@@ -283,7 +260,7 @@ namespace ScannerDialog
                 }
                 FyllHandelser(DBAccess.HamtaHandelserPerson(nuvarandePerson));
                 FyllRegistreradeArtiklar(DBAccess.HamtaRegistreradeArtiklar(nuvarandePerson));
-                laAntalRegArtiklar.Text = $"Antal: {lbRegistreradeArtiklar.Items.Count}";
+                laAntalRegArtiklar.Text = $"{Locales.Antal}l: {lbRegistreradeArtiklar.Items.Count}";
             }
         }
         private void VisaRegistreradeArtiklar()

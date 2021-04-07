@@ -76,6 +76,7 @@
     <Compile Include="Enums\HandelseTyp.cs" />
     <Compile Include="Import.cs" />
     <Compile Include="IO.cs" />
+    <Compile Include="Locales.cs" />
     <Compile Include="ObjectExtensions.cs" />
     <Compile Include="Models\Artikel.cs" />
     <Compile Include="Config.cs" />

@@ -15,9 +15,9 @@ namespace PrylanLibary
             for (int i = 0; i < dataGridView.Rows.Count; i++)
             {
                 if (i % 2 == 0)
-                    dataGridView.Rows[i].DefaultCellStyle.BackColor = Config.FirstGridColor;
+                    dataGridView.Rows[i].DefaultCellStyle.BackColor = Config.FIRST_GRID_COLOR;
                 else
-                    dataGridView.Rows[i].DefaultCellStyle.BackColor = Config.SecondGridColor;
+                    dataGridView.Rows[i].DefaultCellStyle.BackColor = Config.SECOND_GRID_COLOR;
             }
         }
 

@@ -18,45 +18,25 @@ namespace ScannerDialog
 {
     public partial class SnabbRegistering : Form
     {
-        private const string valjTillhorighet = "Välj tillhörighet";
-
         public SnabbRegistering()
         {
             InitializeComponent();
         }
 
         //form events
-        private void HanteraPersonDialogcs_Load(object sender, EventArgs e)
-        {
-            FormStartup();
-        }
+        private void HanteraPersonDialogcs_Load(object sender, EventArgs e) => FormStartup();
         //cmd events
-        private void cmdSok_Click(object sender, EventArgs e)
-        {
-            SokPersoner();
-        }
-        private void cmdRegistreraSkanna_Click_1(object sender, EventArgs e)
-        {
-            RegistreraSkannaEttiketPaValdPerson();
-        }
-        private void cmdRegistreraArtikel_Click_1(object sender, EventArgs e)
-        {
-            RegistreraArtikelPaValdPerson();
-        }
+        private void cmdSok_Click(object sender, EventArgs e) => SokPersoner();
+        private void cmdRegistreraSkanna_Click_1(object sender, EventArgs e) => RegistreraSkannaEttiketPaValdPerson();
+        private void cmdRegistreraArtikel_Click_1(object sender, EventArgs e) => RegistreraArtikelPaValdPerson();
         //listbox events
-        private void lbPersoner_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            NyPersonSelected();
-        }
+        private void lbPersoner_SelectedIndexChanged(object sender, EventArgs e) => NyPersonSelected();
         //combobox events
-        private void cbTillhorighet_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            NyTillhorighetSelected();
-        }
+        private void cbTillhorighet_SelectedIndexChanged(object sender, EventArgs e) => NyTillhorighetSelected();
 
         private void FormStartup()
         {
-            cbTillhorighet.Items.Add(valjTillhorighet);
+            cbTillhorighet.Items.Add(Locales.ValjTillhorighet);
             cbTillhorighet.SelectedIndex = 0;
             AppSettings.Tillhorigheter.ForEach((string x) => cbTillhorighet.Items.Add(x));
         }
