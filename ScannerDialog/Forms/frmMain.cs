@@ -42,6 +42,7 @@ namespace ScannerDialog.Forms
             var ins = (Installningar)sender;
             laDatabaseWarning.Visible = !File.Exists(ins.Databas);
             tspNuvarandeDb.Text = ins.Databas;
+            LaddaTillhorighet();
         }
 
         private void Artiklar_Change(object sender, EventArgs e)
@@ -204,7 +205,8 @@ namespace ScannerDialog.Forms
 
         private void LaddaTillhorighet()
         {
-            cbTillhorighet.Items.Add("Välj tillhörighet");
+            cbTillhorighet.Items.Clear();
+            cbTillhorighet.Items.Add(Locales.ValjTillhorighet);
             cbTillhorighet.SelectedIndex = 0;
             cbTillhorighet.Items.AddRange(AppSettings.Tillhorigheter.ToArray());
         }
@@ -215,9 +217,11 @@ namespace ScannerDialog.Forms
             {
                 case "tabArtiklar":
                     FyllGrid(DBAccess.HamtaArtiklar());
+                    cbTillhorighet.Visible = false;
                     break;
                 case "tabPersoner":
                     FyllGrid(DBAccess.HamtaPersoner());
+                    cbTillhorighet.Visible = true;
                     break;
             }
         }
@@ -234,7 +238,7 @@ namespace ScannerDialog.Forms
                 dgvArtiklar.Rows[dgvArtiklar.Rows.Count - 1].Tag = artikel;
             }
             dgvArtiklar.ClearSelection();
-            DataGridLibary.SetColorVariationToRows(dgvArtiklar);
+            dgvArtiklar.SetColorVariationToRows();
         }
 
         private void FyllGrid(List<Person> lista)
@@ -246,9 +250,9 @@ namespace ScannerDialog.Forms
                 dgvPersoner.Rows[dgvPersoner.Rows.Count - 1].Tag = person;
             }
             dgvPersoner.ClearSelection();
-            DataGridLibary.SetColorVariationToRows(dgvPersoner);
+            dgvArtiklar.SetColorVariationToRows();
         }
-
+        
         private void ArtikelSelectedGrid()
         {
             if (dgvArtiklar.SelectedRows.Count > 0)

@@ -183,16 +183,16 @@ namespace ScannerDialog
                     switch (cbForvalValj.SelectedIndex)
                     {
                         case 0:    //Beskrivningar
-                            AppSettings.Beskrivningar.Add(inputDialog.Input);
+                            AppSettings.AddBeskrivning(inputDialog.Input);
                             break;
                         case 1:    //Händelser
-                            AppSettings.Handelser.Add(inputDialog.Input);
+                            AppSettings.AddHandelse(inputDialog.Input);
                             break;
                         case 2:    //Os
-                            AppSettings.Os.Add(inputDialog.Input);
+                            AppSettings.AddOs(inputDialog.Input);
                             break;
                         case 3:    //Tillhörighet
-                            AppSettings.Tillhorigheter.Add(inputDialog.Input);
+                            AppSettings.AddTillhorighet(inputDialog.Input);
                             break;
                     }
                     ForvalRefresh();

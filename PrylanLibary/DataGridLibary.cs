@@ -10,7 +10,8 @@ namespace PrylanLibary
 {
     public static class DataGridLibary
     {
-        public static void SetColorVariationToRows(DataGridView dataGridView)
+
+        public static void SetColorVariationToRows(this DataGridView dataGridView)
         {
             for (int i = 0; i < dataGridView.Rows.Count; i++)
             {
