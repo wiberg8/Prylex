@@ -20,6 +20,8 @@ namespace PrylanLibary
         private const string artikelRedanUtlamnad = "Artikeln är redan utlämnad";
         private const string antal = "Antal";
         private const string valjTillhorighet = "Välj tillhörighet";
+        private const string valjBeskrivning = "Välj beskrivning";
+        private const string visaEndast = "Visa endast";
 
         public static string AlreadyRunning => alreadyRunning;
         public static string Avregistrering => avregistrering;
@@ -33,5 +35,7 @@ namespace PrylanLibary
         public static string AreYouSureYouWantToAvregistrera => areYouSureYouWantToAvregistrera;
         public static string Antal => antal;
         public static string ValjTillhorighet => valjTillhorighet;
+        public static string ValjBeskrivning => valjBeskrivning;
+        public static string VisaEndast => visaEndast;
     }
 }

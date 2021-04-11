@@ -32,10 +32,10 @@ namespace PrylanLibary
         public bool BackupOnStart { get => _backupOnStart; set => _backupOnStart = value; }
         public List<string> Beskrivningar { get => _beskrivningar; set => _beskrivningar = value; }
         public List<string> Os { get => _os; set => _os = value; }
-        public List<string> Tillhorigheter { get => _tillhorigheter; set => _tillhorigheter = value; }
+        public List<string> Tillhorigheter { get => _tillhorigheter; set { _tillhorigheter = value; NotifyPropertyChanged(); } }
         public List<string> Handelser { get => _handelser; set => _handelser = value; }
 
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        public void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

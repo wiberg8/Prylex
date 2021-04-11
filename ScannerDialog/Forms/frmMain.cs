@@ -37,9 +37,18 @@ namespace ScannerDialog.Forms
             ClearGrids();
         }
 
-        private void Installningar_Change(object sender, EventArgs e)
+        private void Installningar_Change(object sender, PropertyChangedEventArgs e)
         {
-            var ins = (Installningar)sender;
+            var ins = (Installningar)sender;;
+            switch (tabArtiklarPersoner.SelectedTab.Name)
+            {
+                case "tabArtiklar":
+                    FyllVisaEndast(AppSettings.Beskrivningar);
+                    break;
+                case "tabPersoner":
+                    FyllVisaEndast(AppSettings.Tillhorigheter);
+                    break;
+            }
             laDatabaseWarning.Visible = !File.Exists(ins.Databas);
             tspNuvarandeDb.Text = ins.Databas;
         }
@@ -180,15 +189,20 @@ namespace ScannerDialog.Forms
             switch (tabArtiklarPersoner.SelectedTab.Name)
             {
                 case "tabArtiklar":
-                    List<Artikel> artiklar = DBAccess.HamtaSokArtiklar(txtSok.Text);
+
+                    List<Artikel> artiklar;
+                    if (cbVisaEndast.SelectedIndex == 0)
+                        artiklar = DBAccess.HamtaSokArtiklar(txtSok.Text);
+                    else
+                        artiklar = DBAccess.HamtaSokArtiklar(txtSok.Text).Where(a => a.Beskrivning == cbVisaEndast.Text).ToList();
                     FyllGrid(artiklar);
                     break;
                 case "tabPersoner":
                     List<Person> personer;
-                    if (cbTillhorighet.SelectedIndex  == 0)
+                    if (cbVisaEndast.SelectedIndex  == 0)
                         personer = DBAccess.HamtaSokPersoner(txtSok.Text);
                     else
-                        personer = DBAccess.HamtaSokPersoner(txtSok.Text).Where(p => p.Tillhorighet == cbTillhorighet.Text).ToList();
+                        personer = DBAccess.HamtaSokPersoner(txtSok.Text).Where(p => p.Tillhorighet == cbVisaEndast.Text).ToList();
                     FyllGrid(personer);
                     break;
             }
@@ -197,16 +211,17 @@ namespace ScannerDialog.Forms
         private void FormStartup()
         {
             laDatabaseWarning.Visible = !File.Exists(AppSettings.Databas);
-            LaddaTillhorighet();
             tspNuvarandeDb.Text = AppSettings.Databas;
+            FyllVisaEndast(AppSettings.Beskrivningar);
             RefreshSelectedGrid();
         }
 
-        private void LaddaTillhorighet()
+        private void FyllVisaEndast(List<string> items)
         {
-            cbTillhorighet.Items.Add("Välj tillhörighet");
-            cbTillhorighet.SelectedIndex = 0;
-            cbTillhorighet.Items.AddRange(AppSettings.Tillhorigheter.ToArray());
+            cbVisaEndast.Items.Clear();
+            cbVisaEndast.Items.Add(Locales.VisaEndast);
+            cbVisaEndast.SelectedIndex = 0;
+            cbVisaEndast.Items.AddRange(items.ToArray());
         }
 
         private void RefreshSelectedGrid()
@@ -215,9 +230,11 @@ namespace ScannerDialog.Forms
             {
                 case "tabArtiklar":
                     FyllGrid(DBAccess.HamtaArtiklar());
+                    FyllVisaEndast(AppSettings.Beskrivningar);
                     break;
                 case "tabPersoner":
                     FyllGrid(DBAccess.HamtaPersoner());
+                    FyllVisaEndast(AppSettings.Tillhorigheter);
                     break;
             }
         }
@@ -270,6 +287,23 @@ namespace ScannerDialog.Forms
                 var hanteraPersonDialog = new HanteraPersonDialog(p);
                 hanteraPersonDialog.ShowDialog();
                 FyllGrid(DBAccess.HamtaPersoner());
+            }
+        }
+
+        private void cbVisaEndast_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbVisaEndast.SelectedIndex == 0)
+                return;
+            switch (tabArtiklarPersoner.SelectedTab.Name)
+            {
+                case "tabArtiklar":
+                    List<Artikel> artiklar = DBAccess.HamtaSokArtiklar(txtSok.Text).Where(a => a.Beskrivning == cbVisaEndast.Text).ToList();
+                    FyllGrid(artiklar);
+                    break;
+                case "tabPersoner":
+                    List<Person> personer = DBAccess.HamtaSokPersoner(txtSok.Text).Where(p => p.Tillhorighet == cbVisaEndast.Text).ToList();
+                    FyllGrid(personer);
+                    break;
             }
         }
     }

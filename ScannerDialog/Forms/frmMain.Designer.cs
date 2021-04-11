@@ -71,7 +71,7 @@
             this.clmOvrigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.laDatabaseWarning = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.cbTillhorighet = new System.Windows.Forms.ComboBox();
+            this.cbVisaEndast = new System.Windows.Forms.ComboBox();
             this.gbSearch.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabArtiklarPersoner.SuspendLayout();
@@ -483,21 +483,22 @@
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
-            // cbTillhorighet
+            // cbVisaEndast
             // 
-            this.cbTillhorighet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTillhorighet.FormattingEnabled = true;
-            this.cbTillhorighet.Location = new System.Drawing.Point(590, 111);
-            this.cbTillhorighet.Name = "cbTillhorighet";
-            this.cbTillhorighet.Size = new System.Drawing.Size(334, 21);
-            this.cbTillhorighet.TabIndex = 19;
+            this.cbVisaEndast.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbVisaEndast.FormattingEnabled = true;
+            this.cbVisaEndast.Location = new System.Drawing.Point(590, 111);
+            this.cbVisaEndast.Name = "cbVisaEndast";
+            this.cbVisaEndast.Size = new System.Drawing.Size(334, 21);
+            this.cbVisaEndast.TabIndex = 19;
+            this.cbVisaEndast.SelectedIndexChanged += new System.EventHandler(this.cbVisaEndast_SelectedIndexChanged);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(942, 655);
-            this.Controls.Add(this.cbTillhorighet);
+            this.Controls.Add(this.cbVisaEndast);
             this.Controls.Add(this.laDatabaseWarning);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabArtiklarPersoner);
@@ -565,7 +566,7 @@
         private System.Windows.Forms.ToolStripLabel tspNuvarandeDb;
         private System.Windows.Forms.ToolStripButton tspNyPerson;
         private System.Windows.Forms.ToolStripButton tspNyArtikel;
-        private System.Windows.Forms.ComboBox cbTillhorighet;
+        private System.Windows.Forms.ComboBox cbVisaEndast;
     }
 }
 

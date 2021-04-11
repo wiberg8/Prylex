@@ -193,6 +193,7 @@ namespace ScannerDialog
                             break;
                         case 3:    //Tillhörighet
                             AppSettings.Tillhorigheter.Add(inputDialog.Input);
+                            AppSettings.NotifyPropertyChanged("Tillhorigheter");
                             break;
                     }
                     ForvalRefresh();
