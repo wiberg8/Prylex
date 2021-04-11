@@ -32,10 +32,35 @@ namespace PrylanLibary
         public bool BackupOnStart { get => _backupOnStart; set => _backupOnStart = value; }
         public List<string> Beskrivningar { get => _beskrivningar; set => _beskrivningar = value; }
         public List<string> Os { get => _os; set => _os = value; }
-        public List<string> Tillhorigheter { get => _tillhorigheter; set { _tillhorigheter = value; NotifyPropertyChanged(); } }
+        public List<string> Tillhorigheter { get => _tillhorigheter; set => _tillhorigheter = value; }
         public List<string> Handelser { get => _handelser; set => _handelser = value; }
 
-        public void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        public void AddTillhorighet(string x)
+        {
+            this.Tillhorigheter.Add(x);
+            NotifyPropertyChanged(nameof(this.Tillhorigheter));
+        }
+
+        public void AddOs(string x)
+        {
+            this.Os.Add(x);
+            NotifyPropertyChanged(nameof(this.Os));
+        }
+
+        public void AddBeskrivning(string x)
+        {
+            this.Beskrivningar.Add(x);
+            NotifyPropertyChanged(nameof(this.Beskrivningar));
+        }
+
+        public void AddHandelse(string x)
+        {
+            this.Handelser.Add(x);
+            NotifyPropertyChanged(nameof(this.Handelser));
+        }
+
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
