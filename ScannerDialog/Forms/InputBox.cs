@@ -21,7 +21,7 @@ namespace ScannerDialog
         }
 
         //form events
-        private void InputScanner_KeyDown(object sender, KeyEventArgs e)
+        private void InputBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && !string.IsNullOrWhiteSpace(txtScannedResult.Text))
             {
@@ -36,5 +36,7 @@ namespace ScannerDialog
             this.Input = txtScannedResult.Text.Trim();
             this.DialogResult = DialogResult.OK;
         }
+
+      
     }
 }

@@ -157,7 +157,7 @@ namespace ScannerDialog
             {
                 Handelse handelse = new Handelse() { PersId = nuvarandePerson.Id, FriText = x.Input, Typ = HandelseTyp.FRITEXT };
                 DBAccess.InfogaHandelse(handelse);
-                FyllHandelser(DBAccess.HamtaHandelserPerson(nuvarandePerson));
+                HandelseShowTypSelect();
             }
         }
 

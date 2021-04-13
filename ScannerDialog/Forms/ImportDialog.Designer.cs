@@ -43,19 +43,21 @@ namespace ScannerDialog.Forms
             // 
             // txtImportFil
             // 
-            this.txtImportFil.Location = new System.Drawing.Point(28, 51);
+            this.txtImportFil.Location = new System.Drawing.Point(37, 63);
+            this.txtImportFil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtImportFil.Name = "txtImportFil";
             this.txtImportFil.ReadOnly = true;
-            this.txtImportFil.Size = new System.Drawing.Size(398, 20);
+            this.txtImportFil.Size = new System.Drawing.Size(529, 22);
             this.txtImportFil.TabIndex = 0;
             this.txtImportFil.TabStop = false;
             this.txtImportFil.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cmdImportFilUtforska
             // 
-            this.cmdImportFilUtforska.Location = new System.Drawing.Point(432, 49);
+            this.cmdImportFilUtforska.Location = new System.Drawing.Point(576, 60);
+            this.cmdImportFilUtforska.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdImportFilUtforska.Name = "cmdImportFilUtforska";
-            this.cmdImportFilUtforska.Size = new System.Drawing.Size(95, 23);
+            this.cmdImportFilUtforska.Size = new System.Drawing.Size(127, 28);
             this.cmdImportFilUtforska.TabIndex = 1;
             this.cmdImportFilUtforska.Text = "Utforska";
             this.cmdImportFilUtforska.UseVisualStyleBackColor = true;
@@ -64,25 +66,29 @@ namespace ScannerDialog.Forms
             // laImportFil
             // 
             this.laImportFil.AutoSize = true;
-            this.laImportFil.Location = new System.Drawing.Point(25, 32);
+            this.laImportFil.Location = new System.Drawing.Point(33, 39);
+            this.laImportFil.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laImportFil.Name = "laImportFil";
-            this.laImportFil.Size = new System.Drawing.Size(262, 13);
+            this.laImportFil.Size = new System.Drawing.Size(322, 16);
             this.laImportFil.TabIndex = 2;
             this.laImportFil.Text = "Import fil: PersNr; Efternamn; Förnamn (UTF-8 / ASCII)";
             // 
             // lbPersoner
             // 
             this.lbPersoner.FormattingEnabled = true;
-            this.lbPersoner.Location = new System.Drawing.Point(31, 122);
+            this.lbPersoner.ItemHeight = 16;
+            this.lbPersoner.Location = new System.Drawing.Point(41, 150);
+            this.lbPersoner.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbPersoner.Name = "lbPersoner";
-            this.lbPersoner.Size = new System.Drawing.Size(493, 277);
+            this.lbPersoner.Size = new System.Drawing.Size(656, 340);
             this.lbPersoner.TabIndex = 3;
             // 
             // cmdLasFranFil
             // 
-            this.cmdLasFranFil.Location = new System.Drawing.Point(31, 93);
+            this.cmdLasFranFil.Location = new System.Drawing.Point(41, 114);
+            this.cmdLasFranFil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdLasFranFil.Name = "cmdLasFranFil";
-            this.cmdLasFranFil.Size = new System.Drawing.Size(139, 23);
+            this.cmdLasFranFil.Size = new System.Drawing.Size(185, 28);
             this.cmdLasFranFil.TabIndex = 4;
             this.cmdLasFranFil.Text = "Läs från fil";
             this.cmdLasFranFil.UseVisualStyleBackColor = true;
@@ -90,9 +96,10 @@ namespace ScannerDialog.Forms
             // 
             // cmdVerkstallImport
             // 
-            this.cmdVerkstallImport.Location = new System.Drawing.Point(385, 93);
+            this.cmdVerkstallImport.Location = new System.Drawing.Point(513, 114);
+            this.cmdVerkstallImport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdVerkstallImport.Name = "cmdVerkstallImport";
-            this.cmdVerkstallImport.Size = new System.Drawing.Size(139, 23);
+            this.cmdVerkstallImport.Size = new System.Drawing.Size(185, 28);
             this.cmdVerkstallImport.TabIndex = 5;
             this.cmdVerkstallImport.Text = "Verkställ import";
             this.cmdVerkstallImport.UseVisualStyleBackColor = true;
@@ -103,9 +110,10 @@ namespace ScannerDialog.Forms
             // 
             this.cbTillhorighet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTillhorighet.FormattingEnabled = true;
-            this.cbTillhorighet.Location = new System.Drawing.Point(177, 94);
+            this.cbTillhorighet.Location = new System.Drawing.Point(236, 116);
+            this.cbTillhorighet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbTillhorighet.Name = "cbTillhorighet";
-            this.cbTillhorighet.Size = new System.Drawing.Size(202, 21);
+            this.cbTillhorighet.Size = new System.Drawing.Size(268, 24);
             this.cbTillhorighet.TabIndex = 11;
             this.cbTillhorighet.TabStop = false;
             this.cbTillhorighet.Visible = false;
@@ -113,36 +121,39 @@ namespace ScannerDialog.Forms
             // laTillhorighet
             // 
             this.laTillhorighet.AutoSize = true;
-            this.laTillhorighet.Location = new System.Drawing.Point(174, 78);
+            this.laTillhorighet.Location = new System.Drawing.Point(232, 96);
+            this.laTillhorighet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laTillhorighet.Name = "laTillhorighet";
-            this.laTillhorighet.Size = new System.Drawing.Size(61, 13);
+            this.laTillhorighet.Size = new System.Drawing.Size(77, 16);
             this.laTillhorighet.TabIndex = 10;
             this.laTillhorighet.Text = "Tillhörighet:";
             this.laTillhorighet.Visible = false;
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(31, 421);
+            this.progressBar.Location = new System.Drawing.Point(41, 518);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(493, 23);
+            this.progressBar.Size = new System.Drawing.Size(657, 28);
             this.progressBar.TabIndex = 12;
             this.progressBar.Visible = false;
             // 
             // laCurrentImportPerson
             // 
             this.laCurrentImportPerson.AutoSize = true;
-            this.laCurrentImportPerson.Location = new System.Drawing.Point(29, 404);
+            this.laCurrentImportPerson.Location = new System.Drawing.Point(39, 497);
+            this.laCurrentImportPerson.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laCurrentImportPerson.Name = "laCurrentImportPerson";
-            this.laCurrentImportPerson.Size = new System.Drawing.Size(41, 13);
+            this.laCurrentImportPerson.Size = new System.Drawing.Size(54, 16);
             this.laCurrentImportPerson.TabIndex = 13;
             this.laCurrentImportPerson.Text = "Display";
             this.laCurrentImportPerson.Visible = false;
             // 
             // ImportDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(553, 449);
+            this.ClientSize = new System.Drawing.Size(737, 553);
             this.Controls.Add(this.laCurrentImportPerson);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.cbTillhorighet);
@@ -153,8 +164,10 @@ namespace ScannerDialog.Forms
             this.Controls.Add(this.laImportFil);
             this.Controls.Add(this.cmdImportFilUtforska);
             this.Controls.Add(this.txtImportFil);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "ImportDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

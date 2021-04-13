@@ -59,9 +59,11 @@
             this.gbFalt.Controls.Add(this.laPersNr);
             this.gbFalt.Controls.Add(this.txtFornamn);
             this.gbFalt.Controls.Add(this.laFornamn);
-            this.gbFalt.Location = new System.Drawing.Point(12, 16);
+            this.gbFalt.Location = new System.Drawing.Point(16, 20);
+            this.gbFalt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbFalt.Name = "gbFalt";
-            this.gbFalt.Size = new System.Drawing.Size(240, 240);
+            this.gbFalt.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbFalt.Size = new System.Drawing.Size(320, 295);
             this.gbFalt.TabIndex = 0;
             this.gbFalt.TabStop = false;
             this.gbFalt.Text = "Info";
@@ -70,27 +72,30 @@
             // 
             this.cbTillhorighet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTillhorighet.FormattingEnabled = true;
-            this.cbTillhorighet.Location = new System.Drawing.Point(16, 165);
+            this.cbTillhorighet.Location = new System.Drawing.Point(21, 203);
+            this.cbTillhorighet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbTillhorighet.Name = "cbTillhorighet";
-            this.cbTillhorighet.Size = new System.Drawing.Size(211, 21);
+            this.cbTillhorighet.Size = new System.Drawing.Size(280, 24);
             this.cbTillhorighet.TabIndex = 8;
             this.cbTillhorighet.TabStop = false;
             // 
             // laTillhorighet
             // 
             this.laTillhorighet.AutoSize = true;
-            this.laTillhorighet.Location = new System.Drawing.Point(13, 149);
+            this.laTillhorighet.Location = new System.Drawing.Point(17, 183);
+            this.laTillhorighet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laTillhorighet.Name = "laTillhorighet";
-            this.laTillhorighet.Size = new System.Drawing.Size(61, 13);
+            this.laTillhorighet.Size = new System.Drawing.Size(77, 16);
             this.laTillhorighet.TabIndex = 0;
             this.laTillhorighet.Text = "Tillhörighet:";
             // 
             // cmdAvbryt
             // 
             this.cmdAvbryt.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdAvbryt.Location = new System.Drawing.Point(140, 200);
+            this.cmdAvbryt.Location = new System.Drawing.Point(187, 246);
+            this.cmdAvbryt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdAvbryt.Name = "cmdAvbryt";
-            this.cmdAvbryt.Size = new System.Drawing.Size(87, 23);
+            this.cmdAvbryt.Size = new System.Drawing.Size(116, 28);
             this.cmdAvbryt.TabIndex = 9;
             this.cmdAvbryt.Text = "Avbryt";
             this.cmdAvbryt.UseVisualStyleBackColor = true;
@@ -100,16 +105,18 @@
             this.txtSign.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSign.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSign.HideSelection = false;
-            this.txtSign.Location = new System.Drawing.Point(112, 121);
+            this.txtSign.Location = new System.Drawing.Point(149, 149);
+            this.txtSign.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSign.Name = "txtSign";
-            this.txtSign.Size = new System.Drawing.Size(115, 20);
+            this.txtSign.Size = new System.Drawing.Size(152, 22);
             this.txtSign.TabIndex = 3;
             // 
             // cmdSpara
             // 
-            this.cmdSpara.Location = new System.Drawing.Point(15, 200);
+            this.cmdSpara.Location = new System.Drawing.Point(20, 246);
+            this.cmdSpara.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdSpara.Name = "cmdSpara";
-            this.cmdSpara.Size = new System.Drawing.Size(87, 23);
+            this.cmdSpara.Size = new System.Drawing.Size(116, 28);
             this.cmdSpara.TabIndex = 8;
             this.cmdSpara.Text = "Spara";
             this.cmdSpara.UseVisualStyleBackColor = true;
@@ -118,9 +125,10 @@
             // laSign
             // 
             this.laSign.AutoSize = true;
-            this.laSign.Location = new System.Drawing.Point(109, 104);
+            this.laSign.Location = new System.Drawing.Point(145, 128);
+            this.laSign.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laSign.Name = "laSign";
-            this.laSign.Size = new System.Drawing.Size(49, 13);
+            this.laSign.Size = new System.Drawing.Size(60, 16);
             this.laSign.TabIndex = 10;
             this.laSign.Text = "Signatur:";
             // 
@@ -128,11 +136,12 @@
             // 
             this.txtPersNr.Culture = new System.Globalization.CultureInfo("");
             this.txtPersNr.Enabled = false;
-            this.txtPersNr.Location = new System.Drawing.Point(16, 121);
+            this.txtPersNr.Location = new System.Drawing.Point(21, 149);
+            this.txtPersNr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPersNr.Mask = "######-####";
             this.txtPersNr.Name = "txtPersNr";
             this.txtPersNr.ReadOnly = true;
-            this.txtPersNr.Size = new System.Drawing.Size(90, 20);
+            this.txtPersNr.Size = new System.Drawing.Size(119, 22);
             this.txtPersNr.TabIndex = 2;
             this.txtPersNr.TabStop = false;
             // 
@@ -140,26 +149,29 @@
             // 
             this.txtEfternamn.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEfternamn.HideSelection = false;
-            this.txtEfternamn.Location = new System.Drawing.Point(15, 79);
+            this.txtEfternamn.Location = new System.Drawing.Point(20, 97);
+            this.txtEfternamn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEfternamn.Name = "txtEfternamn";
-            this.txtEfternamn.Size = new System.Drawing.Size(212, 20);
+            this.txtEfternamn.Size = new System.Drawing.Size(281, 22);
             this.txtEfternamn.TabIndex = 1;
             // 
             // laEfternamn
             // 
             this.laEfternamn.AutoSize = true;
-            this.laEfternamn.Location = new System.Drawing.Point(13, 63);
+            this.laEfternamn.Location = new System.Drawing.Point(17, 78);
+            this.laEfternamn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laEfternamn.Name = "laEfternamn";
-            this.laEfternamn.Size = new System.Drawing.Size(58, 13);
+            this.laEfternamn.Size = new System.Drawing.Size(71, 16);
             this.laEfternamn.TabIndex = 1;
             this.laEfternamn.Text = "Efternamn:";
             // 
             // laPersNr
             // 
             this.laPersNr.AutoSize = true;
-            this.laPersNr.Location = new System.Drawing.Point(13, 105);
+            this.laPersNr.Location = new System.Drawing.Point(17, 129);
+            this.laPersNr.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laPersNr.Name = "laPersNr";
-            this.laPersNr.Size = new System.Drawing.Size(42, 13);
+            this.laPersNr.Size = new System.Drawing.Size(53, 16);
             this.laPersNr.TabIndex = 2;
             this.laPersNr.Text = "PersNr:";
             // 
@@ -167,37 +179,43 @@
             // 
             this.txtFornamn.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtFornamn.HideSelection = false;
-            this.txtFornamn.Location = new System.Drawing.Point(15, 37);
+            this.txtFornamn.Location = new System.Drawing.Point(20, 46);
+            this.txtFornamn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtFornamn.Name = "txtFornamn";
-            this.txtFornamn.Size = new System.Drawing.Size(212, 20);
+            this.txtFornamn.Size = new System.Drawing.Size(281, 22);
             this.txtFornamn.TabIndex = 0;
             // 
             // laFornamn
             // 
             this.laFornamn.AutoSize = true;
-            this.laFornamn.Location = new System.Drawing.Point(12, 21);
+            this.laFornamn.Location = new System.Drawing.Point(16, 26);
+            this.laFornamn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laFornamn.Name = "laFornamn";
-            this.laFornamn.Size = new System.Drawing.Size(51, 13);
+            this.laFornamn.Size = new System.Drawing.Size(64, 16);
             this.laFornamn.TabIndex = 0;
             this.laFornamn.Text = "Förnamn:";
             // 
             // lbErrors
             // 
             this.lbErrors.FormattingEnabled = true;
-            this.lbErrors.Location = new System.Drawing.Point(257, 20);
+            this.lbErrors.ItemHeight = 16;
+            this.lbErrors.Location = new System.Drawing.Point(343, 25);
+            this.lbErrors.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbErrors.Name = "lbErrors";
-            this.lbErrors.Size = new System.Drawing.Size(212, 238);
+            this.lbErrors.Size = new System.Drawing.Size(281, 292);
             this.lbErrors.TabIndex = 16;
             // 
             // NyPersonSimpelDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdAvbryt;
-            this.ClientSize = new System.Drawing.Size(481, 264);
+            this.ClientSize = new System.Drawing.Size(641, 325);
             this.Controls.Add(this.lbErrors);
             this.Controls.Add(this.gbFalt);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NyPersonSimpelDialog";

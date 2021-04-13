@@ -53,22 +53,22 @@
             this.lbRegistreradeArtiklar = new System.Windows.Forms.ListBox();
             this.gbRegistreradeArtiklar = new System.Windows.Forms.GroupBox();
             this.laAntalRegArtiklar = new System.Windows.Forms.Label();
-            this.cbPrintOnScan = new System.Windows.Forms.CheckBox();
-            this.cmdExporteraDatornamn = new System.Windows.Forms.Button();
             this.cmdRegistreraSkanna = new System.Windows.Forms.Button();
-            this.cmdRegistreraArtikel = new System.Windows.Forms.Button();
-            this.cmdSkrivUtEttiket = new System.Windows.Forms.Button();
             this.cmdShowAllRegistrerade = new System.Windows.Forms.Button();
-            this.txtArtikelSok = new System.Windows.Forms.TextBox();
+            this.cbPrintOnScan = new System.Windows.Forms.CheckBox();
             this.cmdArtikelAvregistrera = new System.Windows.Forms.Button();
+            this.cmdSkrivUtEttiket = new System.Windows.Forms.Button();
+            this.cmdRegistreraArtikel = new System.Windows.Forms.Button();
+            this.txtArtikelSok = new System.Windows.Forms.TextBox();
             this.cmdArtikelSok = new System.Windows.Forms.Button();
+            this.cmdExporteraDatornamn = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmdNyHandelse = new System.Windows.Forms.Button();
             this.cbSelectHandelseTyp = new System.Windows.Forms.ComboBox();
             this.txtHandelseArtikel = new System.Windows.Forms.TextBox();
             this.lbHandelser = new System.Windows.Forms.ListBox();
             this.laHandelseArtikel = new System.Windows.Forms.Label();
-            this.cmdNyHandelse = new System.Windows.Forms.Button();
             this.gbFalt.SuspendLayout();
             this.gbRegistreradeArtiklar.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -96,18 +96,21 @@
             this.gbFalt.Controls.Add(this.laSign);
             this.gbFalt.Controls.Add(this.laOvrigt);
             this.gbFalt.Controls.Add(this.laEfternamn);
-            this.gbFalt.Location = new System.Drawing.Point(12, 12);
+            this.gbFalt.Location = new System.Drawing.Point(16, 15);
+            this.gbFalt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbFalt.Name = "gbFalt";
-            this.gbFalt.Size = new System.Drawing.Size(311, 253);
+            this.gbFalt.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbFalt.Size = new System.Drawing.Size(415, 311);
             this.gbFalt.TabIndex = 1;
             this.gbFalt.TabStop = false;
             this.gbFalt.Text = "Info";
             // 
             // cmdEdit
             // 
-            this.cmdEdit.Location = new System.Drawing.Point(202, 213);
+            this.cmdEdit.Location = new System.Drawing.Point(269, 262);
+            this.cmdEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdEdit.Name = "cmdEdit";
-            this.cmdEdit.Size = new System.Drawing.Size(89, 23);
+            this.cmdEdit.Size = new System.Drawing.Size(119, 28);
             this.cmdEdit.TabIndex = 34;
             this.cmdEdit.Text = "Ändra..";
             this.cmdEdit.UseVisualStyleBackColor = true;
@@ -115,9 +118,10 @@
             // 
             // cmdDelete
             // 
-            this.cmdDelete.Location = new System.Drawing.Point(23, 213);
+            this.cmdDelete.Location = new System.Drawing.Point(31, 262);
+            this.cmdDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdDelete.Name = "cmdDelete";
-            this.cmdDelete.Size = new System.Drawing.Size(89, 23);
+            this.cmdDelete.Size = new System.Drawing.Size(119, 28);
             this.cmdDelete.TabIndex = 35;
             this.cmdDelete.Text = "Radera";
             this.cmdDelete.UseVisualStyleBackColor = true;
@@ -125,9 +129,10 @@
             // 
             // laPersonIdDisplay
             // 
-            this.laPersonIdDisplay.Location = new System.Drawing.Point(102, 28);
+            this.laPersonIdDisplay.Location = new System.Drawing.Point(136, 34);
+            this.laPersonIdDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laPersonIdDisplay.Name = "laPersonIdDisplay";
-            this.laPersonIdDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laPersonIdDisplay.Size = new System.Drawing.Size(252, 16);
             this.laPersonIdDisplay.TabIndex = 38;
             this.laPersonIdDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laPersonIdDisplay, "Kopiera (Dubbelklicka)");
@@ -137,9 +142,10 @@
             // 
             // laOvrigtDisplay
             // 
-            this.laOvrigtDisplay.Location = new System.Drawing.Point(102, 188);
+            this.laOvrigtDisplay.Location = new System.Drawing.Point(136, 231);
+            this.laOvrigtDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laOvrigtDisplay.Name = "laOvrigtDisplay";
-            this.laOvrigtDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laOvrigtDisplay.Size = new System.Drawing.Size(252, 16);
             this.laOvrigtDisplay.TabIndex = 37;
             this.laOvrigtDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laOvrigtDisplay, "Kopiera (Dubbelklicka)");
@@ -149,9 +155,10 @@
             // 
             // laTillhorighetDisplay
             // 
-            this.laTillhorighetDisplay.Location = new System.Drawing.Point(102, 168);
+            this.laTillhorighetDisplay.Location = new System.Drawing.Point(136, 207);
+            this.laTillhorighetDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laTillhorighetDisplay.Name = "laTillhorighetDisplay";
-            this.laTillhorighetDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laTillhorighetDisplay.Size = new System.Drawing.Size(252, 16);
             this.laTillhorighetDisplay.TabIndex = 36;
             this.laTillhorighetDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laTillhorighetDisplay, "Kopiera (Dubbelklicka)");
@@ -161,9 +168,10 @@
             // 
             // laTelefonDisplay
             // 
-            this.laTelefonDisplay.Location = new System.Drawing.Point(102, 148);
+            this.laTelefonDisplay.Location = new System.Drawing.Point(136, 182);
+            this.laTelefonDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laTelefonDisplay.Name = "laTelefonDisplay";
-            this.laTelefonDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laTelefonDisplay.Size = new System.Drawing.Size(252, 16);
             this.laTelefonDisplay.TabIndex = 35;
             this.laTelefonDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laTelefonDisplay, "Kopiera (Dubbelklicka)");
@@ -173,9 +181,10 @@
             // 
             // laEpostDisplay
             // 
-            this.laEpostDisplay.Location = new System.Drawing.Point(102, 128);
+            this.laEpostDisplay.Location = new System.Drawing.Point(136, 158);
+            this.laEpostDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laEpostDisplay.Name = "laEpostDisplay";
-            this.laEpostDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laEpostDisplay.Size = new System.Drawing.Size(252, 16);
             this.laEpostDisplay.TabIndex = 34;
             this.laEpostDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laEpostDisplay, "Kopiera (Dubbelklicka)");
@@ -185,9 +194,10 @@
             // 
             // laSignDisplay
             // 
-            this.laSignDisplay.Location = new System.Drawing.Point(102, 108);
+            this.laSignDisplay.Location = new System.Drawing.Point(136, 133);
+            this.laSignDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laSignDisplay.Name = "laSignDisplay";
-            this.laSignDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laSignDisplay.Size = new System.Drawing.Size(252, 16);
             this.laSignDisplay.TabIndex = 33;
             this.laSignDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laSignDisplay, "Kopiera (Dubbelklicka)");
@@ -197,9 +207,10 @@
             // 
             // laPersNrDisplay
             // 
-            this.laPersNrDisplay.Location = new System.Drawing.Point(102, 88);
+            this.laPersNrDisplay.Location = new System.Drawing.Point(136, 108);
+            this.laPersNrDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laPersNrDisplay.Name = "laPersNrDisplay";
-            this.laPersNrDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laPersNrDisplay.Size = new System.Drawing.Size(252, 16);
             this.laPersNrDisplay.TabIndex = 32;
             this.laPersNrDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laPersNrDisplay, "Kopiera (Dubbelklicka)");
@@ -209,9 +220,10 @@
             // 
             // laEfternamnDisplay
             // 
-            this.laEfternamnDisplay.Location = new System.Drawing.Point(102, 68);
+            this.laEfternamnDisplay.Location = new System.Drawing.Point(136, 84);
+            this.laEfternamnDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laEfternamnDisplay.Name = "laEfternamnDisplay";
-            this.laEfternamnDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laEfternamnDisplay.Size = new System.Drawing.Size(252, 16);
             this.laEfternamnDisplay.TabIndex = 31;
             this.laEfternamnDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laEfternamnDisplay, "Kopiera (Dubbelklicka)");
@@ -221,9 +233,10 @@
             // 
             // laFornamnDisplay
             // 
-            this.laFornamnDisplay.Location = new System.Drawing.Point(102, 48);
+            this.laFornamnDisplay.Location = new System.Drawing.Point(136, 59);
+            this.laFornamnDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laFornamnDisplay.Name = "laFornamnDisplay";
-            this.laFornamnDisplay.Size = new System.Drawing.Size(189, 13);
+            this.laFornamnDisplay.Size = new System.Drawing.Size(252, 16);
             this.laFornamnDisplay.TabIndex = 30;
             this.laFornamnDisplay.Text = "Display";
             this.toolTip1.SetToolTip(this.laFornamnDisplay, "Kopiera (Dubbelklicka)");
@@ -234,89 +247,100 @@
             // laTillhorighet
             // 
             this.laTillhorighet.AutoSize = true;
-            this.laTillhorighet.Location = new System.Drawing.Point(20, 168);
+            this.laTillhorighet.Location = new System.Drawing.Point(27, 207);
+            this.laTillhorighet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laTillhorighet.Name = "laTillhorighet";
-            this.laTillhorighet.Size = new System.Drawing.Size(61, 13);
+            this.laTillhorighet.Size = new System.Drawing.Size(77, 16);
             this.laTillhorighet.TabIndex = 0;
             this.laTillhorighet.Text = "Tillhörighet:";
             // 
             // laTelefon
             // 
             this.laTelefon.AutoSize = true;
-            this.laTelefon.Location = new System.Drawing.Point(20, 148);
+            this.laTelefon.Location = new System.Drawing.Point(27, 182);
+            this.laTelefon.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laTelefon.Name = "laTelefon";
-            this.laTelefon.Size = new System.Drawing.Size(46, 13);
+            this.laTelefon.Size = new System.Drawing.Size(57, 16);
             this.laTelefon.TabIndex = 3;
             this.laTelefon.Text = "Telefon:";
             // 
             // laPersonId
             // 
-            this.laPersonId.Location = new System.Drawing.Point(20, 28);
+            this.laPersonId.Location = new System.Drawing.Point(27, 34);
+            this.laPersonId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laPersonId.Name = "laPersonId";
-            this.laPersonId.Size = new System.Drawing.Size(82, 13);
+            this.laPersonId.Size = new System.Drawing.Size(109, 16);
             this.laPersonId.TabIndex = 15;
             this.laPersonId.Text = "Id:";
             // 
             // laEpost
             // 
             this.laEpost.AutoSize = true;
-            this.laEpost.Location = new System.Drawing.Point(22, 128);
+            this.laEpost.Location = new System.Drawing.Point(29, 158);
+            this.laEpost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laEpost.Name = "laEpost";
-            this.laEpost.Size = new System.Drawing.Size(40, 13);
+            this.laEpost.Size = new System.Drawing.Size(50, 16);
             this.laEpost.TabIndex = 4;
             this.laEpost.Text = "E-post:";
             // 
             // laPersNr
             // 
             this.laPersNr.AutoSize = true;
-            this.laPersNr.Location = new System.Drawing.Point(20, 88);
+            this.laPersNr.Location = new System.Drawing.Point(27, 108);
+            this.laPersNr.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laPersNr.Name = "laPersNr";
-            this.laPersNr.Size = new System.Drawing.Size(42, 13);
+            this.laPersNr.Size = new System.Drawing.Size(53, 16);
             this.laPersNr.TabIndex = 2;
             this.laPersNr.Text = "PersNr:";
             // 
             // laFornamn
             // 
             this.laFornamn.AutoSize = true;
-            this.laFornamn.Location = new System.Drawing.Point(20, 48);
+            this.laFornamn.Location = new System.Drawing.Point(27, 59);
+            this.laFornamn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laFornamn.Name = "laFornamn";
-            this.laFornamn.Size = new System.Drawing.Size(51, 13);
+            this.laFornamn.Size = new System.Drawing.Size(64, 16);
             this.laFornamn.TabIndex = 0;
             this.laFornamn.Text = "Förnamn:";
             // 
             // laSign
             // 
             this.laSign.AutoSize = true;
-            this.laSign.Location = new System.Drawing.Point(20, 108);
+            this.laSign.Location = new System.Drawing.Point(27, 133);
+            this.laSign.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laSign.Name = "laSign";
-            this.laSign.Size = new System.Drawing.Size(49, 13);
+            this.laSign.Size = new System.Drawing.Size(60, 16);
             this.laSign.TabIndex = 10;
             this.laSign.Text = "Signatur:";
             // 
             // laOvrigt
             // 
             this.laOvrigt.AutoSize = true;
-            this.laOvrigt.Location = new System.Drawing.Point(20, 188);
+            this.laOvrigt.Location = new System.Drawing.Point(27, 231);
+            this.laOvrigt.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laOvrigt.Name = "laOvrigt";
-            this.laOvrigt.Size = new System.Drawing.Size(38, 13);
+            this.laOvrigt.Size = new System.Drawing.Size(46, 16);
             this.laOvrigt.TabIndex = 5;
             this.laOvrigt.Text = "Övrigt:";
             // 
             // laEfternamn
             // 
             this.laEfternamn.AutoSize = true;
-            this.laEfternamn.Location = new System.Drawing.Point(20, 68);
+            this.laEfternamn.Location = new System.Drawing.Point(27, 84);
+            this.laEfternamn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laEfternamn.Name = "laEfternamn";
-            this.laEfternamn.Size = new System.Drawing.Size(58, 13);
+            this.laEfternamn.Size = new System.Drawing.Size(71, 16);
             this.laEfternamn.TabIndex = 1;
             this.laEfternamn.Text = "Efternamn:";
             // 
             // lbRegistreradeArtiklar
             // 
             this.lbRegistreradeArtiklar.FormattingEnabled = true;
-            this.lbRegistreradeArtiklar.Location = new System.Drawing.Point(23, 54);
+            this.lbRegistreradeArtiklar.ItemHeight = 16;
+            this.lbRegistreradeArtiklar.Location = new System.Drawing.Point(31, 66);
+            this.lbRegistreradeArtiklar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbRegistreradeArtiklar.Name = "lbRegistreradeArtiklar";
-            this.lbRegistreradeArtiklar.Size = new System.Drawing.Size(408, 186);
+            this.lbRegistreradeArtiklar.Size = new System.Drawing.Size(543, 228);
             this.lbRegistreradeArtiklar.TabIndex = 3;
             // 
             // gbRegistreradeArtiklar
@@ -332,109 +356,121 @@
             this.gbRegistreradeArtiklar.Controls.Add(this.lbRegistreradeArtiklar);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdArtikelSok);
             this.gbRegistreradeArtiklar.Controls.Add(this.cmdExporteraDatornamn);
-            this.gbRegistreradeArtiklar.Location = new System.Drawing.Point(12, 280);
+            this.gbRegistreradeArtiklar.Location = new System.Drawing.Point(16, 345);
+            this.gbRegistreradeArtiklar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbRegistreradeArtiklar.Name = "gbRegistreradeArtiklar";
-            this.gbRegistreradeArtiklar.Size = new System.Drawing.Size(588, 279);
+            this.gbRegistreradeArtiklar.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbRegistreradeArtiklar.Size = new System.Drawing.Size(784, 343);
             this.gbRegistreradeArtiklar.TabIndex = 17;
             this.gbRegistreradeArtiklar.TabStop = false;
             this.gbRegistreradeArtiklar.Text = "Registrerade artiklar";
             // 
             // laAntalRegArtiklar
             // 
-            this.laAntalRegArtiklar.Location = new System.Drawing.Point(22, 247);
+            this.laAntalRegArtiklar.Location = new System.Drawing.Point(29, 304);
+            this.laAntalRegArtiklar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laAntalRegArtiklar.Name = "laAntalRegArtiklar";
-            this.laAntalRegArtiklar.Size = new System.Drawing.Size(270, 19);
+            this.laAntalRegArtiklar.Size = new System.Drawing.Size(360, 23);
             this.laAntalRegArtiklar.TabIndex = 26;
             this.laAntalRegArtiklar.Text = "Antal:";
             // 
-            // cbPrintOnScan
-            // 
-            this.cbPrintOnScan.AutoSize = true;
-            this.cbPrintOnScan.Location = new System.Drawing.Point(437, 136);
-            this.cbPrintOnScan.Name = "cbPrintOnScan";
-            this.cbPrintOnScan.Size = new System.Drawing.Size(133, 17);
-            this.cbPrintOnScan.TabIndex = 25;
-            this.cbPrintOnScan.Text = "Skriv ut vid registrering";
-            this.cbPrintOnScan.UseVisualStyleBackColor = true;
-            // 
-            // cmdExporteraDatornamn
-            // 
-            this.cmdExporteraDatornamn.Location = new System.Drawing.Point(298, 246);
-            this.cmdExporteraDatornamn.Name = "cmdExporteraDatornamn";
-            this.cmdExporteraDatornamn.Size = new System.Drawing.Size(133, 23);
-            this.cmdExporteraDatornamn.TabIndex = 22;
-            this.cmdExporteraDatornamn.Text = "Exportera (Artikel lista)";
-            this.cmdExporteraDatornamn.UseVisualStyleBackColor = true;
-            this.cmdExporteraDatornamn.Click += new System.EventHandler(this.cmdExporteraDatornamn_Click);
-            // 
             // cmdRegistreraSkanna
             // 
-            this.cmdRegistreraSkanna.Location = new System.Drawing.Point(437, 54);
+            this.cmdRegistreraSkanna.Location = new System.Drawing.Point(583, 66);
+            this.cmdRegistreraSkanna.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdRegistreraSkanna.Name = "cmdRegistreraSkanna";
-            this.cmdRegistreraSkanna.Size = new System.Drawing.Size(133, 23);
+            this.cmdRegistreraSkanna.Size = new System.Drawing.Size(177, 28);
             this.cmdRegistreraSkanna.TabIndex = 21;
             this.cmdRegistreraSkanna.Text = "Registrera (Skanna)";
             this.cmdRegistreraSkanna.UseVisualStyleBackColor = true;
             this.cmdRegistreraSkanna.Click += new System.EventHandler(this.cmdRegistreraSkanna_Click);
             // 
-            // cmdRegistreraArtikel
-            // 
-            this.cmdRegistreraArtikel.Location = new System.Drawing.Point(437, 83);
-            this.cmdRegistreraArtikel.Name = "cmdRegistreraArtikel";
-            this.cmdRegistreraArtikel.Size = new System.Drawing.Size(133, 23);
-            this.cmdRegistreraArtikel.TabIndex = 20;
-            this.cmdRegistreraArtikel.Text = "Registrera";
-            this.cmdRegistreraArtikel.UseVisualStyleBackColor = true;
-            this.cmdRegistreraArtikel.Click += new System.EventHandler(this.cmdRegistreraArtikel_Click);
-            // 
-            // cmdSkrivUtEttiket
-            // 
-            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(437, 188);
-            this.cmdSkrivUtEttiket.Name = "cmdSkrivUtEttiket";
-            this.cmdSkrivUtEttiket.Size = new System.Drawing.Size(133, 23);
-            this.cmdSkrivUtEttiket.TabIndex = 19;
-            this.cmdSkrivUtEttiket.Text = "Ettiket";
-            this.cmdSkrivUtEttiket.UseVisualStyleBackColor = true;
-            this.cmdSkrivUtEttiket.Click += new System.EventHandler(this.cmdSkrivUtEttiket_Click);
-            // 
             // cmdShowAllRegistrerade
             // 
-            this.cmdShowAllRegistrerade.Location = new System.Drawing.Point(341, 26);
+            this.cmdShowAllRegistrerade.Location = new System.Drawing.Point(455, 32);
+            this.cmdShowAllRegistrerade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdShowAllRegistrerade.Name = "cmdShowAllRegistrerade";
-            this.cmdShowAllRegistrerade.Size = new System.Drawing.Size(90, 23);
+            this.cmdShowAllRegistrerade.Size = new System.Drawing.Size(120, 28);
             this.cmdShowAllRegistrerade.TabIndex = 19;
             this.cmdShowAllRegistrerade.Text = "Visa alla";
             this.cmdShowAllRegistrerade.UseVisualStyleBackColor = true;
             this.cmdShowAllRegistrerade.Click += new System.EventHandler(this.cmdShowAllRegistrerade_Click);
             // 
-            // txtArtikelSok
+            // cbPrintOnScan
             // 
-            this.txtArtikelSok.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtArtikelSok.HideSelection = false;
-            this.txtArtikelSok.Location = new System.Drawing.Point(23, 28);
-            this.txtArtikelSok.Name = "txtArtikelSok";
-            this.txtArtikelSok.Size = new System.Drawing.Size(210, 20);
-            this.txtArtikelSok.TabIndex = 17;
+            this.cbPrintOnScan.AutoSize = true;
+            this.cbPrintOnScan.Location = new System.Drawing.Point(583, 167);
+            this.cbPrintOnScan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbPrintOnScan.Name = "cbPrintOnScan";
+            this.cbPrintOnScan.Size = new System.Drawing.Size(161, 20);
+            this.cbPrintOnScan.TabIndex = 25;
+            this.cbPrintOnScan.Text = "Skriv ut vid registrering";
+            this.cbPrintOnScan.UseVisualStyleBackColor = true;
             // 
             // cmdArtikelAvregistrera
             // 
-            this.cmdArtikelAvregistrera.Location = new System.Drawing.Point(437, 217);
+            this.cmdArtikelAvregistrera.Location = new System.Drawing.Point(583, 267);
+            this.cmdArtikelAvregistrera.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdArtikelAvregistrera.Name = "cmdArtikelAvregistrera";
-            this.cmdArtikelAvregistrera.Size = new System.Drawing.Size(133, 23);
+            this.cmdArtikelAvregistrera.Size = new System.Drawing.Size(177, 28);
             this.cmdArtikelAvregistrera.TabIndex = 17;
             this.cmdArtikelAvregistrera.Text = "Avregistrera";
             this.cmdArtikelAvregistrera.UseVisualStyleBackColor = true;
             this.cmdArtikelAvregistrera.Click += new System.EventHandler(this.cmdArtikelAvregistrera_Click);
             // 
+            // cmdSkrivUtEttiket
+            // 
+            this.cmdSkrivUtEttiket.Location = new System.Drawing.Point(583, 231);
+            this.cmdSkrivUtEttiket.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmdSkrivUtEttiket.Name = "cmdSkrivUtEttiket";
+            this.cmdSkrivUtEttiket.Size = new System.Drawing.Size(177, 28);
+            this.cmdSkrivUtEttiket.TabIndex = 19;
+            this.cmdSkrivUtEttiket.Text = "Ettiket";
+            this.cmdSkrivUtEttiket.UseVisualStyleBackColor = true;
+            this.cmdSkrivUtEttiket.Click += new System.EventHandler(this.cmdSkrivUtEttiket_Click);
+            // 
+            // cmdRegistreraArtikel
+            // 
+            this.cmdRegistreraArtikel.Location = new System.Drawing.Point(583, 102);
+            this.cmdRegistreraArtikel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmdRegistreraArtikel.Name = "cmdRegistreraArtikel";
+            this.cmdRegistreraArtikel.Size = new System.Drawing.Size(177, 28);
+            this.cmdRegistreraArtikel.TabIndex = 20;
+            this.cmdRegistreraArtikel.Text = "Registrera";
+            this.cmdRegistreraArtikel.UseVisualStyleBackColor = true;
+            this.cmdRegistreraArtikel.Click += new System.EventHandler(this.cmdRegistreraArtikel_Click);
+            // 
+            // txtArtikelSok
+            // 
+            this.txtArtikelSok.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtArtikelSok.HideSelection = false;
+            this.txtArtikelSok.Location = new System.Drawing.Point(31, 34);
+            this.txtArtikelSok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtArtikelSok.Name = "txtArtikelSok";
+            this.txtArtikelSok.Size = new System.Drawing.Size(279, 22);
+            this.txtArtikelSok.TabIndex = 17;
+            // 
             // cmdArtikelSok
             // 
-            this.cmdArtikelSok.Location = new System.Drawing.Point(239, 26);
+            this.cmdArtikelSok.Location = new System.Drawing.Point(319, 32);
+            this.cmdArtikelSok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdArtikelSok.Name = "cmdArtikelSok";
-            this.cmdArtikelSok.Size = new System.Drawing.Size(96, 23);
+            this.cmdArtikelSok.Size = new System.Drawing.Size(128, 28);
             this.cmdArtikelSok.TabIndex = 18;
             this.cmdArtikelSok.Text = "Sök";
             this.cmdArtikelSok.UseVisualStyleBackColor = true;
             this.cmdArtikelSok.Click += new System.EventHandler(this.cmdArtikelSok_Click);
+            // 
+            // cmdExporteraDatornamn
+            // 
+            this.cmdExporteraDatornamn.Location = new System.Drawing.Point(397, 303);
+            this.cmdExporteraDatornamn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmdExporteraDatornamn.Name = "cmdExporteraDatornamn";
+            this.cmdExporteraDatornamn.Size = new System.Drawing.Size(177, 28);
+            this.cmdExporteraDatornamn.TabIndex = 22;
+            this.cmdExporteraDatornamn.Text = "Exportera (Artikel lista)";
+            this.cmdExporteraDatornamn.UseVisualStyleBackColor = true;
+            this.cmdExporteraDatornamn.Click += new System.EventHandler(this.cmdExporteraDatornamn_Click);
             // 
             // groupBox1
             // 
@@ -443,20 +479,34 @@
             this.groupBox1.Controls.Add(this.txtHandelseArtikel);
             this.groupBox1.Controls.Add(this.lbHandelser);
             this.groupBox1.Controls.Add(this.laHandelseArtikel);
-            this.groupBox1.Location = new System.Drawing.Point(329, 12);
+            this.groupBox1.Location = new System.Drawing.Point(439, 15);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(373, 268);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(497, 330);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Händelser";
+            // 
+            // cmdNyHandelse
+            // 
+            this.cmdNyHandelse.Location = new System.Drawing.Point(345, 283);
+            this.cmdNyHandelse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmdNyHandelse.Name = "cmdNyHandelse";
+            this.cmdNyHandelse.Size = new System.Drawing.Size(125, 28);
+            this.cmdNyHandelse.TabIndex = 25;
+            this.cmdNyHandelse.Text = "Ny ";
+            this.cmdNyHandelse.UseVisualStyleBackColor = true;
+            this.cmdNyHandelse.Click += new System.EventHandler(this.cmdNyHandelse_Click);
             // 
             // cbSelectHandelseTyp
             // 
             this.cbSelectHandelseTyp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSelectHandelseTyp.FormattingEnabled = true;
-            this.cbSelectHandelseTyp.Location = new System.Drawing.Point(18, 25);
+            this.cbSelectHandelseTyp.Location = new System.Drawing.Point(24, 31);
+            this.cbSelectHandelseTyp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbSelectHandelseTyp.Name = "cbSelectHandelseTyp";
-            this.cbSelectHandelseTyp.Size = new System.Drawing.Size(335, 21);
+            this.cbSelectHandelseTyp.Size = new System.Drawing.Size(445, 24);
             this.cbSelectHandelseTyp.TabIndex = 35;
             this.cbSelectHandelseTyp.SelectedIndexChanged += new System.EventHandler(this.cbSelectHandelseTyp_SelectedIndexChanged);
             // 
@@ -464,50 +514,46 @@
             // 
             this.txtHandelseArtikel.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtHandelseArtikel.HideSelection = false;
-            this.txtHandelseArtikel.Location = new System.Drawing.Point(18, 232);
+            this.txtHandelseArtikel.Location = new System.Drawing.Point(24, 286);
+            this.txtHandelseArtikel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtHandelseArtikel.Name = "txtHandelseArtikel";
             this.txtHandelseArtikel.ReadOnly = true;
-            this.txtHandelseArtikel.Size = new System.Drawing.Size(235, 20);
+            this.txtHandelseArtikel.Size = new System.Drawing.Size(312, 22);
             this.txtHandelseArtikel.TabIndex = 16;
             // 
             // lbHandelser
             // 
             this.lbHandelser.FormattingEnabled = true;
-            this.lbHandelser.Location = new System.Drawing.Point(18, 52);
+            this.lbHandelser.ItemHeight = 16;
+            this.lbHandelser.Location = new System.Drawing.Point(24, 64);
+            this.lbHandelser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbHandelser.Name = "lbHandelser";
-            this.lbHandelser.Size = new System.Drawing.Size(335, 160);
+            this.lbHandelser.Size = new System.Drawing.Size(445, 196);
             this.lbHandelser.TabIndex = 15;
             this.lbHandelser.SelectedIndexChanged += new System.EventHandler(this.lbHandelser_SelectedIndexChanged);
             // 
             // laHandelseArtikel
             // 
             this.laHandelseArtikel.AutoSize = true;
-            this.laHandelseArtikel.Location = new System.Drawing.Point(15, 215);
+            this.laHandelseArtikel.Location = new System.Drawing.Point(20, 265);
+            this.laHandelseArtikel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laHandelseArtikel.Name = "laHandelseArtikel";
-            this.laHandelseArtikel.Size = new System.Drawing.Size(39, 13);
+            this.laHandelseArtikel.Size = new System.Drawing.Size(48, 16);
             this.laHandelseArtikel.TabIndex = 34;
             this.laHandelseArtikel.Text = "Artikel:";
             // 
-            // cmdNyHandelse
-            // 
-            this.cmdNyHandelse.Location = new System.Drawing.Point(259, 230);
-            this.cmdNyHandelse.Name = "cmdNyHandelse";
-            this.cmdNyHandelse.Size = new System.Drawing.Size(94, 23);
-            this.cmdNyHandelse.TabIndex = 25;
-            this.cmdNyHandelse.Text = "Ny ";
-            this.cmdNyHandelse.UseVisualStyleBackColor = true;
-            this.cmdNyHandelse.Click += new System.EventHandler(this.cmdNyHandelse_Click);
-            // 
             // HanteraPersonDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 570);
+            this.ClientSize = new System.Drawing.Size(955, 702);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbRegistreradeArtiklar);
             this.Controls.Add(this.gbFalt);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "HanteraPersonDialog";

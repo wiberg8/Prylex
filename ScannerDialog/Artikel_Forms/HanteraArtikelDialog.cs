@@ -123,7 +123,7 @@ namespace ScannerDialog
             {
                 txtRegistredPerson.Text = registreradPerson.ToString();
             }
-            FyllHandelser(DBAccess.HamtaHandelserArtikel(nuvarandeArtikel));
+            HandelseShowTypSelect();
             cmdRegisterPerson.Visible = nuvarandeArtikel.Status == Status.INNE;
             cmdRegistreraScanna.Visible = nuvarandeArtikel.Status == Status.INNE;
             cmdUnregisterPerson.Visible = nuvarandeArtikel.Status == Status.UTE;
@@ -140,7 +140,7 @@ namespace ScannerDialog
                 {
                     Handelse handelse = new Handelse() { ArtikelId = nuvarandeArtikel.Id, PersId = unregisterPersId, Typ = HandelseTyp.AVREGISTRERING };
                     DBAccess.InfogaHandelse(handelse);
-                    FyllHandelser(DBAccess.HamtaHandelserArtikel(nuvarandeArtikel));
+                    HandelseShowTypSelect();
                 }
                 FyllFalt(nuvarandeArtikel);
                 RefreshArtikelStatus();
@@ -159,7 +159,7 @@ namespace ScannerDialog
                 }
                 Handelse handelse = new Handelse() { ArtikelId = nuvarandeArtikel.Id, PersId = nuvarandeArtikel.PersId, Typ = HandelseTyp.REGISTRERING };
                 DBAccess.InfogaHandelse(handelse);
-                FyllHandelser(DBAccess.HamtaHandelserArtikel(nuvarandeArtikel));
+                HandelseShowTypSelect();
             }
             RefreshArtikelStatus();
         }
@@ -181,7 +181,7 @@ namespace ScannerDialog
                     }
                     Handelse handelse = new Handelse() { ArtikelId = nuvarandeArtikel.Id, PersId = nuvarandeArtikel.PersId, Typ = HandelseTyp.REGISTRERING };
                     DBAccess.InfogaHandelse(handelse);
-                    FyllHandelser(DBAccess.HamtaHandelserArtikel(nuvarandeArtikel));
+                    HandelseShowTypSelect();
                 }
                 RefreshArtikelStatus();
             }
@@ -299,7 +299,7 @@ namespace ScannerDialog
                 }
 
                 DBAccess.InfogaHandelse(handelse);
-                FyllHandelser(DBAccess.HamtaHandelserArtikel(nuvarandeArtikel));
+                HandelseShowTypSelect();
             }
         }
         private void HandelseSelected()

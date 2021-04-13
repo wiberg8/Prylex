@@ -36,18 +36,20 @@
             // cmdCancel
             // 
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdCancel.Location = new System.Drawing.Point(194, 53);
+            this.cmdCancel.Location = new System.Drawing.Point(259, 65);
+            this.cmdCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdCancel.Name = "cmdCancel";
-            this.cmdCancel.Size = new System.Drawing.Size(148, 23);
+            this.cmdCancel.Size = new System.Drawing.Size(197, 28);
             this.cmdCancel.TabIndex = 2;
             this.cmdCancel.Text = "Avbryt";
             this.cmdCancel.UseVisualStyleBackColor = true;
             // 
             // cmdOk
             // 
-            this.cmdOk.Location = new System.Drawing.Point(12, 53);
+            this.cmdOk.Location = new System.Drawing.Point(16, 65);
+            this.cmdOk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdOk.Name = "cmdOk";
-            this.cmdOk.Size = new System.Drawing.Size(178, 23);
+            this.cmdOk.Size = new System.Drawing.Size(237, 28);
             this.cmdOk.TabIndex = 1;
             this.cmdOk.Text = "Ok";
             this.cmdOk.UseVisualStyleBackColor = true;
@@ -56,23 +58,26 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(10, 26);
+            this.comboBox1.Location = new System.Drawing.Point(13, 32);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(332, 21);
+            this.comboBox1.Size = new System.Drawing.Size(441, 24);
             this.comboBox1.TabIndex = 3;
             // 
             // InputBoxHandelse
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(354, 90);
+            this.ClientSize = new System.Drawing.Size(472, 111);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.cmdOk);
             this.Controls.Add(this.cmdCancel);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "InputBoxHandelse";

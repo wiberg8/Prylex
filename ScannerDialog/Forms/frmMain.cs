@@ -181,6 +181,7 @@ namespace ScannerDialog.Forms
         {
             dgvArtiklar.Rows.Clear();
             dgvPersoner.Rows.Clear();
+            laGridCount.Text = 0.ToString();
         }
 
 
@@ -251,6 +252,7 @@ namespace ScannerDialog.Forms
                 dgvArtiklar.Rows[dgvArtiklar.Rows.Count - 1].Tag = artikel;
             }
             dgvArtiklar.ClearSelection();
+            laGridCount.Text = dgvArtiklar.Rows.Count.ToString();
             DataGridLibary.SetColorVariationToRows(dgvArtiklar);
         }
 
@@ -263,6 +265,7 @@ namespace ScannerDialog.Forms
                 dgvPersoner.Rows[dgvPersoner.Rows.Count - 1].Tag = person;
             }
             dgvPersoner.ClearSelection();
+            laGridCount.Text = dgvPersoner.Rows.Count.ToString();
             DataGridLibary.SetColorVariationToRows(dgvPersoner);
         }
 

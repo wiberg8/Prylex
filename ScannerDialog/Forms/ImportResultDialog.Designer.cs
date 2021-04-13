@@ -39,9 +39,11 @@ namespace ScannerDialog.Forms
             // lbPersonerErrosSuccess
             // 
             this.lbPersonerErrosSuccess.FormattingEnabled = true;
-            this.lbPersonerErrosSuccess.Location = new System.Drawing.Point(25, 46);
+            this.lbPersonerErrosSuccess.ItemHeight = 16;
+            this.lbPersonerErrosSuccess.Location = new System.Drawing.Point(33, 57);
+            this.lbPersonerErrosSuccess.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbPersonerErrosSuccess.Name = "lbPersonerErrosSuccess";
-            this.lbPersonerErrosSuccess.Size = new System.Drawing.Size(406, 277);
+            this.lbPersonerErrosSuccess.Size = new System.Drawing.Size(540, 340);
             this.lbPersonerErrosSuccess.TabIndex = 7;
             this.lbPersonerErrosSuccess.SelectedIndexChanged += new System.EventHandler(this.lbPersonerErrosSuccess_SelectedIndexChanged);
             // 
@@ -49,9 +51,10 @@ namespace ScannerDialog.Forms
             // 
             this.rbLyckade.AutoSize = true;
             this.rbLyckade.Checked = true;
-            this.rbLyckade.Location = new System.Drawing.Point(25, 26);
+            this.rbLyckade.Location = new System.Drawing.Point(33, 32);
+            this.rbLyckade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbLyckade.Name = "rbLyckade";
-            this.rbLyckade.Size = new System.Drawing.Size(85, 17);
+            this.rbLyckade.Size = new System.Drawing.Size(104, 20);
             this.rbLyckade.TabIndex = 13;
             this.rbLyckade.TabStop = true;
             this.rbLyckade.Text = "Visa lyckade";
@@ -61,9 +64,10 @@ namespace ScannerDialog.Forms
             // rbMisslyckade
             // 
             this.rbMisslyckade.AutoSize = true;
-            this.rbMisslyckade.Location = new System.Drawing.Point(116, 26);
+            this.rbMisslyckade.Location = new System.Drawing.Point(155, 32);
+            this.rbMisslyckade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbMisslyckade.Name = "rbMisslyckade";
-            this.rbMisslyckade.Size = new System.Drawing.Size(105, 17);
+            this.rbMisslyckade.Size = new System.Drawing.Size(132, 20);
             this.rbMisslyckade.TabIndex = 14;
             this.rbMisslyckade.Text = "Visa misslyckade";
             this.rbMisslyckade.UseVisualStyleBackColor = true;
@@ -72,9 +76,10 @@ namespace ScannerDialog.Forms
             // rbExists
             // 
             this.rbExists.AutoSize = true;
-            this.rbExists.Location = new System.Drawing.Point(227, 26);
+            this.rbExists.Location = new System.Drawing.Point(303, 32);
+            this.rbExists.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbExists.Name = "rbExists";
-            this.rbExists.Size = new System.Drawing.Size(132, 17);
+            this.rbExists.Size = new System.Drawing.Size(164, 20);
             this.rbExists.TabIndex = 15;
             this.rbExists.Text = "Visa redan existerande";
             this.rbExists.UseVisualStyleBackColor = true;
@@ -83,22 +88,26 @@ namespace ScannerDialog.Forms
             // lbPersonErrors
             // 
             this.lbPersonErrors.FormattingEnabled = true;
-            this.lbPersonErrors.Location = new System.Drawing.Point(437, 46);
+            this.lbPersonErrors.ItemHeight = 16;
+            this.lbPersonErrors.Location = new System.Drawing.Point(583, 57);
+            this.lbPersonErrors.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbPersonErrors.Name = "lbPersonErrors";
-            this.lbPersonErrors.Size = new System.Drawing.Size(406, 277);
+            this.lbPersonErrors.Size = new System.Drawing.Size(540, 340);
             this.lbPersonErrors.TabIndex = 17;
             // 
             // ImportResultDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(863, 336);
+            this.ClientSize = new System.Drawing.Size(1151, 414);
             this.Controls.Add(this.lbPersonErrors);
             this.Controls.Add(this.rbExists);
             this.Controls.Add(this.rbMisslyckade);
             this.Controls.Add(this.rbLyckade);
             this.Controls.Add(this.lbPersonerErrosSuccess);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "ImportResultDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

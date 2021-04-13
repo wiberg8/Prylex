@@ -14,7 +14,7 @@ namespace Testing
 
         static Program()
         {
-            Installningar.FileName = Config.InstallningarFileName;
+            Installningar.FileName = Config.INSTALLNINGAR_FILENAME;
             AppSettings = new Installningar();
         }
         /// <summary>

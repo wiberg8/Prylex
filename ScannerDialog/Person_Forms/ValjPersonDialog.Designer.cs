@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmdSok = new System.Windows.Forms.Button();
             this.txtSok = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,9 +45,10 @@
             // 
             // cmdSok
             // 
-            this.cmdSok.Location = new System.Drawing.Point(797, 51);
+            this.cmdSok.Location = new System.Drawing.Point(1063, 63);
+            this.cmdSok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdSok.Name = "cmdSok";
-            this.cmdSok.Size = new System.Drawing.Size(97, 23);
+            this.cmdSok.Size = new System.Drawing.Size(129, 28);
             this.cmdSok.TabIndex = 9;
             this.cmdSok.Text = "Sök";
             this.cmdSok.UseVisualStyleBackColor = true;
@@ -55,18 +56,20 @@
             // 
             // txtSok
             // 
-            this.txtSok.Location = new System.Drawing.Point(569, 26);
+            this.txtSok.Location = new System.Drawing.Point(759, 32);
+            this.txtSok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSok.Name = "txtSok";
-            this.txtSok.Size = new System.Drawing.Size(326, 20);
+            this.txtSok.Size = new System.Drawing.Size(433, 22);
             this.txtSok.TabIndex = 8;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(22, 61);
+            this.label1.Location = new System.Drawing.Point(29, 75);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(159, 13);
+            this.label1.Size = new System.Drawing.Size(199, 16);
             this.label1.TabIndex = 13;
             this.label1.Text = "Dubbelklicka för att välja person";
             // 
@@ -81,14 +84,14 @@
             this.dgvPersoner.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPersoner.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvPersoner.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPersoner.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPersoner.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPersoner.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersoner.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -100,7 +103,8 @@
             this.clmOvrigt});
             this.dgvPersoner.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPersoner.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvPersoner.Location = new System.Drawing.Point(25, 86);
+            this.dgvPersoner.Location = new System.Drawing.Point(33, 106);
+            this.dgvPersoner.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvPersoner.MultiSelect = false;
             this.dgvPersoner.Name = "dgvPersoner";
             this.dgvPersoner.RowHeadersVisible = false;
@@ -110,7 +114,7 @@
             this.dgvPersoner.ShowCellToolTips = false;
             this.dgvPersoner.ShowEditingIcon = false;
             this.dgvPersoner.ShowRowErrors = false;
-            this.dgvPersoner.Size = new System.Drawing.Size(870, 444);
+            this.dgvPersoner.Size = new System.Drawing.Size(1160, 546);
             this.dgvPersoner.TabIndex = 14;
             this.dgvPersoner.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvPersoner_MouseDoubleClick_1);
             // 
@@ -157,15 +161,17 @@
             // 
             // ValjPersonDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 551);
+            this.ClientSize = new System.Drawing.Size(1219, 678);
             this.Controls.Add(this.dgvPersoner);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmdSok);
             this.Controls.Add(this.txtSok);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ValjPersonDialog";
