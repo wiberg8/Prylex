@@ -12,26 +12,24 @@ namespace PrylanLibary
     class DBHandler
     {
         //private
-        private SQLiteConnection DBConn;
-
-        private SQLiteCommand DBCmd;
-
-        private SQLiteDataAdapter DBDA;
-
-        private List<SQLiteParameter> Params = new List<SQLiteParameter>();
+        private SQLiteConnection dbConn;
+        private SQLiteCommand dbCmd;
+        private SQLiteDataAdapter dbda;
+        private readonly List<SQLiteParameter> parameters = new List<SQLiteParameter>();
 
 
         //Public
-        public DataTable DBDT;
-        public int RecordCount;
-        public string Exception;
+        public DataTable DBDT { get; set; }
+        public int RecordCount { get; set; }
+        public string Exception { get; set; }
         
         public void SetConnection(string filePath, EventHandler connectionChanged)
         {
-            DBConn = new SQLiteConnection();
-            DBConn.ConnectionString = "Data Source =" + filePath + "; Version = 3; FailIfMissing=True";
-            if (connectionChanged != null)
-                connectionChanged.Invoke(DBConn.ConnectionString, new EventArgs());
+            dbConn = new SQLiteConnection
+            {
+                ConnectionString = "Data Source =" + filePath + "; Version = 3; FailIfMissing=True"
+            };
+            connectionChanged?.Invoke(dbConn.ConnectionString, new EventArgs());
         }
         public bool Error()
         {
@@ -42,22 +40,22 @@ namespace PrylanLibary
             Console.WriteLine("Öppnar");
             try
             {
-                DBConn.Open();
+                dbConn.Open();
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return false;
             }
-            return DBConn.State == ConnectionState.Open;
+            return dbConn.State == ConnectionState.Open;
         }
         public void Close()
         {
             Console.WriteLine("Stänger");
             try
             {
-                if(DBConn.State != ConnectionState.Closed)
-                    DBConn.Close();
+                if(dbConn.State != ConnectionState.Closed)
+                    dbConn.Close();
             }
             catch(Exception ex)
             {
@@ -69,7 +67,7 @@ namespace PrylanLibary
         {
             try
             {
-                return (int)DBConn.LastInsertRowId;
+                return (int)dbConn.LastInsertRowId;
             }
             catch
             {
@@ -84,14 +82,14 @@ namespace PrylanLibary
 
             try
             {
-                DBCmd = new SQLiteCommand(query, DBConn);
+                dbCmd = new SQLiteCommand(query, dbConn);
 
-                Params.ForEach((SQLiteParameter p) => DBCmd.Parameters.Add(p));
-                Params.Clear();
+                parameters.ForEach((SQLiteParameter p) => dbCmd.Parameters.Add(p));
+                parameters.Clear();
 
                 DBDT = new DataTable();
-                DBDA = new SQLiteDataAdapter(DBCmd);
-                RecordCount = DBDA.Fill(DBDT);
+                dbda = new SQLiteDataAdapter(dbCmd);
+                RecordCount = dbda.Fill(DBDT);
             }
             catch (Exception ex)
             {
@@ -99,14 +97,13 @@ namespace PrylanLibary
                 Console.WriteLine(Exception);
             }
         }
+
         public void AddParam(string name, object value)
         {
             SQLiteParameter newParam = new SQLiteParameter(name, value);
-            Params.Add(newParam);
+            parameters.Add(newParam);
         }
 
-        //private static string artiklarQuery = "CREATE TABLE IF NOT EXISTS \"artiklar\" (\"Id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \"Besk\" TEXT, \"Stoldtag\", \"Datornamn\" TEXT, \"SerieNr\" TEXT, \"Mac\" TEXT, \"Os\" TEXT, \"Inkop\" TEXT, \"AndvandInkop\" INTEGER NOT NULL DEFAULT 0, \"Ovrigt\" TEXT, \"Status\" INTEGER NOT NULL DEFAULT 0, PersId INTEGER)";
-        //private static string personerQuery = "CREATE TABLE IF NOT EXISTS \"personer\" (\"Id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \"Fornamn\" TEXT, \"Efternamn\", \"PersNr\" TEXT, \"Sign\" TEXT, \"Epost\" TEXT, \"Telefon\" TEXT, \"Tillhorighet\" TEXT, \"Ovrigt\" TEXT)";
         public bool CreateFile(string filNamn)
         {
             if (!File.Exists(filNamn))
