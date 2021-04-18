@@ -17,12 +17,7 @@ namespace ScannerDialog.Forms
 {
     public partial class ImportDialog : Form
     {
-        private string selectedImportFil;
-        private string SelectedImportFil 
-        { 
-            get { return this.selectedImportFil; }
-            set { this.selectedImportFil = value; txtImportFil.Text = value; }
-        }
+        private string SelectedImportFil { get { return txtImportFil.Text; } set { txtImportFil.Text = value; }}
       
         public ImportDialog()
         {
