@@ -14,22 +14,25 @@ namespace Testing
 
         static Program()
         {
-            Installningar.FileName = Config.INSTALLNINGAR_FILENAME;
-            AppSettings = new Installningar();
+           
         }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            AppSettings.Ladda();
-            dataAccess = new DataAccess() { CurrentFile = AppSettings.Databas };
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new NyArtikelDialog());
-            AppSettings.Spara();
         }
 
+    }
+
+    public enum Status
+    {
+        UTLAMNAD,
+        INLAMNAD
     }
 }

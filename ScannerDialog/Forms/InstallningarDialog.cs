@@ -18,6 +18,7 @@ namespace ScannerDialog
         public InstallningarDialog()
         {
             InitializeComponent();
+            SharedEvents.AttachToAllLabelsInForm(this, this.components.Components);
             cbForvalValj.SelectedIndex = 0;
             AppSettings.PropertyChanged += Installningar_Change;
         }
@@ -66,19 +67,6 @@ namespace ScannerDialog
         private void cbPrinter_SelectedIndexChanged(object sender, EventArgs e) => AppSettings.Skrivare = cbPrinter.Text;
         //checkbox events
         private void cbBackupOnStart_CheckedChanged(object sender, EventArgs e) => AppSettings.BackupOnStart = cbBackupOnStart.Checked;
-
-        //shared events
-        private void laNuvarandeDbDisplay_DoubleClick(object sender, EventArgs e) => Clipboard.SetText(laNuvarandeDbDisplay.Text);
-        private void mouseEnter(object sender, EventArgs e)
-        {
-            Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.HIGHLIGHT_COLOR;
-        }
-        private void mouseLeave(object sender, EventArgs e)
-        {
-            Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.STANDARD_FORE_COLOR;
-        }
 
         //events
         private void Installningar_Change(object sender, EventArgs e)
@@ -205,28 +193,28 @@ namespace ScannerDialog
             {
                 if (!AppSettings.Beskrivningar.Contains(v))
                 {
-                    AppSettings.Beskrivningar.Add(v);
+                    AppSettings.AddBeskrivning(v);
                 }
             }
             foreach (string v in DBAccess.GetUniqueOS())
             {
                 if (!AppSettings.Os.Contains(v))
                 {
-                    AppSettings.Os.Add(v);
+                    AppSettings.AddOs(v);
                 }
             }
             foreach (string v in DBAccess.GetUniqueTillhorighet())
             {
                 if (!AppSettings.Tillhorigheter.Contains(v))
                 {
-                    AppSettings.Tillhorigheter.Add(v);
+                    AppSettings.AddTillhorighet(v);
                 }
             }
             foreach (string v in DBAccess.GetUniqueHandelser())
             {
                 if (!AppSettings.Handelser.Contains(v))
                 {
-                    AppSettings.Handelser.Add(v);
+                    AppSettings.AddHandelse(v);
                 }
             }
             ForvalRefresh();

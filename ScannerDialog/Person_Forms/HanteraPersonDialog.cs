@@ -19,10 +19,11 @@ namespace ScannerDialog
     public partial class HanteraPersonDialog : Form
     {
         private Person nuvarandePerson;
-
+ 
         public HanteraPersonDialog(Person personAttEditera)
         {
             InitializeComponent();
+            SharedEvents.AttachToAllLabelsInForm(this, this.components.Components);
             nuvarandePerson = personAttEditera;
         }
 
@@ -54,23 +55,6 @@ namespace ScannerDialog
 
         //combobox events
         private void cbSelectHandelseTyp_SelectedIndexChanged(object sender, EventArgs e) => HandelseShowTypSelect();
-
-        private void laDisplay_DoubleClick(object sender, MouseEventArgs e)
-        {
-            if (sender is null)
-                return;
-            Clipboard.SetText(((Label)sender).Text);
-        }
-        private void mouseEnter(object sender, EventArgs e)
-        {
-            Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.HIGHLIGHT_COLOR;
-        }
-        private void mouseLeave(object sender, EventArgs e)
-        {
-            Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.STANDARD_FORE_COLOR;
-        }
 
         private void FormStartup()
         {
@@ -152,10 +136,10 @@ namespace ScannerDialog
 
         private void NyHandelse()
         {
-            var x = new InputBoxHandelse();
-            if (x.ShowDialog() == DialogResult.OK)
+            var inputBox = new InputBoxHandelse();
+            if (inputBox.ShowDialog() == DialogResult.OK)
             {
-                Handelse handelse = new Handelse() { PersId = nuvarandePerson.Id, FriText = x.Input, Typ = HandelseTyp.FRITEXT };
+                Handelse handelse = new Handelse() { PersId = nuvarandePerson.Id, FriText = inputBox.Input, Typ = HandelseTyp.FRITEXT };
                 DBAccess.InfogaHandelse(handelse);
                 HandelseShowTypSelect();
             }

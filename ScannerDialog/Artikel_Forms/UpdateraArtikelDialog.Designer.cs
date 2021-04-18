@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -57,9 +56,10 @@
             // 
             // cmdSpara
             // 
-            this.cmdSpara.Location = new System.Drawing.Point(333, 191);
+            this.cmdSpara.Location = new System.Drawing.Point(444, 235);
+            this.cmdSpara.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdSpara.Name = "cmdSpara";
-            this.cmdSpara.Size = new System.Drawing.Size(88, 23);
+            this.cmdSpara.Size = new System.Drawing.Size(117, 28);
             this.cmdSpara.TabIndex = 12;
             this.cmdSpara.Text = "Spara";
             this.cmdSpara.UseVisualStyleBackColor = true;
@@ -69,18 +69,20 @@
             // 
             this.txtOvrigt.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtOvrigt.HideSelection = false;
-            this.txtOvrigt.Location = new System.Drawing.Point(20, 122);
+            this.txtOvrigt.Location = new System.Drawing.Point(27, 150);
+            this.txtOvrigt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtOvrigt.Multiline = true;
             this.txtOvrigt.Name = "txtOvrigt";
-            this.txtOvrigt.Size = new System.Drawing.Size(289, 66);
+            this.txtOvrigt.Size = new System.Drawing.Size(384, 80);
             this.txtOvrigt.TabIndex = 8;
             // 
             // laOvrigt
             // 
             this.laOvrigt.AutoSize = true;
-            this.laOvrigt.Location = new System.Drawing.Point(17, 106);
+            this.laOvrigt.Location = new System.Drawing.Point(23, 130);
+            this.laOvrigt.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laOvrigt.Name = "laOvrigt";
-            this.laOvrigt.Size = new System.Drawing.Size(38, 13);
+            this.laOvrigt.Size = new System.Drawing.Size(46, 16);
             this.laOvrigt.TabIndex = 8;
             this.laOvrigt.Text = "Övrigt:";
             // 
@@ -92,9 +94,11 @@
             this.gbFalt.Controls.Add(this.txtDatornamn);
             this.gbFalt.Controls.Add(this.laStoldtag);
             this.gbFalt.Controls.Add(this.laDatornamn);
-            this.gbFalt.Location = new System.Drawing.Point(12, 12);
+            this.gbFalt.Location = new System.Drawing.Point(16, 15);
+            this.gbFalt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbFalt.Name = "gbFalt";
-            this.gbFalt.Size = new System.Drawing.Size(315, 202);
+            this.gbFalt.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbFalt.Size = new System.Drawing.Size(420, 249);
             this.gbFalt.TabIndex = 11;
             this.gbFalt.TabStop = false;
             this.gbFalt.Text = "Info";
@@ -103,52 +107,58 @@
             // 
             this.txtStoldtag.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtStoldtag.HideSelection = false;
-            this.txtStoldtag.Location = new System.Drawing.Point(20, 38);
+            this.txtStoldtag.Location = new System.Drawing.Point(27, 47);
+            this.txtStoldtag.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtStoldtag.Name = "txtStoldtag";
-            this.txtStoldtag.Size = new System.Drawing.Size(289, 20);
+            this.txtStoldtag.Size = new System.Drawing.Size(384, 22);
             this.txtStoldtag.TabIndex = 6;
             // 
             // txtDatornamn
             // 
             this.txtDatornamn.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDatornamn.HideSelection = false;
-            this.txtDatornamn.Location = new System.Drawing.Point(20, 80);
+            this.txtDatornamn.Location = new System.Drawing.Point(27, 98);
+            this.txtDatornamn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDatornamn.Name = "txtDatornamn";
-            this.txtDatornamn.Size = new System.Drawing.Size(289, 20);
+            this.txtDatornamn.Size = new System.Drawing.Size(384, 22);
             this.txtDatornamn.TabIndex = 7;
             // 
             // laStoldtag
             // 
             this.laStoldtag.AutoSize = true;
-            this.laStoldtag.Location = new System.Drawing.Point(18, 22);
+            this.laStoldtag.Location = new System.Drawing.Point(24, 27);
+            this.laStoldtag.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laStoldtag.Name = "laStoldtag";
-            this.laStoldtag.Size = new System.Drawing.Size(49, 13);
+            this.laStoldtag.Size = new System.Drawing.Size(61, 16);
             this.laStoldtag.TabIndex = 6;
             this.laStoldtag.Text = "Stöldtag:";
             // 
             // laDatornamn
             // 
             this.laDatornamn.AutoSize = true;
-            this.laDatornamn.Location = new System.Drawing.Point(17, 64);
+            this.laDatornamn.Location = new System.Drawing.Point(23, 79);
+            this.laDatornamn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laDatornamn.Name = "laDatornamn";
-            this.laDatornamn.Size = new System.Drawing.Size(62, 13);
+            this.laDatornamn.Size = new System.Drawing.Size(77, 16);
             this.laDatornamn.TabIndex = 7;
             this.laDatornamn.Text = "Datornamn:";
             // 
             // cbOS
             // 
             this.cbOS.FormattingEnabled = true;
-            this.cbOS.Location = new System.Drawing.Point(9, 79);
+            this.cbOS.Location = new System.Drawing.Point(12, 97);
+            this.cbOS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbOS.Name = "cbOS";
-            this.cbOS.Size = new System.Drawing.Size(207, 21);
+            this.cbOS.Size = new System.Drawing.Size(275, 24);
             this.cbOS.TabIndex = 2;
             // 
             // laOS
             // 
             this.laOS.AutoSize = true;
-            this.laOS.Location = new System.Drawing.Point(7, 64);
+            this.laOS.Location = new System.Drawing.Point(9, 79);
+            this.laOS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laOS.Name = "laOS";
-            this.laOS.Size = new System.Drawing.Size(50, 13);
+            this.laOS.Size = new System.Drawing.Size(62, 16);
             this.laOS.TabIndex = 2;
             this.laOS.Text = "Operativ:";
             // 
@@ -158,9 +168,11 @@
             this.gbSnabbVal.Controls.Add(this.laOS);
             this.gbSnabbVal.Controls.Add(this.cbBeskrivningar);
             this.gbSnabbVal.Controls.Add(this.laBeskrivningar);
-            this.gbSnabbVal.Location = new System.Drawing.Point(333, 12);
+            this.gbSnabbVal.Location = new System.Drawing.Point(444, 15);
+            this.gbSnabbVal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbSnabbVal.Name = "gbSnabbVal";
-            this.gbSnabbVal.Size = new System.Drawing.Size(225, 119);
+            this.gbSnabbVal.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbSnabbVal.Size = new System.Drawing.Size(300, 146);
             this.gbSnabbVal.TabIndex = 10;
             this.gbSnabbVal.TabStop = false;
             this.gbSnabbVal.Text = "Info - Snabb val ";
@@ -168,26 +180,29 @@
             // cbBeskrivningar
             // 
             this.cbBeskrivningar.FormattingEnabled = true;
-            this.cbBeskrivningar.Location = new System.Drawing.Point(9, 36);
+            this.cbBeskrivningar.Location = new System.Drawing.Point(12, 44);
+            this.cbBeskrivningar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbBeskrivningar.Name = "cbBeskrivningar";
-            this.cbBeskrivningar.Size = new System.Drawing.Size(207, 21);
+            this.cbBeskrivningar.Size = new System.Drawing.Size(275, 24);
             this.cbBeskrivningar.TabIndex = 0;
             // 
             // laBeskrivningar
             // 
             this.laBeskrivningar.AutoSize = true;
-            this.laBeskrivningar.Location = new System.Drawing.Point(6, 20);
+            this.laBeskrivningar.Location = new System.Drawing.Point(8, 25);
+            this.laBeskrivningar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laBeskrivningar.Name = "laBeskrivningar";
-            this.laBeskrivningar.Size = new System.Drawing.Size(65, 13);
+            this.laBeskrivningar.Size = new System.Drawing.Size(81, 16);
             this.laBeskrivningar.TabIndex = 0;
             this.laBeskrivningar.Text = "Beskrivning:";
             // 
             // cmdAvbryt
             // 
             this.cmdAvbryt.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdAvbryt.Location = new System.Drawing.Point(470, 191);
+            this.cmdAvbryt.Location = new System.Drawing.Point(627, 235);
+            this.cmdAvbryt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdAvbryt.Name = "cmdAvbryt";
-            this.cmdAvbryt.Size = new System.Drawing.Size(88, 23);
+            this.cmdAvbryt.Size = new System.Drawing.Size(117, 28);
             this.cmdAvbryt.TabIndex = 13;
             this.cmdAvbryt.Text = "Avbryt";
             this.cmdAvbryt.UseVisualStyleBackColor = true;
@@ -195,22 +210,26 @@
             // lbErrors
             // 
             this.lbErrors.FormattingEnabled = true;
-            this.lbErrors.Location = new System.Drawing.Point(333, 132);
+            this.lbErrors.ItemHeight = 16;
+            this.lbErrors.Location = new System.Drawing.Point(444, 162);
+            this.lbErrors.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbErrors.Name = "lbErrors";
-            this.lbErrors.Size = new System.Drawing.Size(225, 56);
+            this.lbErrors.Size = new System.Drawing.Size(299, 68);
             this.lbErrors.TabIndex = 18;
             // 
             // UpdateraArtikelDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 224);
+            this.ClientSize = new System.Drawing.Size(762, 276);
             this.Controls.Add(this.lbErrors);
             this.Controls.Add(this.cmdSpara);
             this.Controls.Add(this.gbFalt);
             this.Controls.Add(this.gbSnabbVal);
             this.Controls.Add(this.cmdAvbryt);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "UpdateraArtikelDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

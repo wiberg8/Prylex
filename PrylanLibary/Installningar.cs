@@ -30,10 +30,10 @@ namespace PrylanLibary
         public string ForetagsNamn { get => _foretagsNamn; set => _foretagsNamn = value; }
         public string Skrivare { get => _skrivare; set => _skrivare = value; }
         public bool BackupOnStart { get => _backupOnStart; set => _backupOnStart = value; }
-        public List<string> Beskrivningar { get => _beskrivningar; set => _beskrivningar = value; }
-        public List<string> Os { get => _os; set => _os = value; }
-        public List<string> Tillhorigheter { get => _tillhorigheter; set => _tillhorigheter = value; }
-        public List<string> Handelser { get => _handelser; set => _handelser = value; }
+        public List<string> Beskrivningar { get => _beskrivningar; set { _beskrivningar = value; NotifyPropertyChanged(nameof(this.Beskrivningar)); } }
+        public List<string> Os { get => _os; set { _os = value; NotifyPropertyChanged(nameof(this.Os)); } }
+        public List<string> Tillhorigheter { get => _tillhorigheter; set { _tillhorigheter = value; NotifyPropertyChanged(nameof(this.Tillhorigheter)); } }
+        public List<string> Handelser { get => _handelser; set { _handelser = value; NotifyPropertyChanged(nameof(this.Handelser)); } }
 
         public void AddTillhorighet(string x)
         {
@@ -70,8 +70,8 @@ namespace PrylanLibary
             Installningar installningar;
             try
             {
-                string lastinfo = File.ReadAllText(FileName);
-                installningar = JsonConvert.DeserializeObject<Installningar>(lastinfo);
+                string fileData = File.ReadAllText(FileName);
+                installningar = JsonConvert.DeserializeObject<Installningar>(fileData);
             }
             catch
             {
@@ -83,18 +83,18 @@ namespace PrylanLibary
             }
         }
 
-        public void Spara()
+        public bool Spara()
         {
             try
             {
                 string installningarEncoded = JsonConvert.SerializeObject(this, Formatting.Indented);
                 File.WriteAllText(FileName, installningarEncoded);
+                return true;
             }
             catch
             {
-
+                return false;
             }
-
         }
 
         private void SetThisAsAnother(Installningar another)

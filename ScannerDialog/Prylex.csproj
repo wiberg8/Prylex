@@ -172,6 +172,9 @@
     <Compile Include="Person_Forms\ValjPersonDialog.Designer.cs">
       <DependentUpon>ValjPersonDialog.cs</DependentUpon>
     </Compile>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="Resources\ApplikationIkon.ico" />
     <None Include="Resources\BigLogga.png" />
     <EmbeddedResource Include="Forms\frmMain.resx">

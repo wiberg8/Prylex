@@ -22,10 +22,11 @@ namespace ScannerDialog
         private Artikel nuvarandeArtikel;
         private Person registreradPerson;
 
-        public HanteraArtikelDialog(Artikel _artikelAttEditera)
+        public HanteraArtikelDialog(Artikel nuvarandeArtikel)
         {
             InitializeComponent();
-            nuvarandeArtikel = _artikelAttEditera;
+            SharedEvents.AttachToAllLabelsInForm(this, this.components.Components);
+            this.nuvarandeArtikel = nuvarandeArtikel;
             FyllFalt(nuvarandeArtikel);
         }
 
@@ -97,18 +98,6 @@ namespace ScannerDialog
         private void cbSelectHandelseTyp_SelectedIndexChanged(object sender, EventArgs e)
         {
             HandelseShowTypSelect();
-        }
-
-        //shared events
-        private void mouseEnter(object sender, EventArgs e)
-        {
-            Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.HIGHLIGHT_COLOR;
-        }
-        private void mouseLeave(object sender, EventArgs e)
-        {
-            Label theLabel = (Label)sender;
-            theLabel.ForeColor = Config.STANDARD_FORE_COLOR;
         }
 
         private void FormStart()

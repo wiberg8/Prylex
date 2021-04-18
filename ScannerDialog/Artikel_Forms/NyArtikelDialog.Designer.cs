@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -63,18 +62,20 @@
             // 
             this.cbBeskrivningar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbBeskrivningar.FormattingEnabled = true;
-            this.cbBeskrivningar.Location = new System.Drawing.Point(9, 36);
+            this.cbBeskrivningar.Location = new System.Drawing.Point(12, 44);
+            this.cbBeskrivningar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbBeskrivningar.Name = "cbBeskrivningar";
-            this.cbBeskrivningar.Size = new System.Drawing.Size(207, 21);
+            this.cbBeskrivningar.Size = new System.Drawing.Size(275, 24);
             this.cbBeskrivningar.TabIndex = 0;
             this.cbBeskrivningar.TabStop = false;
             // 
             // laBeskrivningar
             // 
             this.laBeskrivningar.AutoSize = true;
-            this.laBeskrivningar.Location = new System.Drawing.Point(6, 20);
+            this.laBeskrivningar.Location = new System.Drawing.Point(8, 25);
+            this.laBeskrivningar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laBeskrivningar.Name = "laBeskrivningar";
-            this.laBeskrivningar.Size = new System.Drawing.Size(65, 13);
+            this.laBeskrivningar.Size = new System.Drawing.Size(81, 16);
             this.laBeskrivningar.TabIndex = 0;
             this.laBeskrivningar.Text = "Beskrivning:";
             // 
@@ -89,9 +90,11 @@
             this.gbSnabbVal.Controls.Add(this.checkBeskrivningarFritext);
             this.gbSnabbVal.Controls.Add(this.cbBeskrivningar);
             this.gbSnabbVal.Controls.Add(this.laBeskrivningar);
-            this.gbSnabbVal.Location = new System.Drawing.Point(333, 9);
+            this.gbSnabbVal.Location = new System.Drawing.Point(444, 11);
+            this.gbSnabbVal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbSnabbVal.Name = "gbSnabbVal";
-            this.gbSnabbVal.Size = new System.Drawing.Size(225, 160);
+            this.gbSnabbVal.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbSnabbVal.Size = new System.Drawing.Size(300, 197);
             this.gbSnabbVal.TabIndex = 0;
             this.gbSnabbVal.TabStop = false;
             this.gbSnabbVal.Text = "Info - Snabb val ";
@@ -99,9 +102,10 @@
             // cbPrintEttiket
             // 
             this.cbPrintEttiket.AutoSize = true;
-            this.cbPrintEttiket.Location = new System.Drawing.Point(124, 128);
+            this.cbPrintEttiket.Location = new System.Drawing.Point(165, 158);
+            this.cbPrintEttiket.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbPrintEttiket.Name = "cbPrintEttiket";
-            this.cbPrintEttiket.Size = new System.Drawing.Size(94, 17);
+            this.cbPrintEttiket.Size = new System.Drawing.Size(108, 20);
             this.cbPrintEttiket.TabIndex = 29;
             this.cbPrintEttiket.Text = "Skriv ut ettiket";
             this.cbPrintEttiket.UseVisualStyleBackColor = true;
@@ -109,10 +113,11 @@
             // checkOsFritext
             // 
             this.checkOsFritext.AutoSize = true;
-            this.checkOsFritext.Location = new System.Drawing.Point(162, 60);
+            this.checkOsFritext.Location = new System.Drawing.Point(216, 74);
+            this.checkOsFritext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkOsFritext.Name = "checkOsFritext";
             this.checkOsFritext.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkOsFritext.Size = new System.Drawing.Size(54, 17);
+            this.checkOsFritext.Size = new System.Drawing.Size(62, 20);
             this.checkOsFritext.TabIndex = 4;
             this.checkOsFritext.TabStop = false;
             this.checkOsFritext.Text = "Fritext";
@@ -124,18 +129,20 @@
             // 
             this.cbOS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOS.FormattingEnabled = true;
-            this.cbOS.Location = new System.Drawing.Point(9, 79);
+            this.cbOS.Location = new System.Drawing.Point(12, 97);
+            this.cbOS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbOS.Name = "cbOS";
-            this.cbOS.Size = new System.Drawing.Size(207, 21);
+            this.cbOS.Size = new System.Drawing.Size(275, 24);
             this.cbOS.TabIndex = 2;
             this.cbOS.TabStop = false;
             // 
             // laOS
             // 
             this.laOS.AutoSize = true;
-            this.laOS.Location = new System.Drawing.Point(7, 64);
+            this.laOS.Location = new System.Drawing.Point(9, 79);
+            this.laOS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laOS.Name = "laOS";
-            this.laOS.Size = new System.Drawing.Size(50, 13);
+            this.laOS.Size = new System.Drawing.Size(62, 16);
             this.laOS.TabIndex = 2;
             this.laOS.Text = "Operativ:";
             // 
@@ -143,9 +150,10 @@
             // 
             this.dtpInkop.Checked = false;
             this.dtpInkop.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpInkop.Location = new System.Drawing.Point(9, 126);
+            this.dtpInkop.Location = new System.Drawing.Point(12, 155);
+            this.dtpInkop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpInkop.Name = "dtpInkop";
-            this.dtpInkop.Size = new System.Drawing.Size(106, 20);
+            this.dtpInkop.Size = new System.Drawing.Size(140, 22);
             this.dtpInkop.TabIndex = 3;
             this.dtpInkop.TabStop = false;
             this.dtpInkop.Value = new System.DateTime(2020, 6, 23, 13, 10, 47, 0);
@@ -153,19 +161,21 @@
             // laInkop
             // 
             this.laInkop.AutoSize = true;
-            this.laInkop.Location = new System.Drawing.Point(7, 108);
+            this.laInkop.Location = new System.Drawing.Point(9, 133);
+            this.laInkop.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laInkop.Name = "laInkop";
-            this.laInkop.Size = new System.Drawing.Size(76, 13);
+            this.laInkop.Size = new System.Drawing.Size(93, 16);
             this.laInkop.TabIndex = 3;
             this.laInkop.Text = "Inköps Datum:";
             // 
             // checkBeskrivningarFritext
             // 
             this.checkBeskrivningarFritext.AutoSize = true;
-            this.checkBeskrivningarFritext.Location = new System.Drawing.Point(162, 16);
+            this.checkBeskrivningarFritext.Location = new System.Drawing.Point(216, 20);
+            this.checkBeskrivningarFritext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBeskrivningarFritext.Name = "checkBeskrivningarFritext";
             this.checkBeskrivningarFritext.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBeskrivningarFritext.Size = new System.Drawing.Size(54, 17);
+            this.checkBeskrivningarFritext.Size = new System.Drawing.Size(62, 20);
             this.checkBeskrivningarFritext.TabIndex = 1;
             this.checkBeskrivningarFritext.TabStop = false;
             this.checkBeskrivningarFritext.Text = "Fritext";
@@ -177,17 +187,19 @@
             // 
             this.txtDatornamn.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDatornamn.HideSelection = false;
-            this.txtDatornamn.Location = new System.Drawing.Point(15, 163);
+            this.txtDatornamn.Location = new System.Drawing.Point(20, 201);
+            this.txtDatornamn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDatornamn.Name = "txtDatornamn";
-            this.txtDatornamn.Size = new System.Drawing.Size(289, 20);
+            this.txtDatornamn.Size = new System.Drawing.Size(384, 22);
             this.txtDatornamn.TabIndex = 7;
             // 
             // laDatornamn
             // 
             this.laDatornamn.AutoSize = true;
-            this.laDatornamn.Location = new System.Drawing.Point(12, 147);
+            this.laDatornamn.Location = new System.Drawing.Point(16, 181);
+            this.laDatornamn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laDatornamn.Name = "laDatornamn";
-            this.laDatornamn.Size = new System.Drawing.Size(62, 13);
+            this.laDatornamn.Size = new System.Drawing.Size(77, 16);
             this.laDatornamn.TabIndex = 7;
             this.laDatornamn.Text = "Datornamn:";
             // 
@@ -195,17 +207,19 @@
             // 
             this.txtStoldtag.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtStoldtag.HideSelection = false;
-            this.txtStoldtag.Location = new System.Drawing.Point(15, 121);
+            this.txtStoldtag.Location = new System.Drawing.Point(20, 149);
+            this.txtStoldtag.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtStoldtag.Name = "txtStoldtag";
-            this.txtStoldtag.Size = new System.Drawing.Size(289, 20);
+            this.txtStoldtag.Size = new System.Drawing.Size(384, 22);
             this.txtStoldtag.TabIndex = 6;
             // 
             // laStoldtag
             // 
             this.laStoldtag.AutoSize = true;
-            this.laStoldtag.Location = new System.Drawing.Point(13, 105);
+            this.laStoldtag.Location = new System.Drawing.Point(17, 129);
+            this.laStoldtag.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laStoldtag.Name = "laStoldtag";
-            this.laStoldtag.Size = new System.Drawing.Size(49, 13);
+            this.laStoldtag.Size = new System.Drawing.Size(61, 16);
             this.laStoldtag.TabIndex = 6;
             this.laStoldtag.Text = "Stöldtag:";
             // 
@@ -214,17 +228,19 @@
             this.txtSerieNr.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSerieNr.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSerieNr.HideSelection = false;
-            this.txtSerieNr.Location = new System.Drawing.Point(15, 37);
+            this.txtSerieNr.Location = new System.Drawing.Point(20, 46);
+            this.txtSerieNr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSerieNr.Name = "txtSerieNr";
-            this.txtSerieNr.Size = new System.Drawing.Size(289, 20);
+            this.txtSerieNr.Size = new System.Drawing.Size(384, 22);
             this.txtSerieNr.TabIndex = 4;
             // 
             // laSerieNr
             // 
             this.laSerieNr.AutoSize = true;
-            this.laSerieNr.Location = new System.Drawing.Point(12, 21);
+            this.laSerieNr.Location = new System.Drawing.Point(16, 26);
+            this.laSerieNr.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laSerieNr.Name = "laSerieNr";
-            this.laSerieNr.Size = new System.Drawing.Size(45, 13);
+            this.laSerieNr.Size = new System.Drawing.Size(57, 16);
             this.laSerieNr.TabIndex = 4;
             this.laSerieNr.Text = "SerieNr:";
             // 
@@ -240,9 +256,11 @@
             this.gbFalt.Controls.Add(this.laStoldtag);
             this.gbFalt.Controls.Add(this.laDatornamn);
             this.gbFalt.Controls.Add(this.laSerieNr);
-            this.gbFalt.Location = new System.Drawing.Point(12, 9);
+            this.gbFalt.Location = new System.Drawing.Point(16, 11);
+            this.gbFalt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbFalt.Name = "gbFalt";
-            this.gbFalt.Size = new System.Drawing.Size(315, 283);
+            this.gbFalt.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbFalt.Size = new System.Drawing.Size(420, 348);
             this.gbFalt.TabIndex = 1;
             this.gbFalt.TabStop = false;
             this.gbFalt.Text = "Info";
@@ -251,17 +269,19 @@
             // 
             this.txtMAC.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMAC.HideSelection = false;
-            this.txtMAC.Location = new System.Drawing.Point(15, 79);
+            this.txtMAC.Location = new System.Drawing.Point(20, 97);
+            this.txtMAC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMAC.Name = "txtMAC";
-            this.txtMAC.Size = new System.Drawing.Size(289, 20);
+            this.txtMAC.Size = new System.Drawing.Size(384, 22);
             this.txtMAC.TabIndex = 5;
             // 
             // laMAC
             // 
             this.laMAC.AutoSize = true;
-            this.laMAC.Location = new System.Drawing.Point(13, 63);
+            this.laMAC.Location = new System.Drawing.Point(17, 78);
+            this.laMAC.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laMAC.Name = "laMAC";
-            this.laMAC.Size = new System.Drawing.Size(68, 13);
+            this.laMAC.Size = new System.Drawing.Size(87, 16);
             this.laMAC.TabIndex = 5;
             this.laMAC.Text = "MAC-Adress:";
             // 
@@ -269,26 +289,29 @@
             // 
             this.txtOvrigt.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtOvrigt.HideSelection = false;
-            this.txtOvrigt.Location = new System.Drawing.Point(15, 205);
+            this.txtOvrigt.Location = new System.Drawing.Point(20, 252);
+            this.txtOvrigt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtOvrigt.Multiline = true;
             this.txtOvrigt.Name = "txtOvrigt";
-            this.txtOvrigt.Size = new System.Drawing.Size(289, 66);
+            this.txtOvrigt.Size = new System.Drawing.Size(384, 80);
             this.txtOvrigt.TabIndex = 8;
             // 
             // laOvrigt
             // 
             this.laOvrigt.AutoSize = true;
-            this.laOvrigt.Location = new System.Drawing.Point(12, 189);
+            this.laOvrigt.Location = new System.Drawing.Point(16, 233);
+            this.laOvrigt.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laOvrigt.Name = "laOvrigt";
-            this.laOvrigt.Size = new System.Drawing.Size(38, 13);
+            this.laOvrigt.Size = new System.Drawing.Size(46, 16);
             this.laOvrigt.TabIndex = 8;
             this.laOvrigt.Text = "Övrigt:";
             // 
             // cmdSpara
             // 
-            this.cmdSpara.Location = new System.Drawing.Point(333, 269);
+            this.cmdSpara.Location = new System.Drawing.Point(444, 331);
+            this.cmdSpara.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdSpara.Name = "cmdSpara";
-            this.cmdSpara.Size = new System.Drawing.Size(88, 23);
+            this.cmdSpara.Size = new System.Drawing.Size(117, 28);
             this.cmdSpara.TabIndex = 8;
             this.cmdSpara.Text = "Spara";
             this.cmdSpara.UseVisualStyleBackColor = true;
@@ -297,9 +320,10 @@
             // cmdAvbryt
             // 
             this.cmdAvbryt.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdAvbryt.Location = new System.Drawing.Point(470, 269);
+            this.cmdAvbryt.Location = new System.Drawing.Point(627, 331);
+            this.cmdAvbryt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdAvbryt.Name = "cmdAvbryt";
-            this.cmdAvbryt.Size = new System.Drawing.Size(88, 23);
+            this.cmdAvbryt.Size = new System.Drawing.Size(117, 28);
             this.cmdAvbryt.TabIndex = 9;
             this.cmdAvbryt.Text = "Avbryt";
             this.cmdAvbryt.UseVisualStyleBackColor = true;
@@ -312,24 +336,28 @@
             // lbErrors
             // 
             this.lbErrors.FormattingEnabled = true;
-            this.lbErrors.Location = new System.Drawing.Point(333, 175);
+            this.lbErrors.ItemHeight = 16;
+            this.lbErrors.Location = new System.Drawing.Point(444, 215);
+            this.lbErrors.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbErrors.Name = "lbErrors";
-            this.lbErrors.Size = new System.Drawing.Size(225, 82);
+            this.lbErrors.Size = new System.Drawing.Size(299, 100);
             this.lbErrors.TabIndex = 17;
             // 
             // NyArtikelDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.cmdAvbryt;
-            this.ClientSize = new System.Drawing.Size(572, 299);
+            this.ClientSize = new System.Drawing.Size(763, 368);
             this.Controls.Add(this.lbErrors);
             this.Controls.Add(this.cmdAvbryt);
             this.Controls.Add(this.cmdSpara);
             this.Controls.Add(this.gbFalt);
             this.Controls.Add(this.gbSnabbVal);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NyArtikelDialog";

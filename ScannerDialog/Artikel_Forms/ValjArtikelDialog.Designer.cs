@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -48,9 +47,10 @@
             // 
             // cmdSok
             // 
-            this.cmdSok.Location = new System.Drawing.Point(833, 48);
+            this.cmdSok.Location = new System.Drawing.Point(1111, 59);
+            this.cmdSok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdSok.Name = "cmdSok";
-            this.cmdSok.Size = new System.Drawing.Size(97, 23);
+            this.cmdSok.Size = new System.Drawing.Size(129, 28);
             this.cmdSok.TabIndex = 11;
             this.cmdSok.Text = "Sök";
             this.cmdSok.UseVisualStyleBackColor = true;
@@ -58,18 +58,20 @@
             // 
             // txtSok
             // 
-            this.txtSok.Location = new System.Drawing.Point(605, 23);
+            this.txtSok.Location = new System.Drawing.Point(807, 28);
+            this.txtSok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSok.Name = "txtSok";
-            this.txtSok.Size = new System.Drawing.Size(326, 20);
+            this.txtSok.Size = new System.Drawing.Size(433, 22);
             this.txtSok.TabIndex = 10;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(12, 58);
+            this.label1.Location = new System.Drawing.Point(16, 71);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 13);
+            this.label1.Size = new System.Drawing.Size(193, 16);
             this.label1.TabIndex = 12;
             this.label1.Text = "Dubbelklicka för att välja artikel";
             // 
@@ -86,7 +88,7 @@
             this.dgvArtiklar.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -106,7 +108,8 @@
             this.clmPersonId});
             this.dgvArtiklar.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvArtiklar.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvArtiklar.Location = new System.Drawing.Point(15, 86);
+            this.dgvArtiklar.Location = new System.Drawing.Point(20, 106);
+            this.dgvArtiklar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvArtiklar.MultiSelect = false;
             this.dgvArtiklar.Name = "dgvArtiklar";
             this.dgvArtiklar.RowHeadersVisible = false;
@@ -116,7 +119,7 @@
             this.dgvArtiklar.ShowCellToolTips = false;
             this.dgvArtiklar.ShowEditingIcon = false;
             this.dgvArtiklar.ShowRowErrors = false;
-            this.dgvArtiklar.Size = new System.Drawing.Size(918, 520);
+            this.dgvArtiklar.Size = new System.Drawing.Size(1224, 640);
             this.dgvArtiklar.TabIndex = 13;
             // 
             // clmId
@@ -180,14 +183,16 @@
             // 
             // ValjArtikelDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(952, 621);
+            this.ClientSize = new System.Drawing.Size(1269, 764);
             this.Controls.Add(this.dgvArtiklar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmdSok);
             this.Controls.Add(this.txtSok);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ValjArtikelDialog";

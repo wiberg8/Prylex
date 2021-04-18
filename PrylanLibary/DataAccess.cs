@@ -147,72 +147,18 @@ namespace PrylanLibary
             dbHandler.ExecQuery("SELECT * FROM artiklar WHERE Id=@Id");
             if (dbHandler.DBDT is null)
                 return null;
-            if (dbHandler.DBDT.Rows.Count > 0)
-            {
-                var R = dbHandler.DBDT.Rows[0];
-                try
-                {
-                    Artikel a = new Artikel(int.Parse(R["Id"].ToString()))
-                    {
-                        Beskrivning = R["Besk"].ToString(),
-                        StoldTag = R["Stoldtag"].ToString(),
-                        DatorNamn = R["Datornamn"].ToString(),
-                        SerieNr = R["SerieNr"].ToString(),
-                        Mac = R["Mac"].ToString(),
-                        Os = R["Os"].ToString(),
-                        Inkop = R["Inkop"].ToString()
-                    };
-                    a.Ovrigt = R["Ovrigt"].ToString();
-                    a.Status = (Status)int.Parse(R["Status"].ToString());
-                    if (int.TryParse(R["PersId"].ToString(), out int parsedPersId))
-                    {
-                        a.PersId = parsedPersId;
-                    }
-                    return a;
-                }
-                catch
-                {
-                    return null;
-                }
-            }
-            return null;
+            return FirstArtikelFromDataTable();
         }
+
         public Artikel HamtaArtikelFranSerieNr(string serieNr)
         {
             dbHandler.AddParam("@SerieNr", serieNr);
             dbHandler.ExecQuery("SELECT * FROM artiklar WHERE SerieNr=@SerieNr");
             if (dbHandler.DBDT is null)
                 return null;
-            if (dbHandler.DBDT.Rows.Count > 0)
-            {
-                var R = dbHandler.DBDT.Rows[0];
-                try
-                {
-                    Artikel a = new Artikel(int.Parse(R["Id"].ToString()))
-                    {
-                        Beskrivning = R["Besk"].ToString(),
-                        StoldTag = R["Stoldtag"].ToString(),
-                        DatorNamn = R["Datornamn"].ToString(),
-                        SerieNr = R["SerieNr"].ToString(),
-                        Mac = R["Mac"].ToString(),
-                        Os = R["Os"].ToString(),
-                        Inkop = R["Inkop"].ToString()
-                    };
-                    a.Ovrigt = R["Ovrigt"].ToString();
-                    a.Status = (Status)int.Parse(R["Status"].ToString());
-                    if (int.TryParse(R["PersId"].ToString(), out int parsedPersId))
-                    {
-                        a.PersId = parsedPersId;
-                    }
-                    return a;
-                }
-                catch
-                {
-                    return null;
-                }
-            }
-            return null;
+            return FirstArtikelFromDataTable();
         }
+
         public void InfogaArtikel(Artikel artikel)
         {
             dbHandler.AddParam("@Besk", artikel.Beskrivning);
@@ -298,6 +244,7 @@ namespace PrylanLibary
         public List<Person> HamtaSokPersoner(string sok)
         {
             var hamtadePersoner = new List<Person>();
+
             dbHandler.AddParam("@Sok", $"{sok}%");
             dbHandler.ExecQuery("SELECT * FROM personer WHERE Id LIKE @Sok OR Fornamn LIKE @Sok OR Efternamn LIKE @Sok OR PersNr LIKE @Sok OR Sign LIKE @Sok OR Tillhorighet LIKE @Sok OR Telefon LIKE @Sok OR Epost LIKE @Sok OR Ovrigt LIKE @Sok ORDER BY Id");
             FyllPersonLista(hamtadePersoner, dbHandler.DBDT);
@@ -318,32 +265,9 @@ namespace PrylanLibary
             dbHandler.ExecQuery("SELECT * FROM personer WHERE Id=@Id");
             if (dbHandler.DBDT is null)
                 return null;
-
-            if (dbHandler.DBDT.Rows.Count > 0)
-            {
-                DataRow R = dbHandler.DBDT.Rows[0];
-                try
-                {
-                    Person p = new Person(int.Parse(R["Id"].ToString()))
-                    {
-                        Fornamn = R["Fornamn"].ToString(),
-                        Efternamn = R["Efternamn"].ToString(),
-                        PersNr = R["PersNr"].ToString(),
-                        Sign = R["Sign"].ToString(),
-                        Tillhorighet = R["Tillhorighet"].ToString(),
-                        Telefon = R["Telefon"].ToString(),
-                        Ovrigt = R["Ovrigt"].ToString(),
-                        Epost = R["Epost"].ToString()
-                    };
-                    return p;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-            return null;
+            return FirstPersonFromDataTable();
         }
+
         public Person HamtaPersonFranPersNr(string persNr)
         {
             dbHandler.AddParam("@PersNr", persNr);
@@ -351,30 +275,7 @@ namespace PrylanLibary
             if (dbHandler.DBDT is null)
                 return null;
 
-            if (dbHandler.DBDT.Rows.Count > 0)
-            {
-                DataRow R = dbHandler.DBDT.Rows[0];
-                try
-                {
-                    Person p = new Person(int.Parse(R["Id"].ToString()))
-                    {
-                        Fornamn = R["Fornamn"].ToString(),
-                        Efternamn = R["Efternamn"].ToString(),
-                        PersNr = R["PersNr"].ToString(),
-                        Sign = R["Sign"].ToString(),
-                        Tillhorighet = R["Tillhorighet"].ToString(),
-                        Telefon = R["Telefon"].ToString(),
-                        Ovrigt = R["Ovrigt"].ToString(),
-                        Epost = R["Epost"].ToString()
-                    };
-                    return p;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-            return null;
+            return FirstPersonFromDataTable();
         }
 
         public void InfogaPerson(Person person)
@@ -432,6 +333,7 @@ namespace PrylanLibary
         public List<Handelse> HamtaHandelserArtikel(Artikel artikel)
         {
             List<Handelse> hamtadeHandelser = new List<Handelse>();
+
             dbHandler.AddParam("@ArtikelId", artikel.Id);
             dbHandler.ExecQuery("SELECT * FROM handelser WHERE ArtikelId=@ArtikelId ORDER BY Datum DESC");
             FyllHandelseLista(hamtadeHandelser, dbHandler.DBDT);
@@ -440,72 +342,40 @@ namespace PrylanLibary
         public List<Handelse> HamtaHandelserPerson(Person person)
         {
             List<Handelse> hamtadeHandelser = new List<Handelse>();
+
             dbHandler.AddParam("@PersId", person.Id);
             dbHandler.ExecQuery("SELECT * FROM handelser WHERE PersId=@PersId ORDER BY Id DESC");
             FyllHandelseLista(hamtadeHandelser, dbHandler.DBDT);
             return hamtadeHandelser;
         }
 
-        //public Artikel ParseSingleArtikelRowInDataTable(DataTable dbdt)
-        //{
-        //    if (dbdt is null)
-        //        return null;
-        //    if (dbdt.Rows.Count > 0)
-        //    {
-        //        DataRow R = dbdt.Rows[0];
-        //        try
-        //        {
-
-        //            Artikel a = new Artikel(int.Parse(R["Id"].ToString()))
-        //            {
-        //                Beskrivning = R["Besk"].ToString(),
-        //                StoldTag = R["Stoldtag"].ToString(),
-        //                DatorNamn = R["Datornamn"].ToString(),
-        //                SerieNr = R["SerieNr"].ToString(),
-        //                Mac = R["Mac"].ToString(),
-        //                Os = R["Os"].ToString(),
-        //                Inkop = R["Inkop"].ToString()
-        //            };
-        //            a.Ovrigt = R["Ovrigt"].ToString();
-        //            a.Status = (Status)int.Parse(R["Status"].ToString());
-        //            if (int.TryParse(R["PersId"].ToString(), out int parsedPersId))
-        //            {
-        //                a.PersId = parsedPersId;
-        //            }
-        //            return a;
-        //        }
-        //        catch
-        //        {
-        //            return null;
-        //        }
-        //    }
-
-        //}
+        private Artikel FirstArtikelFromDataTable()
+        {
+            if (dbHandler.DBDT.Rows.Count > 0)
+            {
+                return dbHandler.DBDT.Rows[0].ParseToArtikel();
+            }
+            return null;
+        }
+        private Person FirstPersonFromDataTable()
+        {
+            if (dbHandler.DBDT.Rows.Count > 0)
+            {
+                return dbHandler.DBDT.Rows[0].ParseToPerson();
+            }
+            return null;
+        }
 
         private void FyllPersonLista(List<Person> lista, DataTable dbdt)
         {
             if (dbdt is null)
                 return;
-            foreach (DataRow R in dbdt.Rows)
+            foreach (DataRow r in dbdt.Rows)
             {
-                try
+                Person person = r.ParseToPerson();
+                if(person != null)
                 {
-                    Person p = new Person(int.Parse(R["Id"].ToString()))
-                    {
-                        Fornamn = R["Fornamn"].ToString(),
-                        Efternamn = R["Efternamn"].ToString(),
-                        PersNr = R["PersNr"].ToString(),
-                        Sign = R["Sign"].ToString(),
-                        Tillhorighet = R["Tillhorighet"].ToString(),
-                        Telefon = R["Telefon"].ToString(),
-                        Ovrigt = R["Ovrigt"].ToString(),
-                        Epost = R["Epost"].ToString()
-                    };
-                    lista.Add(p);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
+                    lista.Add(person);
                 }
             }
         }
@@ -513,31 +383,12 @@ namespace PrylanLibary
         {
             if (dbdt is null)
                 return;
-            foreach (DataRow R in dbdt.Rows)
+            foreach (DataRow r in dbdt.Rows)
             {
-                try
+                Artikel artikel = r.ParseToArtikel();
+                if (artikel != null)
                 {
-                    Artikel a = new Artikel(int.Parse(R["Id"].ToString()))
-                    {
-                        Beskrivning = R["Besk"].ToString(),
-                        StoldTag = R["Stoldtag"].ToString(),
-                        DatorNamn = R["Datornamn"].ToString(),
-                        SerieNr = R["SerieNr"].ToString(),
-                        Mac = R["Mac"].ToString(),
-                        Os = R["Os"].ToString(),
-                        Inkop = R["Inkop"].ToString()
-                    };
-                    a.Ovrigt = R["Ovrigt"].ToString();
-                    a.Status = (Status)int.Parse(R["Status"].ToString());
-                    if (int.TryParse(R["PersId"].ToString(), out int parsedPersId))
-                    {
-                        a.PersId = parsedPersId;
-                    }
-                    lista.Add(a);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
+                    lista.Add(artikel);
                 }
             }
         }
@@ -545,24 +396,12 @@ namespace PrylanLibary
         {
             if (dbdt is null)
                 return;
-            foreach (DataRow R in dbdt.Rows)
+            foreach (DataRow r in dbdt.Rows)
             {
-                try
+                Handelse handelse = r.ParseToHandelse();
+                if(handelse != null)
                 {
-                    Handelse handelse = new Handelse()
-                    {
-                        Id = int.Parse(R["Id"].ToString()),
-                        ArtikelId = int.Parse(R["ArtikelId"].ToString()),
-                        PersId = int.Parse(R["PersId"].ToString()),
-                        Typ = (HandelseTyp)int.Parse(R["Typ"].ToString()),
-                        FriText = R["FriText"].ToString(),
-                        Datum = DateTime.Parse(R["Datum"].ToString())
-                    };
-                    lista.Add(handelse);
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
+                    lista.Add(handelse);   
                 }
             }
         }

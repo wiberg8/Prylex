@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -28,9 +27,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.lbRegistreradeArtiklar = new System.Windows.Forms.ListBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.lbPersoner = new System.Windows.Forms.ListBox();
             this.cbTillhorighet = new System.Windows.Forms.ComboBox();
             this.laRegistreradeArtiklar = new System.Windows.Forms.Label();
@@ -47,7 +44,7 @@
             this.lbRegistreradeArtiklar.FormattingEnabled = true;
             this.lbRegistreradeArtiklar.ItemHeight = 16;
             this.lbRegistreradeArtiklar.Location = new System.Drawing.Point(473, 79);
-            this.lbRegistreradeArtiklar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbRegistreradeArtiklar.Margin = new System.Windows.Forms.Padding(4);
             this.lbRegistreradeArtiklar.Name = "lbRegistreradeArtiklar";
             this.lbRegistreradeArtiklar.Size = new System.Drawing.Size(475, 308);
             this.lbRegistreradeArtiklar.TabIndex = 3;
@@ -57,18 +54,19 @@
             this.lbPersoner.FormattingEnabled = true;
             this.lbPersoner.ItemHeight = 16;
             this.lbPersoner.Location = new System.Drawing.Point(16, 79);
-            this.lbPersoner.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbPersoner.Margin = new System.Windows.Forms.Padding(4);
             this.lbPersoner.Name = "lbPersoner";
             this.lbPersoner.Size = new System.Drawing.Size(448, 308);
             this.lbPersoner.TabIndex = 4;
             this.lbPersoner.SelectedIndexChanged += new System.EventHandler(this.lbPersoner_SelectedIndexChanged);
+            this.lbPersoner.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lbPersoner_KeyDown);
             // 
             // cbTillhorighet
             // 
             this.cbTillhorighet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTillhorighet.FormattingEnabled = true;
             this.cbTillhorighet.Location = new System.Drawing.Point(16, 47);
-            this.cbTillhorighet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbTillhorighet.Margin = new System.Windows.Forms.Padding(4);
             this.cbTillhorighet.Name = "cbTillhorighet";
             this.cbTillhorighet.Size = new System.Drawing.Size(444, 24);
             this.cbTillhorighet.TabIndex = 18;
@@ -88,7 +86,7 @@
             // 
             this.cbPrintOnScan.AutoSize = true;
             this.cbPrintOnScan.Location = new System.Drawing.Point(772, 53);
-            this.cbPrintOnScan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbPrintOnScan.Margin = new System.Windows.Forms.Padding(4);
             this.cbPrintOnScan.Name = "cbPrintOnScan";
             this.cbPrintOnScan.Size = new System.Drawing.Size(161, 20);
             this.cbPrintOnScan.TabIndex = 28;
@@ -98,7 +96,7 @@
             // cmdRegistreraSkanna
             // 
             this.cmdRegistreraSkanna.Location = new System.Drawing.Point(591, 12);
-            this.cmdRegistreraSkanna.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmdRegistreraSkanna.Margin = new System.Windows.Forms.Padding(4);
             this.cmdRegistreraSkanna.Name = "cmdRegistreraSkanna";
             this.cmdRegistreraSkanna.Size = new System.Drawing.Size(177, 28);
             this.cmdRegistreraSkanna.TabIndex = 27;
@@ -109,7 +107,7 @@
             // cmdRegistreraArtikel
             // 
             this.cmdRegistreraArtikel.Location = new System.Drawing.Point(776, 12);
-            this.cmdRegistreraArtikel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmdRegistreraArtikel.Margin = new System.Windows.Forms.Padding(4);
             this.cmdRegistreraArtikel.Name = "cmdRegistreraArtikel";
             this.cmdRegistreraArtikel.Size = new System.Drawing.Size(177, 28);
             this.cmdRegistreraArtikel.TabIndex = 26;
@@ -120,7 +118,7 @@
             // cmdSok
             // 
             this.cmdSok.Location = new System.Drawing.Point(327, 12);
-            this.cmdSok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmdSok.Margin = new System.Windows.Forms.Padding(4);
             this.cmdSok.Name = "cmdSok";
             this.cmdSok.Size = new System.Drawing.Size(135, 28);
             this.cmdSok.TabIndex = 30;
@@ -131,7 +129,7 @@
             // txtSok
             // 
             this.txtSok.Location = new System.Drawing.Point(16, 15);
-            this.txtSok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSok.Margin = new System.Windows.Forms.Padding(4);
             this.txtSok.Name = "txtSok";
             this.txtSok.Size = new System.Drawing.Size(301, 22);
             this.txtSok.TabIndex = 29;
@@ -152,7 +150,7 @@
             this.Controls.Add(this.lbRegistreradeArtiklar);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SnabbRegistering";
@@ -166,7 +164,6 @@
 
         #endregion
         private System.Windows.Forms.ListBox lbRegistreradeArtiklar;
-        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ListBox lbPersoner;
         private System.Windows.Forms.ComboBox cbTillhorighet;
         private System.Windows.Forms.Label laRegistreradeArtiklar;
