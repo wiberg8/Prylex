@@ -48,7 +48,7 @@ namespace ScannerDialog
             DBAccess.TryOpen();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new MainForm());
             DBAccess.Close();
             AppSettings.Spara();
         }
@@ -67,7 +67,7 @@ namespace ScannerDialog
             return null;
         }
 
-        public static void BackupDatabase()
+        private static void BackupDatabase()
         {
             if (AppSettings.BackupOnStart && File.Exists(AppSettings.Databas) && Directory.Exists(AppSettings.DatabasBackup))
             {

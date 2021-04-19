@@ -20,10 +20,10 @@ using static ScannerDialog.Program;
 //Refresh datagrid måste göras om till dataaccess med FyllArtiklar, FyllPersoner funktioner
 namespace ScannerDialog.Forms
 {
-    public partial class frmMain : Form
+    public partial class MainForm : Form
     {
 
-        public frmMain()
+        public MainForm()
         {
             InitializeComponent();
             AppSettings.PropertyChanged += Installningar_Change;

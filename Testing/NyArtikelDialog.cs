@@ -141,9 +141,9 @@ namespace Testing
                 {
                     Person p = new Person()
                     {
-                        Fornamn = Functions.GenerateRandom(8),
-                        Efternamn = Functions.GenerateRandom(8),
-                        PersNr = Functions.GenerateRandomNumbers(6) + "-" + Functions.GenerateRandomNumbers(4)
+                        Fornamn = Employee.GenerateRandom(8),
+                        Efternamn = Employee.GenerateRandom(8),
+                        PersNr = Employee.GenerateRandomNumbers(6) + "-" + Employee.GenerateRandomNumbers(4)
                     };
                     writer.WriteLine(p.PersNr + ";" + p.Efternamn + ";" + p.Fornamn);
                 }

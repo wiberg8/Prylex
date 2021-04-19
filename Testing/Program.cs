@@ -10,7 +10,7 @@ namespace Testing
     static class Program
     {
         public static Installningar AppSettings { get; set; }
-        public static DataAccess dataAccess { get; set; }
+        public static DataAccess DataAccess { get; set; }
 
         static Program()
         {
@@ -28,11 +28,5 @@ namespace Testing
             Application.Run(new NyArtikelDialog());
         }
 
-    }
-
-    public enum Status
-    {
-        UTLAMNAD,
-        INLAMNAD
     }
 }
