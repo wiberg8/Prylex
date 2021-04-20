@@ -104,6 +104,57 @@ namespace PrylanLibary
             parameters.Add(newParam);
         }
 
+        public List<string> GetAllTables()
+        {
+            List<string> tables = new List<string>();
+            try
+            {
+                DataTable dataTable = dbConn.GetSchema("Tables");
+                if (dataTable != null)
+                {
+                    foreach (DataRow r in dataTable.Rows)
+                    {
+                        tables.Add(r["TABLE_NAME"].ToString());
+                    }
+                    for (int i = 0; i < tables.Count; i++)
+                    {
+                        if (tables[i] == "sqlite_sequence")
+                        {
+                            tables.RemoveAt(i);
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Exception = ex.Message;
+            }
+            return tables;
+        }
+
+        public List<string> GetColumnsByTableName(string tableName)
+        {
+            List<string> tables = new List<string>();
+            string[] restrictions = new string[] {null,null, tableName, null};
+            try
+            {
+                DataTable dataTable = dbConn.GetSchema("Columns", restrictions);
+                if (dataTable != null)
+                {
+                    foreach (DataRow r in dataTable.Rows)
+                    {
+                        tables.Add(r["COLUMN_NAME"].ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Exception = ex.Message;
+            }
+            return tables;
+        }
+
         public bool CreateFile(string filNamn)
         {
             if (!File.Exists(filNamn))

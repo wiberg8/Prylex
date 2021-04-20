@@ -222,7 +222,7 @@ namespace ScannerDialog.Forms
                     break;
                 case nameof(tabPersoner):
                     List<Person> personer;
-                    if (cbVisaEndast.SelectedIndex  == 0)
+                    if (cbVisaEndast.SelectedIndex == 0)
                         personer = DBAccess.HamtaSokPersoner(txtSok.Text);
                     else
                         personer = DBAccess.HamtaSokPersoner(txtSok.Text).Where(p => p.Tillhorighet == cbVisaEndast.Text).ToList();

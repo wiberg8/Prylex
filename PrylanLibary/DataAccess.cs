@@ -349,6 +349,16 @@ namespace PrylanLibary
             return hamtadeHandelser;
         }
 
+        public List<string> GetAllTables()
+        {
+            return dbHandler.GetAllTables();
+        }
+
+        public List<string> GetColumnsByTableName(string tableName)
+        {
+            return dbHandler.GetColumnsByTableName(tableName);
+        }
+
         private Artikel FirstArtikelFromDataTable()
         {
             if (dbHandler.DBDT.Rows.Count > 0)
