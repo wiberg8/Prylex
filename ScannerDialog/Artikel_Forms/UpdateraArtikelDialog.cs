@@ -59,7 +59,7 @@ namespace ScannerDialog
         private Artikel FaltTillArtikel()
         {
             Artikel artikel = this.artikelEdit.Copy();
-            artikel.Beskrivning = cbBeskrivningar.Text.Trim();
+            artikel.Besk = cbBeskrivningar.Text.Trim();
             artikel.StoldTag = txtStoldtag.Text.Trim();
             artikel.DatorNamn = txtDatornamn.Text.Trim();
             artikel.Os = cbOS.Text.Trim();
@@ -94,7 +94,7 @@ namespace ScannerDialog
             txtDatornamn.Text = artikel.DatorNamn;
             txtStoldtag.Text = artikel.StoldTag;
             txtOvrigt.Text = artikel.Ovrigt;
-            cbBeskrivningar.Text = artikel.Beskrivning;
+            cbBeskrivningar.Text = artikel.Besk;
             cbOS.Text = artikel.Os;
         }
 

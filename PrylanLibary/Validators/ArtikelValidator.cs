@@ -12,7 +12,7 @@ namespace PrylanLibary.Validators
     {
         public ArtikelValidator()
         {
-            RuleFor(a => a.Beskrivning)
+            RuleFor(a => a.Besk)
                 .Cascade(CascadeMode.Stop)
                 .Must(NotNullOrWhiteSpace)
                 .WithMessage("Beskrivning: Är tomt")

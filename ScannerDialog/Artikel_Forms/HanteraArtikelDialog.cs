@@ -154,7 +154,7 @@ namespace ScannerDialog
         }
         private void RegistreraPersonDialog()
         {
-            ValjPersonDialog dialog = new ValjPersonDialog(DBAccess.HamtaPersoner());
+            ValjPersonDialog dialog = new ValjPersonDialog(DBAccess.HamtaPersoner().ToList());
             dialog.ShowDialog();
             if (dialog.ValdPerson != null)
             {
@@ -313,7 +313,7 @@ namespace ScannerDialog
             switch (cbSelectHandelseTyp.SelectedIndex)
             {
                 case 0: //Visa alla
-                    FyllHandelser(DBAccess.HamtaHandelserArtikel(nuvarandeArtikel));
+                    FyllHandelser(DBAccess.HamtaHandelserArtikel(nuvarandeArtikel).ToList());
                     break;
                 case 1: //Visa registrering / avregistrering
                     FyllHandelser(DBAccess.HamtaHandelserArtikel(nuvarandeArtikel).Where(h => h.Typ == HandelseTyp.AVREGISTRERING || h.Typ == HandelseTyp.REGISTRERING).ToList());
@@ -351,7 +351,7 @@ namespace ScannerDialog
         private void FyllFalt(Artikel artikel)
         {
             laArtikelDisplay.Text = artikel.Id.ToString();
-            laBeskrivningDisplay.Text = artikel.Beskrivning;
+            laBeskrivningDisplay.Text = artikel.Besk;
             laStoldtagDisplay.Text = artikel.StoldTag;
             laDatornamnDisplay.Text = artikel.DatorNamn;
             laMACDisplay.Text = artikel.Mac;

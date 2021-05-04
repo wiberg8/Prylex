@@ -101,7 +101,6 @@ namespace ScannerDialog.Forms
                     FyllVisaEndast(AppSettings.Tillhorigheter);
                     break;
             }
-            SearchSelectedGrid();
         }
 
         private void FormStartup()
@@ -213,15 +212,15 @@ namespace ScannerDialog.Forms
             switch (tabArtiklarPersoner.SelectedTab.Name)
             {
                 case nameof(tabArtiklar):
-                    List<Artikel> artiklar;
+                    IEnumerable<Artikel> artiklar;
                     if (cbVisaEndast.SelectedIndex == 0)
                         artiklar = DBAccess.HamtaSokArtiklar(txtSok.Text);
                     else
-                        artiklar = DBAccess.HamtaSokArtiklar(txtSok.Text).Where(a => a.Beskrivning == cbVisaEndast.Text).ToList();
+                        artiklar = DBAccess.HamtaSokArtiklar(txtSok.Text).Where(a => a.Besk == cbVisaEndast.Text).ToList();
                     FyllGrid(artiklar);
                     break;
                 case nameof(tabPersoner):
-                    List<Person> personer;
+                    IEnumerable<Person> personer;
                     if (cbVisaEndast.SelectedIndex == 0)
                         personer = DBAccess.HamtaSokPersoner(txtSok.Text);
                     else
@@ -263,24 +262,27 @@ namespace ScannerDialog.Forms
             }
         }
 
-        private void FyllGrid(List<Artikel> artiklar)
+        private void FyllGrid(IEnumerable<Artikel> artiklar)
         {
+            this.Enabled = false;
             dgvArtiklar.Rows.Clear();
             foreach (Artikel artikel in artiklar)
             {
                 string persId = string.Empty;
                 if (artikel.Status == Status.UTE)
                     persId = artikel.PersId.ToString();
-                dgvArtiklar.Rows.Add(artikel.Id, artikel.Beskrivning, artikel.DatorNamn, artikel.StoldTag, artikel.SerieNr, artikel.Mac, artikel.Os, artikel.Inkop, artikel.Ovrigt, persId);
+                dgvArtiklar.Rows.Add(artikel.Id, artikel.Besk, artikel.DatorNamn, artikel.StoldTag, artikel.SerieNr, artikel.Mac, artikel.Os, artikel.Inkop, artikel.Ovrigt, persId);
                 dgvArtiklar.Rows[dgvArtiklar.Rows.Count - 1].Tag = artikel;
             }
             dgvArtiklar.ClearSelection();
             laGridCount.Text = dgvArtiklar.Rows.Count.ToString();
             dgvArtiklar.SetColorVariationToRows();
+            this.Enabled = true;
         }
 
-        private void FyllGrid(List<Person> lista)
+        private void FyllGrid(IEnumerable<Person> lista)
         {
+            this.Enabled = false;
             dgvPersoner.Rows.Clear();
             foreach (var person in lista)
             {
@@ -290,6 +292,7 @@ namespace ScannerDialog.Forms
             dgvPersoner.ClearSelection();
             laGridCount.Text = dgvPersoner.Rows.Count.ToString();
             dgvPersoner.SetColorVariationToRows();
+            this.Enabled = true;
         }
 
         private void txtSok_TextChanged(object sender, EventArgs e)

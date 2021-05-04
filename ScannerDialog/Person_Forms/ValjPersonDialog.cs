@@ -55,7 +55,7 @@ namespace ScannerDialog
         {
             FyllGrid(DBAccess.HamtaSokPersoner(txtSok.Text));
         }
-        private void FyllGrid(List<Person> lista)
+        private void FyllGrid(IEnumerable<Person> lista)
         {
             dgvPersoner.Rows.Clear();
             foreach (var person in lista)

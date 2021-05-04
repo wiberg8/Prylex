@@ -15,19 +15,19 @@ namespace PrylanLibary
         {
             try
             {
-                Artikel a = new Artikel(int.Parse(r["Id"].ToString()))
+                Artikel a = new Artikel(int.Parse(r[nameof(a.Id)].ToString()))
                 {
-                    Beskrivning = r["Besk"].ToString(),
-                    StoldTag = r["Stoldtag"].ToString(),
-                    DatorNamn = r["Datornamn"].ToString(),
-                    SerieNr = r["SerieNr"].ToString(),
-                    Mac = r["Mac"].ToString(),
-                    Os = r["Os"].ToString(),
-                    Inkop = r["Inkop"].ToString()
+                    Besk = r[nameof(a.Besk)].ToString(),
+                    StoldTag = r[nameof(a.StoldTag)].ToString(),
+                    DatorNamn = r[nameof(a.DatorNamn)].ToString(),
+                    SerieNr = r[nameof(a.SerieNr)].ToString(),
+                    Mac = r[nameof(a.Mac)].ToString(),
+                    Os = r[nameof(a.Os)].ToString(),
+                    Inkop = r[nameof(a.Inkop)].ToString(),
+                    Ovrigt = r[nameof(a.Ovrigt)].ToString()
                 };
-                a.Ovrigt = r["Ovrigt"].ToString();
-                a.Status = (Status)int.Parse(r["Status"].ToString());
-                if (int.TryParse(r["PersId"].ToString(), out int parsedPersId))
+                a.Status = (Status)int.Parse(r[nameof(a.Status)].ToString());
+                if (int.TryParse(r[nameof(a.PersId)].ToString(), out int parsedPersId))
                 {
                     a.PersId = parsedPersId;
                 }
@@ -43,16 +43,16 @@ namespace PrylanLibary
         {
             try
             {
-                Person p = new Person(int.Parse(r["Id"].ToString()))
+                Person p = new Person(int.Parse(r[nameof(p.Id)].ToString()))
                 {
-                    Fornamn = r["Fornamn"].ToString(),
-                    Efternamn = r["Efternamn"].ToString(),
-                    PersNr = r["PersNr"].ToString(),
-                    Sign = r["Sign"].ToString(),
-                    Tillhorighet = r["Tillhorighet"].ToString(),
-                    Telefon = r["Telefon"].ToString(),
-                    Ovrigt = r["Ovrigt"].ToString(),
-                    Epost = r["Epost"].ToString()
+                    Fornamn = r[nameof(p.Fornamn)].ToString(),
+                    Efternamn = r[nameof(p.Efternamn)].ToString(),
+                    PersNr = r[nameof(p.PersNr)].ToString(),
+                    Sign = r[nameof(p.Sign)].ToString(),
+                    Tillhorighet = r[nameof(p.Tillhorighet)].ToString(),
+                    Telefon = r[nameof(p.Telefon)].ToString(),
+                    Ovrigt = r[nameof(p.Ovrigt)].ToString(),
+                    Epost = r[nameof(p.Epost)].ToString()
                 };
                 return p;
             }
@@ -66,16 +66,16 @@ namespace PrylanLibary
         {
              try
              {
-                    Handelse handelse = new Handelse()
+                    Handelse h = new Handelse()
                     {
-                        Id = int.Parse(r["Id"].ToString()),
-                        ArtikelId = int.Parse(r["ArtikelId"].ToString()),
-                        PersId = int.Parse(r["PersId"].ToString()),
-                        Typ = (HandelseTyp)int.Parse(r["Typ"].ToString()),
-                        FriText = r["FriText"].ToString(),
-                        Datum = DateTime.Parse(r["Datum"].ToString())
+                        Id = int.Parse(r[nameof(h.Id)].ToString()),
+                        ArtikelId = int.Parse(r[nameof(h.ArtikelId)].ToString()),
+                        PersId = int.Parse(r[nameof(h.PersId)].ToString()),
+                        Typ = (HandelseTyp)int.Parse(r[nameof(h.Typ)].ToString()),
+                        FriText = r[nameof(h.FriText)].ToString(),
+                        Datum = DateTime.Parse(r[nameof(h.Datum)].ToString())
                     };
-                    return handelse;
+                    return h;
             }
             catch
             {

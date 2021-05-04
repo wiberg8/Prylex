@@ -52,7 +52,7 @@ namespace ScannerDialog
                 List<AdvancedPerson> advancedPersoner = new List<AdvancedPerson>();
                 foreach (Person p in DBAccess.HamtaPersonerFranTillhorighet(cbTillhorighet.Text))
                 {
-                    AdvancedPerson advancedPerson = new AdvancedPerson() { Person = p, RegistreradeArtiklar = DBAccess.HamtaRegistreradeArtiklar(p) };
+                    AdvancedPerson advancedPerson = new AdvancedPerson() { Person = p, RegistreradeArtiklar = DBAccess.HamtaRegistreradeArtiklar(p).ToList() };
                     advancedPersoner.Add(advancedPerson);
                 }
                 FyllPersoner(advancedPersoner);
@@ -81,7 +81,7 @@ namespace ScannerDialog
             {
                 Person selectedPerson = (lbPersoner.SelectedItem as AdvancedPerson).Person;
                 List<Artikel> ledigaArtiklar;
-                ledigaArtiklar = DBAccess.HamtaLedigaArtiklar();
+                ledigaArtiklar = DBAccess.HamtaLedigaArtiklar().ToList();
                 var dialog = new ValjArtikelDialog(ledigaArtiklar);
                 dialog.ShowDialog();
                 if (dialog.ValdArtikel != null)
@@ -135,7 +135,7 @@ namespace ScannerDialog
             List<AdvancedPerson> advancedPersoner = new List<AdvancedPerson>();
             foreach (Person p in DBAccess.HamtaPersonerFranTillhorighet(cbTillhorighet.Text))
             {
-                AdvancedPerson advancedPerson = new AdvancedPerson() { Person = p, RegistreradeArtiklar = DBAccess.HamtaRegistreradeArtiklar(p) };
+                AdvancedPerson advancedPerson = new AdvancedPerson() { Person = p, RegistreradeArtiklar = DBAccess.HamtaRegistreradeArtiklar(p).ToList() };
                 advancedPersoner.Add(advancedPerson);
             }
             FyllPersoner(advancedPersoner, person);
@@ -150,7 +150,7 @@ namespace ScannerDialog
             List<AdvancedPerson> advancedPersoner = new List<AdvancedPerson>();
             foreach (Person p in DBAccess.HamtaSokPersoner(txtSok.Text).Where((Person p) => p.Tillhorighet == cbTillhorighet.Text))
             {
-                AdvancedPerson advancedPerson = new AdvancedPerson() { Person = p, RegistreradeArtiklar = DBAccess.HamtaRegistreradeArtiklar(p) };
+                AdvancedPerson advancedPerson = new AdvancedPerson() { Person = p, RegistreradeArtiklar = DBAccess.HamtaRegistreradeArtiklar(p).ToList() };
                 advancedPersoner.Add(advancedPerson);
             }
             FyllPersoner(advancedPersoner);

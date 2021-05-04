@@ -119,7 +119,7 @@ namespace ScannerDialog
         }
         private void RaderaPerson()
         {
-            List<Artikel> registreradeArtiklar = DBAccess.HamtaRegistreradeArtiklar(nuvarandePerson);
+            List<Artikel> registreradeArtiklar = DBAccess.HamtaRegistreradeArtiklar(nuvarandePerson).ToList();
             if (registreradeArtiklar.Count < 1)
             {
                 if (MessageBox.Show("Är du säker?", "Prylex", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -167,7 +167,7 @@ namespace ScannerDialog
             switch (cbSelectHandelseTyp.SelectedIndex)
             {
                 case 0: //Visa alla
-                    FyllHandelser(DBAccess.HamtaHandelserPerson(nuvarandePerson));
+                    FyllHandelser(DBAccess.HamtaHandelserPerson(nuvarandePerson).ToList());
                     break;
                 case 1: //Visa registrering / avregistrering
                     FyllHandelser(DBAccess.HamtaHandelserPerson(nuvarandePerson).Where(h => h.Typ == HandelseTyp.AVREGISTRERING || h.Typ == HandelseTyp.REGISTRERING).ToList());
@@ -188,7 +188,7 @@ namespace ScannerDialog
                 DBAccess.InfogaHandelse(h);
             }
             VisaRegistreradeArtiklar();
-            FyllHandelser(DBAccess.HamtaHandelserPerson(nuvarandePerson));
+            FyllHandelser(DBAccess.HamtaHandelserPerson(nuvarandePerson).ToList());
             if (artikelFranId != null && cbPrintOnScan.Checked)
             {
                 Printing.PrintLabel(artikelFranId, nuvarandePerson, AppSettings.Skrivare);
@@ -220,7 +220,7 @@ namespace ScannerDialog
         }
         private void RegistreraArtikelViaDialog()
         {
-            List<Artikel> ledigaArtiklar = DBAccess.HamtaLedigaArtiklar();
+            List<Artikel> ledigaArtiklar = DBAccess.HamtaLedigaArtiklar().ToList();
             var dialog = new ValjArtikelDialog(ledigaArtiklar);
             dialog.ShowDialog();
             if (dialog.ValdArtikel != null)
@@ -242,24 +242,24 @@ namespace ScannerDialog
                     Handelse h = new Handelse() { PersId = nuvarandePerson.Id, ArtikelId = a.Id, Typ = HandelseTyp.AVREGISTRERING };
                     DBAccess.InfogaHandelse(h);
                 }
-                FyllHandelser(DBAccess.HamtaHandelserPerson(nuvarandePerson));
-                FyllRegistreradeArtiklar(DBAccess.HamtaRegistreradeArtiklar(nuvarandePerson));
+                FyllHandelser(DBAccess.HamtaHandelserPerson(nuvarandePerson).ToList());
+                FyllRegistreradeArtiklar(DBAccess.HamtaRegistreradeArtiklar(nuvarandePerson).ToList());
                 laAntalRegArtiklar.Text = $"{Locales.Antal}l: {lbRegistreradeArtiklar.Items.Count}";
             }
         }
         private void VisaRegistreradeArtiklar()
         {
-            List<Artikel> artiklar = DBAccess.HamtaRegistreradeArtiklar(nuvarandePerson);
+            List<Artikel> artiklar = DBAccess.HamtaRegistreradeArtiklar(nuvarandePerson).ToList();
             FyllRegistreradeArtiklar(artiklar);
         }
         private void VisaHandelser()
         {
-            List<Handelse> handelser = DBAccess.HamtaHandelserPerson(nuvarandePerson);
+            List<Handelse> handelser = DBAccess.HamtaHandelserPerson(nuvarandePerson).ToList();
             FyllHandelser(handelser);
         }
         private void SokRegistreradeArtiklar()
         {
-            List<Artikel> artiklar = DBAccess.HamtaSokRegistreradeArtiklar(nuvarandePerson, txtArtikelSok.Text);
+            List<Artikel> artiklar = DBAccess.HamtaSokRegistreradeArtiklar(nuvarandePerson, txtArtikelSok.Text).ToList();
             FyllRegistreradeArtiklar(artiklar);
         }
         private void FyllFalt(Person person)

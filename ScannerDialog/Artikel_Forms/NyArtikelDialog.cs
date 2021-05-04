@@ -79,7 +79,7 @@ namespace ScannerDialog
         {
             Artikel artikel = new Artikel
             {
-                Beskrivning = cbBeskrivningar.Text,
+                Besk = cbBeskrivningar.Text,
                 StoldTag = txtStoldtag.Text.Trim(),
                 DatorNamn = txtDatornamn.Text.Trim(),
                 SerieNr = txtSerieNr.Text.Trim().ToUpper(),

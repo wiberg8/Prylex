@@ -19,6 +19,7 @@ namespace PrylanLibary
         private string _databasBackup;
         private string _foretagsNamn;
         private string _skrivare;
+        private string _succesfulKundNamn { get; set; }
         private bool _backupOnStart;
         private List<string> _beskrivningar = new List<string>();
         private List<string> _os = new List<string>();
@@ -30,6 +31,7 @@ namespace PrylanLibary
         public string ForetagsNamn { get => _foretagsNamn; set => _foretagsNamn = value; }
         public string Skrivare { get => _skrivare; set => _skrivare = value; }
         public bool BackupOnStart { get => _backupOnStart; set => _backupOnStart = value; }
+        public string SuccesfulKundNamn { get => _succesfulKundNamn; set => _succesfulKundNamn = value; }
         public List<string> Beskrivningar { get => _beskrivningar; set { _beskrivningar = value; NotifyPropertyChanged(nameof(this.Beskrivningar)); } }
         public List<string> Os { get => _os; set { _os = value; NotifyPropertyChanged(nameof(this.Os)); } }
         public List<string> Tillhorigheter { get => _tillhorigheter; set { _tillhorigheter = value; NotifyPropertyChanged(nameof(this.Tillhorigheter)); } }
@@ -103,6 +105,7 @@ namespace PrylanLibary
             this.DatabasBackup = another.DatabasBackup;
             this.ForetagsNamn = another.ForetagsNamn;
             this.Skrivare = another.Skrivare;
+            this.SuccesfulKundNamn = another.SuccesfulKundNamn;
             this.BackupOnStart = another.BackupOnStart;
             this.Beskrivningar = another.Beskrivningar;
             this.Os = another.Os;

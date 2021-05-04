@@ -22,13 +22,6 @@ namespace ScannerDialog
         [STAThread]
         static void Main()
         {
-            DateTime expireDate = DateTime.Parse("2021-06-09");
-            if (DateTime.Now > expireDate)
-            {
-                MessageBox.Show("Datum spärr gick ut: " + expireDate.ToString());
-                return;
-            }
-
             if (PriorProcess() is null)
             {
                 ApplicationStart();
@@ -43,13 +36,20 @@ namespace ScannerDialog
         {
             Installningar.FileName = Config.INSTALLNINGAR_FILENAME;
             AppSettings.Ladda();
-            BackupDatabase();
-            DBAccess = new DataAccess() { CurrentFile = AppSettings.Databas };
-            DBAccess.TryOpen();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
-            DBAccess.Close();
+            LicensDialog dialog = new LicensDialog();
+            dialog.ShowDialog();
+            if (dialog.SuccesfulAuthentication)
+            {
+                Console.WriteLine(dialog.SuccesfulKundNamn);
+                AppSettings.SuccesfulKundNamn = dialog.SuccesfulKundNamn;
+                BackupDatabase();
+                DBAccess = new DataAccess() { CurrentFile = AppSettings.Databas };
+                DBAccess.TryOpen();
+                Application.Run(new MainForm());
+                DBAccess.Close();
+            }
             AppSettings.Spara();
         }
 

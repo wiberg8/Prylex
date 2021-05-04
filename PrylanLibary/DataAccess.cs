@@ -105,49 +105,35 @@ namespace PrylanLibary
             return handelser;
         }
 
-        public List<Artikel> HamtaArtiklar()
+        public IEnumerable<Artikel> HamtaArtiklar()
         {
-            List<Artikel> hamtadeArtiklar = new List<Artikel>();
-
             dbHandler.ExecQuery("SELECT * FROM artiklar ORDER BY Id");
-            FyllArtikelLista(hamtadeArtiklar, dbHandler.DBDT);
-            return hamtadeArtiklar;
+            return ParseTableToArtiklar(dbHandler.DBDT);
         }
-        public List<Artikel> HamtaLedigaArtiklar()
+        public IEnumerable<Artikel> HamtaLedigaArtiklar()
         {
-            List<Artikel> hamtadeArtiklar = new List<Artikel>();
-
             dbHandler.AddParam("@Status", Status.INNE);
             dbHandler.ExecQuery("SELECT * FROM artiklar WHERE Status = @Status");
-            FyllArtikelLista(hamtadeArtiklar, dbHandler.DBDT);
-            return hamtadeArtiklar;
+            return ParseTableToArtiklar(dbHandler.DBDT);
         }
-        public List<Artikel> HamtaSokArtiklar(string sok)
+        public IEnumerable<Artikel> HamtaSokArtiklar(string sok)
         {
-            List<Artikel> hamtadeArtiklar = new List<Artikel>();
-
             dbHandler.AddParam("@Sok", $"{sok}%");
             dbHandler.ExecQuery("SELECT * FROM artiklar WHERE Id LIKE @Sok OR Besk LIKE @Sok OR Stoldtag LIKE @Sok OR Datornamn LIKE @Sok OR SerieNr LIKE @Sok OR Mac LIKE @Sok OR Os LIKE @Sok OR Inkop LIKE @Sok OR Ovrigt LIKE @Sok ORDER BY Id");
-            FyllArtikelLista(hamtadeArtiklar, dbHandler.DBDT);
-            return hamtadeArtiklar;
+            return ParseTableToArtiklar(dbHandler.DBDT);
         }
-        public List<Artikel> HamtaSokArtiklarLediga(string sok)
+        public IEnumerable<Artikel> HamtaSokArtiklarLediga(string sok)
         {
-            List<Artikel> hamtadeArtiklar = new List<Artikel>();
-
             dbHandler.AddParam("@Sok", $"{sok}%");
             dbHandler.AddParam("@Status", Status.INNE);
             dbHandler.ExecQuery("SELECT * FROM artiklar WHERE (Id LIKE @Sok OR Besk LIKE @Sok OR Stoldtag LIKE @Sok OR Datornamn LIKE @Sok OR SerieNr LIKE @Sok OR Mac LIKE @Sok OR Os LIKE @Sok OR Inkop LIKE @Sok OR Ovrigt LIKE @Sok) AND Status = @Status ORDER BY Id");
-            FyllArtikelLista(hamtadeArtiklar, dbHandler.DBDT);
-            return hamtadeArtiklar;
+            return ParseTableToArtiklar(dbHandler.DBDT);
         }
         public Artikel HamtaArtikelFranId(int Id)
         {
             dbHandler.AddParam("@Id", Id);
             dbHandler.ExecQuery("SELECT * FROM artiklar WHERE Id=@Id");
-            if (dbHandler.DBDT is null)
-                return null;
-            return FirstArtikelFromDataTable();
+            return FirstArtikelFromTable();
         }
 
         public Artikel HamtaArtikelFranSerieNr(string serieNr)
@@ -156,12 +142,12 @@ namespace PrylanLibary
             dbHandler.ExecQuery("SELECT * FROM artiklar WHERE SerieNr=@SerieNr");
             if (dbHandler.DBDT is null)
                 return null;
-            return FirstArtikelFromDataTable();
+            return FirstArtikelFromTable();
         }
 
         public void InfogaArtikel(Artikel artikel)
         {
-            dbHandler.AddParam("@Besk", artikel.Beskrivning);
+            dbHandler.AddParam("@Besk", artikel.Besk);
             dbHandler.AddParam("@Stoldtag", artikel.StoldTag);
             dbHandler.AddParam("@Datornamn", artikel.DatorNamn);
             dbHandler.AddParam("@SerieNr", artikel.SerieNr);
@@ -175,7 +161,7 @@ namespace PrylanLibary
         }
         public void UpdateraArtikel(Artikel artikel)
         {
-            dbHandler.AddParam("@Besk", artikel.Beskrivning);
+            dbHandler.AddParam("@Besk", artikel.Besk);
             dbHandler.AddParam("@Stoldtag", artikel.StoldTag);
             dbHandler.AddParam("@Datornamn", artikel.DatorNamn);
             dbHandler.AddParam("@SerieNr", artikel.SerieNr);
@@ -213,51 +199,38 @@ namespace PrylanLibary
             dbHandler.AddParam("@Status", Status.INNE);
             dbHandler.ExecQuery("UPDATE artiklar SET PersId=null,Status=@Status WHERE Id=@Id");
         }
-        public List<Artikel> HamtaRegistreradeArtiklar(Person person)
+        public IEnumerable<Artikel> HamtaRegistreradeArtiklar(Person person)
         {
-            List<Artikel> personArtiklar = new List<Artikel>();
             dbHandler.AddParam("@pId", person.Id);
             dbHandler.AddParam("@Status", Status.UTE);
             dbHandler.ExecQuery("SELECT * FROM artiklar WHERE PersId = @pId AND Status = @Status");
-            FyllArtikelLista(personArtiklar, dbHandler.DBDT);
-            return personArtiklar;
+            return ParseTableToArtiklar(dbHandler.DBDT);
         }
-        public List<Artikel> HamtaSokRegistreradeArtiklar(Person person, string sok)
+        public IEnumerable<Artikel> HamtaSokRegistreradeArtiklar(Person person, string sok)
         {
-            List<Artikel> personArtiklar = new List<Artikel>();
             dbHandler.AddParam("@pId", person.Id);
             dbHandler.AddParam("@Status", Status.UTE);
             dbHandler.AddParam("@Sok", $"{sok}%");
             dbHandler.ExecQuery("SELECT * FROM artiklar WHERE (Id LIKE @Sok OR Besk LIKE @Sok OR Stoldtag LIKE @Sok OR Datornamn LIKE @Sok OR SerieNr LIKE @Sok OR Mac LIKE @Sok OR Os LIKE @Sok OR Inkop LIKE @Sok OR Ovrigt LIKE @Sok) AND PersId = @pId AND Status = @Status ORDER BY Id");
-            FyllArtikelLista(personArtiklar, dbHandler.DBDT);
-            return personArtiklar;
+            return ParseTableToArtiklar(dbHandler.DBDT);
         }
 
-        public List<Person> HamtaPersoner()
+        public IEnumerable<Person> HamtaPersoner()
         {
-            var hamtadePersoner = new List<Person>();
-
             dbHandler.ExecQuery("SELECT * FROM personer ORDER BY Id");
-            FyllPersonLista(hamtadePersoner, dbHandler.DBDT);
-            return hamtadePersoner;
+            return ParseTableToPersoner(dbHandler.DBDT);
         }
-        public List<Person> HamtaSokPersoner(string sok)
+        public IEnumerable<Person> HamtaSokPersoner(string sok)
         {
-            var hamtadePersoner = new List<Person>();
-
             dbHandler.AddParam("@Sok", $"{sok}%");
             dbHandler.ExecQuery("SELECT * FROM personer WHERE Id LIKE @Sok OR Fornamn LIKE @Sok OR Efternamn LIKE @Sok OR PersNr LIKE @Sok OR Sign LIKE @Sok OR Tillhorighet LIKE @Sok OR Telefon LIKE @Sok OR Epost LIKE @Sok OR Ovrigt LIKE @Sok ORDER BY Id");
-            FyllPersonLista(hamtadePersoner, dbHandler.DBDT);
-            return hamtadePersoner;
+            return ParseTableToPersoner(dbHandler.DBDT);
         }
-        public List<Person> HamtaPersonerFranTillhorighet(string tillhorighet)
+        public IEnumerable<Person> HamtaPersonerFranTillhorighet(string tillhorighet)
         {
-            var hamtadePersoner = new List<Person>();
-
             dbHandler.AddParam("@Tillhorighet", tillhorighet);
             dbHandler.ExecQuery("SELECT * FROM personer WHERE Tillhorighet = @Tillhorighet ORDER BY Id");
-            FyllPersonLista(hamtadePersoner, dbHandler.DBDT);
-            return hamtadePersoner;
+            return ParseTableToPersoner(dbHandler.DBDT);
         }
         public Person HamtaPersonFranId(int Id)
         {
@@ -265,7 +238,7 @@ namespace PrylanLibary
             dbHandler.ExecQuery("SELECT * FROM personer WHERE Id=@Id");
             if (dbHandler.DBDT is null)
                 return null;
-            return FirstPersonFromDataTable();
+            return FirstPersonFromTable();
         }
 
         public Person HamtaPersonFranPersNr(string persNr)
@@ -275,7 +248,7 @@ namespace PrylanLibary
             if (dbHandler.DBDT is null)
                 return null;
 
-            return FirstPersonFromDataTable();
+            return FirstPersonFromTable();
         }
 
         public void InfogaPerson(Person person)
@@ -330,23 +303,17 @@ namespace PrylanLibary
             dbHandler.AddParam("@Datum", handelse.Datum);
             dbHandler.ExecQuery("INSERT INTO handelser (ArtikelId,PersId,Typ,FriText,Datum) VALUES (@ArtikelId,@PersId,@Typ,@FriText,@Datum)");
         }
-        public List<Handelse> HamtaHandelserArtikel(Artikel artikel)
+        public IEnumerable<Handelse> HamtaHandelserArtikel(Artikel artikel)
         {
-            List<Handelse> hamtadeHandelser = new List<Handelse>();
-
             dbHandler.AddParam("@ArtikelId", artikel.Id);
             dbHandler.ExecQuery("SELECT * FROM handelser WHERE ArtikelId=@ArtikelId ORDER BY Datum DESC");
-            FyllHandelseLista(hamtadeHandelser, dbHandler.DBDT);
-            return hamtadeHandelser;
+            return ParseTableToHandelser(dbHandler.DBDT);
         }
-        public List<Handelse> HamtaHandelserPerson(Person person)
+        public IEnumerable<Handelse> HamtaHandelserPerson(Person person)
         {
-            List<Handelse> hamtadeHandelser = new List<Handelse>();
-
             dbHandler.AddParam("@PersId", person.Id);
             dbHandler.ExecQuery("SELECT * FROM handelser WHERE PersId=@PersId ORDER BY Id DESC");
-            FyllHandelseLista(hamtadeHandelser, dbHandler.DBDT);
-            return hamtadeHandelser;
+            return ParseTableToHandelser(dbHandler.DBDT);
         }
 
         public List<string> GetAllTables()
@@ -359,16 +326,20 @@ namespace PrylanLibary
             return dbHandler.GetColumnsByTableName(tableName);
         }
 
-        private Artikel FirstArtikelFromDataTable()
+        private Artikel FirstArtikelFromTable()
         {
+            if (dbHandler.DBDT is null)
+                return null;
             if (dbHandler.DBDT.Rows.Count > 0)
             {
                 return dbHandler.DBDT.Rows[0].ParseToArtikel();
             }
             return null;
         }
-        private Person FirstPersonFromDataTable()
+        private Person FirstPersonFromTable()
         {
+            if (dbHandler.DBDT is null)
+                return null;
             if (dbHandler.DBDT.Rows.Count > 0)
             {
                 return dbHandler.DBDT.Rows[0].ParseToPerson();
@@ -376,42 +347,44 @@ namespace PrylanLibary
             return null;
         }
 
-        private void FyllPersonLista(List<Person> lista, DataTable dbdt)
+        private IEnumerable<Artikel> ParseTableToArtiklar(DataTable table)
         {
-            if (dbdt is null)
-                return;
-            foreach (DataRow r in dbdt.Rows)
-            {
-                Person person = r.ParseToPerson();
-                if(person != null)
-                {
-                    lista.Add(person);
-                }
-            }
-        }
-        private void FyllArtikelLista(List<Artikel> lista, DataTable dbdt)
-        {
-            if (dbdt is null)
-                return;
-            foreach (DataRow r in dbdt.Rows)
+            if (table is null)
+                yield break;
+            foreach (DataRow r in table.Rows)
             {
                 Artikel artikel = r.ParseToArtikel();
                 if (artikel != null)
                 {
-                    lista.Add(artikel);
+                    yield return artikel;
                 }
             }
         }
-        private void FyllHandelseLista(List<Handelse> lista, DataTable dbdt)
+
+        private IEnumerable<Handelse> ParseTableToHandelser(DataTable table)
         {
-            if (dbdt is null)
-                return;
-            foreach (DataRow r in dbdt.Rows)
+            if (table is null)
+                yield break;
+            foreach (DataRow r in table.Rows)
             {
                 Handelse handelse = r.ParseToHandelse();
-                if(handelse != null)
+                if (handelse != null)
                 {
-                    lista.Add(handelse);   
+                    yield return handelse;
+                }
+            }
+        }
+
+        private IEnumerable<Person> ParseTableToPersoner(DataTable table)
+        {
+            if (table is null)
+                yield break;
+            foreach (DataRow r in table.Rows)
+            {
+                Person person = r.ParseToPerson();
+                if (person != null)
+                {
+                    yield return person;
                 }
             }
         }

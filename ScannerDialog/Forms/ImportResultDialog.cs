@@ -25,6 +25,7 @@ namespace ScannerDialog.Forms
 
         private void ErrorsUpdate()
         {
+            this.Enabled = false;
             lbPersonErrors.Items.Clear();
             lbPersonerErrosSuccess.Items.Clear();
             List<ImportPerson> tImporter;
@@ -45,6 +46,7 @@ namespace ScannerDialog.Forms
             {
                 lbPersonerErrosSuccess.Items.Add(importPerson);
             }
+            this.Enabled = true;
         }
 
         private void rbLyckade_CheckedChanged(object sender, EventArgs e)

@@ -21,7 +21,7 @@ namespace PrylanLibary.Models
         }
 
         public int Id { get; set; }
-        public string Beskrivning { get; set; }
+        public string Besk { get; set; }
         public string StoldTag { get; set; }
         public string DatorNamn { get; set; }
         public string SerieNr { get; set; }
@@ -37,7 +37,7 @@ namespace PrylanLibary.Models
             Artikel artikel = new Artikel()
             {
                 Id = this.Id,
-                Beskrivning = this.Beskrivning,
+                Besk = this.Besk,
                 StoldTag = this.StoldTag,
                 DatorNamn = this.DatorNamn,
                 SerieNr = this.SerieNr,
@@ -53,7 +53,7 @@ namespace PrylanLibary.Models
 
         public override string ToString()
         {
-            return $"{Id} {Beskrivning} {DatorNamn} {StoldTag} {SerieNr}";
+            return $"{Id} {Besk} {DatorNamn} {StoldTag} {SerieNr}";
         }
     }
 }
