@@ -19,19 +19,22 @@ namespace PrylanLibary
         private string _databasBackup;
         private string _foretagsNamn;
         private string _skrivare;
-        private string _succesfulKundNamn { get; set; }
-        private bool _backupOnStart;
-        private List<string> _beskrivningar = new List<string>();
-        private List<string> _os = new List<string>();
-        private List<string> _tillhorigheter = new List<string>();
-        private List<string> _handelser = new List<string>();
+        private Guid _lastLicense { get; set; }
 
         public string Databas { get { return _databas; } set { _databas = value; NotifyPropertyChanged(); } }
         public string DatabasBackup { get { return _databasBackup; } set { _databasBackup = value; NotifyPropertyChanged(); } }
         public string ForetagsNamn { get => _foretagsNamn; set => _foretagsNamn = value; }
         public string Skrivare { get => _skrivare; set => _skrivare = value; }
+        public Guid LastLicense { get => _lastLicense; set => _lastLicense = value; }
+
+        private bool _backupOnStart;
         public bool BackupOnStart { get => _backupOnStart; set => _backupOnStart = value; }
-        public string SuccesfulKundNamn { get => _succesfulKundNamn; set => _succesfulKundNamn = value; }
+
+        private List<string> _beskrivningar = new List<string>();
+        private List<string> _os = new List<string>();
+        private List<string> _tillhorigheter = new List<string>();
+        private List<string> _handelser = new List<string>();
+
         public List<string> Beskrivningar { get => _beskrivningar; set { _beskrivningar = value; NotifyPropertyChanged(nameof(this.Beskrivningar)); } }
         public List<string> Os { get => _os; set { _os = value; NotifyPropertyChanged(nameof(this.Os)); } }
         public List<string> Tillhorigheter { get => _tillhorigheter; set { _tillhorigheter = value; NotifyPropertyChanged(nameof(this.Tillhorigheter)); } }
@@ -105,7 +108,7 @@ namespace PrylanLibary
             this.DatabasBackup = another.DatabasBackup;
             this.ForetagsNamn = another.ForetagsNamn;
             this.Skrivare = another.Skrivare;
-            this.SuccesfulKundNamn = another.SuccesfulKundNamn;
+            this.LastLicense = another.LastLicense;
             this.BackupOnStart = another.BackupOnStart;
             this.Beskrivningar = another.Beskrivningar;
             this.Os = another.Os;

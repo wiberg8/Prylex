@@ -8,14 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PrylanLibary.Models.Pocos;
 
 namespace ScannerDialog.Forms
 {
     public partial class LicensDialog : Form
     {
-        private Licensering licensering = new Licensering();
+        private readonly Licensering licensering = new Licensering();
         public bool SuccesfulAuthentication { get; set; }
-        public string SuccesfulKundNamn { get; set; }
+        public Guid SuccesfulLicense { get; set; }
 
         public LicensDialog()
         {
@@ -24,24 +25,33 @@ namespace ScannerDialog.Forms
 
         private async void cmdOk_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;
-            var wrapper = await licensering.LogInAsync(txtKundNamn.Text, txtPinKod.Text);
-            this.Enabled = true;
-            if (wrapper is null)
+            if (Guid.TryParse(txtLicense.Text, out Guid guid))
             {
-                MessageBox.Show("Problem med nätverk eller så ligger licens servern nere");
+                this.Enabled = false;
+                LicenseWrapper wrapper = await licensering.AuenticateLicenseAsync(guid);
+                this.Enabled = true;
+                if (wrapper is null)
+                {
+                    MessageBox.Show("Problem med nätverk eller så ligger licens servern nere");
+                    return; 
+                }
+                else
+                {
+                    MessageBox.Show(wrapper.Message);
+                    if (!wrapper.Failed)
+                    {
+                        SuccesfulAuthentication = !wrapper.HasExpired;
+                        SuccesfulLicense = guid;
+                        this.DialogResult = DialogResult.OK;
+                    }
+                }
                 return;
             }
             else
             {
-                MessageBox.Show(wrapper.Message);
-                if(wrapper.Message != "Felaktiga upgifter")
-                {
-                    SuccesfulAuthentication = !wrapper.HasExpired;
-                    SuccesfulKundNamn = txtKundNamn.Text;
-                    this.DialogResult = DialogResult.OK;
-                }
+                MessageBox.Show("Ej giltigt format på licensen");
             }
+            
         }
 
         private void cmdCancel_Click(object sender, EventArgs e)
@@ -52,7 +62,12 @@ namespace ScannerDialog.Forms
 
         private void LicensDialog_Load_1(object sender, EventArgs e)
         {
-            txtKundNamn.Text = Program.AppSettings.SuccesfulKundNamn;
+           
+        }
+
+        private void txtLicense_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }

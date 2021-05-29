@@ -42,8 +42,7 @@ namespace ScannerDialog
             dialog.ShowDialog();
             if (dialog.SuccesfulAuthentication)
             {
-                Console.WriteLine(dialog.SuccesfulKundNamn);
-                AppSettings.SuccesfulKundNamn = dialog.SuccesfulKundNamn;
+                AppSettings.LastLicense = dialog.SuccesfulLicense;
                 BackupDatabase();
                 DBAccess = new DataAccess() { CurrentFile = AppSettings.Databas };
                 DBAccess.TryOpen();

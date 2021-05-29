@@ -11,11 +11,11 @@ namespace PrylanLibary.Models.Pocos
     {
         [JsonProperty("message")]
         public string Message { get; set; }
-
         [JsonProperty("hasExpired")]
         public bool HasExpired { get; set; }
-
         [JsonProperty("expireDate")]
         public DateTime ExpireDate { get; set; }
+        [JsonProperty("authenticationFailed")]
+        public bool AuthenticationFailed { get; set; }
     }
 }
