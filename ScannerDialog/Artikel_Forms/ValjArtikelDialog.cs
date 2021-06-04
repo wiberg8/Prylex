@@ -36,7 +36,7 @@ namespace ScannerDialog
             }
         }
         //cmd events
-        private void cmdSok_Click(object sender, EventArgs e) => FyllGrid(DBAccess.HamtaSokArtiklarLediga(txtSok.Text));
+        private void cmdSok_Click(object sender, EventArgs e) => FyllGrid(SearchEngine.Search(DBAccess.HamtaLedigaArtiklar(), txtSok.Text));
         //datagridview events
         private void dgvArtiklar_MouseDoubleClick_1(object sender, MouseEventArgs e) => ArtikelSelectedClick();
 

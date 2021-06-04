@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 using PrylanLibary.Enums;
+using SQLite;
 
 namespace PrylanLibary.Models
 {
+    [Table("artiklar")]
     public class Artikel
     {
         public Artikel()
@@ -20,6 +22,7 @@ namespace PrylanLibary.Models
             this.Id = Id;
         }
 
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string Besk { get; set; }
         public string StoldTag { get; set; }
@@ -55,5 +58,7 @@ namespace PrylanLibary.Models
         {
             return $"{Id} {Besk} {DatorNamn} {StoldTag} {SerieNr}";
         }
+
+
     }
 }

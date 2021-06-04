@@ -126,7 +126,7 @@ namespace ScannerDialog
         {
             Artikel a;
             DBAccess.RegisterArtikelToPerson(person, artikel);
-            a = DBAccess.HamtaArtikelFranId(artikel.Id);
+            a = DBAccess.HamtaArtikel(artikel.Id);
             if (a != null && a.Status == Status.UTE)
             {
                 Handelse h = new Handelse() { PersId = person.Id, ArtikelId = a.Id, Typ = HandelseTyp.REGISTRERING };
@@ -148,7 +148,8 @@ namespace ScannerDialog
         {
             lbPersoner.Items.Clear();
             List<AdvancedPerson> advancedPersoner = new List<AdvancedPerson>();
-            foreach (Person p in DBAccess.HamtaSokPersoner(txtSok.Text).Where((Person p) => p.Tillhorighet == cbTillhorighet.Text))
+            IEnumerable<Person> searchResult = SearchEngine.Search(DBAccess.HamtaPersoner().Where(p => p.Tillhorighet == cbTillhorighet.Text).ToList(), txtSok.Text);
+            foreach (Person p in searchResult)
             {
                 AdvancedPerson advancedPerson = new AdvancedPerson() { Person = p, RegistreradeArtiklar = DBAccess.HamtaRegistreradeArtiklar(p).ToList() };
                 advancedPersoner.Add(advancedPerson);

@@ -53,7 +53,7 @@ namespace ScannerDialog
         }
         private void Sok()
         {
-            FyllGrid(DBAccess.HamtaSokPersoner(txtSok.Text));
+            FyllGrid(SearchEngine.Search(DBAccess.HamtaPersoner(), txtSok.Text));
         }
         private void FyllGrid(IEnumerable<Person> lista)
         {

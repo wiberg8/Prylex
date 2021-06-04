@@ -107,7 +107,7 @@ namespace ScannerDialog
             cbSelectHandelseTyp.Items.Add("Visa Fritext");
             cbSelectHandelseTyp.SelectedIndex = 0;
             txtHandelsePerson.Text = Locales.NoPersonBound;
-            registreradPerson = DBAccess.HamtaPersonFranId(nuvarandeArtikel.PersId);
+            registreradPerson = DBAccess.HamtaPerson(nuvarandeArtikel.PersId);
             if (registreradPerson != null)
             {
                 txtRegistredPerson.Text = registreradPerson.ToString();
@@ -124,7 +124,7 @@ namespace ScannerDialog
             {
                 int unregisterPersId = nuvarandeArtikel.PersId;
                 DBAccess.AvregistreraArtikelFromPerson(nuvarandeArtikel);
-                nuvarandeArtikel = DBAccess.HamtaArtikelFranId(nuvarandeArtikel.Id);
+                nuvarandeArtikel = DBAccess.HamtaArtikel(nuvarandeArtikel.Id);
                 if (nuvarandeArtikel != null && nuvarandeArtikel.Status == Status.INNE)
                 {
                     Handelse handelse = new Handelse() { ArtikelId = nuvarandeArtikel.Id, PersId = unregisterPersId, Typ = HandelseTyp.AVREGISTRERING };
@@ -139,7 +139,7 @@ namespace ScannerDialog
         {
             txtRegistredPerson.Text = person.ToString();
             DBAccess.RegisterArtikelToPerson(person, nuvarandeArtikel);
-            nuvarandeArtikel = DBAccess.HamtaArtikelFranId(nuvarandeArtikel.Id);
+            nuvarandeArtikel = DBAccess.HamtaArtikel(nuvarandeArtikel.Id);
             if (nuvarandeArtikel != null)
             {
                 if (nuvarandeArtikel.PersId == person.Id)
@@ -161,7 +161,7 @@ namespace ScannerDialog
                 txtRegistredPerson.Text = dialog.ValdPerson.ToString();
 
                 DBAccess.RegisterArtikelToPerson(dialog.ValdPerson, nuvarandeArtikel);
-                nuvarandeArtikel = DBAccess.HamtaArtikelFranId(nuvarandeArtikel.Id);
+                nuvarandeArtikel = DBAccess.HamtaArtikel(nuvarandeArtikel.Id);
                 if (nuvarandeArtikel != null)
                 {
                     if (nuvarandeArtikel.PersId == dialog.ValdPerson.Id)
@@ -203,20 +203,14 @@ namespace ScannerDialog
             personFromInput = DBAccess.HamtaPersonFranPersNr(scannedPersNr);
             if (personFromInput is null)
             {
-                var result = MessageBox.Show("Ingen träff, Vill du skapa en person med detta pers nr?", string.Empty, MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show("Ingen träff, Vill du skapa en person med detta pers nr?", string.Empty, MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     var dialog = new NyPersonSimpelDialog(scannedPersNr);
                     dialog.ShowDialog();
                     if (dialog.Person != null)
                     {
-                        bool existerarPerson;
-                        existerarPerson = DBAccess.ExisterarPerson(dialog.Person.PersNr);
-                        if (existerarPerson)
-                        {
-                            MessageBox.Show("PersNr existerar redan");
-                        }
-                        else
+                        if (DBAccess.HamtaPersonFranPersNr(dialog.Person.PersNr) is null)
                         {
                             Person personFromPersNr;
                             DBAccess.InfogaPerson(dialog.Person);
@@ -225,6 +219,10 @@ namespace ScannerDialog
                             {
                                 RegistreraPerson(personFromPersNr);
                             }
+                        }
+                        else
+                        {
+                            MessageBox.Show("PersNr existerar redan");
                         }
                     }
                 }
@@ -254,7 +252,7 @@ namespace ScannerDialog
             if (updateraArtikelDialog.Result != null)
             {
                 DBAccess.UpdateraArtikel(updateraArtikelDialog.Result);
-                Artikel artikelFromDb = DBAccess.HamtaArtikelFranId(updateraArtikelDialog.Result.Id);
+                Artikel artikelFromDb = DBAccess.HamtaArtikel(updateraArtikelDialog.Result.Id);
                 if (artikelFromDb != null)
                 {
                     this.nuvarandeArtikel = artikelFromDb;
@@ -298,7 +296,7 @@ namespace ScannerDialog
             Handelse handelse = (Handelse)lbHandelser.SelectedItem;
             Person personFromId;
 
-            personFromId = DBAccess.HamtaPersonFranId(handelse.PersId);
+            personFromId = DBAccess.HamtaPerson(handelse.PersId);
             if (personFromId is null)
             {
                 txtHandelsePerson.Text = Locales.NoPersonBound;

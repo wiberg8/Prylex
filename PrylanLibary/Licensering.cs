@@ -17,7 +17,7 @@ namespace PrylanLibary
         {
             try
             {
-                string formattedAdress = string.Format("https://localhost:5001/api/Licens/{0}", guid);
+                string formattedAdress = string.Format("https://localhost:5000/authenticate/Licens/{0}", guid.ToString());
                 var encodedWrapper = await (await client.GetAsync(formattedAdress)).Content.ReadAsStringAsync();
                 LicenseWrapper licenseWrapper = JsonConvert.DeserializeObject<LicenseWrapper>(encodedWrapper);
                 return licenseWrapper;

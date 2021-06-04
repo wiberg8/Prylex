@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PrylanLibary.Enums;
+using SQLite;
 
 namespace PrylanLibary.Models
 {
+    [Table("handelser")]
     public class Handelse
     {
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public int ArtikelId { get; set; }
         public int PersId { get; set; }

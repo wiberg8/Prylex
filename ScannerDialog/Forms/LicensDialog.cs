@@ -25,32 +25,35 @@ namespace ScannerDialog.Forms
 
         private async void cmdOk_Click(object sender, EventArgs e)
         {
-            if (Guid.TryParse(txtLicense.Text, out Guid guid))
-            {
-                this.Enabled = false;
-                LicenseWrapper wrapper = await licensering.AuenticateLicenseAsync(guid);
-                this.Enabled = true;
-                if (wrapper is null)
-                {
-                    MessageBox.Show("Problem med nätverk eller så ligger licens servern nere");
-                    return; 
-                }
-                else
-                {
-                    MessageBox.Show(wrapper.Message);
-                    if (!wrapper.Failed)
-                    {
-                        SuccesfulAuthentication = !wrapper.HasExpired;
-                        SuccesfulLicense = guid;
-                        this.DialogResult = DialogResult.OK;
-                    }
-                }
-                return;
-            }
-            else
-            {
-                MessageBox.Show("Ej giltigt format på licensen");
-            }
+            SuccesfulLicense = new Guid();
+            SuccesfulAuthentication = true;
+            this.DialogResult = DialogResult.OK;
+            //if (Guid.TryParse(txtLicense.Text, out Guid guid))
+            //{
+            //    this.Enabled = false;
+            //    LicenseWrapper wrapper = await licensering.AuenticateLicenseAsync(guid);
+            //    this.Enabled = true;
+            //    if (wrapper is null)
+            //    {
+            //        MessageBox.Show("Problem med nätverk eller så ligger licens servern nere");
+            //        return; 
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show(wrapper.Message);
+            //        if (!wrapper.AuthenticationFailed)
+            //        {
+            //            SuccesfulAuthentication = !wrapper.HasExpired;
+            //            SuccesfulLicense = guid;
+            //            this.DialogResult = DialogResult.OK;
+            //        }
+            //    }
+            //    return;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Ej giltigt format på licensen");
+            //}
             
         }
 

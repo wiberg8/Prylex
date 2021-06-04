@@ -59,7 +59,6 @@ namespace ScannerDialog
         private Artikel FaltTillArtikel()
         {
             Artikel artikel = this.artikelEdit.Copy();
-            artikel.Besk = cbBeskrivningar.Text.Trim();
             artikel.StoldTag = txtStoldtag.Text.Trim();
             artikel.DatorNamn = txtDatornamn.Text.Trim();
             artikel.Os = cbOS.Text.Trim();
@@ -69,13 +68,7 @@ namespace ScannerDialog
         }
         private void LaddaSnabbval()
         {
-            cbBeskrivningar.Items.AddRange(AppSettings.Beskrivningar.ToArray());
             cbOS.Items.AddRange(AppSettings.Os.ToArray());
-
-            if (cbBeskrivningar.Items.Count > 0)
-            {
-                cbBeskrivningar.SelectedIndex = 0;
-            }
             if (cbOS.Items.Count > 0)
             {
                 cbOS.SelectedIndex = 0;
@@ -94,10 +87,17 @@ namespace ScannerDialog
             txtDatornamn.Text = artikel.DatorNamn;
             txtStoldtag.Text = artikel.StoldTag;
             txtOvrigt.Text = artikel.Ovrigt;
-            cbBeskrivningar.Text = artikel.Besk;
             cbOS.Text = artikel.Os;
         }
 
+        private void laOS_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void cbOS_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

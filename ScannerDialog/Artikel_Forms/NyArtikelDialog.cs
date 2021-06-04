@@ -51,11 +51,8 @@ namespace ScannerDialog
             //}
             if (validationResult.IsValid)
             {
-                if (DBAccess.ExisterarArtikel(artikelFranFalt))
-                {
-                    MessageBox.Show("SerieNr existerar redan");
-                }
-                else
+                //Kollar om en artikel med specifikt serienr redan existerar i db
+                if (DBAccess.HamtaArtikelFranSerieNr(artikelFranFalt.SerieNr) is null)
                 {
                     if (cbPrintEttiket.Checked)
                     {
@@ -63,6 +60,10 @@ namespace ScannerDialog
                     }
                     DBAccess.InfogaArtikel(artikelFranFalt);
                     AterstallFalt();
+                }
+                else
+                {
+                    MessageBox.Show("SerieNr existerar redan");
                 }
             }
         }

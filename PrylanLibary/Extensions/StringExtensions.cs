@@ -12,12 +12,10 @@ namespace PrylanLibary
 {
     public static class StringExtensions
     {
-        public static string RemoveWhiteSpaces(this string input)
-        {
-            return new string(input.ToCharArray()
-                .Where(c => !Char.IsWhiteSpace(c))
-                .ToArray());
-        }
+		public static string RemoveWhiteSpaces(this string str)
+		{
+			return string.Join("", str.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
+		}
 
 		public static string Decrypt(this string encryptedText, string PasswordHash, string SaltKey, string VIKey)
 		{

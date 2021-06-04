@@ -87,21 +87,17 @@ namespace ScannerDialog.Forms
                 List<ImportPerson> importer = new List<ImportPerson>();
                 PersonValidator validator = new PersonValidator();
                 int importedCount = 0;
-                int lastInsertId = 0;
                 foreach (Person p in lbPersoner.Items)
                 {
                     laCurrentImportPerson.Text = p.ToString();
                     ImportPerson importPerson = new ImportPerson() { Person = p };
                     importPerson.Validation = validator.Validate(p);
-                    importPerson.AlreadyExist = DBAccess.ExisterarPerson(importPerson.Person.PersNr);
+                    importPerson.AlreadyExist = DBAccess.HamtaPersonFranPersNr(importPerson.Person.PersNr) != null;
                     importPerson.Success = importPerson.Validation.IsValid && !importPerson.AlreadyExist;
                     if (importPerson.Success)
                     {
-                        await Task.Run(() => DBAccess.InfogaPerson(importPerson.Person));
-                        if (DBAccess.LastInsertRowId == lastInsertId)
-                            importPerson.Success = false;
-                        else
-                            importPerson.Person.Id = DBAccess.LastInsertRowId;
+                        int insertCount = await Task.Run(() => DBAccess.InfogaPerson(importPerson.Person));
+                        importPerson.Success = insertCount == 1;
                     }
                     progressBar.Increment(1);
                     importedCount += 1;

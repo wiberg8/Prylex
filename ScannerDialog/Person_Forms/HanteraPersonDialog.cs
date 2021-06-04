@@ -108,7 +108,7 @@ namespace ScannerDialog
                 if (updateraPerson.Result != null)
                 {
                     DBAccess.UpdateraPerson(updateraPerson.Result);
-                    Person personFromDB = DBAccess.HamtaPersonFranId(updateraPerson.Result.Id);
+                    Person personFromDB = DBAccess.HamtaPerson(updateraPerson.Result.Id);
                     if (personFromDB != null)
                     {
                         this.nuvarandePerson = personFromDB;
@@ -151,7 +151,7 @@ namespace ScannerDialog
             {
                 Handelse handelse = (Handelse)lbHandelser.SelectedItem;
                 Artikel artikelFromId;
-                artikelFromId = DBAccess.HamtaArtikelFranId(handelse.ArtikelId);
+                artikelFromId = DBAccess.HamtaArtikel(handelse.ArtikelId);
                 if (artikelFromId is null)
                 {
                     txtHandelseArtikel.Text = Locales.NoArtikelBound;
@@ -181,7 +181,7 @@ namespace ScannerDialog
         {
             Artikel artikelFranId;
             DBAccess.RegisterArtikelToPerson(nuvarandePerson, artikel);
-            artikelFranId = DBAccess.HamtaArtikelFranId(artikel.Id);
+            artikelFranId = DBAccess.HamtaArtikel(artikel.Id);
             if (artikelFranId != null && artikelFranId.Status == Status.UTE)
             {
                 Handelse h = new Handelse() { PersId = nuvarandePerson.Id, ArtikelId = artikelFranId.Id, Typ = HandelseTyp.REGISTRERING };
@@ -236,7 +236,7 @@ namespace ScannerDialog
             {
                 Artikel selectedArtikel = (Artikel)lbRegistreradeArtiklar.SelectedItem;
                 DBAccess.AvregistreraArtikelFromPerson(selectedArtikel);
-                Artikel a = DBAccess.HamtaArtikelFranId(selectedArtikel.Id);
+                Artikel a = DBAccess.HamtaArtikel(selectedArtikel.Id);
                 if (a.Status == Status.INNE)
                 {
                     Handelse h = new Handelse() { PersId = nuvarandePerson.Id, ArtikelId = a.Id, Typ = HandelseTyp.AVREGISTRERING };
@@ -259,7 +259,9 @@ namespace ScannerDialog
         }
         private void SokRegistreradeArtiklar()
         {
-            List<Artikel> artiklar = DBAccess.HamtaSokRegistreradeArtiklar(nuvarandePerson, txtArtikelSok.Text).ToList();
+            List<Artikel> artiklar = 
+                SearchEngine.Search(DBAccess.HamtaRegistreradeArtiklar(nuvarandePerson), txtArtikelSok.Text)
+                .ToList();
             FyllRegistreradeArtiklar(artiklar);
         }
         private void FyllFalt(Person person)

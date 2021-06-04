@@ -13,14 +13,14 @@ namespace PrylanLibary
         {
             if (sender is Label label)
             {
-                label.ForeColor = Config.HIGHLIGHT_COLOR;
+                label.ForeColor = Global.HIGHLIGHT_COLOR;
             }
         }
         private static void mouseLeave(object sender, EventArgs e)
         {
             if(sender is Label label)
             {
-                label.ForeColor = Config.STANDARD_FORE_COLOR;
+                label.ForeColor = Global.STANDARD_FORE_COLOR;
             }
         }
         private static void doubleClick(object sender, EventArgs e)

@@ -40,14 +40,14 @@ namespace ScannerDialog
             FyllErrors(errors);
             if (errors.IsValid)
             {
-                if (DBAccess.ExisterarPerson(person.PersNr))
-                {
-                    MessageBox.Show("PersNr existerar redan");
-                }
-                else
+                if (DBAccess.HamtaPersonFranPersNr(person.PersNr) is null)
                 {
                     DBAccess.InfogaPerson(person);
                     FaltRensa();
+                }
+                else
+                {
+                    MessageBox.Show("PersNr existerar redan");
                 }
             }
         }

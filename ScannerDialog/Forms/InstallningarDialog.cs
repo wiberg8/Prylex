@@ -20,7 +20,7 @@ namespace ScannerDialog
             InitializeComponent();
             SharedEvents.AttachToAllLabelsInForm(this, this.components.Components);
             cbForvalValj.SelectedIndex = 0;
-            AppSettings.PropertyChanged += Installningar_Change;
+            //AppSettings.PropertyChanged += Installningar_Change;
         }
 
         //form events
@@ -49,13 +49,6 @@ namespace ScannerDialog
         }
         private void cmdForvalLaggTill_Click(object sender, EventArgs e) => ForvalLaggTill();
         private void cmdForvalTabort_Click(object sender, EventArgs e) => ForvalTaBort();
-        private void cmdNuvarandeDbUtforska_Click(object sender, EventArgs e) => ChangeDatabas();
-        private void cmdDatabasAterstall_Click(object sender, EventArgs e)
-        {
-            AppSettings.Databas = string.Empty;
-            DBAccess.Close();
-            DBAccess.CurrentFile = AppSettings.Databas;
-        }
         private void cmdNuvarandeDbBackupUtforska_Click(object sender, EventArgs e) => ChangeDatabasBackup();
         private void cmdNuvarandeDbBackupAterstall_Click(object sender, EventArgs e) => AppSettings.DatabasBackup = string.Empty;
         private void cmdExporteraPersoner_Click(object sender, EventArgs e) => ExporteraPersoner();
@@ -72,12 +65,12 @@ namespace ScannerDialog
         private void Installningar_Change(object sender, EventArgs e)
         {
             var ins = (Installningar)sender;
-            FyllDatabasVy(ins.Databas, ins.DatabasBackup, ins.BackupOnStart);
+            //FyllDatabasVy(ins.Databas, ins.DatabasBackup, ins.BackupOnStart);
         }
 
         private void FormStartup()
         {
-            FyllDatabasVy(AppSettings.Databas, AppSettings.DatabasBackup, AppSettings.BackupOnStart);
+            //FyllDatabasVy(AppSettings.Databas, AppSettings.DatabasBackup, AppSettings.BackupOnStart);
             foreach (string v in Printing.GetPrinters())
             {
                 cbPrinter.Items.Add(v);
@@ -163,28 +156,26 @@ namespace ScannerDialog
         }
         private void ForvalLaggTill()
         {
-            using (InputBox inputDialog = new InputBox())
+            InputBox inputDialog = new InputBox();
+            inputDialog.ShowDialog();
+            if (!string.IsNullOrWhiteSpace(inputDialog.Input))
             {
-                inputDialog.ShowDialog();
-                if (!string.IsNullOrWhiteSpace(inputDialog.Input))
+                switch (cbForvalValj.SelectedIndex)
                 {
-                    switch (cbForvalValj.SelectedIndex)
-                    {
-                        case 0:    //Beskrivningar
-                            AppSettings.AddBeskrivning(inputDialog.Input);
-                            break;
-                        case 1:    //Händelser
-                            AppSettings.AddHandelse(inputDialog.Input);
-                            break;
-                        case 2:    //Os
-                            AppSettings.AddOs(inputDialog.Input);
-                            break;
-                        case 3:    //Tillhörighet
-                            AppSettings.AddTillhorighet(inputDialog.Input);
-                            break;
-                    }
-                    ForvalRefresh();
+                    case 0:    //Beskrivningar
+                        AppSettings.Beskrivningar.Add(inputDialog.Input);
+                        break;
+                    case 1:    //Händelser
+                        AppSettings.Handelser.Add(inputDialog.Input);
+                        break;
+                    case 2:    //Os
+                        AppSettings.Os.Add(inputDialog.Input);
+                        break;
+                    case 3:    //Tillhörighet
+                        AppSettings.Tillhorigheter.Add(inputDialog.Input);
+                        break;
                 }
+                ForvalRefresh();
             }
         }
         private void ForvalImportera()
@@ -193,58 +184,60 @@ namespace ScannerDialog
             {
                 if (!AppSettings.Beskrivningar.Contains(v))
                 {
-                    AppSettings.AddBeskrivning(v);
+                    AppSettings.Beskrivningar.Add(v);
                 }
             }
             foreach (string v in DBAccess.GetUniqueOS())
             {
                 if (!AppSettings.Os.Contains(v))
                 {
-                    AppSettings.AddOs(v);
+                    AppSettings.Os.Add(v);
                 }
             }
             foreach (string v in DBAccess.GetUniqueTillhorighet())
             {
                 if (!AppSettings.Tillhorigheter.Contains(v))
                 {
-                    AppSettings.AddTillhorighet(v);
+                    AppSettings.Tillhorigheter.Add(v);
                 }
             }
             foreach (string v in DBAccess.GetUniqueHandelser())
             {
                 if (!AppSettings.Handelser.Contains(v))
                 {
-                    AppSettings.AddHandelse(v);
+                    AppSettings.Handelser.Add(v);
                 }
             }
             ForvalRefresh();
         }
-        private void MoveSelectedUp(ListBox myListBox)
+        private void MoveSelectedUp(ListBox listbox)
         {
-            int selectedIndex = myListBox.SelectedIndex;
+            int selectedIndex = listbox.SelectedIndex;
             if (selectedIndex > 0)
             {
-                myListBox.Items.Insert(selectedIndex - 1, myListBox.Items[selectedIndex]);
-                myListBox.Items.RemoveAt(selectedIndex + 1);
-                myListBox.SelectedIndex = selectedIndex - 1;
+                listbox.Items.Insert(selectedIndex - 1, listbox.Items[selectedIndex]);
+                listbox.Items.RemoveAt(selectedIndex + 1);
+                listbox.SelectedIndex = selectedIndex - 1;
             }
         }
-        private void MoveSelectedDown(ListBox myListBox)
+        private void MoveSelectedDown(ListBox listbox)
         {
-            int selectedIndex = myListBox.SelectedIndex;
-            if (selectedIndex < myListBox.Items.Count - 1 & selectedIndex != -1)
+            int selectedIndex = listbox.SelectedIndex;
+            if (selectedIndex < listbox.Items.Count - 1 & selectedIndex != -1)
             {
-                myListBox.Items.Insert(selectedIndex + 2, myListBox.Items[selectedIndex]);
-                myListBox.Items.RemoveAt(selectedIndex);
-                myListBox.SelectedIndex = selectedIndex + 1;
+                listbox.Items.Insert(selectedIndex + 2, listbox.Items[selectedIndex]);
+                listbox.Items.RemoveAt(selectedIndex);
+                listbox.SelectedIndex = selectedIndex + 1;
             }
         }
         private void ExporteraPersoner()
         {
-            SaveFileDialog fileDialog = new SaveFileDialog();
-            fileDialog.Filter = "Json file(*.json)|*.json";
-            fileDialog.DefaultExt = "json";
-            fileDialog.AddExtension = true;
+            SaveFileDialog fileDialog = new SaveFileDialog
+            {
+                Filter = "Json file(*.json)|*.json",
+                DefaultExt = "json",
+                AddExtension = true
+            };
             DialogResult dialogResult = fileDialog.ShowDialog();
             if (dialogResult == DialogResult.OK && !fileDialog.CheckFileExists && fileDialog.CheckPathExists)
             {
@@ -253,10 +246,12 @@ namespace ScannerDialog
         }
         private void ExporteraArtiklar()
         {
-            SaveFileDialog fileDialog = new SaveFileDialog();
-            fileDialog.Filter = "Json file(*.json)|*.json";
-            fileDialog.DefaultExt = "json";
-            fileDialog.AddExtension = true;
+            SaveFileDialog fileDialog = new SaveFileDialog
+            {
+                Filter = "Json file(*.json)|*.json",
+                DefaultExt = "json",
+                AddExtension = true
+            };
             DialogResult dialogResult = fileDialog.ShowDialog();
             if (dialogResult == DialogResult.OK && !fileDialog.CheckFileExists && fileDialog.CheckPathExists)
             {
@@ -279,34 +274,34 @@ namespace ScannerDialog
                 }
             }
         }
-        private void ChangeDatabas()
-        {
-            var fileDialog = new OpenFileDialog
-            {
-                Filter = "db files (*.db)|*.db"
-            };
+        //private void ChangeDatabas()
+        //{
+        //    var fileDialog = new OpenFileDialog
+        //    {
+        //        Filter = "db files (*.db)|*.db"
+        //    };
 
-            if (fileDialog.ShowDialog() == DialogResult.OK)
-            {
-                if (fileDialog.CheckFileExists)
-                {
-                    AppSettings.Databas = fileDialog.FileName;
-                    DBAccess.Close();
-                    DBAccess.CurrentFile = AppSettings.Databas;
-                    if (!DBAccess.TryOpen())
-                    {
-                        MessageBox.Show("Något är fel med den utpekade filen");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Något är fel med den utpekade filen");
-                }
-            }
-        }
+        //    if (fileDialog.ShowDialog() == DialogResult.OK)
+        //    {
+        //        if (fileDialog.CheckFileExists)
+        //        {
+        //            AppSettings.Databas = fileDialog.FileName;
+        //            DBAccess.Close();
+        //            DBAccess.CurrentFile = AppSettings.Databas;
+        //            if (!DBAccess.TryOpen())
+        //            {
+        //                MessageBox.Show("Något är fel med den utpekade filen");
+        //            }
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Något är fel med den utpekade filen");
+        //        }
+        //    }
+        //}
         private void FyllDatabasVy(string database, string databaseBackup, bool backupOnStart)
         {
-            laNuvarandeDbDisplay.Text = database;
+            //laNuvarandeDbDisplay.Text = database;
             laNuvarandeDbBackupDisplay.Text = databaseBackup;
             cbBackupOnStart.Checked = backupOnStart;
         }

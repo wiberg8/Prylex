@@ -22,7 +22,7 @@ namespace PrylanLibary
             }
             catch (Exception e)
             {
-                Console.WriteLine("Backup method error\n" + e.Message.ToString());
+                Logger.Log("Backup method error\n" + e.Message.ToString());
             }
         }
         public static void OpenDirectory(string DPath)
@@ -38,7 +38,7 @@ namespace PrylanLibary
             }
             catch (Exception e)
             {
-                Console.WriteLine("OpenDirectory method error\n" + e.Message.ToString());
+                Logger.Log("OpenDirectory method error\n" + e.Message.ToString());
             }
         }
 

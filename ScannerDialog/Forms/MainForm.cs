@@ -26,7 +26,7 @@ namespace ScannerDialog.Forms
         public MainForm()
         {
             InitializeComponent();
-            AppSettings.PropertyChanged += Installningar_Change;
+            //AppSettings.PropertyChanged += Installningar_Change;
             DBAccess.ArtikelChange += Artiklar_Change;
             DBAccess.ConnectionChanged += Database_Connection_Changed;
             this.Icon = Properties.Resources.ApplikationIkon;
@@ -49,8 +49,8 @@ namespace ScannerDialog.Forms
                     FyllVisaEndast(AppSettings.Tillhorigheter);
                     break;
             }
-            laDatabaseWarning.Visible = !File.Exists(ins.Databas);
-            tspNuvarandeDb.Text = ins.Databas;
+            //laDatabaseWarning.Visible = !File.Exists(ins.Databas);
+            //tspNuvarandeDb.Text = ins.Databas;
         }
 
         private void Artiklar_Change(object sender, EventArgs e)
@@ -105,8 +105,8 @@ namespace ScannerDialog.Forms
 
         private void FormStartup()
         {
-            laDatabaseWarning.Visible = !File.Exists(AppSettings.Databas);
-            tspNuvarandeDb.Text = AppSettings.Databas;
+            //laDatabaseWarning.Visible = !File.Exists(AppSettings.Databas);
+            //tspNuvarandeDb.Text = AppSettings.Databas;
             FyllVisaEndast(AppSettings.Beskrivningar);
             SearchSelectedGrid();
         }
@@ -166,10 +166,10 @@ namespace ScannerDialog.Forms
             DialogResult dialogResult = fileDialog.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
-                if (!DBAccess.CreateFile(fileDialog.FileName))
-                {
-                    MessageBox.Show(Locales.CouldNotCreateDatabaseFile);
-                }
+                //if (!DBAccess.CreateFile(fileDialog.FileName))
+                //{
+                //    MessageBox.Show(Locales.CouldNotCreateDatabaseFile);
+                //}
             }
         }
 
@@ -214,17 +214,18 @@ namespace ScannerDialog.Forms
                 case nameof(tabArtiklar):
                     IEnumerable<Artikel> artiklar;
                     if (cbVisaEndast.SelectedIndex == 0)
-                        artiklar = DBAccess.HamtaSokArtiklar(txtSok.Text);
+                        artiklar = SearchEngine.Search(DBAccess.HamtaArtiklar(), txtSok.Text);
                     else
-                        artiklar = DBAccess.HamtaSokArtiklar(txtSok.Text).Where(a => a.Besk == cbVisaEndast.Text).ToList();
+                        artiklar = SearchEngine.Search(
+                            DBAccess.HamtaArtiklar().Where(a => a.Besk == cbVisaEndast.Text).ToList(), txtSok.Text);
                     FyllGrid(artiklar);
                     break;
                 case nameof(tabPersoner):
                     IEnumerable<Person> personer;
                     if (cbVisaEndast.SelectedIndex == 0)
-                        personer = DBAccess.HamtaSokPersoner(txtSok.Text);
+                        personer = SearchEngine.Search(DBAccess.HamtaPersoner(), txtSok.Text);
                     else
-                        personer = DBAccess.HamtaSokPersoner(txtSok.Text).Where(p => p.Tillhorighet == cbVisaEndast.Text).ToList();
+                        personer = SearchEngine.Search(DBAccess.HamtaPersoner().Where(p => p.Tillhorighet == cbVisaEndast.Text).ToList(), txtSok.Text);
                     FyllGrid(personer);
                     break;
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace PrylanLibary.Models
 {
+    [Table("personer")]
     public class Person
     {
         public Person()
@@ -19,6 +21,7 @@ namespace PrylanLibary.Models
             this.Id = Id;
         }
 
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string Fornamn { get; set; }
         public string Efternamn { get; set; }
@@ -65,7 +68,7 @@ namespace PrylanLibary.Models
         }
 
         public string FullName { get { return $"{this.Fornamn} {this.Efternamn}"; } }
-
+        
         public override string ToString()
         {
             if (this.Id == 0)
@@ -73,6 +76,19 @@ namespace PrylanLibary.Models
                 return $"{Fornamn} {Efternamn} {PersNr}";
             }
             return $"{Id} {Fornamn} {Efternamn} {PersNr}";
+        }
+
+        public static Person GetExamplePerson()
+        {
+            return new Person
+            {
+                Fornamn = "FÖRNAMN EXEMPEL",
+                Efternamn = "EFTERNAMN EXEMPEL",
+                PersNr = "222222-2222",
+                Sign = "EXEMPEL",
+                Tillhorighet = "EXEMPEL",
+                Ovrigt = "EXEMPEL"
+            };
         }
     }
 }
