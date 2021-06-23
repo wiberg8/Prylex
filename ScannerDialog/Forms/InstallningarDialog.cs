@@ -19,7 +19,6 @@ namespace ScannerDialog
         {
             InitializeComponent();
             SharedEvents.AttachToAllLabelsInForm(this, this.components.Components);
-            cbForvalValj.SelectedIndex = 0;
             //AppSettings.PropertyChanged += Installningar_Change;
         }
 
@@ -36,27 +35,6 @@ namespace ScannerDialog
             }
         }
 
-        //cmd events
-        private void cmdForvalUpp_Click(object sender, EventArgs e)
-        {
-            MoveSelectedUp(lbForval);
-            ForvalSpara();
-        }
-        private void cmdForvalNer_Click(object sender, EventArgs e)
-        {
-            MoveSelectedDown(lbForval);
-            ForvalSpara();
-        }
-        private void cmdForvalLaggTill_Click(object sender, EventArgs e) => ForvalLaggTill();
-        private void cmdForvalTabort_Click(object sender, EventArgs e) => ForvalTaBort();
-        private void cmdNuvarandeDbBackupUtforska_Click(object sender, EventArgs e) => ChangeDatabasBackup();
-        private void cmdNuvarandeDbBackupAterstall_Click(object sender, EventArgs e) => AppSettings.DatabasBackup = string.Empty;
-        private void cmdExporteraPersoner_Click(object sender, EventArgs e) => ExporteraPersoner();
-        private void cmdExporteraArtiklar_Click(object sender, EventArgs e) => ExporteraArtiklar();
-        private void cmdImportForval_Click(object sender, EventArgs e) => ForvalImportera();
-
-        //combobox events
-        private void cbForvalValj_SelectedIndexChanged(object sender, EventArgs e) => ForvalRefresh();
         private void cbPrinter_SelectedIndexChanged(object sender, EventArgs e) => AppSettings.Skrivare = cbPrinter.Text;
         //checkbox events
         private void cbBackupOnStart_CheckedChanged(object sender, EventArgs e) => AppSettings.BackupOnStart = cbBackupOnStart.Checked;
@@ -77,159 +55,8 @@ namespace ScannerDialog
             }
             cbPrinter.Text = AppSettings.Skrivare;
         }
-        private void ForvalTaBort()
-        {
-            if (lbForval.SelectedIndex != -1)
-            {
-                lbForval.Items.RemoveAt(lbForval.SelectedIndex);
-                switch (cbForvalValj.SelectedIndex)
-                {
-                    case 0:    //Beskrivningar
-                        AppSettings.Beskrivningar = lbForval.Items.Cast<String>().ToList();
-                        break;
-                    case 1:    //Händelser
-                        AppSettings.Handelser = lbForval.Items.Cast<String>().ToList();
-                        break;
-                    case 2:    //Os
-                        AppSettings.Os = lbForval.Items.Cast<String>().ToList();
-                        break;
-                    case 3:    //Tillhörighet
-                        AppSettings.Tillhorigheter = lbForval.Items.Cast<String>().ToList();
-                        break;
-                }
-                ForvalRefresh();
-            }
-        }
-        private void ForvalRefresh()
-        {
-            lbForval.Items.Clear();
-            switch (cbForvalValj.SelectedIndex)
-            {
-                case 0:    //Beskrivningar
-                    foreach (string v in AppSettings.Beskrivningar)
-                    {
-                        lbForval.Items.Add(v);
-                    }
-                    break;
-                case 1:    //Händelser
-                    foreach (string v in AppSettings.Handelser)
-                    {
-                        lbForval.Items.Add(v);
-                    }
-                    break;
-                case 2:    //Os
-                    foreach (string v in AppSettings.Os)
-                    {
-                        lbForval.Items.Add(v);
-                    }
-                    break;
-                case 3:    //Tillhörighet
-                    foreach (string v in AppSettings.Tillhorigheter)
-                    {
-                        lbForval.Items.Add(v);
-                    }
-                    break;
-            }
-        }
-        private void ForvalSpara()
-        {
-            List<string> forvalLista = new List<string>();
-            foreach (string forval in lbForval.Items)
-            {
-                forvalLista.Add(forval);
-            }
-            switch (cbForvalValj.SelectedIndex)
-            {
-                case 0:    //Beskrivningar
-                    AppSettings.Beskrivningar = forvalLista;
-                    break;
-                case 1:    //Händelser
-                    AppSettings.Handelser = forvalLista;
-                    break;
-                case 2:    //Os
-                    AppSettings.Os = forvalLista;
-                    break;
-                case 3:    //Tillhörighet
-                    AppSettings.Tillhorigheter = forvalLista;
-                    break;
-            }
-        }
-        private void ForvalLaggTill()
-        {
-            InputBox inputDialog = new InputBox();
-            inputDialog.ShowDialog();
-            if (!string.IsNullOrWhiteSpace(inputDialog.Input))
-            {
-                switch (cbForvalValj.SelectedIndex)
-                {
-                    case 0:    //Beskrivningar
-                        AppSettings.Beskrivningar.Add(inputDialog.Input);
-                        break;
-                    case 1:    //Händelser
-                        AppSettings.Handelser.Add(inputDialog.Input);
-                        break;
-                    case 2:    //Os
-                        AppSettings.Os.Add(inputDialog.Input);
-                        break;
-                    case 3:    //Tillhörighet
-                        AppSettings.Tillhorigheter.Add(inputDialog.Input);
-                        break;
-                }
-                ForvalRefresh();
-            }
-        }
-        private void ForvalImportera()
-        {
-            foreach (string v in DBAccess.GetUniqueBesk())
-            {
-                if (!AppSettings.Beskrivningar.Contains(v))
-                {
-                    AppSettings.Beskrivningar.Add(v);
-                }
-            }
-            foreach (string v in DBAccess.GetUniqueOS())
-            {
-                if (!AppSettings.Os.Contains(v))
-                {
-                    AppSettings.Os.Add(v);
-                }
-            }
-            foreach (string v in DBAccess.GetUniqueTillhorighet())
-            {
-                if (!AppSettings.Tillhorigheter.Contains(v))
-                {
-                    AppSettings.Tillhorigheter.Add(v);
-                }
-            }
-            foreach (string v in DBAccess.GetUniqueHandelser())
-            {
-                if (!AppSettings.Handelser.Contains(v))
-                {
-                    AppSettings.Handelser.Add(v);
-                }
-            }
-            ForvalRefresh();
-        }
-        private void MoveSelectedUp(ListBox listbox)
-        {
-            int selectedIndex = listbox.SelectedIndex;
-            if (selectedIndex > 0)
-            {
-                listbox.Items.Insert(selectedIndex - 1, listbox.Items[selectedIndex]);
-                listbox.Items.RemoveAt(selectedIndex + 1);
-                listbox.SelectedIndex = selectedIndex - 1;
-            }
-        }
-        private void MoveSelectedDown(ListBox listbox)
-        {
-            int selectedIndex = listbox.SelectedIndex;
-            if (selectedIndex < listbox.Items.Count - 1 & selectedIndex != -1)
-            {
-                listbox.Items.Insert(selectedIndex + 2, listbox.Items[selectedIndex]);
-                listbox.Items.RemoveAt(selectedIndex);
-                listbox.SelectedIndex = selectedIndex + 1;
-            }
-        }
+
+        
         private void ExporteraPersoner()
         {
             SaveFileDialog fileDialog = new SaveFileDialog

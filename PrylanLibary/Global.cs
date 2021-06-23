@@ -15,7 +15,6 @@ namespace PrylanLibary
         public const string VI_KEY = "isdf345tHtHjHnYU";
         public const string ALPHABET = "1QAZ2WSX3EDC4RFV5TGB6YHN7UJM8K9OLP";
         public const string INSTALLNINGAR_FILENAME = "Installningar.json";
-        public const string TABLE_QUERIES_FILENAME = "tables.sql3";
         public const string PERSNR_REGEX = "^[0-9]{6}[-][0-9]{4}$";
         public static readonly Color STANDARD_FORE_COLOR;
         public static readonly Color HIGHLIGHT_COLOR;
@@ -33,7 +32,7 @@ namespace PrylanLibary
             SECOND_GRID_COLOR = Color.FromArgb(242, 242, 242);
             EXCEC_DRIVE = Path.GetPathRoot(System.Reflection.Assembly.GetEntryAssembly().Location);
             DATABASE_FOLDER = Path.Combine(EXCEC_DRIVE, "DB");
-            DATABASE_FILE = Path.Combine(DATABASE_FOLDER, "prylexDB.db");
+            DATABASE_FILE = Path.Combine(DATABASE_FOLDER, "prylex.db");
         }
     }
 }

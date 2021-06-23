@@ -99,10 +99,10 @@ namespace ScannerDialog
         }
         private void LaddaSnabbval()
         {
-            cbBeskrivningar.DataSource = AppSettings.Beskrivningar;
+            cbBeskrivningar.DataSource = DBAccess.GetUniqueBesk();
             if (cbBeskrivningar.Items.Count > 0)
                 cbBeskrivningar.SelectedIndex = 0;
-            cbOS.DataSource = AppSettings.Os;
+            cbOS.DataSource = DBAccess.GetUniqueOS();
             if (cbOS.Items.Count > 0)
                 cbOS.SelectedIndex = 0;
         }

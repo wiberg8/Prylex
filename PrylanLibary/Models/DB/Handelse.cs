@@ -8,13 +8,13 @@ using SQLite;
 
 namespace PrylanLibary.Models
 {
-    [Table("handelser")]
+    [Table("Handelser")]
     public class Handelse
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public int ArtikelId { get; set; }
-        public int PersId { get; set; }
+        public int? PersId { get; set; }
         public HandelseTyp Typ { get; set; }
         public string FriText { get; set; }
         public DateTime Datum { get; set; } = DateTime.Now;

@@ -60,7 +60,7 @@ namespace ScannerDialog
         }
         private void LaddaSnabbVal()
         {
-            cbTillhorighet.DataSource = AppSettings.Tillhorigheter;
+            cbTillhorighet.DataSource = DBAccess.GetUniqueTillhorighet();
             if (cbTillhorighet.Items.Count > 0)
                 cbTillhorighet.SelectedIndex = 0;
         }

@@ -16,18 +16,11 @@ namespace PrylanLibary
     public class DataAccess
     {
         private SQLiteConnection db;
-        //private readonly DBHandler dbHandler = new DBHandler();
-       // private string currentFile;
-        //public string CurrentFile { get { return currentFile; } set { dbHandler.SetConnection(value, ConnectionChanged); currentFile = value; } }
-        public EventHandler ConnectionChanged { get; set; }
-       // public int LastInsertRowId { get { return dbHandler.GetLastInsertId(); } }
-        
-        public EventHandler ArtikelChange { get; set; }
-        public EventHandler PersonChange { get; set; }
 
         public void Backup(string destinationPath)
         {
             db.Backup(destinationPath);
+            throw new NotImplementedException();
         }
 
         public bool Open(string dbPath)
@@ -62,32 +55,39 @@ namespace PrylanLibary
         public List<Artikel> HamtaArtiklar()
         {
             return db.Table<Artikel>()
-                .OrderBy((Artikel a) => a.Besk)
+                .OrderBy(a => a.Besk)
                 .ToList();
         }
         public List<Artikel> HamtaLedigaArtiklar()
         {
             return db.Table<Artikel>()
-                .Where((Artikel a) => a.Status == Status.INNE)
-                .OrderBy((Artikel a) => a.Besk)
+                .Where(a => a.Status == Status.INNE)
+                .OrderBy(a => a.Besk)
+                .ToList();
+        }
+        public List<Artikel> HamtaArtiklarFranBesk(string besk)
+        {
+            return db.Table<Artikel>()
+                .Where(a => a.Besk == besk)
+                .OrderBy(a => a.Besk)
                 .ToList();
         }
         public List<Artikel> HamtaRegistreradeArtiklar(Person person)
         {
             return db.Table<Artikel>()
-                .Where((Artikel a) => a.PersId == person.Id && a.Status == Status.UTE)
-                .OrderBy((Artikel a) => a.Besk)
+                .Where(a => a.PersId == person.Id && a.Status == Status.UTE)
+                .OrderBy(a => a.Besk)
                 .ToList();
         }
         public Artikel HamtaArtikel(int id)
         {
             return db.Table<Artikel>()
-                .FirstOrDefault((Artikel a) => a.Id == id);
+                .FirstOrDefault(a => a.Id == id);
         }
         public Artikel HamtaArtikelFranSerieNr(string serieNr)
         {
             return db.Table<Artikel>()
-                 .FirstOrDefault((Artikel a) => a.SerieNr == serieNr);
+                 .FirstOrDefault(a => a.SerieNr == serieNr);
         }
         public int InfogaArtikel(Artikel artikel)
         {
@@ -132,25 +132,27 @@ namespace PrylanLibary
         public List<Person> HamtaPersoner()
         {
             return db.Table<Person>()
-                .OrderBy((Person p) => p.Fornamn)
+                .OrderBy(p => p.Fornamn)
                 .ToList();
         }
         public List<Person> HamtaPersonerFranTillhorighet(string tillhorighet)
         {
             return db.Table<Person>()
-                .Where((Person p) => p.Tillhorighet == tillhorighet)
-                .OrderBy((Person p) => p.Fornamn)
+                .Where(p => p.Tillhorighet == tillhorighet)
+                .OrderBy(p => p.Fornamn)
                 .ToList();
         }
-        public Person HamtaPerson(int id)
+        public Person HamtaPerson(int? id)
         {
+            if (id is null)
+                return null;
             return db.Table<Person>()
-                .FirstOrDefault((Person p) => p.Id == id);
+                .FirstOrDefault(p => p.Id == id);
         }
         public Person HamtaPersonFranPersNr(string persNr)
         {
             return db.Table<Person>()
-               .FirstOrDefault((Person p) => p.PersNr == persNr);
+               .FirstOrDefault(p => p.PersNr == persNr);
         }
         public int InfogaPerson(Person person)
         {
@@ -174,7 +176,7 @@ namespace PrylanLibary
             Person p = this.HamtaPerson(person.Id);
             if (p is null)
                 return 0;
-            IList<Artikel> regArtiklar = this.HamtaRegistreradeArtiklar(person);
+            List<Artikel> regArtiklar = this.HamtaRegistreradeArtiklar(person);
             if (regArtiklar.Any())
             {
                 return 0;
@@ -189,22 +191,22 @@ namespace PrylanLibary
         public List<Handelse> HamtaHandelserArtikel(Artikel artikel)
         {
             return db.Table<Handelse>()
-                .Where((Handelse h) => h.ArtikelId == artikel.Id)
-                .OrderBy((Handelse h) => h.Datum)
+                .Where(h => h.ArtikelId == artikel.Id)
+                .OrderBy(h => h.Datum)
                 .ToList();
         }
         public List<Handelse> HamtaHandelserPerson(Person person)
         {
             return db.Table<Handelse>()
-                 .Where((Handelse h) => h.PersId == person.Id)
-                 .OrderBy((Handelse h) => h.Datum)
+                 .Where(h => h.PersId == person.Id)
+                 .OrderBy(h => h.Datum)
                  .ToList();
         }
 
         public List<string> GetUniqueBesk()
         {
             return db.Table<Artikel>()
-                  .Select((Artikel a) => a.Besk)
+                  .Select(a => a.Besk)
                   .Distinct()
                   .ToList();
         }
@@ -212,7 +214,7 @@ namespace PrylanLibary
         public List<string> GetUniqueOS()
         {
             return db.Table<Artikel>()
-                  .Select((Artikel a) => a.Os)
+                  .Select(a => a.Os)
                   .Distinct()
                   .ToList();
         }
@@ -220,7 +222,7 @@ namespace PrylanLibary
         public List<string> GetUniqueTillhorighet()
         {
             return db.Table<Person>()
-                   .Select((Person p) => p.Tillhorighet)
+                   .Select(p => p.Tillhorighet)
                    .Distinct()
                    .ToList();
         }
@@ -228,7 +230,7 @@ namespace PrylanLibary
         public List<string> GetUniqueHandelser()
         {
             return db.Table<Handelse>()
-                .Select((Handelse h) => h.FriText)
+                .Select(h => h.FriText)
                 .Distinct()
                 .ToList();
         }

@@ -1,4 +1,6 @@
-﻿namespace ScannerDialog
+﻿using System;
+
+namespace ScannerDialog
 {
     partial class InstallningarDialog
     {
@@ -33,23 +35,14 @@
             this.cmdNuvarandeDbBackupAterstall = new System.Windows.Forms.Button();
             this.cmdNuvarandeDbBackupUtforska = new System.Windows.Forms.Button();
             this.laNuvarandeDbBackup = new System.Windows.Forms.Label();
-            this.lbForval = new System.Windows.Forms.ListBox();
-            this.cbForvalValj = new System.Windows.Forms.ComboBox();
-            this.cmdForvalUpp = new System.Windows.Forms.Button();
-            this.cmdForvalNer = new System.Windows.Forms.Button();
-            this.cmdForvalLaggTill = new System.Windows.Forms.Button();
-            this.cmdForvalTabort = new System.Windows.Forms.Button();
             this.laNuvarandeDbBackupDisplay = new System.Windows.Forms.Label();
-            this.cmdImportForval = new System.Windows.Forms.Button();
             this.cbPrinter = new System.Windows.Forms.ComboBox();
             this.laPrinter = new System.Windows.Forms.Label();
-            this.gbForval = new System.Windows.Forms.GroupBox();
             this.gbUtskrift = new System.Windows.Forms.GroupBox();
             this.cmdExporteraPersoner = new System.Windows.Forms.Button();
             this.cmdExporteraArtiklar = new System.Windows.Forms.Button();
             this.toolTipHelp = new System.Windows.Forms.ToolTip(this.components);
             this.gbInstallningarDb.SuspendLayout();
-            this.gbForval.SuspendLayout();
             this.gbUtskrift.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +55,7 @@
             this.gbInstallningarDb.Margin = new System.Windows.Forms.Padding(4);
             this.gbInstallningarDb.Name = "gbInstallningarDb";
             this.gbInstallningarDb.Padding = new System.Windows.Forms.Padding(4);
-            this.gbInstallningarDb.Size = new System.Drawing.Size(820, 96);
+            this.gbInstallningarDb.Size = new System.Drawing.Size(795, 96);
             this.gbInstallningarDb.TabIndex = 16;
             this.gbInstallningarDb.TabStop = false;
             this.gbInstallningarDb.Text = "DB";
@@ -111,76 +104,6 @@
             this.laNuvarandeDbBackup.TabIndex = 15;
             this.laNuvarandeDbBackup.Text = "Backup:";
             // 
-            // lbForval
-            // 
-            this.lbForval.FormattingEnabled = true;
-            this.lbForval.ItemHeight = 16;
-            this.lbForval.Location = new System.Drawing.Point(44, 65);
-            this.lbForval.Margin = new System.Windows.Forms.Padding(4);
-            this.lbForval.Name = "lbForval";
-            this.lbForval.Size = new System.Drawing.Size(284, 228);
-            this.lbForval.TabIndex = 0;
-            // 
-            // cbForvalValj
-            // 
-            this.cbForvalValj.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbForvalValj.FormattingEnabled = true;
-            this.cbForvalValj.Items.AddRange(new object[] {
-            "Beskrivningar",
-            "Händelser",
-            "Os",
-            "Tillhörighet"});
-            this.cbForvalValj.Location = new System.Drawing.Point(43, 32);
-            this.cbForvalValj.Margin = new System.Windows.Forms.Padding(4);
-            this.cbForvalValj.Name = "cbForvalValj";
-            this.cbForvalValj.Size = new System.Drawing.Size(284, 24);
-            this.cbForvalValj.TabIndex = 17;
-            this.cbForvalValj.SelectedIndexChanged += new System.EventHandler(this.cbForvalValj_SelectedIndexChanged);
-            // 
-            // cmdForvalUpp
-            // 
-            this.cmdForvalUpp.Location = new System.Drawing.Point(336, 65);
-            this.cmdForvalUpp.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdForvalUpp.Name = "cmdForvalUpp";
-            this.cmdForvalUpp.Size = new System.Drawing.Size(113, 28);
-            this.cmdForvalUpp.TabIndex = 18;
-            this.cmdForvalUpp.Text = "Upp";
-            this.cmdForvalUpp.UseVisualStyleBackColor = true;
-            this.cmdForvalUpp.Click += new System.EventHandler(this.cmdForvalUpp_Click);
-            // 
-            // cmdForvalNer
-            // 
-            this.cmdForvalNer.Location = new System.Drawing.Point(336, 102);
-            this.cmdForvalNer.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdForvalNer.Name = "cmdForvalNer";
-            this.cmdForvalNer.Size = new System.Drawing.Size(113, 28);
-            this.cmdForvalNer.TabIndex = 19;
-            this.cmdForvalNer.Text = "Ner";
-            this.cmdForvalNer.UseVisualStyleBackColor = true;
-            this.cmdForvalNer.Click += new System.EventHandler(this.cmdForvalNer_Click);
-            // 
-            // cmdForvalLaggTill
-            // 
-            this.cmdForvalLaggTill.Location = new System.Drawing.Point(337, 230);
-            this.cmdForvalLaggTill.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdForvalLaggTill.Name = "cmdForvalLaggTill";
-            this.cmdForvalLaggTill.Size = new System.Drawing.Size(113, 28);
-            this.cmdForvalLaggTill.TabIndex = 20;
-            this.cmdForvalLaggTill.Text = "Lägg till";
-            this.cmdForvalLaggTill.UseVisualStyleBackColor = true;
-            this.cmdForvalLaggTill.Click += new System.EventHandler(this.cmdForvalLaggTill_Click);
-            // 
-            // cmdForvalTabort
-            // 
-            this.cmdForvalTabort.Location = new System.Drawing.Point(336, 266);
-            this.cmdForvalTabort.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdForvalTabort.Name = "cmdForvalTabort";
-            this.cmdForvalTabort.Size = new System.Drawing.Size(113, 28);
-            this.cmdForvalTabort.TabIndex = 21;
-            this.cmdForvalTabort.Text = "Ta bort";
-            this.cmdForvalTabort.UseVisualStyleBackColor = true;
-            this.cmdForvalTabort.Click += new System.EventHandler(this.cmdForvalTabort_Click);
-            // 
             // laNuvarandeDbBackupDisplay
             // 
             this.laNuvarandeDbBackupDisplay.Location = new System.Drawing.Point(124, 57);
@@ -189,17 +112,6 @@
             this.laNuvarandeDbBackupDisplay.Size = new System.Drawing.Size(461, 16);
             this.laNuvarandeDbBackupDisplay.TabIndex = 23;
             this.laNuvarandeDbBackupDisplay.Text = "Display";
-            // 
-            // cmdImportForval
-            // 
-            this.cmdImportForval.Location = new System.Drawing.Point(173, 302);
-            this.cmdImportForval.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdImportForval.Name = "cmdImportForval";
-            this.cmdImportForval.Size = new System.Drawing.Size(155, 28);
-            this.cmdImportForval.TabIndex = 24;
-            this.cmdImportForval.Text = "Import från DB";
-            this.cmdImportForval.UseVisualStyleBackColor = true;
-            this.cmdImportForval.Click += new System.EventHandler(this.cmdImportForval_Click);
             // 
             // cbPrinter
             // 
@@ -222,29 +134,11 @@
             this.laPrinter.TabIndex = 29;
             this.laPrinter.Text = "Välj skrivare";
             // 
-            // gbForval
-            // 
-            this.gbForval.Controls.Add(this.lbForval);
-            this.gbForval.Controls.Add(this.cbForvalValj);
-            this.gbForval.Controls.Add(this.cmdForvalUpp);
-            this.gbForval.Controls.Add(this.cmdForvalNer);
-            this.gbForval.Controls.Add(this.cmdImportForval);
-            this.gbForval.Controls.Add(this.cmdForvalLaggTill);
-            this.gbForval.Controls.Add(this.cmdForvalTabort);
-            this.gbForval.Location = new System.Drawing.Point(16, 130);
-            this.gbForval.Margin = new System.Windows.Forms.Padding(4);
-            this.gbForval.Name = "gbForval";
-            this.gbForval.Padding = new System.Windows.Forms.Padding(4);
-            this.gbForval.Size = new System.Drawing.Size(471, 348);
-            this.gbForval.TabIndex = 30;
-            this.gbForval.TabStop = false;
-            this.gbForval.Text = "Förval";
-            // 
             // gbUtskrift
             // 
             this.gbUtskrift.Controls.Add(this.cbPrinter);
             this.gbUtskrift.Controls.Add(this.laPrinter);
-            this.gbUtskrift.Location = new System.Drawing.Point(509, 130);
+            this.gbUtskrift.Location = new System.Drawing.Point(16, 130);
             this.gbUtskrift.Margin = new System.Windows.Forms.Padding(4);
             this.gbUtskrift.Name = "gbUtskrift";
             this.gbUtskrift.Padding = new System.Windows.Forms.Padding(4);
@@ -255,7 +149,7 @@
             // 
             // cmdExporteraPersoner
             // 
-            this.cmdExporteraPersoner.Location = new System.Drawing.Point(619, 396);
+            this.cmdExporteraPersoner.Location = new System.Drawing.Point(594, 182);
             this.cmdExporteraPersoner.Margin = new System.Windows.Forms.Padding(4);
             this.cmdExporteraPersoner.Name = "cmdExporteraPersoner";
             this.cmdExporteraPersoner.Size = new System.Drawing.Size(217, 28);
@@ -266,7 +160,7 @@
             // 
             // cmdExporteraArtiklar
             // 
-            this.cmdExporteraArtiklar.Location = new System.Drawing.Point(619, 432);
+            this.cmdExporteraArtiklar.Location = new System.Drawing.Point(594, 213);
             this.cmdExporteraArtiklar.Margin = new System.Windows.Forms.Padding(4);
             this.cmdExporteraArtiklar.Name = "cmdExporteraArtiklar";
             this.cmdExporteraArtiklar.Size = new System.Drawing.Size(217, 28);
@@ -279,11 +173,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(869, 499);
+            this.ClientSize = new System.Drawing.Size(824, 259);
             this.Controls.Add(this.cmdExporteraArtiklar);
             this.Controls.Add(this.cmdExporteraPersoner);
             this.Controls.Add(this.gbUtskrift);
-            this.Controls.Add(this.gbForval);
             this.Controls.Add(this.laNuvarandeDbBackupDisplay);
             this.Controls.Add(this.laNuvarandeDbBackup);
             this.Controls.Add(this.gbInstallningarDb);
@@ -299,7 +192,6 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InstallningarDialog_KeyDown);
             this.gbInstallningarDb.ResumeLayout(false);
             this.gbInstallningarDb.PerformLayout();
-            this.gbForval.ResumeLayout(false);
             this.gbUtskrift.ResumeLayout(false);
             this.gbUtskrift.PerformLayout();
             this.ResumeLayout(false);
@@ -307,24 +199,36 @@
 
         }
 
+        private void cmdNuvarandeDbBackupAterstall_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void cmdNuvarandeDbBackupUtforska_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void cmdExporteraArtiklar_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void cmdExporteraPersoner_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         private System.Windows.Forms.GroupBox gbInstallningarDb;
         private System.Windows.Forms.Label laNuvarandeDbBackup;
         private System.Windows.Forms.Button cmdNuvarandeDbBackupUtforska;
-        private System.Windows.Forms.ListBox lbForval;
-        private System.Windows.Forms.ComboBox cbForvalValj;
-        private System.Windows.Forms.Button cmdForvalUpp;
-        private System.Windows.Forms.Button cmdForvalNer;
-        private System.Windows.Forms.Button cmdForvalLaggTill;
-        private System.Windows.Forms.Button cmdForvalTabort;
         private System.Windows.Forms.Button cmdNuvarandeDbBackupAterstall;
         private System.Windows.Forms.Label laNuvarandeDbBackupDisplay;
-        private System.Windows.Forms.Button cmdImportForval;
         private System.Windows.Forms.CheckBox cbBackupOnStart;
         private System.Windows.Forms.ComboBox cbPrinter;
         private System.Windows.Forms.Label laPrinter;
-        private System.Windows.Forms.GroupBox gbForval;
         private System.Windows.Forms.GroupBox gbUtskrift;
         private System.Windows.Forms.Button cmdExporteraPersoner;
         private System.Windows.Forms.Button cmdExporteraArtiklar;

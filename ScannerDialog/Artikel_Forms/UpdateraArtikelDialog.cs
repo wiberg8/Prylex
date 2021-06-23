@@ -68,7 +68,7 @@ namespace ScannerDialog
         }
         private void LaddaSnabbval()
         {
-            cbOS.Items.AddRange(AppSettings.Os.ToArray());
+            cbOS.Items.AddRange(DBAccess.GetUniqueOS().ToArray());
             if (cbOS.Items.Count > 0)
             {
                 cbOS.SelectedIndex = 0;

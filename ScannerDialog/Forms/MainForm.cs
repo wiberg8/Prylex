@@ -26,9 +26,6 @@ namespace ScannerDialog.Forms
         public MainForm()
         {
             InitializeComponent();
-            //AppSettings.PropertyChanged += Installningar_Change;
-            DBAccess.ArtikelChange += Artiklar_Change;
-            DBAccess.ConnectionChanged += Database_Connection_Changed;
             this.Icon = Properties.Resources.ApplikationIkon;
         }
 
@@ -39,23 +36,7 @@ namespace ScannerDialog.Forms
 
         private void Installningar_Change(object sender, PropertyChangedEventArgs e)
         {
-            var ins = (Installningar)sender;;
-            switch (tabArtiklarPersoner.SelectedTab.Name)
-            {
-                case nameof(tabArtiklar):
-                    FyllVisaEndast(AppSettings.Beskrivningar);
-                    break;
-                case nameof(tabPersoner):
-                    FyllVisaEndast(AppSettings.Tillhorigheter);
-                    break;
-            }
-            //laDatabaseWarning.Visible = !File.Exists(ins.Databas);
-            //tspNuvarandeDb.Text = ins.Databas;
-        }
-
-        private void Artiklar_Change(object sender, EventArgs e)
-        {
-            //dgvArtiklar.Rows.Clear();
+            
         }
 
         //frm events
@@ -70,7 +51,6 @@ namespace ScannerDialog.Forms
         private void tspArkivInstallningar_Click(object sender, EventArgs e) => VisaInstallnigarDialog();
         private void tspNyPerson_Click(object sender, EventArgs e) => VisaNyPersonDialog();
         private void tspNyArtikel_Click(object sender, EventArgs e) => VisaNyArtikelDialog();
-        private void tspFileNewDB_Click(object sender, EventArgs e) => NyDatabas();
         private void tspSnabbReg_Click(object sender, EventArgs e) => VisaSnabbRegistrering();
         private void tspImportPersoner_Click(object sender, EventArgs e) => VisaImportDialog();
         private void tspArkivAvsluta_Click(object sender, EventArgs e) => Application.Exit();
@@ -95,19 +75,18 @@ namespace ScannerDialog.Forms
             switch (tabArtiklarPersoner.SelectedTab.Name)
             {
                 case nameof(tabArtiklar):
-                    FyllVisaEndast(AppSettings.Beskrivningar);
+                    FyllVisaEndast(DBAccess.GetUniqueBesk());
                     break;
                 case nameof(tabPersoner):
-                    FyllVisaEndast(AppSettings.Tillhorigheter);
+                    FyllVisaEndast(DBAccess.GetUniqueTillhorighet());
                     break;
             }
         }
 
         private void FormStartup()
         {
-            //laDatabaseWarning.Visible = !File.Exists(AppSettings.Databas);
-            //tspNuvarandeDb.Text = AppSettings.Databas;
-            FyllVisaEndast(AppSettings.Beskrivningar);
+            tspNuvarandeDb.Text = Global.DATABASE_FILE;
+            FyllVisaEndast(DBAccess.GetUniqueBesk());
             SearchSelectedGrid();
         }
 
@@ -137,7 +116,21 @@ namespace ScannerDialog.Forms
             NyArtikelDialog artikelDialog = new NyArtikelDialog();
             ClearGrids();
             artikelDialog.ShowDialog();
+            RefreshVisaEndast();
             SearchSelectedGrid();
+        }
+
+        private void RefreshVisaEndast()
+        {
+            switch (tabArtiklarPersoner.SelectedTab.Name)
+            {
+                case nameof(tabArtiklar):
+                    FyllVisaEndast(DBAccess.GetUniqueBesk());
+                    break;
+                case nameof(tabPersoner):
+                    FyllVisaEndast(DBAccess.GetUniqueTillhorighet());
+                    break;
+            }
         }
 
         private void VisaNyPersonDialog()
@@ -145,6 +138,7 @@ namespace ScannerDialog.Forms
             var newPersonDialog = new NyPersonDialog();
             ClearGrids();
             newPersonDialog.ShowDialog();
+            RefreshVisaEndast();
             SearchSelectedGrid();
         }
 
@@ -153,24 +147,6 @@ namespace ScannerDialog.Forms
             var dialog = new InstallningarDialog();
             dialog.ShowDialog();
             SearchSelectedGrid();
-        }
-
-        private void NyDatabas()
-        {
-            SaveFileDialog fileDialog = new SaveFileDialog
-            {
-                Filter = "Database file(*.db)|*.db",
-                DefaultExt = "db",
-                AddExtension = true
-            };
-            DialogResult dialogResult = fileDialog.ShowDialog();
-            if (dialogResult == DialogResult.OK)
-            {
-                //if (!DBAccess.CreateFile(fileDialog.FileName))
-                //{
-                //    MessageBox.Show(Locales.CouldNotCreateDatabaseFile);
-                //}
-            }
         }
 
         private void SkannaEttiket()
@@ -214,18 +190,25 @@ namespace ScannerDialog.Forms
                 case nameof(tabArtiklar):
                     IEnumerable<Artikel> artiklar;
                     if (cbVisaEndast.SelectedIndex == 0)
+                    {
                         artiklar = SearchEngine.Search(DBAccess.HamtaArtiklar(), txtSok.Text);
+                    }
                     else
-                        artiklar = SearchEngine.Search(
-                            DBAccess.HamtaArtiklar().Where(a => a.Besk == cbVisaEndast.Text).ToList(), txtSok.Text);
+                    {
+                        artiklar = SearchEngine.Search(DBAccess.HamtaArtiklarFranBesk(cbVisaEndast.Text), txtSok.Text);
+                    }
                     FyllGrid(artiklar);
                     break;
                 case nameof(tabPersoner):
                     IEnumerable<Person> personer;
-                    if (cbVisaEndast.SelectedIndex == 0)
+                    if (cbVisaEndast.SelectedIndex == 0) 
+                    {
                         personer = SearchEngine.Search(DBAccess.HamtaPersoner(), txtSok.Text);
+                    }
                     else
-                        personer = SearchEngine.Search(DBAccess.HamtaPersoner().Where(p => p.Tillhorighet == cbVisaEndast.Text).ToList(), txtSok.Text);
+                    {
+                        personer = SearchEngine.Search(DBAccess.HamtaPersonerFranTillhorighet(cbVisaEndast.Text), txtSok.Text);
+                    }
                     FyllGrid(personer);
                     break;
             }

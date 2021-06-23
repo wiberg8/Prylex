@@ -222,7 +222,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\DataExtensions.cs" />
     <Compile Include="Extensions\DataGridExtensions.cs" />
     <Compile Include="Enums\HandelseTyp.cs" />
     <Compile Include="Extensions\ControlExtensions.cs" />

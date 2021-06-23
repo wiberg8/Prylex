@@ -35,9 +35,6 @@
             this.cmdSok = new System.Windows.Forms.Button();
             this.txtSok = new System.Windows.Forms.TextBox();
             this.tspArkiv = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tspArkivNyDatabasFil = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tspArkivInstallningar = new System.Windows.Forms.ToolStripMenuItem();
             this.tspArkivAvsluta = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -68,7 +65,6 @@
             this.clmSign = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmTillhorighet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmOvrigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.laDatabaseWarning = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cbVisaEndast = new System.Windows.Forms.ComboBox();
             this.laGridCount = new System.Windows.Forms.Label();
@@ -131,9 +127,6 @@
             // 
             this.tspArkiv.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tspArkiv.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator2,
-            this.tspArkivNyDatabasFil,
-            this.toolStripSeparator1,
             this.tspArkivInstallningar,
             this.tspArkivAvsluta});
             this.tspArkiv.Image = ((System.Drawing.Image)(resources.GetObject("tspArkiv.Image")));
@@ -142,34 +135,17 @@
             this.tspArkiv.Size = new System.Drawing.Size(47, 22);
             this.tspArkiv.Text = "Arkiv";
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(146, 6);
-            // 
-            // tspArkivNyDatabasFil
-            // 
-            this.tspArkivNyDatabasFil.Name = "tspArkivNyDatabasFil";
-            this.tspArkivNyDatabasFil.Size = new System.Drawing.Size(149, 22);
-            this.tspArkivNyDatabasFil.Text = "Skapa Ny (DB)";
-            this.tspArkivNyDatabasFil.Click += new System.EventHandler(this.tspFileNewDB_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
-            // 
             // tspArkivInstallningar
             // 
             this.tspArkivInstallningar.Name = "tspArkivInstallningar";
-            this.tspArkivInstallningar.Size = new System.Drawing.Size(149, 22);
+            this.tspArkivInstallningar.Size = new System.Drawing.Size(139, 22);
             this.tspArkivInstallningar.Text = "Inställningar";
             this.tspArkivInstallningar.Click += new System.EventHandler(this.tspArkivInstallningar_Click);
             // 
             // tspArkivAvsluta
             // 
             this.tspArkivAvsluta.Name = "tspArkivAvsluta";
-            this.tspArkivAvsluta.Size = new System.Drawing.Size(149, 22);
+            this.tspArkivAvsluta.Size = new System.Drawing.Size(139, 22);
             this.tspArkivAvsluta.Text = "Avsluta";
             this.tspArkivAvsluta.Click += new System.EventHandler(this.tspArkivAvsluta_Click);
             // 
@@ -473,18 +449,6 @@
             this.clmOvrigt.Name = "clmOvrigt";
             this.clmOvrigt.ReadOnly = true;
             // 
-            // laDatabaseWarning
-            // 
-            this.laDatabaseWarning.AutoSize = true;
-            this.laDatabaseWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.laDatabaseWarning.ForeColor = System.Drawing.Color.Red;
-            this.laDatabaseWarning.Location = new System.Drawing.Point(914, 99);
-            this.laDatabaseWarning.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.laDatabaseWarning.Name = "laDatabaseWarning";
-            this.laDatabaseWarning.Size = new System.Drawing.Size(342, 20);
-            this.laDatabaseWarning.TabIndex = 13;
-            this.laDatabaseWarning.Text = "Gå till inställningar och välj sökväg till databas fil";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ScannerDialog.Properties.Resources.BigLogga;
@@ -517,14 +481,13 @@
             this.laGridCount.Text = "antal";
             this.laGridCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // frmMain
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1256, 830);
             this.Controls.Add(this.laGridCount);
             this.Controls.Add(this.cbVisaEndast);
-            this.Controls.Add(this.laDatabaseWarning);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabArtiklarPersoner);
             this.Controls.Add(this.gbSearch);
@@ -533,7 +496,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.Name = "frmMain";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.Load += new System.EventHandler(this.frmMain_Load);
@@ -557,10 +520,7 @@
         private System.Windows.Forms.TextBox txtSok;
         private System.Windows.Forms.Button cmdSok;
         private System.Windows.Forms.ToolStripDropDownButton tspArkiv;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem tspArkivNyDatabasFil;
         private System.Windows.Forms.ToolStripMenuItem tspArkivInstallningar;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tspArkivAvsluta;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.Button cmdScanLabel;
@@ -586,7 +546,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmInkop;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPersonId;
-        private System.Windows.Forms.Label laDatabaseWarning;
         private System.Windows.Forms.ToolStripButton tspMassRegistrering;
         private System.Windows.Forms.ToolStripButton tspImportPersoner;
         private System.Windows.Forms.PictureBox pictureBox1;

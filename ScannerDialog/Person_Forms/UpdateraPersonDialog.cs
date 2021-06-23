@@ -62,10 +62,7 @@ namespace ScannerDialog
 
         private void LaddaSnabbVal()
         {
-            foreach (string v in AppSettings.Tillhorigheter)
-            {
-                cbTillhorighet.Items.Add(v);
-            }
+            cbTillhorighet.Items.AddRange(DBAccess.GetUniqueTillhorighet().ToArray());
         }
 
          private Person FaltToPerson()

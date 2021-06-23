@@ -38,7 +38,7 @@ namespace ScannerDialog
         {
             cbTillhorighet.Items.Add(Locales.ValjTillhorighet);
             cbTillhorighet.SelectedIndex = 0;
-            AppSettings.Tillhorigheter.ForEach((string x) => cbTillhorighet.Items.Add(x));
+            cbTillhorighet.Items.AddRange(DBAccess.GetUniqueTillhorighet().ToArray());
         }
         private void NyTillhorighetSelected()
         {

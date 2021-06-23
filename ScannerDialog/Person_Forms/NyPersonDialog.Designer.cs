@@ -48,6 +48,7 @@
             this.txtFornamn = new System.Windows.Forms.TextBox();
             this.laFornamn = new System.Windows.Forms.Label();
             this.lbErrors = new System.Windows.Forms.ListBox();
+            this.checkTillhorighetFritext = new System.Windows.Forms.CheckBox();
             this.gbFalt.SuspendLayout();
             this.gbSnabbVal.SuspendLayout();
             this.SuspendLayout();
@@ -72,9 +73,9 @@
             this.gbFalt.Controls.Add(this.txtFornamn);
             this.gbFalt.Controls.Add(this.laFornamn);
             this.gbFalt.Location = new System.Drawing.Point(16, 15);
-            this.gbFalt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbFalt.Margin = new System.Windows.Forms.Padding(4);
             this.gbFalt.Name = "gbFalt";
-            this.gbFalt.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbFalt.Padding = new System.Windows.Forms.Padding(4);
             this.gbFalt.Size = new System.Drawing.Size(633, 295);
             this.gbFalt.TabIndex = 0;
             this.gbFalt.TabStop = false;
@@ -84,7 +85,7 @@
             // 
             this.cmdAvbryt.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdAvbryt.Location = new System.Drawing.Point(484, 245);
-            this.cmdAvbryt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmdAvbryt.Margin = new System.Windows.Forms.Padding(4);
             this.cmdAvbryt.Name = "cmdAvbryt";
             this.cmdAvbryt.Size = new System.Drawing.Size(116, 28);
             this.cmdAvbryt.TabIndex = 9;
@@ -97,7 +98,7 @@
             this.txtSign.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSign.HideSelection = false;
             this.txtSign.Location = new System.Drawing.Point(149, 149);
-            this.txtSign.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSign.Margin = new System.Windows.Forms.Padding(4);
             this.txtSign.Name = "txtSign";
             this.txtSign.Size = new System.Drawing.Size(152, 22);
             this.txtSign.TabIndex = 3;
@@ -105,7 +106,7 @@
             // cmdSpara
             // 
             this.cmdSpara.Location = new System.Drawing.Point(312, 245);
-            this.cmdSpara.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmdSpara.Margin = new System.Windows.Forms.Padding(4);
             this.cmdSpara.Name = "cmdSpara";
             this.cmdSpara.Size = new System.Drawing.Size(116, 28);
             this.cmdSpara.TabIndex = 8;
@@ -127,7 +128,7 @@
             // 
             this.txtPersNr.Culture = new System.Globalization.CultureInfo("");
             this.txtPersNr.Location = new System.Drawing.Point(21, 149);
-            this.txtPersNr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPersNr.Margin = new System.Windows.Forms.Padding(4);
             this.txtPersNr.Mask = "######-####";
             this.txtPersNr.Name = "txtPersNr";
             this.txtPersNr.Size = new System.Drawing.Size(119, 22);
@@ -138,7 +139,7 @@
             this.txtTelefon.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTelefon.HideSelection = false;
             this.txtTelefon.Location = new System.Drawing.Point(20, 247);
-            this.txtTelefon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTelefon.Margin = new System.Windows.Forms.Padding(4);
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(283, 22);
             this.txtTelefon.TabIndex = 6;
@@ -155,10 +156,11 @@
             // 
             // txtEpost
             // 
+            this.txtEpost.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtEpost.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEpost.HideSelection = false;
             this.txtEpost.Location = new System.Drawing.Point(21, 198);
-            this.txtEpost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEpost.Margin = new System.Windows.Forms.Padding(4);
             this.txtEpost.Name = "txtEpost";
             this.txtEpost.Size = new System.Drawing.Size(281, 22);
             this.txtEpost.TabIndex = 4;
@@ -175,12 +177,13 @@
             // 
             // gbSnabbVal
             // 
+            this.gbSnabbVal.Controls.Add(this.checkTillhorighetFritext);
             this.gbSnabbVal.Controls.Add(this.cbTillhorighet);
             this.gbSnabbVal.Controls.Add(this.laTillhorighet);
             this.gbSnabbVal.Location = new System.Drawing.Point(311, 133);
-            this.gbSnabbVal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbSnabbVal.Margin = new System.Windows.Forms.Padding(4);
             this.gbSnabbVal.Name = "gbSnabbVal";
-            this.gbSnabbVal.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbSnabbVal.Padding = new System.Windows.Forms.Padding(4);
             this.gbSnabbVal.Size = new System.Drawing.Size(299, 89);
             this.gbSnabbVal.TabIndex = 8;
             this.gbSnabbVal.TabStop = false;
@@ -191,7 +194,7 @@
             this.cbTillhorighet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTillhorighet.FormattingEnabled = true;
             this.cbTillhorighet.Location = new System.Drawing.Point(20, 44);
-            this.cbTillhorighet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbTillhorighet.Margin = new System.Windows.Forms.Padding(4);
             this.cbTillhorighet.Name = "cbTillhorighet";
             this.cbTillhorighet.Size = new System.Drawing.Size(268, 24);
             this.cbTillhorighet.TabIndex = 8;
@@ -212,7 +215,7 @@
             this.txtEfternamn.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEfternamn.HideSelection = false;
             this.txtEfternamn.Location = new System.Drawing.Point(20, 97);
-            this.txtEfternamn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEfternamn.Margin = new System.Windows.Forms.Padding(4);
             this.txtEfternamn.Name = "txtEfternamn";
             this.txtEfternamn.Size = new System.Drawing.Size(281, 22);
             this.txtEfternamn.TabIndex = 1;
@@ -242,7 +245,7 @@
             this.txtOvrigt.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtOvrigt.HideSelection = false;
             this.txtOvrigt.Location = new System.Drawing.Point(311, 46);
-            this.txtOvrigt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtOvrigt.Margin = new System.Windows.Forms.Padding(4);
             this.txtOvrigt.Multiline = true;
             this.txtOvrigt.Name = "txtOvrigt";
             this.txtOvrigt.Size = new System.Drawing.Size(297, 75);
@@ -263,7 +266,7 @@
             this.txtFornamn.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtFornamn.HideSelection = false;
             this.txtFornamn.Location = new System.Drawing.Point(20, 46);
-            this.txtFornamn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFornamn.Margin = new System.Windows.Forms.Padding(4);
             this.txtFornamn.Name = "txtFornamn";
             this.txtFornamn.Size = new System.Drawing.Size(281, 22);
             this.txtFornamn.TabIndex = 0;
@@ -283,10 +286,25 @@
             this.lbErrors.FormattingEnabled = true;
             this.lbErrors.ItemHeight = 16;
             this.lbErrors.Location = new System.Drawing.Point(655, 21);
-            this.lbErrors.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbErrors.Margin = new System.Windows.Forms.Padding(4);
             this.lbErrors.Name = "lbErrors";
             this.lbErrors.Size = new System.Drawing.Size(281, 292);
             this.lbErrors.TabIndex = 16;
+            // 
+            // checkTillhorighetFritext
+            // 
+            this.checkTillhorighetFritext.AutoSize = true;
+            this.checkTillhorighetFritext.Location = new System.Drawing.Point(226, 20);
+            this.checkTillhorighetFritext.Margin = new System.Windows.Forms.Padding(4);
+            this.checkTillhorighetFritext.Name = "checkTillhorighetFritext";
+            this.checkTillhorighetFritext.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkTillhorighetFritext.Size = new System.Drawing.Size(62, 20);
+            this.checkTillhorighetFritext.TabIndex = 9;
+            this.checkTillhorighetFritext.TabStop = false;
+            this.checkTillhorighetFritext.Text = "Fritext";
+            this.checkTillhorighetFritext.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.checkTillhorighetFritext.UseVisualStyleBackColor = true;
+            this.checkTillhorighetFritext.CheckedChanged += new System.EventHandler(this.checkTillhorighetFritext_CheckedChanged);
             // 
             // NyPersonDialog
             // 
@@ -298,7 +316,7 @@
             this.Controls.Add(this.gbFalt);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NyPersonDialog";
@@ -336,5 +354,6 @@
         private System.Windows.Forms.TextBox txtSign;
         private System.Windows.Forms.Label laSign;
         private System.Windows.Forms.ListBox lbErrors;
+        private System.Windows.Forms.CheckBox checkTillhorighetFritext;
     }
 }

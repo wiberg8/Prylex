@@ -84,7 +84,8 @@ namespace ScannerDialog
         }
         private void LaddaSnabbVal()
         {
-            cbTillhorighet.DataSource = AppSettings.Tillhorigheter;
+            cbTillhorighet.Items.AddRange(DBAccess.GetUniqueTillhorighet().ToArray());
+
             if (cbTillhorighet.Items.Count > 0)
                 cbTillhorighet.SelectedIndex = 0;
         }
@@ -95,6 +96,11 @@ namespace ScannerDialog
             {
                 lbErrors.Items.Add(x);
             }
+        }
+
+        private void checkTillhorighetFritext_CheckedChanged(object sender, EventArgs e)
+        {
+            cbTillhorighet.DropDownStyle = checkTillhorighetFritext.Checked ? ComboBoxStyle.DropDown : ComboBoxStyle.DropDownList;
         }
     }
 }

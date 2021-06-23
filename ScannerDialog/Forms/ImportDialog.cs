@@ -145,8 +145,10 @@ namespace ScannerDialog.Forms
         private void SelectImportFil()
         {
             lbPersoner.Items.Clear();
-            var fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "Csv filer (*.csv)|*.csv";
+            var fileDialog = new OpenFileDialog
+            {
+                Filter = "Csv filer (*.csv)|*.csv"
+            };
 
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -163,7 +165,7 @@ namespace ScannerDialog.Forms
         }
         private void LaddaSnabbVal()
         {
-            cbTillhorighet.DataSource = Program.AppSettings.Tillhorigheter;
+            cbTillhorighet.DataSource = DBAccess.GetUniqueTillhorighet();
             if (cbTillhorighet.Items.Count > 0)
                 cbTillhorighet.SelectedIndex = 0;
         }

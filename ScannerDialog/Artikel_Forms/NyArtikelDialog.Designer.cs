@@ -63,7 +63,7 @@
             this.cbBeskrivningar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbBeskrivningar.FormattingEnabled = true;
             this.cbBeskrivningar.Location = new System.Drawing.Point(12, 44);
-            this.cbBeskrivningar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbBeskrivningar.Margin = new System.Windows.Forms.Padding(4);
             this.cbBeskrivningar.Name = "cbBeskrivningar";
             this.cbBeskrivningar.Size = new System.Drawing.Size(275, 24);
             this.cbBeskrivningar.TabIndex = 0;
@@ -91,9 +91,9 @@
             this.gbSnabbVal.Controls.Add(this.cbBeskrivningar);
             this.gbSnabbVal.Controls.Add(this.laBeskrivningar);
             this.gbSnabbVal.Location = new System.Drawing.Point(444, 11);
-            this.gbSnabbVal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbSnabbVal.Margin = new System.Windows.Forms.Padding(4);
             this.gbSnabbVal.Name = "gbSnabbVal";
-            this.gbSnabbVal.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbSnabbVal.Padding = new System.Windows.Forms.Padding(4);
             this.gbSnabbVal.Size = new System.Drawing.Size(300, 197);
             this.gbSnabbVal.TabIndex = 0;
             this.gbSnabbVal.TabStop = false;
@@ -103,7 +103,7 @@
             // 
             this.cbPrintEttiket.AutoSize = true;
             this.cbPrintEttiket.Location = new System.Drawing.Point(165, 158);
-            this.cbPrintEttiket.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbPrintEttiket.Margin = new System.Windows.Forms.Padding(4);
             this.cbPrintEttiket.Name = "cbPrintEttiket";
             this.cbPrintEttiket.Size = new System.Drawing.Size(108, 20);
             this.cbPrintEttiket.TabIndex = 29;
@@ -113,8 +113,8 @@
             // checkOsFritext
             // 
             this.checkOsFritext.AutoSize = true;
-            this.checkOsFritext.Location = new System.Drawing.Point(216, 74);
-            this.checkOsFritext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkOsFritext.Location = new System.Drawing.Point(225, 74);
+            this.checkOsFritext.Margin = new System.Windows.Forms.Padding(4);
             this.checkOsFritext.Name = "checkOsFritext";
             this.checkOsFritext.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkOsFritext.Size = new System.Drawing.Size(62, 20);
@@ -130,7 +130,7 @@
             this.cbOS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOS.FormattingEnabled = true;
             this.cbOS.Location = new System.Drawing.Point(12, 97);
-            this.cbOS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbOS.Margin = new System.Windows.Forms.Padding(4);
             this.cbOS.Name = "cbOS";
             this.cbOS.Size = new System.Drawing.Size(275, 24);
             this.cbOS.TabIndex = 2;
@@ -151,7 +151,7 @@
             this.dtpInkop.Checked = false;
             this.dtpInkop.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpInkop.Location = new System.Drawing.Point(12, 155);
-            this.dtpInkop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpInkop.Margin = new System.Windows.Forms.Padding(4);
             this.dtpInkop.Name = "dtpInkop";
             this.dtpInkop.Size = new System.Drawing.Size(140, 22);
             this.dtpInkop.TabIndex = 3;
@@ -171,8 +171,8 @@
             // checkBeskrivningarFritext
             // 
             this.checkBeskrivningarFritext.AutoSize = true;
-            this.checkBeskrivningarFritext.Location = new System.Drawing.Point(216, 20);
-            this.checkBeskrivningarFritext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBeskrivningarFritext.Location = new System.Drawing.Point(225, 20);
+            this.checkBeskrivningarFritext.Margin = new System.Windows.Forms.Padding(4);
             this.checkBeskrivningarFritext.Name = "checkBeskrivningarFritext";
             this.checkBeskrivningarFritext.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBeskrivningarFritext.Size = new System.Drawing.Size(62, 20);
@@ -185,10 +185,11 @@
             // 
             // txtDatornamn
             // 
+            this.txtDatornamn.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDatornamn.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDatornamn.HideSelection = false;
             this.txtDatornamn.Location = new System.Drawing.Point(20, 201);
-            this.txtDatornamn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDatornamn.Margin = new System.Windows.Forms.Padding(4);
             this.txtDatornamn.Name = "txtDatornamn";
             this.txtDatornamn.Size = new System.Drawing.Size(384, 22);
             this.txtDatornamn.TabIndex = 7;
@@ -205,10 +206,11 @@
             // 
             // txtStoldtag
             // 
+            this.txtStoldtag.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtStoldtag.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtStoldtag.HideSelection = false;
             this.txtStoldtag.Location = new System.Drawing.Point(20, 149);
-            this.txtStoldtag.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtStoldtag.Margin = new System.Windows.Forms.Padding(4);
             this.txtStoldtag.Name = "txtStoldtag";
             this.txtStoldtag.Size = new System.Drawing.Size(384, 22);
             this.txtStoldtag.TabIndex = 6;
@@ -229,7 +231,7 @@
             this.txtSerieNr.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSerieNr.HideSelection = false;
             this.txtSerieNr.Location = new System.Drawing.Point(20, 46);
-            this.txtSerieNr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSerieNr.Margin = new System.Windows.Forms.Padding(4);
             this.txtSerieNr.Name = "txtSerieNr";
             this.txtSerieNr.Size = new System.Drawing.Size(384, 22);
             this.txtSerieNr.TabIndex = 4;
@@ -257,9 +259,9 @@
             this.gbFalt.Controls.Add(this.laDatornamn);
             this.gbFalt.Controls.Add(this.laSerieNr);
             this.gbFalt.Location = new System.Drawing.Point(16, 11);
-            this.gbFalt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbFalt.Margin = new System.Windows.Forms.Padding(4);
             this.gbFalt.Name = "gbFalt";
-            this.gbFalt.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbFalt.Padding = new System.Windows.Forms.Padding(4);
             this.gbFalt.Size = new System.Drawing.Size(420, 348);
             this.gbFalt.TabIndex = 1;
             this.gbFalt.TabStop = false;
@@ -270,7 +272,7 @@
             this.txtMAC.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMAC.HideSelection = false;
             this.txtMAC.Location = new System.Drawing.Point(20, 97);
-            this.txtMAC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMAC.Margin = new System.Windows.Forms.Padding(4);
             this.txtMAC.Name = "txtMAC";
             this.txtMAC.Size = new System.Drawing.Size(384, 22);
             this.txtMAC.TabIndex = 5;
@@ -290,7 +292,7 @@
             this.txtOvrigt.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtOvrigt.HideSelection = false;
             this.txtOvrigt.Location = new System.Drawing.Point(20, 252);
-            this.txtOvrigt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtOvrigt.Margin = new System.Windows.Forms.Padding(4);
             this.txtOvrigt.Multiline = true;
             this.txtOvrigt.Name = "txtOvrigt";
             this.txtOvrigt.Size = new System.Drawing.Size(384, 80);
@@ -309,7 +311,7 @@
             // cmdSpara
             // 
             this.cmdSpara.Location = new System.Drawing.Point(444, 331);
-            this.cmdSpara.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmdSpara.Margin = new System.Windows.Forms.Padding(4);
             this.cmdSpara.Name = "cmdSpara";
             this.cmdSpara.Size = new System.Drawing.Size(117, 28);
             this.cmdSpara.TabIndex = 8;
@@ -321,7 +323,7 @@
             // 
             this.cmdAvbryt.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdAvbryt.Location = new System.Drawing.Point(627, 331);
-            this.cmdAvbryt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmdAvbryt.Margin = new System.Windows.Forms.Padding(4);
             this.cmdAvbryt.Name = "cmdAvbryt";
             this.cmdAvbryt.Size = new System.Drawing.Size(117, 28);
             this.cmdAvbryt.TabIndex = 9;
@@ -338,7 +340,7 @@
             this.lbErrors.FormattingEnabled = true;
             this.lbErrors.ItemHeight = 16;
             this.lbErrors.Location = new System.Drawing.Point(444, 215);
-            this.lbErrors.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbErrors.Margin = new System.Windows.Forms.Padding(4);
             this.lbErrors.Name = "lbErrors";
             this.lbErrors.Size = new System.Drawing.Size(299, 100);
             this.lbErrors.TabIndex = 17;
@@ -357,7 +359,7 @@
             this.Controls.Add(this.gbSnabbVal);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NyArtikelDialog";

@@ -244,7 +244,7 @@ namespace ScannerDialog
                 }
                 FyllHandelser(DBAccess.HamtaHandelserPerson(nuvarandePerson).ToList());
                 FyllRegistreradeArtiklar(DBAccess.HamtaRegistreradeArtiklar(nuvarandePerson).ToList());
-                laAntalRegArtiklar.Text = $"{Locales.Antal}l: {lbRegistreradeArtiklar.Items.Count}";
+                laAntalRegArtiklar.Text = $"{Locales.Antal}: {lbRegistreradeArtiklar.Items.Count}";
             }
         }
         private void VisaRegistreradeArtiklar()

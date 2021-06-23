@@ -9,7 +9,7 @@ using SQLite;
 
 namespace PrylanLibary.Models
 {
-    [Table("artiklar")]
+    [Table("Artiklar")]
     public class Artikel
     {
         public Artikel()
@@ -33,7 +33,7 @@ namespace PrylanLibary.Models
         public string Inkop { get; set; }
         public string Ovrigt { get; set; }
         public Status Status { get; set; }
-        public int PersId { get; set; }
+        public int? PersId { get; set; }
 
         public Artikel Copy()
         {

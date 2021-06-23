@@ -24,7 +24,6 @@ namespace PrylanLibary
 
         public static void WriteToFile()
         {
-            File.WriteAllText("sdfsdfdf.txt", x);
             File.WriteAllText(logFileName, logBuilder.ToString());
         }
     }

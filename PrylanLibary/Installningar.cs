@@ -19,11 +19,6 @@ namespace PrylanLibary
         public Guid LastLicense { get; set; }
         public bool BackupOnStart { get; set; }
 
-        public List<string> Beskrivningar { get; set; }
-        public List<string> Os { get; set; }
-        public List<string> Tillhorigheter { get; set; }
-        public List<string> Handelser { get; set; }
-
         public void Ladda()
         {
             Installningar installningar;
@@ -63,10 +58,6 @@ namespace PrylanLibary
             this.Skrivare = another.Skrivare;
             this.LastLicense = another.LastLicense;
             this.BackupOnStart = another.BackupOnStart;
-            this.Beskrivningar = another.Beskrivningar;
-            this.Os = another.Os;
-            this.Tillhorigheter = another.Tillhorigheter;
-            this.Handelser = another.Handelser;
         }
 
     }

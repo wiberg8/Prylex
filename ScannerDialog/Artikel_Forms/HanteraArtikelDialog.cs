@@ -122,7 +122,7 @@ namespace ScannerDialog
         {
             if (MessageBox.Show("Är du säker på att avregistrera artikeln från personen?", "Prylex", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                int unregisterPersId = nuvarandeArtikel.PersId;
+                int? unregisterPersId = nuvarandeArtikel.PersId;
                 DBAccess.AvregistreraArtikelFromPerson(nuvarandeArtikel);
                 nuvarandeArtikel = DBAccess.HamtaArtikel(nuvarandeArtikel.Id);
                 if (nuvarandeArtikel != null && nuvarandeArtikel.Status == Status.INNE)

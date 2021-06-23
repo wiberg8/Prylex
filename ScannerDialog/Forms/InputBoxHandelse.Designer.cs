@@ -29,7 +29,7 @@
         {
             this.cmdCancel = new System.Windows.Forms.Button();
             this.cmdOk = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbHandelser = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // cmdCancel
@@ -56,12 +56,12 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(13, 32);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(441, 24);
-            this.comboBox1.TabIndex = 3;
+            this.cbHandelser.FormattingEnabled = true;
+            this.cbHandelser.Location = new System.Drawing.Point(13, 32);
+            this.cbHandelser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbHandelser.Name = "comboBox1";
+            this.cbHandelser.Size = new System.Drawing.Size(441, 24);
+            this.cbHandelser.TabIndex = 3;
             // 
             // InputBoxHandelse
             // 
@@ -70,7 +70,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.cmdCancel;
             this.ClientSize = new System.Drawing.Size(472, 111);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbHandelser);
             this.Controls.Add(this.cmdOk);
             this.Controls.Add(this.cmdCancel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -91,6 +91,6 @@
         #endregion
         private System.Windows.Forms.Button cmdCancel;
         private System.Windows.Forms.Button cmdOk;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbHandelser;
     }
 }

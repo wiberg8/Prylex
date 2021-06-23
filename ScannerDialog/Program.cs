@@ -51,8 +51,12 @@ namespace ScannerDialog
             dialog.ShowDialog();
             if (dialog.SuccesfulAuthentication)
             {
+                if (IsApplicationRunning())
+                {
+                    return;
+                }
                 AppSettings.LastLicense = dialog.SuccesfulLicense;
-                BackupDatabase();
+               // BackupDatabase();
                 if (DBAccess.Open(Global.DATABASE_FILE))
                 {
                     Application.Run(new MainForm());

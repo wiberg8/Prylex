@@ -35,17 +35,17 @@ namespace ScannerDialog
 
         private void FormStartup()
         {
-            comboBox1.Items.AddRange(AppSettings.Handelser.ToArray());
-            if (comboBox1.Items.Count > 0)
+            cbHandelser.Items.AddRange(DBAccess.GetUniqueHandelser().ToArray());
+            if (cbHandelser.Items.Count > 0)
             {
-                comboBox1.SelectedIndex = 0;
+                cbHandelser.SelectedIndex = 0;
             }
         }
         private void Ok()
         {
-            if (string.IsNullOrWhiteSpace(comboBox1.Text))
+            if (string.IsNullOrWhiteSpace(cbHandelser.Text))
                 return;
-            this.Input = comboBox1.Text.Trim();
+            this.Input = cbHandelser.Text.Trim();
             this.DialogResult = DialogResult.OK;
         }
     }

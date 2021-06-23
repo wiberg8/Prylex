@@ -7,23 +7,24 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using static PrylanLibary.Global;
 
 namespace PrylanLibary
-{
+{ 
     public static class StringExtensions
     {
 		public static string RemoveWhiteSpaces(this string str)
 		{
-			return string.Join("", str.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
+			return string.Join(string.Empty, str.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
 		}
 
-		public static string Decrypt(this string encryptedText, string PasswordHash, string SaltKey, string VIKey)
+		public static string Decrypt(this string encryptedText)
 		{
 			byte[] cipherTextBytes = Convert.FromBase64String(encryptedText);
-			byte[] keyBytes = new Rfc2898DeriveBytes(PasswordHash, Encoding.ASCII.GetBytes(SaltKey)).GetBytes(256 / 8);
+			byte[] keyBytes = new Rfc2898DeriveBytes(PASSWORD_HASH, Encoding.ASCII.GetBytes(SALT_KEY)).GetBytes(256 / 8);
 			var symmetricKey = new RijndaelManaged() { Mode = CipherMode.CBC, Padding = PaddingMode.None };
 
-			var decryptor = symmetricKey.CreateDecryptor(keyBytes, Encoding.ASCII.GetBytes(VIKey));
+			var decryptor = symmetricKey.CreateDecryptor(keyBytes, Encoding.ASCII.GetBytes(VI_KEY));
 			var memoryStream = new MemoryStream(cipherTextBytes);
 			var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
 			byte[] plainTextBytes = new byte[cipherTextBytes.Length];
@@ -34,13 +35,13 @@ namespace PrylanLibary
 			return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount).TrimEnd("\0".ToCharArray());
 		}
 
-		public static string Encrypt(this string plainText, string PasswordHash, string SaltKey, string VIKey)
+		public static string Encrypt(this string plainText)
 		{
 			byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
 
-			byte[] keyBytes = new Rfc2898DeriveBytes(PasswordHash, Encoding.ASCII.GetBytes(SaltKey)).GetBytes(256 / 8);
+			byte[] keyBytes = new Rfc2898DeriveBytes(PASSWORD_HASH, Encoding.ASCII.GetBytes(SALT_KEY)).GetBytes(256 / 8);
 			var symmetricKey = new RijndaelManaged() { Mode = CipherMode.CBC, Padding = PaddingMode.Zeros };
-			var encryptor = symmetricKey.CreateEncryptor(keyBytes, Encoding.ASCII.GetBytes(VIKey));
+			var encryptor = symmetricKey.CreateEncryptor(keyBytes, Encoding.ASCII.GetBytes(VI_KEY));
 
 			byte[] cipherTextBytes;
 
