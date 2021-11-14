@@ -176,8 +176,8 @@ namespace PrylanLibary
             Person p = this.HamtaPerson(person.Id);
             if (p is null)
                 return 0;
-            List<Artikel> regArtiklar = this.HamtaRegistreradeArtiklar(person);
-            if (regArtiklar.Any())
+            List<Artikel> registreradeArtiklar = this.HamtaRegistreradeArtiklar(person);
+            if (registreradeArtiklar.Any())
             {
                 return 0;
             }
@@ -234,15 +234,5 @@ namespace PrylanLibary
                 .Distinct()
                 .ToList();
         }
-
-        //public List<string> GetAllTables()
-        //{
-        //    return dbHandler.GetAllTables();
-        //}
-
-        //public List<string> GetColumnsByTableName(string tableName)
-        //{
-        //    return dbHandler.GetColumnsByTableName(tableName);
-        //}
     }
 }

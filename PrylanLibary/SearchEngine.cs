@@ -49,6 +49,14 @@ namespace PrylanLibary
          
         private static bool Search(string x)
         {
+            if (currentSearchQuery == string.Empty && x is null)
+            {
+                return true;
+            }
+            if (x is null)
+            {
+                return false;
+            }
             string lowered = x.ToLower().RemoveWhiteSpaces();
             return x == currentSearchQuery 
                 || lowered.StartsWith(currentSearchQuery) 

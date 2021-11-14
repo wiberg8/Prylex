@@ -19,7 +19,7 @@ namespace PrylanLibary
         {
             try
             {
-                var label = Label.Open(labelSerieNr);
+                ILabel label = Label.Open(labelSerieNr);
                 label.SetObjectText("dynSerieNr", serieNr);
                 label.Print(printer);
             }
@@ -35,7 +35,7 @@ namespace PrylanLibary
         {
             try
             {
-                var label = Label.Open(labelKombo);
+                ILabel label = Label.Open(labelKombo);
                 label.SetObjectText("dynDatorNamn", artikel.DatorNamn);
                 label.SetObjectText("dynSerieNr", artikel.SerieNr);
                 label.SetObjectText("dynNamn", person.FullName);

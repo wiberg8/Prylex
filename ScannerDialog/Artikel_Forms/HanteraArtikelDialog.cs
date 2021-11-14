@@ -206,15 +206,14 @@ namespace ScannerDialog
                 DialogResult result = MessageBox.Show("Ingen träff, Vill du skapa en person med detta pers nr?", string.Empty, MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    var dialog = new NyPersonSimpelDialog(scannedPersNr);
-                    dialog.ShowDialog();
-                    if (dialog.Person != null)
+                    NyPersonSimpelDialog personDialog = new NyPersonSimpelDialog(scannedPersNr);
+                    personDialog.ShowDialog();
+                    if (personDialog.Person != null)
                     {
-                        if (DBAccess.HamtaPersonFranPersNr(dialog.Person.PersNr) is null)
+                        if (DBAccess.HamtaPersonFranPersNr(personDialog.Person.PersNr) is null)
                         {
-                            Person personFromPersNr;
-                            DBAccess.InfogaPerson(dialog.Person);
-                            personFromPersNr = DBAccess.HamtaPersonFranPersNr(dialog.Person.PersNr);
+                            DBAccess.InfogaPerson(personDialog.Person);
+                            Person personFromPersNr = DBAccess.HamtaPersonFranPersNr(personDialog.Person.PersNr);
                             if (personFromPersNr != null)
                             {
                                 RegistreraPerson(personFromPersNr);
@@ -247,7 +246,7 @@ namespace ScannerDialog
         }
         private void EditeraArtikel()
         {
-            var updateraArtikelDialog = new UpdateraArtikelDialog(this.nuvarandeArtikel);
+            UpdateraArtikelDialog updateraArtikelDialog = new UpdateraArtikelDialog(this.nuvarandeArtikel);
             updateraArtikelDialog.ShowDialog();
             if (updateraArtikelDialog.Result != null)
             {

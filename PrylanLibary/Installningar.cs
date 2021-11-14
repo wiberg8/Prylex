@@ -12,11 +12,10 @@ namespace PrylanLibary
 {
     public class Installningar
     {
-        //public string Databas { get { return _databas; } set { _databas = value; NotifyPropertyChanged(); } }
+        public string Databas { get; set; }
         public string DatabasBackup { get; set; }
         public string ForetagsNamn { get; set; }
         public string Skrivare { get; set; }
-        public Guid LastLicense { get; set; }
         public bool BackupOnStart { get; set; }
 
         public void Ladda()
@@ -53,10 +52,10 @@ namespace PrylanLibary
 
         private void SetThisAsAnother(Installningar another)
         {
+            this.Databas = another.Databas;
             this.DatabasBackup = another.DatabasBackup;
             this.ForetagsNamn = another.ForetagsNamn;
             this.Skrivare = another.Skrivare;
-            this.LastLicense = another.LastLicense;
             this.BackupOnStart = another.BackupOnStart;
         }
 

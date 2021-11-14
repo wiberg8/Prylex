@@ -15,7 +15,6 @@ namespace ScannerDialog
     {
         public static Installningar AppSettings { get; set; } = new Installningar();
         public static DataAccess DBAccess { get; private set; } = new DataAccess();
-        private static readonly USBAuthentication usbAuthentication = new USBAuthentication();
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -28,18 +27,7 @@ namespace ScannerDialog
                 return;
             }
 
-            (bool, string) x = usbAuthentication.AuthenticateUSB();
-            bool usbConnected = x.Item1;
-            string message = x.Item2;
-            if (usbConnected)
-            {
-                SetupFolderDBFile();
-                ApplicationStart();
-            }
-            else
-            {
-                MessageBox.Show(message);
-            }
+            ApplicationStart();
         }
 
         private static void ApplicationStart()
@@ -47,43 +35,15 @@ namespace ScannerDialog
             AppSettings.Ladda();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            LicensDialog dialog = new LicensDialog();
-            dialog.ShowDialog();
-            if (dialog.SuccesfulAuthentication)
+            //TODO Om databas ej kan öppnas så måste en dialog där man kan välja db fixas
+            if (DBAccess.Open(AppSettings.Databas))
             {
-                if (IsApplicationRunning())
-                {
-                    return;
-                }
-                AppSettings.LastLicense = dialog.SuccesfulLicense;
-               // BackupDatabase();
-                if (DBAccess.Open(Global.DATABASE_FILE))
-                {
-                    Application.Run(new MainForm());
-                    DBAccess.Close();
-                }
+                Application.Run(new MainForm());
+                DBAccess.Close();
             }
             AppSettings.Spara();
             Logger.WriteToFile();
         }
-
-
-        static void SetupFolderDBFile()
-        {
-            DirectoryInfo dbFolder = Directory.CreateDirectory(Global.DATABASE_FOLDER);
-            FileInfo dbFile = new FileInfo(Global.DATABASE_FILE);
-            if (dbFolder.Exists && !dbFile.Exists)
-            {
-               // new DataAccess().CreateFile(Global.DATABASE_FILE);
-            }
-        }
-        //private static void CreateNeededFoldersIfNotExist()
-        //{
-        //    if (Global.)
-        //    {
-
-        //    }
-        //}
 
         private static bool IsApplicationRunning()
         {

@@ -66,7 +66,7 @@ namespace ScannerDialog
             this.cbBackupOnStart.Location = new System.Drawing.Point(13, 62);
             this.cbBackupOnStart.Margin = new System.Windows.Forms.Padding(4);
             this.cbBackupOnStart.Name = "cbBackupOnStart";
-            this.cbBackupOnStart.Size = new System.Drawing.Size(135, 20);
+            this.cbBackupOnStart.Size = new System.Drawing.Size(134, 20);
             this.cbBackupOnStart.TabIndex = 0;
             this.cbBackupOnStart.Text = "Backup på upstart";
             this.cbBackupOnStart.UseVisualStyleBackColor = true;
@@ -100,7 +100,7 @@ namespace ScannerDialog
             this.laNuvarandeDbBackup.Location = new System.Drawing.Point(25, 57);
             this.laNuvarandeDbBackup.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laNuvarandeDbBackup.Name = "laNuvarandeDbBackup";
-            this.laNuvarandeDbBackup.Size = new System.Drawing.Size(57, 16);
+            this.laNuvarandeDbBackup.Size = new System.Drawing.Size(56, 16);
             this.laNuvarandeDbBackup.TabIndex = 15;
             this.laNuvarandeDbBackup.Text = "Backup:";
             // 
@@ -130,7 +130,7 @@ namespace ScannerDialog
             this.laPrinter.Location = new System.Drawing.Point(23, 37);
             this.laPrinter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laPrinter.Name = "laPrinter";
-            this.laPrinter.Size = new System.Drawing.Size(82, 16);
+            this.laPrinter.Size = new System.Drawing.Size(81, 16);
             this.laPrinter.TabIndex = 29;
             this.laPrinter.Text = "Välj skrivare";
             // 
