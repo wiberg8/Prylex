@@ -25,6 +25,11 @@ namespace PrylanLibary
 
         public bool Open(string dbPath)
         {
+            if (string.IsNullOrWhiteSpace(dbPath))
+            {
+                return false;
+            }
+
             bool succesful;
             try
             {
@@ -47,10 +52,22 @@ namespace PrylanLibary
             db.Close();
         }
 
-        //public bool CreateFile(string fileName)
-        //{
-        //    return dbHandler.CreateFile(fileName);
-        //}
+        public static bool CreateFile(string dbPath)
+        {
+            try
+            {
+                SQLiteConnection createDb = new SQLiteConnection(dbPath);
+                createDb.CreateTable<Artikel>();
+                createDb.CreateTable<Person>();
+                createDb.CreateTable<Handelse>();
+            }
+            catch(Exception ex)
+            {
+                Logger.Log(ex);
+                return false;
+            }
+            return true;
+        }
 
         public List<Artikel> HamtaArtiklar()
         {

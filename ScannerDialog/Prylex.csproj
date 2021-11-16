@@ -65,6 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\BytDatabasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BytDatabasForm.Designer.cs">
+      <DependentUpon>BytDatabasForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,9 @@
     </None>
     <None Include="Resources\ApplikationIkon.ico" />
     <None Include="Resources\BigLogga.png" />
+    <EmbeddedResource Include="Forms\BytDatabasForm.resx">
+      <DependentUpon>BytDatabasForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

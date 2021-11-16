@@ -16,8 +16,6 @@ using System.Text.RegularExpressions;
 using ScannerDialog;
 using static ScannerDialog.Program;
 
-
-//Refresh datagrid måste göras om till dataaccess med FyllArtiklar, FyllPersoner funktioner
 namespace ScannerDialog.Forms
 {
     public partial class MainForm : Form
@@ -85,7 +83,7 @@ namespace ScannerDialog.Forms
 
         private void FormStartup()
         {
-            tspNuvarandeDb.Text = Global.DATABASE_FILE;
+            tspNuvarandeDb.Text = AppSettings.Databas;
             FyllVisaEndast(DBAccess.GetUniqueBesk());
             SearchSelectedGrid();
         }
@@ -135,7 +133,7 @@ namespace ScannerDialog.Forms
 
         private void VisaNyPersonDialog()
         {
-            var newPersonDialog = new NyPersonDialog();
+            NyPersonDialog newPersonDialog = new NyPersonDialog();
             ClearGrids();
             newPersonDialog.ShowDialog();
             RefreshVisaEndast();
@@ -144,8 +142,13 @@ namespace ScannerDialog.Forms
 
         private void VisaInstallnigarDialog()
         {
-            var dialog = new InstallningarDialog();
+            InstallningarDialog dialog = new InstallningarDialog();
             dialog.ShowDialog();
+            if(AppSettings.Databas == string.Empty)
+            {
+                this.Close();
+                return;
+            }
             SearchSelectedGrid();
         }
 

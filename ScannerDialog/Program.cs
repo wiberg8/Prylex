@@ -15,6 +15,7 @@ namespace ScannerDialog
     {
         public static Installningar AppSettings { get; set; } = new Installningar();
         public static DataAccess DBAccess { get; private set; } = new DataAccess();
+        public static bool ExitApplication { get; set; }
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -35,14 +36,20 @@ namespace ScannerDialog
             AppSettings.Ladda();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //TODO Om databas ej kan öppnas så måste en dialog där man kan välja db fixas
-            if (DBAccess.Open(AppSettings.Databas))
+            bool dbOpen = DBAccess.Open(AppSettings.Databas);
+            while (!dbOpen)
             {
-                Application.Run(new MainForm());
-                DBAccess.Close();
+                Application.Run(new BytDatabasForm());
+                if (ExitApplication)
+                {
+                    AppSettings.Spara();
+                    return;
+                }
+                dbOpen = DBAccess.Open(AppSettings.Databas);
             }
+            Application.Run(new MainForm());
+            DBAccess.Close();
             AppSettings.Spara();
-            Logger.WriteToFile();
         }
 
         private static bool IsApplicationRunning()

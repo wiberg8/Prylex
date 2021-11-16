@@ -33,15 +33,14 @@ namespace ScannerDialog
             this.gbInstallningarDb = new System.Windows.Forms.GroupBox();
             this.cbBackupOnStart = new System.Windows.Forms.CheckBox();
             this.cmdNuvarandeDbBackupAterstall = new System.Windows.Forms.Button();
-            this.cmdNuvarandeDbBackupUtforska = new System.Windows.Forms.Button();
             this.laNuvarandeDbBackup = new System.Windows.Forms.Label();
             this.laNuvarandeDbBackupDisplay = new System.Windows.Forms.Label();
             this.cbPrinter = new System.Windows.Forms.ComboBox();
             this.laPrinter = new System.Windows.Forms.Label();
             this.gbUtskrift = new System.Windows.Forms.GroupBox();
-            this.cmdExporteraPersoner = new System.Windows.Forms.Button();
-            this.cmdExporteraArtiklar = new System.Windows.Forms.Button();
             this.toolTipHelp = new System.Windows.Forms.ToolTip(this.components);
+            this.cmdNuvarandeDbBackupUtforska = new System.Windows.Forms.Button();
+            this.cmdSelectDb = new System.Windows.Forms.Button();
             this.gbInstallningarDb.SuspendLayout();
             this.gbUtskrift.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +65,7 @@ namespace ScannerDialog
             this.cbBackupOnStart.Location = new System.Drawing.Point(13, 62);
             this.cbBackupOnStart.Margin = new System.Windows.Forms.Padding(4);
             this.cbBackupOnStart.Name = "cbBackupOnStart";
-            this.cbBackupOnStart.Size = new System.Drawing.Size(134, 20);
+            this.cbBackupOnStart.Size = new System.Drawing.Size(135, 20);
             this.cbBackupOnStart.TabIndex = 0;
             this.cbBackupOnStart.Text = "Backup på upstart";
             this.cbBackupOnStart.UseVisualStyleBackColor = true;
@@ -81,18 +80,6 @@ namespace ScannerDialog
             this.cmdNuvarandeDbBackupAterstall.TabIndex = 19;
             this.cmdNuvarandeDbBackupAterstall.Text = "Återställ";
             this.cmdNuvarandeDbBackupAterstall.UseVisualStyleBackColor = true;
-            this.cmdNuvarandeDbBackupAterstall.Click += new System.EventHandler(this.cmdNuvarandeDbBackupAterstall_Click);
-            // 
-            // cmdNuvarandeDbBackupUtforska
-            // 
-            this.cmdNuvarandeDbBackupUtforska.Location = new System.Drawing.Point(577, 25);
-            this.cmdNuvarandeDbBackupUtforska.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdNuvarandeDbBackupUtforska.Name = "cmdNuvarandeDbBackupUtforska";
-            this.cmdNuvarandeDbBackupUtforska.Size = new System.Drawing.Size(100, 28);
-            this.cmdNuvarandeDbBackupUtforska.TabIndex = 17;
-            this.cmdNuvarandeDbBackupUtforska.Text = "Utforska";
-            this.cmdNuvarandeDbBackupUtforska.UseVisualStyleBackColor = true;
-            this.cmdNuvarandeDbBackupUtforska.Click += new System.EventHandler(this.cmdNuvarandeDbBackupUtforska_Click);
             // 
             // laNuvarandeDbBackup
             // 
@@ -100,7 +87,7 @@ namespace ScannerDialog
             this.laNuvarandeDbBackup.Location = new System.Drawing.Point(25, 57);
             this.laNuvarandeDbBackup.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laNuvarandeDbBackup.Name = "laNuvarandeDbBackup";
-            this.laNuvarandeDbBackup.Size = new System.Drawing.Size(56, 16);
+            this.laNuvarandeDbBackup.Size = new System.Drawing.Size(57, 16);
             this.laNuvarandeDbBackup.TabIndex = 15;
             this.laNuvarandeDbBackup.Text = "Backup:";
             // 
@@ -130,7 +117,7 @@ namespace ScannerDialog
             this.laPrinter.Location = new System.Drawing.Point(23, 37);
             this.laPrinter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laPrinter.Name = "laPrinter";
-            this.laPrinter.Size = new System.Drawing.Size(81, 16);
+            this.laPrinter.Size = new System.Drawing.Size(82, 16);
             this.laPrinter.TabIndex = 29;
             this.laPrinter.Text = "Välj skrivare";
             // 
@@ -147,35 +134,33 @@ namespace ScannerDialog
             this.gbUtskrift.TabStop = false;
             this.gbUtskrift.Text = "Utskrift";
             // 
-            // cmdExporteraPersoner
+            // cmdNuvarandeDbBackupUtforska
             // 
-            this.cmdExporteraPersoner.Location = new System.Drawing.Point(594, 182);
-            this.cmdExporteraPersoner.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdExporteraPersoner.Name = "cmdExporteraPersoner";
-            this.cmdExporteraPersoner.Size = new System.Drawing.Size(217, 28);
-            this.cmdExporteraPersoner.TabIndex = 31;
-            this.cmdExporteraPersoner.Text = "Exportera personer";
-            this.cmdExporteraPersoner.UseVisualStyleBackColor = true;
-            this.cmdExporteraPersoner.Click += new System.EventHandler(this.cmdExporteraPersoner_Click);
+            this.cmdNuvarandeDbBackupUtforska.Location = new System.Drawing.Point(577, 25);
+            this.cmdNuvarandeDbBackupUtforska.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdNuvarandeDbBackupUtforska.Name = "cmdNuvarandeDbBackupUtforska";
+            this.cmdNuvarandeDbBackupUtforska.Size = new System.Drawing.Size(100, 28);
+            this.cmdNuvarandeDbBackupUtforska.TabIndex = 17;
+            this.cmdNuvarandeDbBackupUtforska.Text = "Utforska";
+            this.cmdNuvarandeDbBackupUtforska.UseVisualStyleBackColor = true;
             // 
-            // cmdExporteraArtiklar
+            // cmdSelectDb
             // 
-            this.cmdExporteraArtiklar.Location = new System.Drawing.Point(594, 213);
-            this.cmdExporteraArtiklar.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdExporteraArtiklar.Name = "cmdExporteraArtiklar";
-            this.cmdExporteraArtiklar.Size = new System.Drawing.Size(217, 28);
-            this.cmdExporteraArtiklar.TabIndex = 32;
-            this.cmdExporteraArtiklar.Text = "Exportera artiklar";
-            this.cmdExporteraArtiklar.UseVisualStyleBackColor = true;
-            this.cmdExporteraArtiklar.Click += new System.EventHandler(this.cmdExporteraArtiklar_Click);
+            this.cmdSelectDb.Location = new System.Drawing.Point(593, 213);
+            this.cmdSelectDb.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdSelectDb.Name = "cmdSelectDb";
+            this.cmdSelectDb.Size = new System.Drawing.Size(217, 28);
+            this.cmdSelectDb.TabIndex = 33;
+            this.cmdSelectDb.Text = "Välj annan databas";
+            this.cmdSelectDb.UseVisualStyleBackColor = true;
+            this.cmdSelectDb.Click += new System.EventHandler(this.cmdSelectDb_Click);
             // 
             // InstallningarDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 259);
-            this.Controls.Add(this.cmdExporteraArtiklar);
-            this.Controls.Add(this.cmdExporteraPersoner);
+            this.Controls.Add(this.cmdSelectDb);
             this.Controls.Add(this.gbUtskrift);
             this.Controls.Add(this.laNuvarandeDbBackupDisplay);
             this.Controls.Add(this.laNuvarandeDbBackup);
@@ -199,39 +184,18 @@ namespace ScannerDialog
 
         }
 
-        private void cmdNuvarandeDbBackupAterstall_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void cmdNuvarandeDbBackupUtforska_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void cmdExporteraArtiklar_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void cmdExporteraPersoner_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
 
         private System.Windows.Forms.GroupBox gbInstallningarDb;
         private System.Windows.Forms.Label laNuvarandeDbBackup;
-        private System.Windows.Forms.Button cmdNuvarandeDbBackupUtforska;
         private System.Windows.Forms.Button cmdNuvarandeDbBackupAterstall;
         private System.Windows.Forms.Label laNuvarandeDbBackupDisplay;
         private System.Windows.Forms.CheckBox cbBackupOnStart;
         private System.Windows.Forms.ComboBox cbPrinter;
         private System.Windows.Forms.Label laPrinter;
         private System.Windows.Forms.GroupBox gbUtskrift;
-        private System.Windows.Forms.Button cmdExporteraPersoner;
-        private System.Windows.Forms.Button cmdExporteraArtiklar;
         private System.Windows.Forms.ToolTip toolTipHelp;
+        private System.Windows.Forms.Button cmdNuvarandeDbBackupUtforska;
+        private System.Windows.Forms.Button cmdSelectDb;
     }
 }

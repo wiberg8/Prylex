@@ -9,8 +9,8 @@ namespace PrylanLibary
 {
     public static class Logger
     {
-        static StringBuilder logBuilder = new StringBuilder();
-        static string logFileName = "exceptions.txt";
+        private static readonly StringBuilder logBuilder = new StringBuilder();
+        private static readonly string logFileName = "exceptions.txt";
         public static void Log(Exception x)
         {
             logBuilder.Append($"------{x.GetType()}\n");

@@ -9,12 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PrylanLibary;
+using ScannerDialog.Forms;
 using static ScannerDialog.Program;
 
 namespace ScannerDialog
 {
     public partial class InstallningarDialog : Form
     {
+        public bool SelectAnotherDatabase { get; set; }
         public InstallningarDialog()
         {
             InitializeComponent();
@@ -48,7 +50,7 @@ namespace ScannerDialog
 
         private void FormStartup()
         {
-            //FyllDatabasVy(AppSettings.Databas, AppSettings.DatabasBackup, AppSettings.BackupOnStart);
+            laNuvarandeDbBackupDisplay.Text = AppSettings.DatabasBackup;
             foreach (string v in Printing.GetPrinters())
             {
                 cbPrinter.Items.Add(v);
@@ -87,7 +89,7 @@ namespace ScannerDialog
         }
         private void ChangeDatabasBackup()
         {
-            var folderDialog = new FolderBrowserDialog();
+            FolderBrowserDialog folderDialog = new FolderBrowserDialog();
 
             if (folderDialog.ShowDialog() == DialogResult.OK)
             {
@@ -101,38 +103,11 @@ namespace ScannerDialog
                 }
             }
         }
-        //private void ChangeDatabas()
-        //{
-        //    var fileDialog = new OpenFileDialog
-        //    {
-        //        Filter = "db files (*.db)|*.db"
-        //    };
 
-        //    if (fileDialog.ShowDialog() == DialogResult.OK)
-        //    {
-        //        if (fileDialog.CheckFileExists)
-        //        {
-        //            AppSettings.Databas = fileDialog.FileName;
-        //            DBAccess.Close();
-        //            DBAccess.CurrentFile = AppSettings.Databas;
-        //            if (!DBAccess.TryOpen())
-        //            {
-        //                MessageBox.Show("Något är fel med den utpekade filen");
-        //            }
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Något är fel med den utpekade filen");
-        //        }
-        //    }
-        //}
-        private void FyllDatabasVy(string database, string databaseBackup, bool backupOnStart)
+        private void cmdSelectDb_Click(object sender, EventArgs e)
         {
-            //laNuvarandeDbDisplay.Text = database;
-            laNuvarandeDbBackupDisplay.Text = databaseBackup;
-            cbBackupOnStart.Checked = backupOnStart;
+            AppSettings.Databas = string.Empty;
+            this.Close();
         }
-
- 
     }
 }
