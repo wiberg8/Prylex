@@ -36,6 +36,7 @@ namespace ScannerDialog
             AppSettings.Ladda();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            BackupDatabase();
             bool dbOpen = DBAccess.Open(AppSettings.Databas);
             while (!dbOpen)
             {
@@ -50,27 +51,29 @@ namespace ScannerDialog
             Application.Run(new MainForm());
             DBAccess.Close();
             AppSettings.Spara();
+            Logger.WriteToFile();
         }
 
         private static bool IsApplicationRunning()
         {
             Process curr = Process.GetCurrentProcess();
-            Process[] procs = Process.GetProcessesByName(curr.ProcessName);
-            foreach (Process p in procs)
-            {
-                if ((p.Id != curr.Id) && (p.MainModule.FileName == curr.MainModule.FileName))
-                {
-                    return p is null;
-                }
-            }
-            return false;
+            return Process.GetProcessesByName(curr.ProcessName)
+                        .Where(p => p.Id != curr.Id && p.MainModule.FileName == curr.MainModule.FileName)
+                        .FirstOrDefault() != null;
         }
 
         private static void BackupDatabase()
         {
-            if (AppSettings.BackupOnStart && File.Exists(Global.DATABASE_FILE) && Directory.Exists(AppSettings.DatabasBackup))
+            try
             {
-                IO.Backup(AppSettings.DatabasBackup, Global.DATABASE_FILE);
+                if (AppSettings.BackupOnStart && File.Exists(AppSettings.Databas) && Directory.Exists(AppSettings.DatabasBackup))
+                {
+                    IO.Backup(AppSettings.DatabasBackup, AppSettings.Databas);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
             }
         }
 

@@ -17,28 +17,28 @@ namespace PrylanLibary
                 if (File.Exists(backupFile))
                 {
                     currentDate = DateTime.Now.ToString(" [yyyy-MM-dd HH.mm.ss]");
-                    File.Copy(backupFile, directory + $"\\{Path.GetFileNameWithoutExtension(backupFile)}" + currentDate + Path.GetExtension(backupFile));
+                    File.Copy(backupFile, $"{directory}\\{Path.GetFileNameWithoutExtension(backupFile)}{currentDate}{Path.GetExtension(backupFile)}");
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Logger.Log("Backup method error\n" + e.Message.ToString());
+                Logger.Log(ex);
             }
         }
-        public static void OpenDirectory(string DPath)
+        public static void OpenDirectory(string dir)
         {
             try
             {
                 System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
                 {
-                    FileName = DPath,
+                    FileName = dir,
                     UseShellExecute = true,
                     Verb = "open"
                 });
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Logger.Log("OpenDirectory method error\n" + e.Message.ToString());
+                Logger.Log(ex);
             }
         }
 

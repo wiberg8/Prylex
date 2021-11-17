@@ -25,10 +25,7 @@ namespace ScannerDialog
         }
 
         //form events
-        private void InstallningarDialog_Load(object sender, EventArgs e)
-        {
-            FormStartup();
-        }
+        private void InstallningarDialog_Load(object sender, EventArgs e) => FormStartup();
         private void InstallningarDialog_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -40,6 +37,8 @@ namespace ScannerDialog
         private void cbPrinter_SelectedIndexChanged(object sender, EventArgs e) => AppSettings.Skrivare = cbPrinter.Text;
         //checkbox events
         private void cbBackupOnStart_CheckedChanged(object sender, EventArgs e) => AppSettings.BackupOnStart = cbBackupOnStart.Checked;
+
+        private void cmdNuvarandeDbBackupUtforska_Click(object sender, EventArgs e) => ChangeDatabasBackup();
 
         //events
         private void Installningar_Change(object sender, EventArgs e)
@@ -59,34 +58,6 @@ namespace ScannerDialog
         }
 
         
-        private void ExporteraPersoner()
-        {
-            SaveFileDialog fileDialog = new SaveFileDialog
-            {
-                Filter = "Json file(*.json)|*.json",
-                DefaultExt = "json",
-                AddExtension = true
-            };
-            DialogResult dialogResult = fileDialog.ShowDialog();
-            if (dialogResult == DialogResult.OK && !fileDialog.CheckFileExists && fileDialog.CheckPathExists)
-            {
-                File.WriteAllText(fileDialog.FileName, DBAccess.HamtaPersoner().ToJson());
-            }
-        }
-        private void ExporteraArtiklar()
-        {
-            SaveFileDialog fileDialog = new SaveFileDialog
-            {
-                Filter = "Json file(*.json)|*.json",
-                DefaultExt = "json",
-                AddExtension = true
-            };
-            DialogResult dialogResult = fileDialog.ShowDialog();
-            if (dialogResult == DialogResult.OK && !fileDialog.CheckFileExists && fileDialog.CheckPathExists)
-            {
-                File.WriteAllText(fileDialog.FileName, DBAccess.HamtaArtiklar().ToJson());
-            }
-        }
         private void ChangeDatabasBackup()
         {
             FolderBrowserDialog folderDialog = new FolderBrowserDialog();
@@ -96,6 +67,7 @@ namespace ScannerDialog
                 if (Directory.Exists(folderDialog.SelectedPath))
                 {
                     AppSettings.DatabasBackup = folderDialog.SelectedPath;
+                    laNuvarandeDbBackupDisplay.Text = folderDialog.SelectedPath;
                 }
                 else
                 {

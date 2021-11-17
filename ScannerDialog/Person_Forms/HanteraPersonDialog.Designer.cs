@@ -106,7 +106,7 @@
             // 
             // cmdEdit
             // 
-            this.cmdEdit.Location = new System.Drawing.Point(269, 262);
+            this.cmdEdit.Location = new System.Drawing.Point(269, 265);
             this.cmdEdit.Margin = new System.Windows.Forms.Padding(4);
             this.cmdEdit.Name = "cmdEdit";
             this.cmdEdit.Size = new System.Drawing.Size(119, 28);
@@ -213,7 +213,7 @@
             this.laTillhorighet.Location = new System.Drawing.Point(27, 207);
             this.laTillhorighet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laTillhorighet.Name = "laTillhorighet";
-            this.laTillhorighet.Size = new System.Drawing.Size(77, 16);
+            this.laTillhorighet.Size = new System.Drawing.Size(76, 16);
             this.laTillhorighet.TabIndex = 0;
             this.laTillhorighet.Text = "Tillhörighet:";
             // 
@@ -223,7 +223,7 @@
             this.laTelefon.Location = new System.Drawing.Point(27, 182);
             this.laTelefon.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laTelefon.Name = "laTelefon";
-            this.laTelefon.Size = new System.Drawing.Size(57, 16);
+            this.laTelefon.Size = new System.Drawing.Size(56, 16);
             this.laTelefon.TabIndex = 3;
             this.laTelefon.Text = "Telefon:";
             // 
@@ -242,7 +242,7 @@
             this.laEpost.Location = new System.Drawing.Point(29, 158);
             this.laEpost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laEpost.Name = "laEpost";
-            this.laEpost.Size = new System.Drawing.Size(50, 16);
+            this.laEpost.Size = new System.Drawing.Size(49, 16);
             this.laEpost.TabIndex = 4;
             this.laEpost.Text = "E-post:";
             // 
@@ -252,7 +252,7 @@
             this.laPersNr.Location = new System.Drawing.Point(27, 108);
             this.laPersNr.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laPersNr.Name = "laPersNr";
-            this.laPersNr.Size = new System.Drawing.Size(53, 16);
+            this.laPersNr.Size = new System.Drawing.Size(52, 16);
             this.laPersNr.TabIndex = 2;
             this.laPersNr.Text = "PersNr:";
             // 
@@ -262,7 +262,7 @@
             this.laFornamn.Location = new System.Drawing.Point(27, 59);
             this.laFornamn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laFornamn.Name = "laFornamn";
-            this.laFornamn.Size = new System.Drawing.Size(64, 16);
+            this.laFornamn.Size = new System.Drawing.Size(63, 16);
             this.laFornamn.TabIndex = 0;
             this.laFornamn.Text = "Förnamn:";
             // 
@@ -272,7 +272,7 @@
             this.laSign.Location = new System.Drawing.Point(27, 133);
             this.laSign.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laSign.Name = "laSign";
-            this.laSign.Size = new System.Drawing.Size(60, 16);
+            this.laSign.Size = new System.Drawing.Size(59, 16);
             this.laSign.TabIndex = 10;
             this.laSign.Text = "Signatur:";
             // 
@@ -282,7 +282,7 @@
             this.laOvrigt.Location = new System.Drawing.Point(27, 231);
             this.laOvrigt.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laOvrigt.Name = "laOvrigt";
-            this.laOvrigt.Size = new System.Drawing.Size(46, 16);
+            this.laOvrigt.Size = new System.Drawing.Size(45, 16);
             this.laOvrigt.TabIndex = 5;
             this.laOvrigt.Text = "Övrigt:";
             // 
@@ -292,7 +292,7 @@
             this.laEfternamn.Location = new System.Drawing.Point(27, 84);
             this.laEfternamn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laEfternamn.Name = "laEfternamn";
-            this.laEfternamn.Size = new System.Drawing.Size(71, 16);
+            this.laEfternamn.Size = new System.Drawing.Size(70, 16);
             this.laEfternamn.TabIndex = 1;
             this.laEfternamn.Text = "Efternamn:";
             // 
@@ -365,7 +365,7 @@
             this.cbPrintOnScan.Location = new System.Drawing.Point(583, 167);
             this.cbPrintOnScan.Margin = new System.Windows.Forms.Padding(4);
             this.cbPrintOnScan.Name = "cbPrintOnScan";
-            this.cbPrintOnScan.Size = new System.Drawing.Size(161, 20);
+            this.cbPrintOnScan.Size = new System.Drawing.Size(160, 20);
             this.cbPrintOnScan.TabIndex = 25;
             this.cbPrintOnScan.Text = "Skriv ut vid registrering";
             this.cbPrintOnScan.UseVisualStyleBackColor = true;
@@ -501,7 +501,7 @@
             this.laHandelseArtikel.Location = new System.Drawing.Point(20, 265);
             this.laHandelseArtikel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laHandelseArtikel.Name = "laHandelseArtikel";
-            this.laHandelseArtikel.Size = new System.Drawing.Size(48, 16);
+            this.laHandelseArtikel.Size = new System.Drawing.Size(47, 16);
             this.laHandelseArtikel.TabIndex = 34;
             this.laHandelseArtikel.Text = "Artikel:";
             // 

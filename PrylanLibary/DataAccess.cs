@@ -33,7 +33,7 @@ namespace PrylanLibary
             bool succesful;
             try
             {
-                db = new SQLiteConnection(dbPath);
+                db = new SQLiteConnection(dbPath,  false);
                 db.CreateTable<Artikel>();
                 db.CreateTable<Person>();
                 db.CreateTable<Handelse>();
@@ -184,6 +184,7 @@ namespace PrylanLibary
             p.Efternamn = person.Efternamn;
             p.Sign = person.Sign;
             p.Telefon = person.Telefon;
+            p.Epost = person.Epost;
             p.Tillhorighet = person.Tillhorighet;
             p.Ovrigt = person.Ovrigt;
             return db.Update(p);

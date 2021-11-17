@@ -38,7 +38,7 @@ namespace ScannerDialog
         //cmd events
         private void cmdSok_Click(object sender, EventArgs e) => FyllGrid(SearchEngine.Search(DBAccess.HamtaLedigaArtiklar(), txtSok.Text));
         //datagridview events
-        private void dgvArtiklar_MouseDoubleClick_1(object sender, MouseEventArgs e) => ArtikelSelectedClick();
+        private void dgvArtiklar_DoubleClick(object sender, EventArgs e) => ArtikelSelectedClick();
 
         private void FormStartup()
         {
@@ -66,6 +66,5 @@ namespace ScannerDialog
             }
             DataGridLibary.SetColorVariationToRows(dgvArtiklar);
         }
-
     }
 }

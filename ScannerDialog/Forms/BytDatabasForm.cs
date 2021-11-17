@@ -48,9 +48,7 @@ namespace ScannerDialog
                 Filter = "db files (*.db)|*.db"
             };
             DialogResult dialogResult = fileDialog.ShowDialog();
-            if (dialogResult == DialogResult.OK
-                && !fileDialog.CheckFileExists
-                && fileDialog.CheckPathExists)
+            if (dialogResult == DialogResult.OK && !fileDialog.CheckFileExists && fileDialog.CheckPathExists)
             {
                 DataAccess.CreateFile(fileDialog.FileName);
                 AppSettings.Databas = fileDialog.FileName;

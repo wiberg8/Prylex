@@ -16,7 +16,8 @@ namespace PrylanLibary.Models
         public int ArtikelId { get; set; }
         public int? PersId { get; set; }
         public HandelseTyp Typ { get; set; }
-        public string FriText { get; set; }
+        [NotNull]
+        public string FriText { get; set; } = string.Empty;
         public DateTime Datum { get; set; } = DateTime.Now;
 
         public override string ToString()

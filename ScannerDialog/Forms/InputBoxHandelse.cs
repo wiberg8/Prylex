@@ -35,7 +35,8 @@ namespace ScannerDialog
 
         private void FormStartup()
         {
-            cbHandelser.Items.AddRange(DBAccess.GetUniqueHandelser().ToArray());
+            string[] items = DBAccess.GetUniqueHandelser().ToArray();
+            cbHandelser.Items.AddRange(items);
             if (cbHandelser.Items.Count > 0)
             {
                 cbHandelser.SelectedIndex = 0;

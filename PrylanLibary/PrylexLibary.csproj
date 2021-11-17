@@ -237,7 +237,6 @@
     <Compile Include="Models\Other\ImportPerson.cs" />
     <Compile Include="Models\DB\Person.cs" />
     <Compile Include="Models\Other\AdvancedPerson.cs" />
-    <Compile Include="Models\Pocos\LicenseWrapper.cs" />
     <Compile Include="Printing.cs" />
     <Compile Include="SearchEngine.cs" />
     <Compile Include="SharedEvents.cs" />

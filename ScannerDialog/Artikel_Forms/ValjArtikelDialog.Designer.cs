@@ -48,7 +48,7 @@
             // cmdSok
             // 
             this.cmdSok.Location = new System.Drawing.Point(1111, 59);
-            this.cmdSok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmdSok.Margin = new System.Windows.Forms.Padding(4);
             this.cmdSok.Name = "cmdSok";
             this.cmdSok.Size = new System.Drawing.Size(129, 28);
             this.cmdSok.TabIndex = 11;
@@ -59,7 +59,7 @@
             // txtSok
             // 
             this.txtSok.Location = new System.Drawing.Point(807, 28);
-            this.txtSok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSok.Margin = new System.Windows.Forms.Padding(4);
             this.txtSok.Name = "txtSok";
             this.txtSok.Size = new System.Drawing.Size(433, 22);
             this.txtSok.TabIndex = 10;
@@ -71,7 +71,7 @@
             this.label1.Location = new System.Drawing.Point(16, 71);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(193, 16);
+            this.label1.Size = new System.Drawing.Size(192, 16);
             this.label1.TabIndex = 12;
             this.label1.Text = "Dubbelklicka för att välja artikel";
             // 
@@ -109,7 +109,7 @@
             this.dgvArtiklar.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvArtiklar.GridColor = System.Drawing.SystemColors.Control;
             this.dgvArtiklar.Location = new System.Drawing.Point(20, 106);
-            this.dgvArtiklar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvArtiklar.Margin = new System.Windows.Forms.Padding(4);
             this.dgvArtiklar.MultiSelect = false;
             this.dgvArtiklar.Name = "dgvArtiklar";
             this.dgvArtiklar.RowHeadersVisible = false;
@@ -121,6 +121,7 @@
             this.dgvArtiklar.ShowRowErrors = false;
             this.dgvArtiklar.Size = new System.Drawing.Size(1224, 640);
             this.dgvArtiklar.TabIndex = 13;
+            this.dgvArtiklar.DoubleClick += new System.EventHandler(this.dgvArtiklar_DoubleClick);
             // 
             // clmId
             // 
@@ -192,7 +193,7 @@
             this.Controls.Add(this.txtSok);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ValjArtikelDialog";

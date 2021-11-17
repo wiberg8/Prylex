@@ -102,7 +102,7 @@ namespace ScannerDialog
         }
         private void UpdateraPerson()
         {
-            using (var updateraPerson = new UpdateraPersonDialog(this.nuvarandePerson))
+            using (UpdateraPersonDialog updateraPerson = new UpdateraPersonDialog(nuvarandePerson))
             {
                 updateraPerson.ShowDialog();
                 if (updateraPerson.Result != null)
@@ -136,7 +136,7 @@ namespace ScannerDialog
 
         private void NyHandelse()
         {
-            var inputBox = new InputBoxHandelse();
+            InputBoxHandelse inputBox = new InputBoxHandelse();
             if (inputBox.ShowDialog() == DialogResult.OK)
             {
                 Handelse handelse = new Handelse() { PersId = nuvarandePerson.Id, FriText = inputBox.Input, Typ = HandelseTyp.FRITEXT };
@@ -202,8 +202,7 @@ namespace ScannerDialog
 
             if (!string.IsNullOrWhiteSpace(scannedInput))
             {
-                Artikel artikel;
-                artikel = DBAccess.HamtaArtikelFranSerieNr(scannedInput);
+                Artikel artikel = DBAccess.HamtaArtikelFranSerieNr(scannedInput);
                 if (artikel is null)
                 {
                     MessageBox.Show(Locales.IngenTraff);
@@ -221,7 +220,7 @@ namespace ScannerDialog
         private void RegistreraArtikelViaDialog()
         {
             List<Artikel> ledigaArtiklar = DBAccess.HamtaLedigaArtiklar().ToList();
-            var dialog = new ValjArtikelDialog(ledigaArtiklar);
+            ValjArtikelDialog dialog = new ValjArtikelDialog(ledigaArtiklar);
             dialog.ShowDialog();
             if (dialog.ValdArtikel != null)
             {

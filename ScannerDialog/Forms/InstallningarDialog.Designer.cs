@@ -33,13 +33,13 @@ namespace ScannerDialog
             this.gbInstallningarDb = new System.Windows.Forms.GroupBox();
             this.cbBackupOnStart = new System.Windows.Forms.CheckBox();
             this.cmdNuvarandeDbBackupAterstall = new System.Windows.Forms.Button();
+            this.cmdNuvarandeDbBackupUtforska = new System.Windows.Forms.Button();
             this.laNuvarandeDbBackup = new System.Windows.Forms.Label();
             this.laNuvarandeDbBackupDisplay = new System.Windows.Forms.Label();
             this.cbPrinter = new System.Windows.Forms.ComboBox();
             this.laPrinter = new System.Windows.Forms.Label();
             this.gbUtskrift = new System.Windows.Forms.GroupBox();
             this.toolTipHelp = new System.Windows.Forms.ToolTip(this.components);
-            this.cmdNuvarandeDbBackupUtforska = new System.Windows.Forms.Button();
             this.cmdSelectDb = new System.Windows.Forms.Button();
             this.gbInstallningarDb.SuspendLayout();
             this.gbUtskrift.SuspendLayout();
@@ -65,7 +65,7 @@ namespace ScannerDialog
             this.cbBackupOnStart.Location = new System.Drawing.Point(13, 62);
             this.cbBackupOnStart.Margin = new System.Windows.Forms.Padding(4);
             this.cbBackupOnStart.Name = "cbBackupOnStart";
-            this.cbBackupOnStart.Size = new System.Drawing.Size(135, 20);
+            this.cbBackupOnStart.Size = new System.Drawing.Size(134, 20);
             this.cbBackupOnStart.TabIndex = 0;
             this.cbBackupOnStart.Text = "Backup på upstart";
             this.cbBackupOnStart.UseVisualStyleBackColor = true;
@@ -81,13 +81,24 @@ namespace ScannerDialog
             this.cmdNuvarandeDbBackupAterstall.Text = "Återställ";
             this.cmdNuvarandeDbBackupAterstall.UseVisualStyleBackColor = true;
             // 
+            // cmdNuvarandeDbBackupUtforska
+            // 
+            this.cmdNuvarandeDbBackupUtforska.Location = new System.Drawing.Point(577, 25);
+            this.cmdNuvarandeDbBackupUtforska.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdNuvarandeDbBackupUtforska.Name = "cmdNuvarandeDbBackupUtforska";
+            this.cmdNuvarandeDbBackupUtforska.Size = new System.Drawing.Size(100, 28);
+            this.cmdNuvarandeDbBackupUtforska.TabIndex = 17;
+            this.cmdNuvarandeDbBackupUtforska.Text = "Utforska";
+            this.cmdNuvarandeDbBackupUtforska.UseVisualStyleBackColor = true;
+            this.cmdNuvarandeDbBackupUtforska.Click += new System.EventHandler(this.cmdNuvarandeDbBackupUtforska_Click);
+            // 
             // laNuvarandeDbBackup
             // 
             this.laNuvarandeDbBackup.AutoSize = true;
             this.laNuvarandeDbBackup.Location = new System.Drawing.Point(25, 57);
             this.laNuvarandeDbBackup.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laNuvarandeDbBackup.Name = "laNuvarandeDbBackup";
-            this.laNuvarandeDbBackup.Size = new System.Drawing.Size(57, 16);
+            this.laNuvarandeDbBackup.Size = new System.Drawing.Size(56, 16);
             this.laNuvarandeDbBackup.TabIndex = 15;
             this.laNuvarandeDbBackup.Text = "Backup:";
             // 
@@ -117,7 +128,7 @@ namespace ScannerDialog
             this.laPrinter.Location = new System.Drawing.Point(23, 37);
             this.laPrinter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.laPrinter.Name = "laPrinter";
-            this.laPrinter.Size = new System.Drawing.Size(82, 16);
+            this.laPrinter.Size = new System.Drawing.Size(81, 16);
             this.laPrinter.TabIndex = 29;
             this.laPrinter.Text = "Välj skrivare";
             // 
@@ -133,16 +144,6 @@ namespace ScannerDialog
             this.gbUtskrift.TabIndex = 28;
             this.gbUtskrift.TabStop = false;
             this.gbUtskrift.Text = "Utskrift";
-            // 
-            // cmdNuvarandeDbBackupUtforska
-            // 
-            this.cmdNuvarandeDbBackupUtforska.Location = new System.Drawing.Point(577, 25);
-            this.cmdNuvarandeDbBackupUtforska.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdNuvarandeDbBackupUtforska.Name = "cmdNuvarandeDbBackupUtforska";
-            this.cmdNuvarandeDbBackupUtforska.Size = new System.Drawing.Size(100, 28);
-            this.cmdNuvarandeDbBackupUtforska.TabIndex = 17;
-            this.cmdNuvarandeDbBackupUtforska.Text = "Utforska";
-            this.cmdNuvarandeDbBackupUtforska.UseVisualStyleBackColor = true;
             // 
             // cmdSelectDb
             // 

@@ -30,7 +30,7 @@ namespace PrylanLibary.Models
 
         public override string ToString()
         {
-            return this.Person.ToString() + " " + $"[{this.RegistreradeArtiklar.Count}]"; 
+            return $"{Person} [{RegistreradeArtiklar.Count}]"; 
         }
     }
 }
