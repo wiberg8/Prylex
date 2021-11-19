@@ -34,10 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DYMO.Label.Framework">
-      <HintPath>C:\Program Files (x86)\DYMO\DYMO Label Software\Framework\DYMO.Label.Framework.dll</HintPath>
-      <Private>True</Private>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="BarcodeLib.Barcode.ASP.NET">
+      <HintPath>..\..\..\..\..\Downloads\BarcodeLib_ASP.NETBarcode_Trial\Dll\net40\BarcodeLib.Barcode.ASP.NET.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
