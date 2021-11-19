@@ -21,7 +21,7 @@ namespace PrylanLibary
                     || Search(artikel.StoldTag)
                     || Search(artikel.Os)
                     || Search(artikel.Mac)
-                    || Search(artikel.Mac);
+                    || Search(artikel.DatorNamn);
                 if (search)
                 {
                     yield return artikel;

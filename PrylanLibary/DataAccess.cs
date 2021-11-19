@@ -17,12 +17,6 @@ namespace PrylanLibary
     {
         private SQLiteConnection db;
 
-        public void Backup(string destinationPath)
-        {
-            db.Backup(destinationPath);
-            throw new NotImplementedException();
-        }
-
         public bool Open(string dbPath)
         {
             if (string.IsNullOrWhiteSpace(dbPath))
