@@ -9,7 +9,6 @@ using SQLite;
 
 namespace PrylanLibary.Models
 {
-    [Table("Artiklar")]
     public class Artikel
     {
         public Artikel()

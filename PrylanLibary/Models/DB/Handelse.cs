@@ -8,7 +8,6 @@ using SQLite;
 
 namespace PrylanLibary.Models
 {
-    [Table("Handelser")]
     public class Handelse
     {
         [PrimaryKey, AutoIncrement]

@@ -27,7 +27,7 @@ namespace PrylanLibary
             bool succesful;
             try
             {
-                db = new SQLiteConnection(dbPath,  false);
+                db = new SQLiteConnection(dbPath,  true);
                 db.CreateTable<Artikel>();
                 db.CreateTable<Person>();
                 db.CreateTable<Handelse>();
@@ -61,6 +61,11 @@ namespace PrylanLibary
                 return false;
             }
             return true;
+        }
+
+        public List<Handelse> HamtaHandelserTESTTESTTEST()
+        {
+            return db.Table<Handelse>().ToList();
         }
 
         public List<Artikel> HamtaArtiklar()
@@ -217,34 +222,42 @@ namespace PrylanLibary
 
         public List<string> GetUniqueBesk()
         {
-            return db.Table<Artikel>()
-                  .Select(a => a.Besk)
-                  .Distinct()
-                  .ToList();
+            List<string> list = db.Table<Artikel>()
+                              .Where(a => a.Besk != null)
+                              .Select(a => a.Besk)
+                              .Distinct()
+                              .ToList();
+            return list;
         }
 
         public List<string> GetUniqueOS()
         {
-            return db.Table<Artikel>()
-                  .Select(a => a.Os)
-                  .Distinct()
-                  .ToList();
+            List<string> list = db.Table<Artikel>()
+                               .Where(a => a.Os != null)
+                              .Select(a => a.Os)
+                              .Distinct()
+                              .ToList();
+            return list;
         }
 
         public List<string> GetUniqueTillhorighet()
         {
-            return db.Table<Person>()
-                   .Select(p => p.Tillhorighet)
-                   .Distinct()
-                   .ToList();
+            List<string> list = db.Table<Person>()
+                                .Where(p => p.Tillhorighet != null)
+                               .Select(p => p.Tillhorighet)
+                               .Distinct()
+                               .ToList();
+            return list;
         }
 
         public List<string> GetUniqueHandelser()
         {
-            return db.Table<Handelse>()
-                .Select(h => h.FriText)
-                .Distinct()
-                .ToList();
+            List<string> list = db.Table<Handelse>()
+                            .Where(h => h.FriText != null)
+                            .Select(h => h.FriText)
+                            .Distinct()
+                            .ToList();
+            return list;
         }
     }
 }

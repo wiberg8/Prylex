@@ -6,8 +6,8 @@ using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BarcodeLib.Barcode;
 using PrylanLibary.Models;
+using MessagingToolkit.QRCode;
 
 namespace PrylanLibary
 {
@@ -26,17 +26,16 @@ namespace PrylanLibary
 
                 try
                 {
-                    PDF417 PDF417 = new PDF417
-                    {
-                        Data = serieNr,
-                        UOM = UnitOfMeasure.CM,
-                        BackgroundColor = Color.White,
-                        ModuleColor = Color.Black,
-                        ImageFormat = System.Drawing.Imaging.ImageFormat.Png,
-                        ImageWidth = 3
-                    };
-                    PDF417.drawBarcode("barcode.jpg");
-                    g.DrawImage(Image.FromFile("barcode.jpg", true), new Point(3, 39));
+                    //Image barcode = IronBarCode.BarcodeWriter.CreateBarcode(serieNr, IronBarCode.BarcodeEncoding.PDF417, 300, 50).Image;
+                    //g.DrawImage(barcode, new Point(3, 39));
+                    //Image barcode = Image.FromFile("");
+                    var encoder = new MessagingToolkit.QRCode.Codec.QRCodeEncoder();
+                    encoder.QRCodeEncodeMode = MessagingToolkit.QRCode.Codec.QRCodeEncoder.ENCODE_MODE.ALPHA_NUMERIC;
+                    encoder.QRCodeScale = 3;
+                    var bitMap = encoder.Encode(serieNr, Encoding.UTF8);
+                    const string fileName = @"qrcode.bmp";
+                    bitMap.Save(fileName);
+                    g.DrawImageUnscaled(Image.FromFile(fileName), 65, 10);
                 }
                 catch (Exception ex)
                 {
@@ -64,17 +63,17 @@ namespace PrylanLibary
 
                 try
                 {
-                    PDF417 PDF417 = new PDF417
-                    {
-                        Data = artikel.SerieNr,
-                        UOM = UnitOfMeasure.CM,
-                        BackgroundColor = Color.White,
-                        ModuleColor = Color.Black,
-                        ImageFormat = System.Drawing.Imaging.ImageFormat.Png,
-                        ImageWidth = 3
-                    };
-                    PDF417.drawBarcode("barcode.jpg");
-                    g.DrawImage(Image.FromFile("barcode.jpg", true), new Point(3, 63));
+                    //Image barcode = IronBarCode.BarcodeWriter.CreateBarcode(artikel.SerieNr, IronBarCode.BarcodeEncoding.PDF417, 300, 50).Image;
+                    //g.DrawImage(barcode, new Point(3, 63));
+                    var encoder = new MessagingToolkit.QRCode.Codec.QRCodeEncoder();
+                    //Encoding unicode = Encoding.Unicode;
+                    //encoder.CalQrcode(unicode.GetBytes(artikel.SerieNr));
+                    encoder.QRCodeEncodeMode = MessagingToolkit.QRCode.Codec.QRCodeEncoder.ENCODE_MODE.ALPHA_NUMERIC;
+                    encoder.QRCodeScale = 1;
+                    var bitMap = encoder.Encode(artikel.SerieNr, Encoding.UTF8);
+                    const string fileName = @"qrcode.bmp";
+                    bitMap.Save(fileName);
+                    g.DrawImageUnscaled(Image.FromFile(fileName), 3, 63);
                 }
                 catch(Exception ex)
                 {

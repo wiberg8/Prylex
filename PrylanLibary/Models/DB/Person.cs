@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace PrylanLibary.Models
 {
-    [Table("Personer")]
     public class Person
     {
         public Person()

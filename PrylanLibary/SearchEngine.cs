@@ -16,7 +16,8 @@ namespace PrylanLibary
             currentSearchQuery = searchQuery.ToLower();
             foreach (Artikel artikel in artiklar)
             {
-                bool search = Search(artikel.Besk)
+                bool search = Search(artikel.Id.ToString())
+                    || Search(artikel.Besk)
                     || Search(artikel.SerieNr)
                     || Search(artikel.StoldTag)
                     || Search(artikel.Os)
@@ -34,7 +35,8 @@ namespace PrylanLibary
             currentSearchQuery = searchQuery.ToLower();
             foreach (Person person in personer)
             {
-                bool search = Search(person.Fornamn)
+                bool search = Search(person.Id.ToString())
+                      || Search(person.Fornamn)
                       || Search(person.Efternamn)
                       || Search(person.PersNr)
                       || Search(person.Sign)
