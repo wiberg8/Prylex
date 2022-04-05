@@ -70,10 +70,16 @@ namespace PrylanLibary
                     //encoder.CalQrcode(unicode.GetBytes(artikel.SerieNr));
                     encoder.QRCodeEncodeMode = MessagingToolkit.QRCode.Codec.QRCodeEncoder.ENCODE_MODE.ALPHA_NUMERIC;
                     encoder.QRCodeScale = 1;
-                    var bitMap = encoder.Encode(artikel.SerieNr, Encoding.UTF8);
                     const string fileName = @"qrcode.bmp";
-                    bitMap.Save(fileName);
-                    g.DrawImageUnscaled(Image.FromFile(fileName), 3, 63);
+                    using (var bitMap = encoder.Encode(artikel.SerieNr, Encoding.UTF8))
+                    {
+                        bitMap.Save(fileName);
+                    }
+                    using (Image image = Image.FromFile(fileName))
+                    {
+                        g.DrawImageUnscaled(image, 3, 63);
+                    }
+                    g?.Dispose();
                 }
                 catch(Exception ex)
                 {
