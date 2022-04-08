@@ -32,10 +32,16 @@ namespace PrylanLibary
                     var encoder = new MessagingToolkit.QRCode.Codec.QRCodeEncoder();
                     encoder.QRCodeEncodeMode = MessagingToolkit.QRCode.Codec.QRCodeEncoder.ENCODE_MODE.ALPHA_NUMERIC;
                     encoder.QRCodeScale = 3;
-                    var bitMap = encoder.Encode(serieNr, Encoding.UTF8);
                     const string fileName = @"qrcode.bmp";
-                    bitMap.Save(fileName);
-                    g.DrawImageUnscaled(Image.FromFile(fileName), 65, 10);
+                    using (var bitMap = encoder.Encode(serieNr, Encoding.UTF8))
+                    {
+                        bitMap.Save(fileName);
+                    }
+                    using (Image image = Image.FromFile(fileName))
+                    {
+                        g.DrawImageUnscaled(image, 65, 10);
+                    }
+                    g?.Dispose();
                 }
                 catch (Exception ex)
                 {
