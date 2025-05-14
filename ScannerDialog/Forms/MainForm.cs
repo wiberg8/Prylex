@@ -194,11 +194,25 @@ namespace ScannerDialog.Forms
                     IEnumerable<Artikel> artiklar;
                     if (cbVisaEndast.SelectedIndex == 0)
                     {
-                        artiklar = SearchEngine.Search(DBAccess.HamtaArtiklar(), txtSok.Text);
+                        if (string.IsNullOrWhiteSpace(txtSok.Text))
+                        {
+                            artiklar = DBAccess.HamtaArtiklar();
+                        }
+                        else
+                        {
+                            artiklar = SearchEngine.Search(DBAccess.HamtaArtiklar(), txtSok.Text);
+                        }
                     }
                     else
                     {
-                        artiklar = SearchEngine.Search(DBAccess.HamtaArtiklarFranBesk(cbVisaEndast.Text), txtSok.Text);
+                        if (string.IsNullOrWhiteSpace(txtSok.Text))
+                        {
+                            artiklar = DBAccess.HamtaArtiklarFranBesk(cbVisaEndast.Text);
+                        }
+                        else
+                        {
+                            artiklar = SearchEngine.Search(DBAccess.HamtaArtiklarFranBesk(cbVisaEndast.Text), txtSok.Text);
+                        }
                     }
                     FyllGrid(artiklar);
                     break;
@@ -206,11 +220,25 @@ namespace ScannerDialog.Forms
                     IEnumerable<Person> personer;
                     if (cbVisaEndast.SelectedIndex == 0) 
                     {
-                        personer = SearchEngine.Search(DBAccess.HamtaPersoner(), txtSok.Text);
+                        if (string.IsNullOrWhiteSpace(txtSok.Text))
+                        {
+                            personer = DBAccess.HamtaPersoner();
+                        }
+                        else
+                        {
+                            personer = SearchEngine.Search(DBAccess.HamtaPersoner(), txtSok.Text);
+                        }
                     }
                     else
                     {
-                        personer = SearchEngine.Search(DBAccess.HamtaPersonerFranTillhorighet(cbVisaEndast.Text), txtSok.Text);
+                        if (string.IsNullOrWhiteSpace(txtSok.Text))
+                        {
+                            personer = DBAccess.HamtaPersonerFranTillhorighet(cbVisaEndast.Text);
+                        }
+                        else
+                        {
+                            personer = SearchEngine.Search(DBAccess.HamtaPersonerFranTillhorighet(cbVisaEndast.Text), txtSok.Text);
+                        }
                     }
                     FyllGrid(personer);
                     break;
@@ -233,7 +261,7 @@ namespace ScannerDialog.Forms
                 dgvArtiklar.Rows.Clear();
                 var hanteraArtikelDialog = new HanteraArtikelDialog(a);
                 hanteraArtikelDialog.ShowDialog();
-                FyllGrid(DBAccess.HamtaArtiklar());
+                SearchSelectedGrid();
             }
         }
 
