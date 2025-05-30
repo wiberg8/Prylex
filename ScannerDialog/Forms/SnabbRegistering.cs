@@ -141,7 +141,7 @@ namespace ScannerDialog
             FyllPersoner(advancedPersoner, person);
             if (a != null && cbPrintOnScan.Checked)
             {
-                Printing.PrintLabel(a, person, AppSettings.Skrivare);
+                Printing.PrintLabel(a, person, AppSettings.Skrivare, AppSettings.BusinessName);
             }
         }
         private void SokPersoner()

@@ -54,7 +54,7 @@ namespace PrylanLibary
         }
 
 
-        public static void PrintLabel(Artikel artikel, Person person, string printer)
+        public static void PrintLabel(Artikel artikel, Person person, string printer, string businessName)
         {
             PrintDocument printDocument = new PrintDocument();
             printDocument.PrintPage += (object sender, PrintPageEventArgs e) =>
@@ -63,7 +63,7 @@ namespace PrylanLibary
                 Font font = new Font("Arial", 10, FontStyle.Bold);
                 SolidBrush brush = new SolidBrush(System.Drawing.Color.Black);
 
-                g.DrawString("Stenhamraskolan", font, brush, new Rectangle(3, 5, 200, 100));
+                g.DrawString(businessName, font, brush, new Rectangle(3, 5, 200, 100));
                 g.DrawString($"{artikel.DatorNamn} / {person.Tillhorighet}", font, brush, new Rectangle(3, 25, 200, 100));
                 g.DrawString($"{person.Fornamn} {person.Efternamn}", font, brush, new Rectangle(3, 43, 300, 100));
 

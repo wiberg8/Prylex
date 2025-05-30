@@ -41,6 +41,8 @@ namespace ScannerDialog
             this.gbUtskrift = new System.Windows.Forms.GroupBox();
             this.toolTipHelp = new System.Windows.Forms.ToolTip(this.components);
             this.cmdSelectDb = new System.Windows.Forms.Button();
+            this.txtBusinessName = new System.Windows.Forms.TextBox();
+            this.laBusinessName = new System.Windows.Forms.Label();
             this.gbInstallningarDb.SuspendLayout();
             this.gbUtskrift.SuspendLayout();
             this.SuspendLayout();
@@ -118,7 +120,7 @@ namespace ScannerDialog
             this.cbPrinter.Location = new System.Drawing.Point(27, 57);
             this.cbPrinter.Margin = new System.Windows.Forms.Padding(4);
             this.cbPrinter.Name = "cbPrinter";
-            this.cbPrinter.Size = new System.Drawing.Size(264, 24);
+            this.cbPrinter.Size = new System.Drawing.Size(279, 24);
             this.cbPrinter.TabIndex = 28;
             this.cbPrinter.SelectedIndexChanged += new System.EventHandler(this.cbPrinter_SelectedIndexChanged);
             // 
@@ -134,20 +136,22 @@ namespace ScannerDialog
             // 
             // gbUtskrift
             // 
+            this.gbUtskrift.Controls.Add(this.laBusinessName);
+            this.gbUtskrift.Controls.Add(this.txtBusinessName);
             this.gbUtskrift.Controls.Add(this.cbPrinter);
             this.gbUtskrift.Controls.Add(this.laPrinter);
             this.gbUtskrift.Location = new System.Drawing.Point(16, 130);
             this.gbUtskrift.Margin = new System.Windows.Forms.Padding(4);
             this.gbUtskrift.Name = "gbUtskrift";
             this.gbUtskrift.Padding = new System.Windows.Forms.Padding(4);
-            this.gbUtskrift.Size = new System.Drawing.Size(327, 111);
+            this.gbUtskrift.Size = new System.Drawing.Size(327, 157);
             this.gbUtskrift.TabIndex = 28;
             this.gbUtskrift.TabStop = false;
             this.gbUtskrift.Text = "Utskrift";
             // 
             // cmdSelectDb
             // 
-            this.cmdSelectDb.Location = new System.Drawing.Point(593, 213);
+            this.cmdSelectDb.Location = new System.Drawing.Point(593, 239);
             this.cmdSelectDb.Margin = new System.Windows.Forms.Padding(4);
             this.cmdSelectDb.Name = "cmdSelectDb";
             this.cmdSelectDb.Size = new System.Drawing.Size(217, 28);
@@ -156,11 +160,29 @@ namespace ScannerDialog
             this.cmdSelectDb.UseVisualStyleBackColor = true;
             this.cmdSelectDb.Click += new System.EventHandler(this.cmdSelectDb_Click);
             // 
+            // txtBusinessName
+            // 
+            this.txtBusinessName.Location = new System.Drawing.Point(27, 109);
+            this.txtBusinessName.Name = "txtBusinessName";
+            this.txtBusinessName.Size = new System.Drawing.Size(279, 22);
+            this.txtBusinessName.TabIndex = 30;
+            this.txtBusinessName.TextChanged += new System.EventHandler(this.txtBusinessName_TextChanged);
+            // 
+            // laBusinessName
+            // 
+            this.laBusinessName.AutoSize = true;
+            this.laBusinessName.Location = new System.Drawing.Point(24, 90);
+            this.laBusinessName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.laBusinessName.Name = "laBusinessName";
+            this.laBusinessName.Size = new System.Drawing.Size(119, 16);
+            this.laBusinessName.TabIndex = 31;
+            this.laBusinessName.Text = "Verksamhetsnamn";
+            // 
             // InstallningarDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 259);
+            this.ClientSize = new System.Drawing.Size(824, 297);
             this.Controls.Add(this.cmdSelectDb);
             this.Controls.Add(this.gbUtskrift);
             this.Controls.Add(this.laNuvarandeDbBackupDisplay);
@@ -198,5 +220,7 @@ namespace ScannerDialog
         private System.Windows.Forms.ToolTip toolTipHelp;
         private System.Windows.Forms.Button cmdNuvarandeDbBackupUtforska;
         private System.Windows.Forms.Button cmdSelectDb;
+        private System.Windows.Forms.Label laBusinessName;
+        private System.Windows.Forms.TextBox txtBusinessName;
     }
 }

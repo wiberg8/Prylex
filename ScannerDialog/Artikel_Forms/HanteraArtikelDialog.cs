@@ -237,7 +237,7 @@ namespace ScannerDialog
                 return;
             if (nuvarandeArtikel.Status == Status.UTE)
             {
-                Printing.PrintLabel(nuvarandeArtikel, registreradPerson, AppSettings.Skrivare);
+                Printing.PrintLabel(nuvarandeArtikel, registreradPerson, AppSettings.Skrivare, AppSettings.BusinessName);
                 if (!string.IsNullOrWhiteSpace(Printing.Exception))
                 {
                     MessageBox.Show(Printing.Exception);

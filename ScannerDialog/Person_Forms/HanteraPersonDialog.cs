@@ -75,7 +75,7 @@ namespace ScannerDialog
             else
             {
                 Artikel selectedArtikel = (Artikel)lbRegistreradeArtiklar.SelectedItem;
-                Printing.PrintLabel(selectedArtikel, nuvarandePerson, AppSettings.Skrivare);
+                Printing.PrintLabel(selectedArtikel, nuvarandePerson, AppSettings.Skrivare, AppSettings.BusinessName);
                 if (!string.IsNullOrEmpty(Printing.Exception))
                 {
                     MessageBox.Show(Printing.Exception);
@@ -191,7 +191,7 @@ namespace ScannerDialog
             FyllHandelser(DBAccess.HamtaHandelserPerson(nuvarandePerson).ToList());
             if (artikelFranId != null && cbPrintOnScan.Checked)
             {
-                Printing.PrintLabel(artikelFranId, nuvarandePerson, AppSettings.Skrivare);
+                Printing.PrintLabel(artikelFranId, nuvarandePerson, AppSettings.Skrivare, AppSettings.BusinessName);
             }
         }
         private void RegistreraViaSkannaEttiket()

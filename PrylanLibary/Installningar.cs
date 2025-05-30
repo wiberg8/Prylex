@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using Newtonsoft.Json;
 
 namespace PrylanLibary
 {
     public class Installningar
     {
+        private const string DefaultBusinessName = "Verksamhetsnamn";
+
         public string Databas { get; set; }
         public string DatabasBackup { get; set; }
         public string ForetagsNamn { get; set; }
         public string Skrivare { get; set; }
+        public string BusinessName { get; set; } = DefaultBusinessName;
         public bool BackupOnStart { get; set; }
 
         public void Ladda()
@@ -25,6 +21,10 @@ namespace PrylanLibary
             {
                 string fileData = File.ReadAllText(Global.INSTALLNINGAR_FILENAME);
                 installningar = JsonConvert.DeserializeObject<Installningar>(fileData);
+                if (string.IsNullOrWhiteSpace(installningar.BusinessName))
+                {
+                    installningar.BusinessName = DefaultBusinessName;
+                }
             }
             catch
             {
@@ -40,8 +40,8 @@ namespace PrylanLibary
         {
             try
             {
-                string installningarEncoded = JsonConvert.SerializeObject(this, Formatting.Indented);
-                File.WriteAllText(Global.INSTALLNINGAR_FILENAME, installningarEncoded);
+                string installningarSerialized = JsonConvert.SerializeObject(this, Formatting.Indented);
+                File.WriteAllText(Global.INSTALLNINGAR_FILENAME, installningarSerialized);
                 return true;
             }
             catch
@@ -52,11 +52,12 @@ namespace PrylanLibary
 
         private void SetThisAsAnother(Installningar another)
         {
-            this.Databas = another.Databas;
-            this.DatabasBackup = another.DatabasBackup;
-            this.ForetagsNamn = another.ForetagsNamn;
-            this.Skrivare = another.Skrivare;
-            this.BackupOnStart = another.BackupOnStart;
+            Databas = another.Databas;
+            DatabasBackup = another.DatabasBackup;
+            ForetagsNamn = another.ForetagsNamn;
+            BusinessName = another.BusinessName;
+            Skrivare = another.Skrivare;
+            BackupOnStart = another.BackupOnStart;
         }
 
     }

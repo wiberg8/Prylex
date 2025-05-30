@@ -55,9 +55,9 @@ namespace ScannerDialog
                 cbPrinter.Items.Add(v);
             }
             cbPrinter.Text = AppSettings.Skrivare;
+            txtBusinessName.Text = AppSettings.BusinessName;
         }
 
-        
         private void ChangeDatabasBackup()
         {
             FolderBrowserDialog folderDialog = new FolderBrowserDialog();
@@ -80,6 +80,11 @@ namespace ScannerDialog
         {
             AppSettings.Databas = string.Empty;
             this.Close();
+        }
+
+        private void txtBusinessName_TextChanged(object sender, EventArgs e)
+        {
+            AppSettings.BusinessName = txtBusinessName.Text;
         }
     }
 }
