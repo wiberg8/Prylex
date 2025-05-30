@@ -42,3 +42,6 @@ Det här var min allra första professionella applikation – och den används f
 
 Har du frågor, feedback eller förslag? Hör gärna av dig!  
 [jesper.dahlberg.wiberg@gmail.com](mailto:jesper.dahlberg.wiberg@gmail.com)
+![Förhandvisning](https://github.com/wiberg8/Prylex/raw/master/prylexexempel.png)
+
+
