@@ -2,6 +2,8 @@
 
 **Prylex** är ett sökbart inventeringssystem inriktat på digitala enheter som datorer, telefoner, surfplattor med mera. Applikationen är framtagen främst för skolor och organisationer som vill ha koll på vem som har vilken enhet – oavsett om det är en PC, iPad eller mobil.
 
+![Förhandvisning](https://github.com/wiberg8/Prylex/raw/master/prylexexempel.png)
+
 ## 🔍 Vad gör Prylex?
 
 - Håller reda på vilken person som har vilken digital enhet – t.ex. dator, surfplatta, telefon.
@@ -42,6 +44,5 @@ Det här var min allra första professionella applikation – och den används f
 
 Har du frågor, feedback eller förslag? Hör gärna av dig!  
 [jesper.dahlberg.wiberg@gmail.com](mailto:jesper.dahlberg.wiberg@gmail.com)
-![Förhandvisning](https://github.com/wiberg8/Prylex/raw/master/prylexexempel.png)
 
 
