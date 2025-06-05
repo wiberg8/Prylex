@@ -35,8 +35,6 @@ Om du inte är utvecklare och ändå är sugen på att testa Prylex, så är det
 
 Det här var min allra första professionella applikation – som jag utvecklade för ett antal år sedan när jag precis börjat känna mig lite mer bekväm med att skriva kod. Jag gjorde förstås en hel del nybörjarmisstag, och det märks nog på koden ibland. 😅
 
-Men trots det är applikationen fullt fungerande, och har visat sig vara både stabil och användbar i verkliga miljöer. Prylex har varit i produktion i flera år och gör fortfarande sitt jobb – även om koden inte är något skolboksexempel.
-
 ## ✅ Stabilitet
 
 - Används aktivt i skolverksamhet.
